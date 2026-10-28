@@ -1,0 +1,13 @@
+# Only the settings which differ from the doxygen defaults
+PROJECT_NAME           = "TinyModem"
+PROJECT_BRIEF          = "Header-only software audio modem library"
+OUTPUT_DIRECTORY       = docs
+HTML_OUTPUT            = html
+GENERATE_LATEX         = NO
+INPUT                  = README.md src
+FILE_PATTERNS          = *.h
+RECURSIVE              = YES
+EXCLUDE                = docs/html
+USE_MDFILE_AS_MAINPAGE = README.md
+EXTRACT_ALL            = YES
+QUIET                  = YES
