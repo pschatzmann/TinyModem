@@ -1,0 +1,20 @@
+add_executable(tinymodem tinymodem.cpp)
+target_link_libraries(tinymodem PRIVATE tinymodem-desktop)
+# place the tool in the root of the build directory
+set_target_properties(tinymodem PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+
+if(TINYMODEM_PORTAUDIO)
+    find_package(PkgConfig QUIET)
+    if(PkgConfig_FOUND)
+        pkg_check_modules(PORTAUDIO IMPORTED_TARGET portaudio-2.0)
+    endif()
+    if(PORTAUDIO_FOUND)
+        message(STATUS "tinymodem: audio device support with PortAudio ${PORTAUDIO_VERSION}")
+        target_compile_definitions(tinymodem PRIVATE TINYMODEM_PORTAUDIO)
+        target_link_libraries(tinymodem PRIVATE PkgConfig::PORTAUDIO)
+    else()
+        message(STATUS "tinymodem: PortAudio not found - only --file is supported")
+    endif()
+endif()
+
+install(TARGETS tinymodem RUNTIME DESTINATION bin)

@@ -1,0 +1,4 @@
+N0CALL>APRS,WIDE1-1,WIDE2-1:!4903.50N/07201.75W-Test 1
+N0CALL-7>APDW12:>Status message 2
+WB2OSZ-15>TEST,RELAY*:,The quick brown fox jumps over the lazy dog!
+AB1CDE-9>APZ001,WIDE2-2::N0CALL   :Hello APRS{1

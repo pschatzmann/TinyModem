@@ -1,0 +1,61 @@
+name: test
+
+on: [push, pull_request]
+
+jobs:
+  desktop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install dependencies
+        # minimodem and direwolf are the references for the interoperability
+        # tests
+        run: sudo apt-get update && sudo apt-get install -y minimodem direwolf portaudio19-dev
+
+      - name: configure
+        run: cmake -S . -B build
+
+      - name: build
+        run: cmake --build build -j
+
+      - name: test
+        run: cd build && ctest -j4 --output-on-failure
+
+  arduino:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - fqbn: esp32:esp32:esp32
+            sketches: |
+              - examples
+          - fqbn: rp2040:rp2040:rpipico
+            sketches: |
+              - examples/aprs-beacon
+              - examples/benchmark
+              - examples/loopback
+              - examples/mfsk-loopback
+              - examples/modem-stream
+              - examples/packet-modem
+              - examples/receive-i2s
+              - examples/send-i2s
+          # ModemStreamRTOS needs FreeRTOS on the RP2040
+          - fqbn: rp2040:rp2040:rpipico:os=freertos
+            sketches: |
+              - examples/modem-stream-rtos
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: arduino/compile-sketches@v1
+        with:
+          fqbn: ${{ matrix.fqbn }}
+          platforms: |
+            - name: esp32:esp32
+              source-url: https://espressif.github.io/arduino-esp32/package_esp32_index.json
+            - name: rp2040:rp2040
+              source-url: https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+          libraries: |
+            - source-path: ./
+            - source-url: https://github.com/pschatzmann/arduino-audio-tools.git
+          sketch-paths: ${{ matrix.sketches }}

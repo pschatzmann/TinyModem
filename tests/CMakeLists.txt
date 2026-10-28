@@ -1,0 +1,82 @@
+# Unit tests of the library
+add_executable(unit-tests unit/unit-tests.cpp)
+target_link_libraries(unit-tests PRIVATE tinymodem-desktop)
+target_compile_definitions(unit-tests PRIVATE TEST_DATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
+
+set(UNIT_TESTS
+    config-modes baudot-codec callerid-mdmf callerid-sdmf uic-codec
+    binary-codec bit-helpers encoder-signal custom-generator loopback-modes
+    loopback-rate-perfect loopback-options loopback-sample-rates rate-slop
+    amplitude noise auto-carrier chunk-sizes input-formats audio-info-change
+    multiple-transmissions output-filters callerid-rx uic-rx stream-api
+    audiotools-pipeline mode-switch config-reuse baudot-transmissions
+    stream-modes stream-no-loss stream-rtos packet-codec packet-modem
+    mfsk-config mfsk-loopback mfsk-robust mfsk-formats mfsk-stream
+    ax25-frame ax25-loopback ax25-kiss ax25-stream psk-varicode psk-loopback
+    psk-robust psk-stream ofdm-config ofdm-loopback ofdm-robust ofdm-stream rx-one)
+foreach(test ${UNIT_TESTS})
+    add_test(NAME unit-${test} COMMAND unit-tests ${test})
+endforeach()
+
+if(NOT TINYMODEM_BUILD_TOOLS)
+    return()
+endif()
+
+# Command line tests: tinymodem is used to transmit and receive
+set(CLI_TESTS
+    self-test-1200 self-test-300 self-test-rtty self-test-0.5 self-test-12000
+    self-test-8000hz self-test-22050hz verify-perfect rate-slop amplitude
+    noise noise-purefreqs multibyte callerid-mdmf callerid-sdmf same ascii7
+    tdd baudot-300 v21 msb-first invert-start-stop inverted start-stop-bits
+    sync-byte auto-carrier wav-formats)
+set(CLI_TX_TESTS verify-tx-consistent tx-wav-header)
+# extensions which are not supported by the original minimodem
+set(CLI_OWN_TESTS
+    mfsk4 mfsk8 mfsk16 mfsk32 mfsk64 mfsk-noise mfsk-clock mfsk-base-freq
+    mfsk-tx-carrier packets-fsk packets-mfsk packets-binary ax25 ax25-22050hz
+    ax25-noise ax25-kiss psk31 psk125 psk500 psk-noise psk-offset packets-psk
+    ofdm16 ofdm32 ofdm64 ofdm-noise packets-ofdm)
+
+set(CLI_TEST ${CMAKE_CURRENT_SOURCE_DIR}/cli-test.sh)
+foreach(test ${CLI_TESTS} ${CLI_TX_TESTS} ${CLI_OWN_TESTS})
+    add_test(NAME cli-${test}
+        COMMAND bash ${CLI_TEST} ${test} $<TARGET_FILE:tinymodem> $<TARGET_FILE:tinymodem>)
+endforeach()
+
+# Interoperability tests with the original minimodem (if available):
+# -DMINIMODEM_REFERENCE=/path/to/minimodem
+find_program(MINIMODEM_REFERENCE minimodem NO_CMAKE_PATH NO_CMAKE_ENVIRONMENT_PATH)
+if(MINIMODEM_REFERENCE)
+    message(STATUS "minimodem reference for interop tests: ${MINIMODEM_REFERENCE}")
+    foreach(test ${CLI_TESTS})
+        # we transmit, the original minimodem receives
+        add_test(NAME interop-tx-${test}
+            COMMAND bash ${CLI_TEST} ${test} $<TARGET_FILE:tinymodem> ${MINIMODEM_REFERENCE})
+        # the original minimodem transmits, we receive
+        add_test(NAME interop-rx-${test}
+            COMMAND bash ${CLI_TEST} ${test} ${MINIMODEM_REFERENCE} $<TARGET_FILE:tinymodem>)
+    endforeach()
+else()
+    message(STATUS "minimodem reference not found: interop tests are skipped")
+endif()
+
+# AX.25 interoperability tests with direwolf (if available): atest decodes
+# and gen_packets generates AX.25 audio. DIREWOLF_LIBRARY_PATH can define the
+# location of the shared libraries of an unpacked direwolf package.
+find_program(DIREWOLF_ATEST atest)
+find_program(DIREWOLF_GEN_PACKETS gen_packets)
+if(DIREWOLF_ATEST AND DIREWOLF_GEN_PACKETS)
+    message(STATUS "direwolf for AX.25 interop tests: ${DIREWOLF_ATEST}")
+    set(AX25_INTEROP ${CMAKE_CURRENT_SOURCE_DIR}/ax25-interop.sh)
+    foreach(test tx rx noise)
+        add_test(NAME interop-ax25-${test}
+            COMMAND bash ${AX25_INTEROP} ${test} $<TARGET_FILE:tinymodem>
+                ${DIREWOLF_ATEST} ${DIREWOLF_GEN_PACKETS})
+        if(DIREWOLF_LIBRARY_PATH)
+            set_tests_properties(interop-ax25-${test} PROPERTIES
+                ENVIRONMENT "LD_LIBRARY_PATH=${DIREWOLF_LIBRARY_PATH}")
+        endif()
+    endforeach()
+else()
+    message(STATUS "direwolf (atest, gen_packets) not found: no AX.25 interop tests")
+endif()
