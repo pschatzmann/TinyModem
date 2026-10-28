@@ -163,8 +163,11 @@ class BaudotCodec : public DataCodec {
   }
 };
 
-/// Caller-ID (USA SDMF/MDMF) decoder. See
-/// http://melabs.com/resources/callerid.htm
+/**
+ * @brief Caller-ID (USA SDMF/MDMF) decoder. See
+ * http://melabs.com/resources/callerid.htm
+ * @copyright GPLv3
+ */
 class CallerIDCodec : public DataCodec {
  public:
   void reset() override {
@@ -323,6 +326,7 @@ class UICCodec : public DataCodec {
  protected:
   bool train = false;
 
+  /// UIC message code and its meaning
   struct Message {
     int code;
     const char* meaning;

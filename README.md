@@ -87,6 +87,8 @@ The documentation is in the [Wiki](https://github.com/pschatzmann/TinyModem/wiki
   - [AX.25/APRS](https://github.com/pschatzmann/TinyModem/wiki/AX25)
 - [Packets with error correction](https://github.com/pschatzmann/TinyModem/wiki/Packets)
 - [Arduino API](https://github.com/pschatzmann/TinyModem/wiki/Arduino)
+- [Class documentation](https://pschatzmann.github.io/TinyModem/annotated.html) (Doxygen)
+- [Memory usage](https://github.com/pschatzmann/TinyModem/wiki/Memory)
 - [Command line tool](https://github.com/pschatzmann/TinyModem/wiki/Command-Line)
 - [Tests](https://github.com/pschatzmann/TinyModem/wiki/Testing)
 - [Design](https://github.com/pschatzmann/TinyModem/wiki/Design)

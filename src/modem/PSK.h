@@ -112,6 +112,7 @@ struct PSKConfig : public audio_tools::AudioInfo {
  */
 class Varicode {
  public:
+  /// Varicode bits of a character
   struct Code {
     uint16_t bits;   // most significant bit is sent first
     uint8_t length;  // number of bits

@@ -7,6 +7,7 @@
 
 #include "AudioTools.h"
 
+/// TinyModem: software audio modems and packets with error correction
 namespace tinymodem {
 
 /**
