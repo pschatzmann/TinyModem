@@ -1,0 +1,5 @@
+<map id="tinymodem::PrintFilter" name="tinymodem::PrintFilter">
+<area shape="rect" id="Node000001" title="Print which replaces non printable characters with &#39;.&#39;." alt="" coords="5,81,173,109"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="63,5,115,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,47,91,82,87,80,87,51"/>
+</map>

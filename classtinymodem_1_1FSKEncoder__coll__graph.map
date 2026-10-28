@@ -1,0 +1,25 @@
+<map id="tinymodem::FSKEncoder" name="tinymodem::FSKEncoder">
+<area shape="rect" id="Node000001" title="FSK modulator: converts the written characters into 16 bit PCM audio which is written to the defined ..." alt="" coords="1293,172,1473,200"/>
+<area shape="rect" id="Node000002" href="$classtinymodem_1_1ModemEncoder.html" title="Common API of the modulators (FSKEncoder, MFSKEncoder): the written data is converted to 16 bit PCM a..." alt="" coords="965,57,1170,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1185,72,1229,81,1270,94,1301,110,1329,131,1371,172,1366,171,1325,135,1298,115,1268,99,1227,86,1185,78"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="679,5,873,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="888,29,941,38,1015,57,1010,57,940,43,888,35"/>
+<area shape="rect" id="Node000004" href="$classtinymodem_1_1ToneOutput.html" title="Writes tones of a SoundGenerator as 16 bit PCM with the requested number of channels and volume to a ..." alt="" coords="687,57,865,85"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="880,69,967,71,962,72,881,74"/>
+<area shape="rect" id="Node000005" href="$classtinymodem_1_1FSKToneGenerator.html" title=" " alt="" coords="285,49,507,94"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="523,69,689,70,684,72,523,74"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="5,49,236,94"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="250,69,287,70,282,72,252,74"/>
+<area shape="rect" id="Node000007" href="$structtinymodem_1_1ModemConfig.html" title="Configuration of the FSK modem. The fields correspond to the command line options of minimodem...." alt="" coords="970,109,1164,137"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="1156,138,1312,171,1307,171,1155,143"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="693,109,859,137"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="875,121,972,123,967,123,875,126"/>
+<area shape="rect" id="Node000009" href="$classtinymodem_1_1AsciiCodec.html" title="ASCII 8&#45;bit data (passthrough)." alt="" coords="980,233,1155,261"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="1170,241,1219,236,1268,227,1312,214,1349,201,1354,200,1314,219,1270,232,1220,241,1170,246"/>
+<area shape="rect" id="Node000010" href="$classtinymodem_1_1DataCodec.html" title="Converts between characters and the data bits of a frame." alt="" coords="688,233,864,261"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="879,228,896,226,1110,203,1295,191,1290,192,1110,209,897,231,879,234"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="879,245,982,247,977,247,879,250"/>
+<area shape="rect" id="Node000011" href="$classtinymodem_1_1BaudotCodec.html" title="Baudot (ITA2) 5&#45;bit data." alt="" coords="972,285,1162,313"/>
+<area shape="poly" id="edge11_Node000011_Node000010" title=" " alt="" coords="873,262,988,285,983,285,872,267"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="1178,291,1224,283,1268,268,1297,253,1325,234,1366,201,1371,199,1328,239,1300,258,1270,273,1225,288,1178,296"/>
+</map>

@@ -1,0 +1,15 @@
+<map id="tinymodem::AX25Decoder" name="tinymodem::AX25Decoder">
+<area shape="rect" id="Node000001" title="AX.25 packet radio demodulator (APRS, 1200 baud AFSK). The PCM audio data is written to the decoder a..." alt="" coords="551,83,744,110"/>
+<area shape="rect" id="Node000002" href="$classtinymodem_1_1ModemDecoder.html" title="Common API of the demodulators (FSKDecoder, MFSKDecoder): PCM audio data is written to the decoder an..." alt="" coords="250,5,457,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="459,34,528,50,614,82,609,82,527,55,459,39"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,201,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="215,17,252,18,247,20,217,22"/>
+<area shape="rect" id="Node000004" href="$structtinymodem_1_1AX25Config.html" title="Configuration of the AX.25 packet radio modem (AX25Encoder, AX25Decoder): Bell 202 AFSK with 1200 bau..." alt="" coords="264,57,443,85"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="459,78,553,88,548,89,459,83"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="20,57,186,85"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="201,69,266,70,261,72,202,74"/>
+<area shape="rect" id="Node000006" href="$classtinymodem_1_1PcmInput.html" title="Assembles the PCM frames from the written bytes and provides the samples of the selected channel as f..." alt="" coords="271,111,436,138"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="451,119,527,114,569,111,564,111,528,119,452,124"/>
+<area shape="rect" id="Node000007" href="$structtinymodem_1_1AX25Decoder_1_1Phasor.html" title="Rotating phasor of a tone: avoids sin() and cos() per sample." alt="" coords="258,181,450,226"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="464,187,526,169,583,140,626,112,631,110,586,144,528,174,465,192"/>
+</map>

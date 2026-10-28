@@ -1,0 +1,17 @@
+<map id="tinymodem::AX25Encoder" name="tinymodem::AX25Encoder">
+<area shape="rect" id="Node000001" title="AX.25 packet radio modulator (APRS, 1200 baud AFSK). The written data is converted to AX...." alt="" coords="308,418,498,446"/>
+<area shape="rect" id="Node000002" href="$classtinymodem_1_1ModemEncoder.html" title="Common API of the modulators (FSKEncoder, MFSKEncoder): the written data is converted to 16 bit PCM a..." alt="" coords="194,318,399,345"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="323,354,392,418,386,417,321,358"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,217,199,245"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="142,249,273,316,268,318,141,254"/>
+<area shape="rect" id="Node000004" href="$classtinymodem_1_1ToneOutput.html" title="Writes tones of a SoundGenerator as 16 bit PCM with the requested number of channels and volume to a ..." alt="" coords="222,217,400,245"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="309,258,301,318,296,316,305,262"/>
+<area shape="rect" id="Node000005" href="$classtinymodem_1_1FSKToneGenerator.html" title=" " alt="" coords="200,99,422,144"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="313,157,314,218,309,216,310,162"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="196,5,426,50"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="312,63,314,100,309,98,310,68"/>
+<area shape="rect" id="Node000007" href="$structtinymodem_1_1AX25Config.html" title="Configuration of the AX.25 packet radio modem (AX25Encoder, AX25Decoder): Bell 202 AFSK with 1200 bau..." alt="" coords="423,318,602,345"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="490,355,419,420,417,415,485,356"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="430,217,596,245"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="514,258,515,318,510,316,511,262"/>
+</map>

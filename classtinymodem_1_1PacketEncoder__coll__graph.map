@@ -1,0 +1,5 @@
+<map id="tinymodem::PacketEncoder&lt; MAX_PAYLOAD, ECC_BYTES &gt;" name="tinymodem::PacketEncoder&lt; MAX_PAYLOAD, ECC_BYTES &gt;">
+<area shape="rect" id="Node000001" title="Splits the written data into packets with a CRC&#45;16 and Reed&#45;Solomon forward error correction,..." alt="" coords="5,81,234,126"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="94,5,145,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,47,122,81,117,79,118,51"/>
+</map>

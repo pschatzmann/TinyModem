@@ -1,0 +1,5 @@
+<map id="tinymodem::AX25Config" name="tinymodem::AX25Config">
+<area shape="rect" id="Node000001" title="Configuration of the AX.25 packet radio modem (AX25Encoder, AX25Decoder): Bell 202 AFSK with 1200 bau..." alt="" coords="5,81,185,109"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="12,5,178,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,47,97,82,93,80,93,51"/>
+</map>

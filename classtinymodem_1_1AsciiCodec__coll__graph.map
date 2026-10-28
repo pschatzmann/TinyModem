@@ -1,0 +1,5 @@
+<map id="tinymodem::AsciiCodec" name="tinymodem::AsciiCodec">
+<area shape="rect" id="Node000001" title="ASCII 8&#45;bit data (passthrough)." alt="" coords="5,81,181,109"/>
+<area shape="rect" id="Node000002" href="$classtinymodem_1_1DataCodec.html" title="Converts between characters and the data bits of a frame." alt="" coords="5,5,181,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,47,95,82,91,80,91,51"/>
+</map>

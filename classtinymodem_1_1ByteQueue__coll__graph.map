@@ -1,0 +1,5 @@
+<map id="tinymodem::ByteQueue" name="tinymodem::ByteQueue">
+<area shape="rect" id="Node000001" title="FIFO for received data which grows when needed: e.g. one decoding step can produce more data than exp..." alt="" coords="5,81,182,109"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="68,5,119,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,47,96,82,91,80,92,51"/>
+</map>

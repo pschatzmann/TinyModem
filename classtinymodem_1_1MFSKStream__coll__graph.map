@@ -1,0 +1,36 @@
+<map id="tinymodem::MFSKStream" name="tinymodem::MFSKStream">
+<area shape="rect" id="Node000001" title="Arduino Stream API for the multi&#45;tone FSK modem: print() transmits, read() receives...." alt="" coords="1858,147,2045,174"/>
+<area shape="rect" id="Node000002" href="$classtinymodem_1_1BasicModemStream.html" title=" " alt="" coords="1573,130,1809,191"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1824,158,1860,160,1855,161,1825,163"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="1326,32,1394,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1410,52,1477,67,1550,89,1636,129,1631,129,1548,94,1476,72,1410,57"/>
+<area shape="rect" id="Node000004" href="$classtinymodem_1_1MFSKEncoder.html" title="Multi&#45;tone FSK modulator: converts the written bytes into 16 bit PCM audio. Each symbol is one of MFS..." alt="" coords="1264,84,1456,112"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="1452,113,1576,138,1571,138,1452,118"/>
+<area shape="rect" id="Node000005" href="$classtinymodem_1_1ModemEncoder.html" title="Common API of the modulators (FSKEncoder, MFSKEncoder): the written data is converted to 16 bit PCM a..." alt="" coords="968,35,1173,62"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1188,57,1240,65,1312,83,1306,83,1238,70,1188,62"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="680,5,874,33"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="889,28,970,38,964,39,890,33"/>
+<area shape="rect" id="Node000007" href="$classtinymodem_1_1ToneOutput.html" title="Writes tones of a SoundGenerator as 16 bit PCM with the requested number of channels and volume to a ..." alt="" coords="688,57,866,85"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="881,64,942,60,970,60,964,61,943,65,882,70"/>
+<area shape="rect" id="Node000008" href="$classtinymodem_1_1FSKToneGenerator.html" title=" " alt="" coords="285,49,507,94"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="523,69,690,70,685,72,524,74"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="5,49,236,94"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="250,69,287,70,282,72,252,74"/>
+<area shape="rect" id="Node000010" href="$structtinymodem_1_1MFSKConfig.html" title="Configuration of the multi&#45;tone FSK modem (MFSKEncoder, MFSKDecoder). Each symbol is one of tones ton..." alt="" coords="980,133,1160,161"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="1160,127,1198,121,1261,113,1267,112,1198,126,1161,132"/>
+<area shape="rect" id="Node000012" href="$classtinymodem_1_1MFSKDecoder.html" title="Multi&#45;tone FSK demodulator: PCM audio data is written to the decoder and the decoded bytes are writte..." alt="" coords="1263,188,1457,216"/>
+<area shape="poly" id="edge14_Node000012_Node000010" title=" " alt="" coords="1162,162,1286,187,1280,187,1162,167"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="694,133,860,161"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="875,145,983,147,977,147,876,150"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="1473,185,1570,175,1576,175,1473,190"/>
+<area shape="rect" id="Node000013" href="$classtinymodem_1_1ModemDecoder.html" title="Common API of the demodulators (FSKDecoder, MFSKDecoder): PCM audio data is written to the decoder an..." alt="" coords="967,239,1174,266"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="1168,233,1274,217,1279,216,1169,238"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="679,239,875,266"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="890,250,969,252,963,253,891,255"/>
+<area shape="rect" id="Node000015" href="$classtinymodem_1_1PcmInput.html" title="Assembles the PCM frames from the written bytes and provides the samples of the selected channel as f..." alt="" coords="988,187,1153,214"/>
+<area shape="poly" id="edge15_Node000012_Node000015" title=" " alt="" coords="1168,201,1198,202,1239,202,1265,204,1260,204,1239,207,1198,207,1169,206"/>
+<area shape="rect" id="Node000016" href="$classtinymodem_1_1ByteQueue.html" title="FIFO for received data which grows when needed: e.g. one decoding step can produce more data than exp..." alt="" coords="1272,264,1448,292"/>
+<area shape="poly" id="edge16_Node000002_Node000016" title=" " alt="" coords="1422,256,1548,214,1610,193,1615,191,1550,219,1423,261"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="1045,291,1096,318"/>
+<area shape="poly" id="edge17_Node000016_Node000017" title=" " alt="" coords="1112,298,1269,286,1274,286,1112,303"/>
+</map>

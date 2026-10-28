@@ -1,0 +1,7 @@
+<map id="tinymodem::PacketDecoder&lt; MAX_PAYLOAD, ECC_BYTES &gt;" name="tinymodem::PacketDecoder&lt; MAX_PAYLOAD, ECC_BYTES &gt;">
+<area shape="rect" id="Node000001" title="Receives the packets of a PacketEncoder: the written bytes (e.g. the output of a modem decoder) are d..." alt="" coords="5,106,234,151"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="18,5,69,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="63,44,107,105,101,106,60,48"/>
+<area shape="rect" id="Node000003" href="$structtinymodem_1_1PacketStatistics.html" title="Statistics of the received packets." alt="" coords="94,5,300,33"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="181,44,137,107,133,103,176,47"/>
+</map>

@@ -1,0 +1,15 @@
+<map id="tinymodem::OFDMDecoder" name="tinymodem::OFDMDecoder">
+<area shape="rect" id="Node000001" title="OFDM demodulator: the PCM audio data is written to the decoder and the decoded frames are written to ..." alt="" coords="546,83,745,110"/>
+<area shape="rect" id="Node000002" href="$classtinymodem_1_1ModemDecoder.html" title="Common API of the demodulators (FSKDecoder, MFSKDecoder): PCM audio data is written to the decoder an..." alt="" coords="250,5,457,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="455,34,523,50,612,82,606,82,522,55,455,39"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,201,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="216,17,252,18,247,20,217,22"/>
+<area shape="rect" id="Node000004" href="$structtinymodem_1_1OFDMConfig.html" title="Configuration of the OFDM modem (OFDMEncoder, OFDMDecoder): the data is transmitted in parallel on ca..." alt="" coords="261,57,446,85"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="462,78,549,88,543,88,462,83"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="20,57,186,85"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="201,69,263,70,258,72,202,74"/>
+<area shape="rect" id="Node000006" href="$classtinymodem_1_1PcmInput.html" title="Assembles the PCM frames from the written bytes and provides the samples of the selected channel as f..." alt="" coords="271,111,436,138"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="452,119,522,114,565,111,560,111,523,119,452,124"/>
+<area shape="rect" id="Node000007" href="$classtinymodem_1_1OFDMTable.html" title="Sine and cosine of 2 * PI * i / size." alt="" coords="264,167,443,194"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="457,163,522,147,572,128,614,111,619,110,574,133,523,152,458,168"/>
+</map>

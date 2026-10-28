@@ -1,0 +1,5 @@
+<map id="tinymodem::UICCodec" name="tinymodem::UICCodec">
+<area shape="rect" id="Node000001" title="UIC&#45;751&#45;3 ground&#45;train or train&#45;ground decoder." alt="" coords="9,81,177,109"/>
+<area shape="rect" id="Node000002" href="$classtinymodem_1_1DataCodec.html" title="Converts between characters and the data bits of a frame." alt="" coords="5,5,181,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,47,95,82,91,80,91,51"/>
+</map>

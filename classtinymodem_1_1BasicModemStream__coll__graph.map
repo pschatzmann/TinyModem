@@ -1,0 +1,9 @@
+<map id="tinymodem::BasicModemStream&lt; Encoder, Decoder, Config &gt;" name="tinymodem::BasicModemStream&lt; Encoder, Decoder, Config &gt;">
+<area shape="rect" id="Node000001" title="Arduino Stream API for a modem (encoder and decoder): the written characters are modulated to the aud..." alt="" coords="5,183,241,228"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="68,82,136,110"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,123,121,183,116,182,105,127"/>
+<area shape="rect" id="Node000003" href="$classtinymodem_1_1ByteQueue.html" title="FIFO for received data which grows when needed: e.g. one decoding step can produce more data than exp..." alt="" coords="160,82,336,110"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="224,120,150,185,147,180,219,121"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="223,5,274,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="250,46,251,83,246,81,247,51"/>
+</map>

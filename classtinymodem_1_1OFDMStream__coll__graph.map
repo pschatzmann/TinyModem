@@ -1,0 +1,41 @@
+<map id="tinymodem::OFDMStream" name="tinymodem::OFDMStream">
+<area shape="rect" id="Node000001" title="Arduino Stream API for the OFDM modem: print() collects the data, flush() sends it as frame,..." alt="" coords="1884,259,2075,286"/>
+<area shape="rect" id="Node000002" href="$classtinymodem_1_1BasicModemStream.html" title=" " alt="" coords="1599,242,1835,303"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1850,270,1886,272,1881,273,1850,275"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="1350,144,1418,172"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1434,164,1502,179,1576,201,1662,241,1657,241,1574,206,1501,184,1434,169"/>
+<area shape="rect" id="Node000004" href="$classtinymodem_1_1OFDMEncoder.html" title="OFDM modulator: the written bytes are collected into frames (up to OFDMConfig::max_frame bytes) which..." alt="" coords="1286,196,1482,224"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="1476,224,1602,250,1596,250,1476,230"/>
+<area shape="rect" id="Node000005" href="$classtinymodem_1_1ModemEncoder.html" title="Common API of the modulators (FSKEncoder, MFSKEncoder): the written data is converted to 16 bit PCM a..." alt="" coords="968,31,1173,58"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1188,35,1228,45,1263,67,1274,81,1279,96,1277,125,1274,154,1278,168,1287,181,1303,196,1298,195,1283,185,1273,170,1269,154,1271,125,1273,96,1269,83,1259,70,1226,50,1189,40"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="680,5,874,33"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="889,26,970,35,965,36,890,31"/>
+<area shape="rect" id="Node000007" href="$classtinymodem_1_1ToneOutput.html" title="Writes tones of a SoundGenerator as 16 bit PCM with the requested number of channels and volume to a ..." alt="" coords="688,57,866,85"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="881,66,942,62,987,58,982,60,943,67,883,71"/>
+<area shape="rect" id="Node000008" href="$classtinymodem_1_1FSKToneGenerator.html" title=" " alt="" coords="285,49,507,94"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="523,69,690,70,685,72,524,74"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="5,49,236,94"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="250,69,287,70,282,73,252,74"/>
+<area shape="rect" id="Node000010" href="$structtinymodem_1_1OFDMConfig.html" title="Configuration of the OFDM modem (OFDMEncoder, OFDMDecoder): the data is transmitted in parallel on ca..." alt="" coords="978,264,1163,292"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="1155,258,1260,235,1318,225,1323,224,1262,240,1156,263"/>
+<area shape="rect" id="Node000014" href="$classtinymodem_1_1OFDMDecoder.html" title="OFDM demodulator: the PCM audio data is written to the decoder and the decoded frames are written to ..." alt="" coords="1285,300,1483,328"/>
+<area shape="poly" id="edge16_Node000014_Node000010" title=" " alt="" coords="1128,294,1198,310,1287,318,1282,318,1198,315,1128,299"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="694,264,860,292"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="876,275,980,278,975,278,876,280"/>
+<area shape="rect" id="Node000012" href="$classtinymodem_1_1SampleOutput.html" title="Writes float samples (&#45;1.0 to 1.0) as 16 bit PCM with the requested number of channels and volume to ..." alt="" coords="972,188,1169,216"/>
+<area shape="poly" id="edge11_Node000004_Node000012" title=" " alt="" coords="1184,202,1288,207,1283,208,1184,207"/>
+<area shape="rect" id="Node000013" href="$classtinymodem_1_1OFDMTable.html" title="Sine and cosine of 2 * PI * i / size." alt="" coords="981,108,1160,136"/>
+<area shape="poly" id="edge12_Node000004_Node000013" title=" " alt="" coords="1131,101,1164,97,1198,96,1232,102,1263,117,1275,133,1277,150,1278,166,1287,181,1306,196,1301,195,1283,185,1273,168,1271,150,1270,135,1259,121,1230,107,1197,102,1164,102,1133,107"/>
+<area shape="poly" id="edge18_Node000014_Node000013" title=" " alt="" coords="1148,137,1220,157,1263,173,1274,188,1277,203,1280,218,1287,234,1323,270,1361,300,1356,299,1319,274,1283,237,1275,220,1272,204,1269,190,1259,177,1219,162,1148,143"/>
+<area shape="poly" id="edge13_Node000002_Node000014" title=" " alt="" coords="1499,297,1597,287,1602,287,1499,302"/>
+<area shape="rect" id="Node000015" href="$classtinymodem_1_1ModemDecoder.html" title="Common API of the demodulators (FSKDecoder, MFSKDecoder): PCM audio data is written to the decoder an..." alt="" coords="967,337,1174,365"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="1189,334,1282,326,1287,325,1190,340"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="679,337,875,365"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="890,349,969,351,963,351,891,354"/>
+<area shape="rect" id="Node000017" href="$classtinymodem_1_1PcmInput.html" title="Assembles the PCM frames from the written bytes and provides the samples of the selected channel as f..." alt="" coords="988,389,1153,417"/>
+<area shape="poly" id="edge17_Node000014_Node000017" title=" " alt="" coords="1168,386,1260,364,1310,346,1352,329,1357,328,1312,351,1262,369,1169,392"/>
+<area shape="rect" id="Node000018" href="$classtinymodem_1_1ByteQueue.html" title="FIFO for received data which grows when needed: e.g. one decoding step can produce more data than exp..." alt="" coords="1296,407,1472,434"/>
+<area shape="poly" id="edge19_Node000002_Node000018" title=" " alt="" coords="1431,397,1643,304,1649,303,1432,402"/>
+<area shape="rect" id="Node000019" title=" " alt="" coords="1045,441,1096,469"/>
+<area shape="poly" id="edge20_Node000018_Node000019" title=" " alt="" coords="1111,448,1293,430,1298,430,1112,453"/>
+</map>

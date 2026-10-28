@@ -1,0 +1,11 @@
+<map id="tinymodem::ModemEncoder" name="tinymodem::ModemEncoder">
+<area shape="rect" id="Node000001" title="Common API of the modulators (FSKEncoder, MFSKEncoder): the written data is converted to 16 bit PCM a..." alt="" coords="62,318,267,345"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,217,199,245"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,255,159,317,154,317,117,260"/>
+<area shape="rect" id="Node000003" href="$classtinymodem_1_1ToneOutput.html" title="Writes tones of a SoundGenerator as 16 bit PCM with the requested number of channels and volume to a ..." alt="" coords="222,217,400,245"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="282,253,186,319,183,315,277,254"/>
+<area shape="rect" id="Node000004" href="$classtinymodem_1_1FSKToneGenerator.html" title=" " alt="" coords="200,99,422,144"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="313,157,314,218,309,216,310,162"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="196,5,426,50"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="313,63,314,100,309,98,310,68"/>
+</map>

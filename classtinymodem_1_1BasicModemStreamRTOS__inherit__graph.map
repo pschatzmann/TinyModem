@@ -1,0 +1,5 @@
+<map id="tinymodem::BasicModemStreamRTOS&lt; Base &gt;" name="tinymodem::BasicModemStreamRTOS&lt; Base &gt;">
+<area shape="rect" id="Node000001" title="BasicModemStream which receives in a separate task (FreeRTOS on ESP32 and RP2040, a std::thread on th..." alt="" coords="5,81,241,126"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="96,5,150,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,47,125,81,121,79,121,51"/>
+</map>

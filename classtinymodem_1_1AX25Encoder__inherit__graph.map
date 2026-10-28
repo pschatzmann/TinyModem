@@ -1,0 +1,7 @@
+<map id="tinymodem::AX25Encoder" name="tinymodem::AX25Encoder">
+<area shape="rect" id="Node000001" title="AX.25 packet radio modulator (APRS, 1200 baud AFSK). The written data is converted to AX...." alt="" coords="13,157,203,184"/>
+<area shape="rect" id="Node000002" href="$classtinymodem_1_1ModemEncoder.html" title="Common API of the modulators (FSKEncoder, MFSKEncoder): the written data is converted to 16 bit PCM a..." alt="" coords="5,81,211,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,123,110,157,106,155,106,126"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="11,5,205,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="109,46,111,81,105,80,107,51"/>
+</map>

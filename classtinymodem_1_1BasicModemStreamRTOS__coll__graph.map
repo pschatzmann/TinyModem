@@ -1,0 +1,9 @@
+<map id="tinymodem::BasicModemStreamRTOS&lt; Base &gt;" name="tinymodem::BasicModemStreamRTOS&lt; Base &gt;">
+<area shape="rect" id="Node000001" title="BasicModemStream which receives in a separate task (FreeRTOS on ESP32 and RP2040, a std::thread on th..." alt="" coords="5,200,241,245"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="44,91,98,118"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,130,116,199,111,200,81,135"/>
+<area shape="rect" id="Node000003" href="$structtinymodem_1_1BasicModemStreamRTOS_1_1LockedQueue.html" title="Print which writes the decoded data into the queue with a lock." alt="" coords="121,82,357,127"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="209,137,146,202,143,197,204,139"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="213,5,265,33"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="240,46,241,83,237,81,238,51"/>
+</map>

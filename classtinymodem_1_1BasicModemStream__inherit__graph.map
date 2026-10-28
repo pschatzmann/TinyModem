@@ -1,0 +1,5 @@
+<map id="tinymodem::BasicModemStream&lt; Encoder, Decoder, Config &gt;" name="tinymodem::BasicModemStream&lt; Encoder, Decoder, Config &gt;">
+<area shape="rect" id="Node000001" title="Arduino Stream API for a modem (encoder and decoder): the written characters are modulated to the aud..." alt="" coords="5,81,241,126"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="89,5,157,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,47,125,81,121,79,121,51"/>
+</map>
