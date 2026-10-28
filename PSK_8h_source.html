@@ -188,84 +188,84 @@ $(function(){initNavTree('PSK_8h_source.html','',''); });
 <div class="foldopen" id="foldopen00113" data-start="{" data-end="};">
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="classtinymodem_1_1Varicode.html">  113</a></span><span class="keyword">class </span><a class="code hl_class" href="classtinymodem_1_1Varicode.html">Varicode</a> {</div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> <span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen00115" data-start="{" data-end="};">
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="structtinymodem_1_1Varicode_1_1Code.html">  115</a></span>  <span class="keyword">struct </span><a class="code hl_struct" href="structtinymodem_1_1Varicode_1_1Code.html">Code</a> {</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="structtinymodem_1_1Varicode_1_1Code.html#ad7d36906576b6ddd6a701552bc9faecd">  116</a></span>    uint16_t <a class="code hl_variable" href="structtinymodem_1_1Varicode_1_1Code.html#ad7d36906576b6ddd6a701552bc9faecd">bits</a>;   <span class="comment">// most significant bit is sent first</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="structtinymodem_1_1Varicode_1_1Code.html#a299e720791a80ecd7df2b1fbabc0955c">  117</a></span>    uint8_t <a class="code hl_variable" href="structtinymodem_1_1Varicode_1_1Code.html#a299e720791a80ecd7df2b1fbabc0955c">length</a>;  <span class="comment">// number of bits</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>  };</div>
+<div class="foldopen" id="foldopen00116" data-start="{" data-end="};">
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="structtinymodem_1_1Varicode_1_1Code.html">  116</a></span>  <span class="keyword">struct </span><a class="code hl_struct" href="structtinymodem_1_1Varicode_1_1Code.html">Code</a> {</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="structtinymodem_1_1Varicode_1_1Code.html#ad7d36906576b6ddd6a701552bc9faecd">  117</a></span>    uint16_t <a class="code hl_variable" href="structtinymodem_1_1Varicode_1_1Code.html#ad7d36906576b6ddd6a701552bc9faecd">bits</a>;   <span class="comment">// most significant bit is sent first</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="structtinymodem_1_1Varicode_1_1Code.html#a299e720791a80ecd7df2b1fbabc0955c">  118</a></span>    uint8_t <a class="code hl_variable" href="structtinymodem_1_1Varicode_1_1Code.html#a299e720791a80ecd7df2b1fbabc0955c">length</a>;  <span class="comment">// number of bits</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>  };</div>
 </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span></div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="classtinymodem_1_1Varicode.html#a960f4575222466361ab3ddf6f6d976db">  121</a></span>  <span class="keyword">static</span> <a class="code hl_struct" href="structtinymodem_1_1Varicode_1_1Code.html">Code</a> <a class="code hl_function" href="classtinymodem_1_1Varicode.html#a960f4575222466361ab3ddf6f6d976db">encode</a>(uint8_t ch) { <span class="keywordflow">return</span> <a class="code hl_function" href="classtinymodem_1_1Varicode.html#aed33eb8b7d646435127c9e595ce67844">table</a>()[ch]; }</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span></div>
-<div class="foldopen" id="foldopen00124" data-start="{" data-end="}">
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="classtinymodem_1_1Varicode.html#af86fab54276f13fc934492629c527f84">  124</a></span>  <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classtinymodem_1_1Varicode.html#af86fab54276f13fc934492629c527f84">decode</a>(uint16_t bits) {</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; 256; j++)</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>      <span class="keywordflow">if</span> (<a class="code hl_function" href="classtinymodem_1_1Varicode.html#aed33eb8b7d646435127c9e595ce67844">table</a>()[j].bits == bits) <span class="keywordflow">return</span> j;</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>  }</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="classtinymodem_1_1Varicode.html#a960f4575222466361ab3ddf6f6d976db">  122</a></span>  <span class="keyword">static</span> <a class="code hl_struct" href="structtinymodem_1_1Varicode_1_1Code.html">Code</a> <a class="code hl_function" href="classtinymodem_1_1Varicode.html#a960f4575222466361ab3ddf6f6d976db">encode</a>(uint8_t ch) { <span class="keywordflow">return</span> <a class="code hl_function" href="classtinymodem_1_1Varicode.html#aed33eb8b7d646435127c9e595ce67844">table</a>()[ch]; }</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span></div>
+<div class="foldopen" id="foldopen00125" data-start="{" data-end="}">
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="classtinymodem_1_1Varicode.html#af86fab54276f13fc934492629c527f84">  125</a></span>  <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classtinymodem_1_1Varicode.html#af86fab54276f13fc934492629c527f84">decode</a>(uint16_t bits) {</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; 256; j++)</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>      <span class="keywordflow">if</span> (<a class="code hl_function" href="classtinymodem_1_1Varicode.html#aed33eb8b7d646435127c9e595ce67844">table</a>()[j].bits == bits) <span class="keywordflow">return</span> j;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  }</div>
 </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> <span class="keyword">protected</span>:</div>
-<div class="foldopen" id="foldopen00131" data-start="{" data-end="}">
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="classtinymodem_1_1Varicode.html#aed33eb8b7d646435127c9e595ce67844">  131</a></span>  <span class="keyword">static</span> <span class="keyword">const</span> <a class="code hl_struct" href="structtinymodem_1_1Varicode_1_1Code.html">Code</a>* <a class="code hl_function" href="classtinymodem_1_1Varicode.html#aed33eb8b7d646435127c9e595ce67844">table</a>() {</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="comment">// generated from fldigi&#39;s varicodetab1 (src/psk/pskvaricode.cxx)</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keyword">static</span> <span class="keyword">const</span> <a class="code hl_struct" href="structtinymodem_1_1Varicode_1_1Code.html">Code</a> codes[256] = {</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>      {0x2AB, 10}, {0x2DB, 10}, {0x2ED, 10}, {0x377, 10}, {0x2EB, 10}, {0x35F, 10},</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>      {0x2EF, 10}, {0x2FD, 10}, {0x2FF, 10}, {0x0EF, 8}, {0x01D, 5}, {0x36F, 10},</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>      {0x2DD, 10}, {0x01F, 5}, {0x375, 10}, {0x3AB, 10}, {0x2F7, 10}, {0x2F5, 10},</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>      {0x3AD, 10}, {0x3AF, 10}, {0x35B, 10}, {0x36B, 10}, {0x36D, 10}, {0x357, 10},</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>      {0x37B, 10}, {0x37D, 10}, {0x3B7, 10}, {0x355, 10}, {0x35D, 10}, {0x3BB, 10},</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>      {0x2FB, 10}, {0x37F, 10}, {0x001, 1}, {0x1FF, 9}, {0x15F, 9}, {0x1F5, 9},</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>      {0x1DB, 9}, {0x2D5, 10}, {0x2BB, 10}, {0x17F, 9}, {0x0FB, 8}, {0x0F7, 8},</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>      {0x16F, 9}, {0x1DF, 9}, {0x075, 7}, {0x035, 6}, {0x057, 7}, {0x1AF, 9},</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>      {0x0B7, 8}, {0x0BD, 8}, {0x0ED, 8}, {0x0FF, 8}, {0x177, 9}, {0x15B, 9},</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>      {0x16B, 9}, {0x1AD, 9}, {0x1AB, 9}, {0x1B7, 9}, {0x0F5, 8}, {0x1BD, 9},</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>      {0x1ED, 9}, {0x055, 7}, {0x1D7, 9}, {0x2AF, 10}, {0x2BD, 10}, {0x07D, 7},</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>      {0x0EB, 8}, {0x0AD, 8}, {0x0B5, 8}, {0x077, 7}, {0x0DB, 8}, {0x0FD, 8},</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>      {0x155, 9}, {0x07F, 7}, {0x1FD, 9}, {0x17D, 9}, {0x0D7, 8}, {0x0BB, 8},</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>      {0x0DD, 8}, {0x0AB, 8}, {0x0D5, 8}, {0x1DD, 9}, {0x0AF, 8}, {0x06F, 7},</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>      {0x06D, 7}, {0x157, 9}, {0x1B5, 9}, {0x15D, 9}, {0x175, 9}, {0x17B, 9},</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>      {0x2AD, 10}, {0x1F7, 9}, {0x1EF, 9}, {0x1FB, 9}, {0x2BF, 10}, {0x16D, 9},</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>      {0x2DF, 10}, {0x00B, 4}, {0x05F, 7}, {0x02F, 6}, {0x02D, 6}, {0x003, 2},</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>      {0x03D, 6}, {0x05B, 7}, {0x02B, 6}, {0x00D, 4}, {0x1EB, 9}, {0x0BF, 8},</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>      {0x01B, 5}, {0x03B, 6}, {0x00F, 4}, {0x007, 3}, {0x03F, 6}, {0x1BF, 9},</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>      {0x015, 5}, {0x017, 5}, {0x005, 3}, {0x037, 6}, {0x07B, 7}, {0x06B, 7},</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>      {0x0DF, 8}, {0x05D, 7}, {0x1D5, 9}, {0x2B7, 10}, {0x1BB, 9}, {0x2B5, 10},</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>      {0x2D7, 10}, {0x3B5, 10}, {0x3BD, 10}, {0x3BF, 10}, {0x3D5, 10}, {0x3D7, 10},</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>      {0x3DB, 10}, {0x3DD, 10}, {0x3DF, 10}, {0x3EB, 10}, {0x3ED, 10}, {0x3EF, 10},</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>      {0x3F5, 10}, {0x3F7, 10}, {0x3FB, 10}, {0x3FD, 10}, {0x3FF, 10}, {0x555, 11},</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>      {0x557, 11}, {0x55B, 11}, {0x55D, 11}, {0x55F, 11}, {0x56B, 11}, {0x56D, 11},</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>      {0x56F, 11}, {0x575, 11}, {0x577, 11}, {0x57B, 11}, {0x57D, 11}, {0x57F, 11},</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>      {0x5AB, 11}, {0x5AD, 11}, {0x5AF, 11}, {0x5B5, 11}, {0x5B7, 11}, {0x5BB, 11},</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>      {0x5BD, 11}, {0x5BF, 11}, {0x5D5, 11}, {0x5D7, 11}, {0x5DB, 11}, {0x5DD, 11},</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>      {0x5DF, 11}, {0x5EB, 11}, {0x5ED, 11}, {0x5EF, 11}, {0x5F5, 11}, {0x5F7, 11},</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>      {0x5FB, 11}, {0x5FD, 11}, {0x5FF, 11}, {0x6AB, 11}, {0x6AD, 11}, {0x6AF, 11},</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>      {0x6B5, 11}, {0x6B7, 11}, {0x6BB, 11}, {0x6BD, 11}, {0x6BF, 11}, {0x6D5, 11},</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>      {0x6D7, 11}, {0x6DB, 11}, {0x6DD, 11}, {0x6DF, 11}, {0x6EB, 11}, {0x6ED, 11},</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>      {0x6EF, 11}, {0x6F5, 11}, {0x6F7, 11}, {0x6FB, 11}, {0x6FD, 11}, {0x6FF, 11},</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>      {0x755, 11}, {0x757, 11}, {0x75B, 11}, {0x75D, 11}, {0x75F, 11}, {0x76B, 11},</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>      {0x76D, 11}, {0x76F, 11}, {0x775, 11}, {0x777, 11}, {0x77B, 11}, {0x77D, 11},</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>      {0x77F, 11}, {0x7AB, 11}, {0x7AD, 11}, {0x7AF, 11}, {0x7B5, 11}, {0x7B7, 11},</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>      {0x7BB, 11}, {0x7BD, 11}, {0x7BF, 11}, {0x7D5, 11}, {0x7D7, 11}, {0x7DB, 11},</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>      {0x7DD, 11}, {0x7DF, 11}, {0x7EB, 11}, {0x7ED, 11}, {0x7EF, 11}, {0x7F5, 11},</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>      {0x7F7, 11}, {0x7FB, 11}, {0x7FD, 11}, {0x7FF, 11}, {0xAAB, 12}, {0xAAD, 12},</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>      {0xAAF, 12}, {0xAB5, 12}, {0xAB7, 12}, {0xABB, 12}, {0xABD, 12}, {0xABF, 12},</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>      {0xAD5, 12}, {0xAD7, 12}, {0xADB, 12}, {0xADD, 12}, {0xADF, 12}, {0xAEB, 12},</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>      {0xAED, 12}, {0xAEF, 12}, {0xAF5, 12}, {0xAF7, 12}, {0xAFB, 12}, {0xAFD, 12},</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>      {0xAFF, 12}, {0xB55, 12}, {0xB57, 12}, {0xB5B, 12}</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    };</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <span class="keywordflow">return</span> codes;</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>  }</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> <span class="keyword">protected</span>:</div>
+<div class="foldopen" id="foldopen00132" data-start="{" data-end="}">
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="classtinymodem_1_1Varicode.html#aed33eb8b7d646435127c9e595ce67844">  132</a></span>  <span class="keyword">static</span> <span class="keyword">const</span> <a class="code hl_struct" href="structtinymodem_1_1Varicode_1_1Code.html">Code</a>* <a class="code hl_function" href="classtinymodem_1_1Varicode.html#aed33eb8b7d646435127c9e595ce67844">table</a>() {</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="comment">// generated from fldigi&#39;s varicodetab1 (src/psk/pskvaricode.cxx)</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keyword">static</span> <span class="keyword">const</span> <a class="code hl_struct" href="structtinymodem_1_1Varicode_1_1Code.html">Code</a> codes[256] = {</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>      {0x2AB, 10}, {0x2DB, 10}, {0x2ED, 10}, {0x377, 10}, {0x2EB, 10}, {0x35F, 10},</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>      {0x2EF, 10}, {0x2FD, 10}, {0x2FF, 10}, {0x0EF, 8}, {0x01D, 5}, {0x36F, 10},</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>      {0x2DD, 10}, {0x01F, 5}, {0x375, 10}, {0x3AB, 10}, {0x2F7, 10}, {0x2F5, 10},</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>      {0x3AD, 10}, {0x3AF, 10}, {0x35B, 10}, {0x36B, 10}, {0x36D, 10}, {0x357, 10},</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>      {0x37B, 10}, {0x37D, 10}, {0x3B7, 10}, {0x355, 10}, {0x35D, 10}, {0x3BB, 10},</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>      {0x2FB, 10}, {0x37F, 10}, {0x001, 1}, {0x1FF, 9}, {0x15F, 9}, {0x1F5, 9},</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>      {0x1DB, 9}, {0x2D5, 10}, {0x2BB, 10}, {0x17F, 9}, {0x0FB, 8}, {0x0F7, 8},</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>      {0x16F, 9}, {0x1DF, 9}, {0x075, 7}, {0x035, 6}, {0x057, 7}, {0x1AF, 9},</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>      {0x0B7, 8}, {0x0BD, 8}, {0x0ED, 8}, {0x0FF, 8}, {0x177, 9}, {0x15B, 9},</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>      {0x16B, 9}, {0x1AD, 9}, {0x1AB, 9}, {0x1B7, 9}, {0x0F5, 8}, {0x1BD, 9},</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>      {0x1ED, 9}, {0x055, 7}, {0x1D7, 9}, {0x2AF, 10}, {0x2BD, 10}, {0x07D, 7},</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>      {0x0EB, 8}, {0x0AD, 8}, {0x0B5, 8}, {0x077, 7}, {0x0DB, 8}, {0x0FD, 8},</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>      {0x155, 9}, {0x07F, 7}, {0x1FD, 9}, {0x17D, 9}, {0x0D7, 8}, {0x0BB, 8},</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>      {0x0DD, 8}, {0x0AB, 8}, {0x0D5, 8}, {0x1DD, 9}, {0x0AF, 8}, {0x06F, 7},</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>      {0x06D, 7}, {0x157, 9}, {0x1B5, 9}, {0x15D, 9}, {0x175, 9}, {0x17B, 9},</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>      {0x2AD, 10}, {0x1F7, 9}, {0x1EF, 9}, {0x1FB, 9}, {0x2BF, 10}, {0x16D, 9},</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>      {0x2DF, 10}, {0x00B, 4}, {0x05F, 7}, {0x02F, 6}, {0x02D, 6}, {0x003, 2},</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>      {0x03D, 6}, {0x05B, 7}, {0x02B, 6}, {0x00D, 4}, {0x1EB, 9}, {0x0BF, 8},</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>      {0x01B, 5}, {0x03B, 6}, {0x00F, 4}, {0x007, 3}, {0x03F, 6}, {0x1BF, 9},</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>      {0x015, 5}, {0x017, 5}, {0x005, 3}, {0x037, 6}, {0x07B, 7}, {0x06B, 7},</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>      {0x0DF, 8}, {0x05D, 7}, {0x1D5, 9}, {0x2B7, 10}, {0x1BB, 9}, {0x2B5, 10},</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>      {0x2D7, 10}, {0x3B5, 10}, {0x3BD, 10}, {0x3BF, 10}, {0x3D5, 10}, {0x3D7, 10},</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>      {0x3DB, 10}, {0x3DD, 10}, {0x3DF, 10}, {0x3EB, 10}, {0x3ED, 10}, {0x3EF, 10},</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>      {0x3F5, 10}, {0x3F7, 10}, {0x3FB, 10}, {0x3FD, 10}, {0x3FF, 10}, {0x555, 11},</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>      {0x557, 11}, {0x55B, 11}, {0x55D, 11}, {0x55F, 11}, {0x56B, 11}, {0x56D, 11},</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>      {0x56F, 11}, {0x575, 11}, {0x577, 11}, {0x57B, 11}, {0x57D, 11}, {0x57F, 11},</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>      {0x5AB, 11}, {0x5AD, 11}, {0x5AF, 11}, {0x5B5, 11}, {0x5B7, 11}, {0x5BB, 11},</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>      {0x5BD, 11}, {0x5BF, 11}, {0x5D5, 11}, {0x5D7, 11}, {0x5DB, 11}, {0x5DD, 11},</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>      {0x5DF, 11}, {0x5EB, 11}, {0x5ED, 11}, {0x5EF, 11}, {0x5F5, 11}, {0x5F7, 11},</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>      {0x5FB, 11}, {0x5FD, 11}, {0x5FF, 11}, {0x6AB, 11}, {0x6AD, 11}, {0x6AF, 11},</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>      {0x6B5, 11}, {0x6B7, 11}, {0x6BB, 11}, {0x6BD, 11}, {0x6BF, 11}, {0x6D5, 11},</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>      {0x6D7, 11}, {0x6DB, 11}, {0x6DD, 11}, {0x6DF, 11}, {0x6EB, 11}, {0x6ED, 11},</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>      {0x6EF, 11}, {0x6F5, 11}, {0x6F7, 11}, {0x6FB, 11}, {0x6FD, 11}, {0x6FF, 11},</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>      {0x755, 11}, {0x757, 11}, {0x75B, 11}, {0x75D, 11}, {0x75F, 11}, {0x76B, 11},</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>      {0x76D, 11}, {0x76F, 11}, {0x775, 11}, {0x777, 11}, {0x77B, 11}, {0x77D, 11},</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>      {0x77F, 11}, {0x7AB, 11}, {0x7AD, 11}, {0x7AF, 11}, {0x7B5, 11}, {0x7B7, 11},</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>      {0x7BB, 11}, {0x7BD, 11}, {0x7BF, 11}, {0x7D5, 11}, {0x7D7, 11}, {0x7DB, 11},</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>      {0x7DD, 11}, {0x7DF, 11}, {0x7EB, 11}, {0x7ED, 11}, {0x7EF, 11}, {0x7F5, 11},</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>      {0x7F7, 11}, {0x7FB, 11}, {0x7FD, 11}, {0x7FF, 11}, {0xAAB, 12}, {0xAAD, 12},</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>      {0xAAF, 12}, {0xAB5, 12}, {0xAB7, 12}, {0xABB, 12}, {0xABD, 12}, {0xABF, 12},</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>      {0xAD5, 12}, {0xAD7, 12}, {0xADB, 12}, {0xADD, 12}, {0xADF, 12}, {0xAEB, 12},</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>      {0xAED, 12}, {0xAEF, 12}, {0xAF5, 12}, {0xAF7, 12}, {0xAFB, 12}, {0xAFD, 12},</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>      {0xAFF, 12}, {0xB55, 12}, {0xB57, 12}, {0xB5B, 12}</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    };</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    <span class="keywordflow">return</span> codes;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>  }</div>
 </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>};</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>};</div>
 </div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>}  <span class="comment">// namespace tinymodem</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>}  <span class="comment">// namespace tinymodem</span></div>
 <div class="ttc" id="aclasstinymodem_1_1Varicode_html"><div class="ttname"><a href="classtinymodem_1_1Varicode.html">tinymodem::Varicode</a></div><div class="ttdoc">The PSK31 Varicode (as extended by fldigi to all 256 byte values): frequent characters have short cod...</div><div class="ttdef"><b>Definition</b> PSK.h:113</div></div>
-<div class="ttc" id="aclasstinymodem_1_1Varicode_html_a960f4575222466361ab3ddf6f6d976db"><div class="ttname"><a href="classtinymodem_1_1Varicode.html#a960f4575222466361ab3ddf6f6d976db">tinymodem::Varicode::encode</a></div><div class="ttdeci">static Code encode(uint8_t ch)</div><div class="ttdoc">Code of the indicated byte.</div><div class="ttdef"><b>Definition</b> PSK.h:121</div></div>
-<div class="ttc" id="aclasstinymodem_1_1Varicode_html_aed33eb8b7d646435127c9e595ce67844"><div class="ttname"><a href="classtinymodem_1_1Varicode.html#aed33eb8b7d646435127c9e595ce67844">tinymodem::Varicode::table</a></div><div class="ttdeci">static const Code * table()</div><div class="ttdef"><b>Definition</b> PSK.h:131</div></div>
-<div class="ttc" id="aclasstinymodem_1_1Varicode_html_af86fab54276f13fc934492629c527f84"><div class="ttname"><a href="classtinymodem_1_1Varicode.html#af86fab54276f13fc934492629c527f84">tinymodem::Varicode::decode</a></div><div class="ttdeci">static int decode(uint16_t bits)</div><div class="ttdoc">Byte of the indicated code: returns -1 if the code is unknown.</div><div class="ttdef"><b>Definition</b> PSK.h:124</div></div>
-<div class="ttc" id="anamespacetinymodem_html"><div class="ttname"><a href="namespacetinymodem.html">tinymodem</a></div><div class="ttdef"><b>Definition</b> AX25.h:11</div></div>
+<div class="ttc" id="aclasstinymodem_1_1Varicode_html_a960f4575222466361ab3ddf6f6d976db"><div class="ttname"><a href="classtinymodem_1_1Varicode.html#a960f4575222466361ab3ddf6f6d976db">tinymodem::Varicode::encode</a></div><div class="ttdeci">static Code encode(uint8_t ch)</div><div class="ttdoc">Code of the indicated byte.</div><div class="ttdef"><b>Definition</b> PSK.h:122</div></div>
+<div class="ttc" id="aclasstinymodem_1_1Varicode_html_aed33eb8b7d646435127c9e595ce67844"><div class="ttname"><a href="classtinymodem_1_1Varicode.html#aed33eb8b7d646435127c9e595ce67844">tinymodem::Varicode::table</a></div><div class="ttdeci">static const Code * table()</div><div class="ttdef"><b>Definition</b> PSK.h:132</div></div>
+<div class="ttc" id="aclasstinymodem_1_1Varicode_html_af86fab54276f13fc934492629c527f84"><div class="ttname"><a href="classtinymodem_1_1Varicode.html#af86fab54276f13fc934492629c527f84">tinymodem::Varicode::decode</a></div><div class="ttdeci">static int decode(uint16_t bits)</div><div class="ttdoc">Byte of the indicated code: returns -1 if the code is unknown.</div><div class="ttdef"><b>Definition</b> PSK.h:125</div></div>
+<div class="ttc" id="anamespacetinymodem_html"><div class="ttname"><a href="namespacetinymodem.html">tinymodem</a></div><div class="ttdoc">TinyModem: software audio modems and packets with error correction.</div><div class="ttdef"><b>Definition</b> AX25.h:11</div></div>
 <div class="ttc" id="astructtinymodem_1_1PSKConfig_html_a02056b6325e8c6327b51501d3c7efb9c"><div class="ttname"><a href="structtinymodem_1_1PSKConfig.html#a02056b6325e8c6327b51501d3c7efb9c">tinymodem::PSKConfig::PSKConfig</a></div><div class="ttdeci">PSKConfig()</div><div class="ttdef"><b>Definition</b> PSK.h:21</div></div>
 <div class="ttc" id="astructtinymodem_1_1PSKConfig_html_a11a6c576e94f606d389eb1277a1b049c"><div class="ttname"><a href="structtinymodem_1_1PSKConfig.html#a11a6c576e94f606d389eb1277a1b049c">tinymodem::PSKConfig::samplesPerSymbol</a></div><div class="ttdeci">float samplesPerSymbol() const</div><div class="ttdoc">number of samples per symbol</div><div class="ttdef"><b>Definition</b> PSK.h:61</div></div>
 <div class="ttc" id="astructtinymodem_1_1PSKConfig_html_a4daf12d41f04397f05c9bd2bf8659a23"><div class="ttname"><a href="structtinymodem_1_1PSKConfig.html#a4daf12d41f04397f05c9bd2bf8659a23">tinymodem::PSKConfig::afc</a></div><div class="ttdeci">bool afc</div><div class="ttdoc">receiver: frequency tracking (automatic frequency control)</div><div class="ttdef"><b>Definition</b> PSK.h:38</div></div>
@@ -282,9 +282,9 @@ $(function(){initNavTree('PSK_8h_source.html','',''); });
 <div class="ttc" id="astructtinymodem_1_1PSKConfig_html_ab00e672145a71b03de0054d707687eb3"><div class="ttname"><a href="structtinymodem_1_1PSKConfig.html#ab00e672145a71b03de0054d707687eb3">tinymodem::PSKConfig::volume</a></div><div class="ttdeci">float volume</div><div class="ttdoc">transmit amplitude (0.0 - 1.0)</div><div class="ttdef"><b>Definition</b> PSK.h:32</div></div>
 <div class="ttc" id="astructtinymodem_1_1PSKConfig_html_abf57f470596dbfe5f8563c89c8d12259"><div class="ttname"><a href="structtinymodem_1_1PSKConfig.html#abf57f470596dbfe5f8563c89c8d12259">tinymodem::PSKConfig::postamble_symbols</a></div><div class="ttdeci">int postamble_symbols</div><div class="ttdoc">transmitter: number of symbols with a steady carrier after the data</div><div class="ttdef"><b>Definition</b> PSK.h:36</div></div>
 <div class="ttc" id="astructtinymodem_1_1PSKConfig_html_aff3039055d563842d2c44a64d8bfa757"><div class="ttname"><a href="structtinymodem_1_1PSKConfig.html#aff3039055d563842d2c44a64d8bfa757">tinymodem::PSKConfig::preamble_symbols</a></div><div class="ttdeci">int preamble_symbols</div><div class="ttdoc">transmitter: number of phase reversals before the data</div><div class="ttdef"><b>Definition</b> PSK.h:34</div></div>
-<div class="ttc" id="astructtinymodem_1_1Varicode_1_1Code_html"><div class="ttname"><a href="structtinymodem_1_1Varicode_1_1Code.html">tinymodem::Varicode::Code</a></div><div class="ttdef"><b>Definition</b> PSK.h:115</div></div>
-<div class="ttc" id="astructtinymodem_1_1Varicode_1_1Code_html_a299e720791a80ecd7df2b1fbabc0955c"><div class="ttname"><a href="structtinymodem_1_1Varicode_1_1Code.html#a299e720791a80ecd7df2b1fbabc0955c">tinymodem::Varicode::Code::length</a></div><div class="ttdeci">uint8_t length</div><div class="ttdef"><b>Definition</b> PSK.h:117</div></div>
-<div class="ttc" id="astructtinymodem_1_1Varicode_1_1Code_html_ad7d36906576b6ddd6a701552bc9faecd"><div class="ttname"><a href="structtinymodem_1_1Varicode_1_1Code.html#ad7d36906576b6ddd6a701552bc9faecd">tinymodem::Varicode::Code::bits</a></div><div class="ttdeci">uint16_t bits</div><div class="ttdef"><b>Definition</b> PSK.h:116</div></div>
+<div class="ttc" id="astructtinymodem_1_1Varicode_1_1Code_html"><div class="ttname"><a href="structtinymodem_1_1Varicode_1_1Code.html">tinymodem::Varicode::Code</a></div><div class="ttdoc">Varicode bits of a character.</div><div class="ttdef"><b>Definition</b> PSK.h:116</div></div>
+<div class="ttc" id="astructtinymodem_1_1Varicode_1_1Code_html_a299e720791a80ecd7df2b1fbabc0955c"><div class="ttname"><a href="structtinymodem_1_1Varicode_1_1Code.html#a299e720791a80ecd7df2b1fbabc0955c">tinymodem::Varicode::Code::length</a></div><div class="ttdeci">uint8_t length</div><div class="ttdef"><b>Definition</b> PSK.h:118</div></div>
+<div class="ttc" id="astructtinymodem_1_1Varicode_1_1Code_html_ad7d36906576b6ddd6a701552bc9faecd"><div class="ttname"><a href="structtinymodem_1_1Varicode_1_1Code.html#ad7d36906576b6ddd6a701552bc9faecd">tinymodem::Varicode::Code::bits</a></div><div class="ttdeci">uint16_t bits</div><div class="ttdef"><b>Definition</b> PSK.h:117</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

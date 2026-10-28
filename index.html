@@ -95,7 +95,7 @@ $(function(){initNavTree('index.html','',''); });
 <div class="textblock"><p><a class="anchor" id="md_README"></a></p>
 <p><a href="https://www.arduino.cc/reference/en/libraries/"><img src="https://img.shields.io/badge/Arduino-Library-blue.svg" alt="Arduino Library" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/pschatzmann/TinyModem/blob/main/CMakeLists.txt"><img src="https://img.shields.io/badge/CMake-Supported-blue.svg" alt="CMake" style="pointer-events: none;" class="inline"/></a> <a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPLv3-green.svg" alt="License: GPL v3" style="pointer-events: none;" class="inline"/></a></p>
 <p>A header-only C++ library of software audio modems: it converts data into an audio signal and back. The audio is a stream of PCM samples, so it can be played by any audio output, such as an I2S DAC or audio codec, a built-in DAC, PWM or a sound card. It can be recorded by any audio input, such as an I2S ADC or microphone, a built-in ADC or a sound card. Between the two, the signal can travel over an audio cable, from a speaker to a microphone, over a telephone line or by radio. It can also stay digital, for example in a WAV file.</p>
-<p>TinyModem runs on microcontrollers (ESP32, RP2040) and on the desktop, where the <span class="tt"><a class="el" href="namespacetinymodem.html">tinymodem</a></span> command line tool is included. All audio and DSP functionality is based on the <a href="https://github.com/pschatzmann/arduino-audio-tools">arduino-audio-tools</a>.</p>
+<p>TinyModem runs on microcontrollers (ESP32, RP2040) and on the desktop, where the <span class="tt"><a class="el" href="namespacetinymodem.html" title="TinyModem: software audio modems and packets with error correction.">tinymodem</a></span> command line tool is included. All audio and DSP functionality is based on the <a href="https://github.com/pschatzmann/arduino-audio-tools">arduino-audio-tools</a>.</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
 Modem types</h1>
 <table class="markdownTable">
@@ -121,7 +121,7 @@ Installation in Arduino</h1>
 <div class="line">git clone https://github.com/pschatzmann/arduino-audio-tools.git</div>
 <div class="line">git clone https://github.com/pschatzmann/TinyModem.git</div>
 </div><!-- fragment --><p>I recommend to use git because you can easily update to the latest version just by executing the <span class="tt">git pull</span> command in the project folders.</p>
-<p>To build the <span class="tt"><a class="el" href="namespacetinymodem.html">tinymodem</a></span> command line tool and the tests on the desktop, you need CMake (≥ 3.18) and a C++17 compiler. The arduino-audio-tools are taken from the sibling folder <span class="tt">../arduino-audio-tools</span> if it exists, otherwise they are downloaded. PortAudio (<span class="tt">portaudio19-dev</span> on Debian/Ubuntu) is optional: it is needed to use the sound card. See <a href="https://github.com/pschatzmann/TinyModem/wiki/Command-Line">command line</a>.</p>
+<p>To build the <span class="tt"><a class="el" href="namespacetinymodem.html" title="TinyModem: software audio modems and packets with error correction.">tinymodem</a></span> command line tool and the tests on the desktop, you need CMake (≥ 3.18) and a C++17 compiler. The arduino-audio-tools are taken from the sibling folder <span class="tt">../arduino-audio-tools</span> if it exists, otherwise they are downloaded. PortAudio (<span class="tt">portaudio19-dev</span> on Debian/Ubuntu) is optional: it is needed to use the sound card. See <a href="https://github.com/pschatzmann/TinyModem/wiki/Command-Line">command line</a>.</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
 Arduino</h1>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;AudioTools.h&quot;</span></div>
@@ -168,6 +168,8 @@ Documentation</h1>
 </li>
 <li><a href="https://github.com/pschatzmann/TinyModem/wiki/Packets">Packets with error correction</a></li>
 <li><a href="https://github.com/pschatzmann/TinyModem/wiki/Arduino">Arduino API</a></li>
+<li><a href="https://pschatzmann.github.io/TinyModem/annotated.html">Class documentation</a> (Doxygen)</li>
+<li><a href="https://github.com/pschatzmann/TinyModem/wiki/Memory">Memory usage</a></li>
 <li><a href="https://github.com/pschatzmann/TinyModem/wiki/Command-Line">Command line tool</a></li>
 <li><a href="https://github.com/pschatzmann/TinyModem/wiki/Testing">Tests</a></li>
 <li><a href="https://github.com/pschatzmann/TinyModem/wiki/Design">Design</a></li>

@@ -19,7 +19,7 @@
 <area shape="poly" id="edge9_Node000009_Node000008" title=" " alt="" coords="205,320,263,315,259,318,207,325"/>
 <area shape="rect" id="Node000010" href="$classtinymodem_1_1BinaryCodec.html" title="Raw N&#45;bit binary data: prints the bits as &#39;0&#39; and &#39;1&#39; followed by newline." alt="" coords="264,345,450,373"/>
 <area shape="poly" id="edge11_Node000010_Node000008" title=" " alt="" coords="205,341,265,348,261,351,207,346"/>
-<area shape="rect" id="Node000011" href="$classtinymodem_1_1CallerIDCodec.html" title=" " alt="" coords="258,397,455,425"/>
+<area shape="rect" id="Node000011" href="$classtinymodem_1_1CallerIDCodec.html" title="Caller&#45;ID (USA SDMF/MDMF) decoder. See http://melabs.com/resources/callerid.htm." alt="" coords="258,397,455,425"/>
 <area shape="poly" id="edge13_Node000011_Node000008" title=" " alt="" coords="156,350,251,382,297,396,292,398,249,387,156,355"/>
 <area shape="rect" id="Node000012" href="$classtinymodem_1_1UICCodec.html" title="UIC&#45;751&#45;3 ground&#45;train or train&#45;ground decoder." alt="" coords="273,449,440,477"/>
 <area shape="poly" id="edge15_Node000012_Node000008" title=" " alt="" coords="132,354,186,395,251,434,286,448,281,449,249,439,183,400,132,359"/>

@@ -1,5 +1,5 @@
 <map id="tinymodem::CallerIDCodec" name="tinymodem::CallerIDCodec">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,81,202,109"/>
+<area shape="rect" id="Node000001" title="Caller&#45;ID (USA SDMF/MDMF) decoder. See http://melabs.com/resources/callerid.htm." alt="" coords="5,81,202,109"/>
 <area shape="rect" id="Node000002" href="$classtinymodem_1_1DataCodec.html" title="Converts between characters and the data bits of a frame." alt="" coords="16,5,191,33"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,47,106,82,101,79,102,51"/>
 </map>

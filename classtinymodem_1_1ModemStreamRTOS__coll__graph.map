@@ -37,7 +37,7 @@
 <area shape="poly" id="edge31_Node000017_Node000015" title=" " alt="" coords="800,533,831,566,870,602,916,636,968,662,1027,679,1088,690,1151,696,1213,698,1328,691,1424,681,1419,682,1328,697,1213,703,1151,701,1088,696,1026,684,966,667,913,641,866,606,827,570,799,538"/>
 <area shape="rect" id="Node000021" href="$classtinymodem_1_1BinaryCodec.html" title="Raw N&#45;bit binary data: prints the bits as &#39;0&#39; and &#39;1&#39; followed by newline." alt="" coords="980,444,1166,472"/>
 <area shape="poly" id="edge26_Node000021_Node000015" title=" " alt="" coords="874,490,993,471,988,473,876,495"/>
-<area shape="rect" id="Node000022" href="$classtinymodem_1_1CallerIDCodec.html" title=" " alt="" coords="975,548,1172,576"/>
+<area shape="rect" id="Node000022" href="$classtinymodem_1_1CallerIDCodec.html" title="Caller&#45;ID (USA SDMF/MDMF) decoder. See http://melabs.com/resources/callerid.htm." alt="" coords="975,548,1172,576"/>
 <area shape="poly" id="edge28_Node000022_Node000015" title=" " alt="" coords="875,524,993,547,988,548,875,530"/>
 <area shape="rect" id="Node000023" href="$classtinymodem_1_1UICCodec.html" title="UIC&#45;751&#45;3 ground&#45;train or train&#45;ground decoder." alt="" coords="990,600,1157,628"/>
 <area shape="poly" id="edge30_Node000023_Node000015" title=" " alt="" coords="823,527,891,556,968,585,1011,599,1006,600,966,590,889,561,823,533"/>
