@@ -1,57 +1,65 @@
 <map id="src/modem/ModemBase.h" name="src/modem/ModemBase.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="978,5,1169,33"/>
-<area shape="rect" id="Node000002" href="$TinyModem_8h.html" title="Header only software audio modem library based on the arduino&#45;audio&#45;tools: FSK (compatible with minim..." alt="" coords="1223,308,1356,336"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1185,17,1329,20,1509,29,1707,48,1806,61,1903,78,1974,87,2033,92,2060,98,2085,109,2109,127,2133,155,2143,174,2149,202,2148,233,2142,248,2132,262,2116,272,2090,281,2014,296,1912,306,1795,314,1550,322,1357,323,1357,318,1550,316,1795,309,1912,301,2013,290,2088,276,2113,267,2128,258,2137,245,2142,232,2144,202,2138,176,2129,158,2106,131,2082,114,2058,103,2032,97,1974,92,1903,84,1806,67,1706,53,1509,35,1329,26,1185,23"/>
-<area shape="rect" id="Node000004" href="$AX25Decoder_8h.html" title=" " alt="" coords="1899,157,2096,184"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1170,33,1919,155,1914,157,1170,39"/>
-<area shape="rect" id="Node000005" href="$ModemStream_8h.html" title=" " alt="" coords="970,232,1177,260"/>
-<area shape="poly" id="edge25_Node000001_Node000005" title=" " alt="" coords="960,30,848,49,791,62,740,78,700,98,676,122,670,135,670,150,676,165,687,182,700,190,723,197,794,211,973,235,967,236,794,217,722,202,698,195,684,186,671,168,665,150,665,134,671,119,697,94,738,73,789,57,847,44,965,29"/>
-<area shape="rect" id="Node000007" href="$AX25Encoder_8h.html" title=" " alt="" coords="5,157,201,184"/>
-<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="960,29,743,50,615,65,489,84,302,122,152,159,150,154,300,116,488,78,615,60,742,45,965,27"/>
-<area shape="rect" id="Node000008" href="$FSKDecoder_8h.html" title=" " alt="" coords="225,157,413,184"/>
-<area shape="poly" id="edge12_Node000001_Node000008" title=" " alt="" coords="961,29,788,50,690,65,593,84,459,121,354,159,351,154,458,116,592,78,689,60,788,45,966,28"/>
-<area shape="rect" id="Node000009" href="$FSKEncoder_8h.html" title=" " alt="" coords="437,157,622,184"/>
-<area shape="poly" id="edge15_Node000001_Node000009" title=" " alt="" coords="960,21,889,28,807,38,723,56,643,83,612,100,585,120,543,159,540,154,581,116,610,95,641,79,722,51,806,33,889,22,965,20"/>
-<area shape="rect" id="Node000010" href="$MFSKDecoder_8h.html" title=" " alt="" coords="698,157,897,184"/>
-<area shape="poly" id="edge18_Node000001_Node000010" title=" " alt="" coords="963,37,883,58,849,70,827,83,815,100,807,120,800,158,796,155,802,118,810,97,824,79,847,65,881,53,968,35"/>
-<area shape="rect" id="Node000011" href="$MFSKEncoder_8h.html" title=" " alt="" coords="838,81,1035,109"/>
-<area shape="poly" id="edge21_Node000001_Node000011" title=" " alt="" coords="1038,40,962,83,960,78,1033,42"/>
-<area shape="rect" id="Node000012" href="$OFDMDecoder_8h.html" title=" " alt="" coords="972,157,1175,184"/>
-<area shape="poly" id="edge26_Node000001_Node000012" title=" " alt="" coords="1075,46,1076,158,1071,155,1072,50"/>
-<area shape="rect" id="Node000013" href="$OFDMEncoder_8h.html" title=" " alt="" coords="1200,157,1401,184"/>
-<area shape="poly" id="edge29_Node000001_Node000013" title=" " alt="" coords="1106,39,1283,156,1278,156,1105,44"/>
-<area shape="rect" id="Node000014" href="$PSKDecoder_8h.html" title=" " alt="" coords="1425,157,1613,184"/>
-<area shape="poly" id="edge32_Node000001_Node000014" title=" " alt="" coords="1127,36,1483,156,1477,157,1127,41"/>
-<area shape="rect" id="Node000015" href="$PSKEncoder_8h.html" title=" " alt="" coords="1688,157,1875,184"/>
-<area shape="poly" id="edge35_Node000001_Node000015" title=" " alt="" coords="1151,34,1722,155,1717,157,1150,39"/>
-<area shape="rect" id="Node000016" href="$PacketStream_8h.html" title=" " alt="" coords="1918,232,2117,260"/>
-<area shape="poly" id="edge38_Node000001_Node000016" title=" " alt="" coords="1185,24,1428,42,1720,69,1857,87,1975,107,2063,129,2092,142,2110,155,2117,167,2117,179,2103,200,2078,219,2049,234,2048,229,2075,215,2099,197,2112,177,2112,168,2106,158,2090,146,2061,134,1974,112,1856,92,1719,75,1428,47,1185,30"/>
-<area shape="rect" id="Node000003" href="$TinyModemRTOS_8h.html" title="TinyModem.h plus the stream classes which receive in a separate task (ModemStreamRTOS,..." alt="" coords="1099,384,1267,411"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1261,344,1203,386,1201,381,1256,345"/>
-<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="1950,189,1839,228,1710,263,1615,281,1519,297,1357,317,1357,311,1518,291,1614,276,1709,257,1838,223,1944,190"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="1881,185,1489,220,1177,241,1177,236,1488,214,1886,184"/>
-<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="1127,263,1254,308,1248,307,1126,268"/>
-<area shape="rect" id="Node000006" href="$ModemStreamRTOS_8h.html" title=" " alt="" coords="958,308,1198,336"/>
-<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="1077,274,1079,309,1075,306,1073,278"/>
-<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="1110,342,1167,384,1162,383,1108,347"/>
-<area shape="poly" id="edge10_Node000007_Node000002" title=" " alt="" coords="182,185,378,221,614,257,781,275,912,282,1042,289,1210,305,1225,310,1220,310,1209,311,1042,295,911,287,781,280,613,263,378,227,183,191"/>
-<area shape="poly" id="edge11_Node000007_Node000005" title=" " alt="" coords="216,182,639,215,973,238,968,240,639,220,216,187"/>
-<area shape="poly" id="edge13_Node000008_Node000002" title=" " alt="" coords="392,185,563,221,767,257,891,274,988,283,1086,291,1210,305,1225,310,1220,310,1209,311,1085,296,988,288,891,279,767,263,562,226,392,191"/>
-<area shape="poly" id="edge14_Node000008_Node000005" title=" " alt="" coords="428,182,972,234,969,238,428,187"/>
-<area shape="poly" id="edge16_Node000009_Node000002" title=" " alt="" coords="592,186,731,221,894,257,1052,284,1210,305,1225,310,1220,310,1209,311,1051,289,893,263,729,226,592,191"/>
-<area shape="poly" id="edge17_Node000009_Node000005" title=" " alt="" coords="637,184,978,231,973,232,637,189"/>
-<area shape="poly" id="edge19_Node000010_Node000002" title=" " alt="" coords="830,190,889,225,960,257,1067,280,1225,309,1220,309,1066,285,958,263,887,230,829,196"/>
-<area shape="poly" id="edge20_Node000010_Node000005" title=" " alt="" coords="862,186,1027,232,1022,232,862,191"/>
-<area shape="poly" id="edge22_Node000011_Node000002" title=" " alt="" coords="1050,95,1214,100,1394,111,1546,128,1599,140,1627,155,1640,172,1646,189,1645,204,1638,219,1611,244,1569,265,1518,282,1462,296,1357,315,1356,310,1461,291,1516,277,1567,260,1608,240,1634,216,1640,203,1641,190,1636,175,1624,159,1597,145,1545,133,1393,116,1213,106,1051,101"/>
-<area shape="poly" id="edge24_Node000011_Node000005" title=" " alt="" coords="940,121,948,154,962,183,977,198,995,211,1034,232,1029,231,992,215,974,202,958,186,943,155,937,126"/>
-<area shape="poly" id="edge23_Node000011_Node000010" title=" " alt="" coords="901,115,823,159,821,154,896,117"/>
-<area shape="poly" id="edge27_Node000012_Node000002" title=" " alt="" coords="1117,189,1190,230,1240,270,1279,308,1274,307,1237,274,1187,235,1116,194"/>
-<area shape="poly" id="edge28_Node000012_Node000005" title=" " alt="" coords="1075,198,1076,234,1072,230,1072,202"/>
-<area shape="poly" id="edge30_Node000013_Node000002" title=" " alt="" coords="1300,198,1293,309,1289,306,1296,202"/>
-<area shape="poly" id="edge31_Node000013_Node000005" title=" " alt="" coords="1248,189,1115,234,1114,229,1243,190"/>
-<area shape="poly" id="edge33_Node000014_Node000002" title=" " alt="" coords="1489,192,1311,310,1309,305,1484,194"/>
-<area shape="poly" id="edge34_Node000014_Node000005" title=" " alt="" coords="1426,187,1154,234,1153,229,1421,188"/>
-<area shape="poly" id="edge36_Node000015_Node000002" title=" " alt="" coords="1762,194,1722,232,1671,262,1589,291,1504,308,1424,318,1357,323,1357,317,1424,313,1503,303,1588,285,1669,258,1718,227,1757,196"/>
-<area shape="poly" id="edge37_Node000015_Node000005" title=" " alt="" coords="1670,183,1178,237,1177,231,1675,183"/>
-<area shape="poly" id="edge39_Node000016_Node000002" title=" " alt="" coords="1905,259,1357,316,1356,311,1900,259"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="1294,5,1485,33"/>
+<area shape="rect" id="Node000002" href="$TinyModem_8h.html" title="Header only software audio modem library based on the arduino&#45;audio&#45;tools: FSK (compatible with minim..." alt="" coords="1334,308,1467,336"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1501,21,1968,40,2213,56,2314,67,2391,78,2461,87,2519,92,2545,98,2570,109,2594,128,2617,155,2623,169,2625,184,2618,216,2602,244,2586,262,2568,269,2534,274,2425,285,2100,302,1468,322,1467,316,2100,297,2425,280,2533,269,2566,263,2583,258,2598,241,2613,214,2619,184,2618,170,2613,158,2590,132,2567,114,2544,103,2518,97,2461,92,2391,84,2314,72,2213,62,1967,45,1501,26"/>
+<area shape="rect" id="Node000004" href="$AX25Decoder_8h.html" title=" " alt="" coords="2164,157,2362,184"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="1482,34,2189,156,2184,157,1482,39"/>
+<area shape="rect" id="Node000005" href="$ModemStream_8h.html" title=" " alt="" coords="1092,232,1298,260"/>
+<area shape="poly" id="edge31_Node000001_Node000005" title=" " alt="" coords="1286,37,1192,58,1089,85,1043,101,1003,118,972,138,953,158,948,171,953,183,974,198,1007,211,1094,232,1089,232,1005,216,971,202,949,186,943,171,949,155,969,133,1001,114,1041,96,1088,80,1190,53,1291,36"/>
+<area shape="rect" id="Node000007" href="$AX25Encoder_8h.html" title=" " alt="" coords="2385,157,2581,184"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="1501,32,1846,78,2392,156,2386,156,1845,84,1501,38"/>
+<area shape="rect" id="Node000008" href="$FSKDecoder_8h.html" title=" " alt="" coords="5,157,193,184"/>
+<area shape="poly" id="edge12_Node000001_Node000008" title=" " alt="" coords="1276,26,961,46,768,62,574,84,343,121,159,159,157,154,342,116,573,78,767,57,961,41,1281,24"/>
+<area shape="rect" id="Node000009" href="$FSKEncoder_8h.html" title=" " alt="" coords="217,157,402,184"/>
+<area shape="poly" id="edge15_Node000001_Node000009" title=" " alt="" coords="1276,27,1028,49,879,64,731,84,527,121,363,159,362,154,526,116,731,78,879,59,1027,44,1281,26"/>
+<area shape="rect" id="Node000010" href="$GGWaveDecoder_8h.html" title=" " alt="" coords="427,157,646,184"/>
+<area shape="poly" id="edge18_Node000001_Node000010" title=" " alt="" coords="1276,28,1078,49,964,64,850,84,697,121,576,159,574,154,696,116,849,78,963,59,1078,44,1281,27"/>
+<area shape="rect" id="Node000011" href="$GGWaveEncoder_8h.html" title=" " alt="" coords="670,157,888,184"/>
+<area shape="poly" id="edge21_Node000001_Node000011" title=" " alt="" coords="1276,29,1072,51,976,66,908,84,874,100,843,120,794,158,792,154,839,115,872,95,906,78,975,61,1072,46,1281,28"/>
+<area shape="rect" id="Node000012" href="$MFSKDecoder_8h.html" title=" " alt="" coords="963,157,1163,184"/>
+<area shape="poly" id="edge24_Node000001_Node000012" title=" " alt="" coords="1276,29,1202,49,1164,64,1129,83,1109,100,1093,120,1070,158,1067,154,1088,117,1105,96,1125,79,1161,59,1200,44,1281,28"/>
+<area shape="rect" id="Node000013" href="$MFSKEncoder_8h.html" title=" " alt="" coords="1139,81,1336,109"/>
+<area shape="poly" id="edge27_Node000001_Node000013" title=" " alt="" coords="1351,39,1266,83,1264,78,1346,41"/>
+<area shape="rect" id="Node000014" href="$OFDMDecoder_8h.html" title=" " alt="" coords="1288,157,1491,184"/>
+<area shape="poly" id="edge32_Node000001_Node000014" title=" " alt="" coords="1391,46,1392,158,1387,155,1388,50"/>
+<area shape="rect" id="Node000015" href="$OFDMEncoder_8h.html" title=" " alt="" coords="1516,157,1717,184"/>
+<area shape="poly" id="edge35_Node000001_Node000015" title=" " alt="" coords="1422,39,1599,156,1594,156,1421,44"/>
+<area shape="rect" id="Node000016" href="$PSKDecoder_8h.html" title=" " alt="" coords="1741,157,1929,184"/>
+<area shape="poly" id="edge38_Node000001_Node000016" title=" " alt="" coords="1443,36,1799,156,1793,156,1443,41"/>
+<area shape="rect" id="Node000017" href="$PSKEncoder_8h.html" title=" " alt="" coords="1954,157,2140,184"/>
+<area shape="poly" id="edge41_Node000001_Node000017" title=" " alt="" coords="1463,34,1992,156,1986,156,1462,40"/>
+<area shape="rect" id="Node000018" href="$PacketStream_8h.html" title=" " alt="" coords="2373,232,2572,260"/>
+<area shape="poly" id="edge44_Node000001_Node000018" title=" " alt="" coords="1501,22,1781,36,2126,62,2291,80,2432,101,2537,126,2573,140,2594,155,2602,168,2601,180,2595,192,2584,203,2553,220,2518,234,2516,229,2551,216,2581,198,2591,189,2596,179,2597,169,2590,158,2570,144,2536,131,2431,106,2290,85,2126,68,1781,42,1501,27"/>
+<area shape="rect" id="Node000003" href="$TinyModemRTOS_8h.html" title="TinyModem.h plus the stream classes which receive in a separate task (ModemStreamRTOS,..." alt="" coords="1211,384,1379,411"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1372,344,1315,386,1313,381,1367,346"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="2175,187,1468,312,1467,306,2169,188"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="2146,185,1669,222,1299,243,1298,237,1669,217,2152,184"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="1246,263,1366,308,1361,307,1246,268"/>
+<area shape="rect" id="Node000006" href="$ModemStreamRTOS_8h.html" title=" " alt="" coords="1070,308,1310,336"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="1195,274,1193,309,1189,306,1191,278"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="1222,342,1279,384,1274,383,1220,347"/>
+<area shape="poly" id="edge10_Node000007_Node000002" title=" " alt="" coords="2377,187,1850,263,1468,314,1467,309,1849,257,2372,187"/>
+<area shape="poly" id="edge11_Node000007_Node000005" title=" " alt="" coords="2367,185,2061,209,1759,226,1299,244,1299,239,1759,220,2060,204,2372,184"/>
+<area shape="poly" id="edge13_Node000008_Node000002" title=" " alt="" coords="182,185,391,221,643,257,834,275,982,282,1131,288,1322,305,1336,309,1330,309,1321,311,1131,294,982,287,833,280,643,263,390,227,182,190"/>
+<area shape="poly" id="edge14_Node000008_Node000005" title=" " alt="" coords="208,182,461,202,707,218,1094,240,1089,241,707,223,461,207,209,187"/>
+<area shape="poly" id="edge16_Node000009_Node000002" title=" " alt="" coords="390,185,584,221,815,257,957,274,1068,282,1180,290,1322,305,1336,310,1331,310,1321,311,1179,295,1068,287,957,279,815,263,583,226,390,191"/>
+<area shape="poly" id="edge17_Node000009_Node000005" title=" " alt="" coords="418,182,794,214,1094,238,1089,239,793,219,418,187"/>
+<area shape="poly" id="edge19_Node000010_Node000002" title=" " alt="" coords="608,186,770,221,962,257,1142,283,1322,305,1336,310,1331,310,1321,311,1141,288,961,263,769,226,608,191"/>
+<area shape="poly" id="edge20_Node000010_Node000005" title=" " alt="" coords="662,183,1094,232,1089,234,662,188"/>
+<area shape="poly" id="edge22_Node000011_Node000002" title=" " alt="" coords="830,187,936,222,1061,257,1185,282,1336,310,1331,310,1184,287,1060,263,935,227,830,193"/>
+<area shape="poly" id="edge23_Node000011_Node000005" title=" " alt="" coords="869,185,1123,231,1117,232,869,190"/>
+<area shape="poly" id="edge25_Node000012_Node000002" title=" " alt="" coords="1063,198,1067,231,1073,246,1082,258,1111,267,1177,280,1336,310,1331,310,1176,285,1110,272,1079,262,1068,248,1062,232,1059,202"/>
+<area shape="poly" id="edge26_Node000012_Node000005" title=" " alt="" coords="1101,190,1174,232,1169,232,1099,195"/>
+<area shape="poly" id="edge28_Node000013_Node000002" title=" " alt="" coords="1248,121,1262,152,1279,183,1306,220,1336,254,1388,308,1383,307,1332,258,1302,223,1274,186,1257,154,1246,125"/>
+<area shape="poly" id="edge30_Node000013_Node000005" title=" " alt="" coords="1232,122,1201,234,1197,230,1228,125"/>
+<area shape="poly" id="edge29_Node000013_Node000012" title=" " alt="" coords="1195,114,1095,159,1093,154,1190,116"/>
+<area shape="poly" id="edge33_Node000014_Node000002" title=" " alt="" coords="1393,198,1402,309,1397,306,1390,202"/>
+<area shape="poly" id="edge34_Node000014_Node000005" title=" " alt="" coords="1343,190,1230,234,1229,229,1338,191"/>
+<area shape="poly" id="edge36_Node000015_Node000002" title=" " alt="" coords="1588,192,1420,310,1418,305,1583,194"/>
+<area shape="poly" id="edge37_Node000015_Node000005" title=" " alt="" coords="1528,187,1271,234,1270,229,1523,188"/>
+<area shape="poly" id="edge39_Node000016_Node000002" title=" " alt="" coords="1785,189,1439,310,1438,305,1780,190"/>
+<area shape="poly" id="edge40_Node000016_Node000005" title=" " alt="" coords="1722,185,1299,236,1298,231,1728,184"/>
+<area shape="poly" id="edge42_Node000017_Node000002" title=" " alt="" coords="1978,188,1458,310,1457,305,1973,189"/>
+<area shape="poly" id="edge43_Node000017_Node000005" title=" " alt="" coords="1936,185,1583,219,1299,240,1298,235,1582,214,1941,184"/>
+<area shape="poly" id="edge45_Node000018_Node000002" title=" " alt="" coords="2360,255,1467,319,1467,313,2355,255"/>
 </map>

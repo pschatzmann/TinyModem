@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['preamble_0',['PREAMBLE',['../classtinymodem_1_1MFSKDecoder.html#a7c44eaa76f98e57836c95eb900945433ac63eb592d41a86a2451ab223445c21cf',1,'tinymodem::MFSKDecoder']]]
+  ['kiss_0',['KISS',['../namespacetinymodem.html#a69fb6b2138b14fcf087924e43e1c51a3a6ffaaf49fbeb772fa6db6160a5dfbf49',1,'tinymodem']]]
 ];

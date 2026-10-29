@@ -1,0 +1,20 @@
+<map id="src/modem/GGWave.h" name="src/modem/GGWave.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="53,5,219,33"/>
+<area shape="rect" id="Node000002" href="$TinyModem_8h.html" title="Header only software audio modem library based on the arduino&#45;audio&#45;tools: FSK (compatible with minim..." alt="" coords="32,232,165,260"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,41,39,58,17,82,9,102,9,123,15,144,26,164,55,202,85,231,80,233,51,206,22,167,10,146,4,124,4,101,12,80,36,54,69,37"/>
+<area shape="rect" id="Node000004" href="$GGWaveDecoder_8h.html" title=" " alt="" coords="26,81,246,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="137,46,139,81,133,80,135,51"/>
+<area shape="rect" id="Node000007" href="$GGWaveEncoder_8h.html" title=" " alt="" coords="270,81,487,109"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="194,35,337,79,333,82,194,41"/>
+<area shape="rect" id="Node000003" href="$TinyModemRTOS_8h.html" title="TinyModem.h plus the stream classes which receive in a separate task (ModemStreamRTOS,..." alt="" coords="120,308,288,336"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="131,267,188,307,183,308,129,272"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="131,122,104,233,99,231,127,125"/>
+<area shape="rect" id="Node000005" href="$ModemStream_8h.html" title=" " alt="" coords="135,157,342,184"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="167,115,223,155,218,157,167,121"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="198,194,125,234,122,230,202,190"/>
+<area shape="rect" id="Node000006" href="$ModemStreamRTOS_8h.html" title=" " alt="" coords="189,232,429,260"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="262,193,299,232,294,232,261,198"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="281,268,224,310,221,305,276,270"/>
+<area shape="poly" id="edge10_Node000007_Node000002" title=" " alt="" coords="379,122,373,157,366,173,355,186,329,198,282,211,167,235,165,230,280,206,327,193,352,182,361,170,368,155,376,126"/>
+<area shape="poly" id="edge11_Node000007_Node000005" title=" " alt="" coords="338,118,265,159,262,154,342,115"/>
+</map>

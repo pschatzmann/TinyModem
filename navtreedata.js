@@ -36,7 +36,8 @@ var NAVTREE =
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
-        [ "Enumerations", "namespacemembers_enum.html", null ]
+        [ "Enumerations", "namespacemembers_enum.html", null ],
+        [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -64,13 +65,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AX25Decoder_8h.html",
-"classtinymodem_1_1BasicModemStream.html",
-"classtinymodem_1_1FSKDecoder.html#aa0ce38851243262de224ff2584943f33",
-"classtinymodem_1_1MFSKDecoder.html#a826d0d7401e30ea1a29f2c5b1f008c33",
-"classtinymodem_1_1OFDMDecoder.html#a4b784391f6680f2b772cc00c4ea138cd",
-"classtinymodem_1_1PSKDecoder.html#a7f4af51127104985f04f860c9b7e9029",
-"classtinymodem_1_1PacketStream.html#ab25f019b95c91adc694eca0fd985ad06",
-"structtinymodem_1_1AX25Decoder_1_1Phasor.html#af22afaf9089fb55c8ceb5b734b3d45af"
+"classtinymodem_1_1AX25StreamRTOS.html",
+"classtinymodem_1_1FSKDecoder.html#a9c907981715812fcb56b313b34b3ae75",
+"classtinymodem_1_1GGWaveDecoder.html#a9713724b9c8ca27aa5bcee745a9a83b4",
+"classtinymodem_1_1MFSKDecoder.html#acf6a79fae4117b1165f7ee690bd17a96",
+"classtinymodem_1_1OFDMDecoder.html#ab7512cc24461931ae04ca564dca9c35d",
+"classtinymodem_1_1PSKDecoder.html#adac23726b9c9011375ac6587a05e7d30",
+"classtinymodem_1_1SampleOutput.html#a85ce4111b5c1f42944f2f1ea13084e94",
+"structtinymodem_1_1GGWaveConfig.html#abfc392d7a69dd6e99e9641f3b0759d0c",
+"structtinymodem_1_1PSKConfig.html#ab00e672145a71b03de0054d707687eb3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

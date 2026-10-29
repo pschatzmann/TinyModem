@@ -1,0 +1,5 @@
+<map id="tinymodem::GGWaveDecoder::Candidate" name="tinymodem::GGWaveDecoder::Candidate">
+<area shape="rect" id="Node000001" title="decoder for one protocol and timing offset" alt="" coords="5,106,220,151"/>
+<area shape="rect" id="Node000002" href="$structtinymodem_1_1GGWaveProtocol.html" title="Transmission protocol of ggwave (https://github.com/ggerganov/ggwave): the ids and parameters are ide..." alt="" coords="6,5,219,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,47,115,106,110,105,111,51"/>
+</map>

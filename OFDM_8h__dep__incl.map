@@ -1,20 +1,28 @@
 <map id="src/modem/OFDM.h" name="src/modem/OFDM.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="53,5,204,33"/>
-<area shape="rect" id="Node000002" href="$TinyModem_8h.html" title="Header only software audio modem library based on the arduino&#45;audio&#45;tools: FSK (compatible with minim..." alt="" coords="8,232,142,260"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,42,39,58,17,82,10,102,9,122,12,143,20,164,43,202,65,231,60,233,38,205,15,166,7,145,3,122,5,101,13,80,36,54,67,37"/>
-<area shape="rect" id="Node000004" href="$OFDMDecoder_8h.html" title=" " alt="" coords="27,81,230,109"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="129,46,131,81,126,80,128,51"/>
-<area shape="rect" id="Node000007" href="$OFDMEncoder_8h.html" title=" " alt="" coords="254,81,456,109"/>
-<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="183,35,317,79,312,82,183,41"/>
-<area shape="rect" id="Node000003" href="$TinyModemRTOS_8h.html" title="TinyModem.h plus the stream classes which receive in a separate task (ModemStreamRTOS,..." alt="" coords="97,308,264,336"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="107,267,164,307,159,308,105,272"/>
-<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="116,120,103,158,81,233,76,231,98,156,114,125"/>
-<area shape="rect" id="Node000005" href="$ModemStream_8h.html" title=" " alt="" coords="112,157,318,184"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="155,116,202,156,197,157,155,121"/>
-<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="175,194,101,234,98,230,178,190"/>
-<area shape="rect" id="Node000006" href="$ModemStreamRTOS_8h.html" title=" " alt="" coords="166,232,406,260"/>
-<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="239,193,276,232,271,232,237,198"/>
-<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="257,268,200,310,198,305,252,270"/>
-<area shape="poly" id="edge10_Node000007_Node000002" title=" " alt="" coords="356,122,350,157,342,173,331,186,305,198,258,211,143,235,141,230,257,206,304,193,328,182,338,170,345,155,352,126"/>
-<area shape="poly" id="edge11_Node000007_Node000005" title=" " alt="" coords="314,118,241,159,238,154,319,115"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="311,5,461,33"/>
+<area shape="rect" id="Node000002" href="$TinyModem_8h.html" title="Header only software audio modem library based on the arduino&#45;audio&#45;tools: FSK (compatible with minim..." alt="" coords="274,232,407,260"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="293,24,217,31,136,41,66,58,41,69,24,83,13,99,9,113,9,127,15,139,39,163,77,183,124,200,176,214,276,235,271,237,175,219,123,205,75,188,36,167,11,142,4,128,3,113,8,96,20,79,38,65,65,53,135,36,216,25,297,21"/>
+<area shape="rect" id="Node000004" href="$GGWaveDecoder_8h.html" title=" " alt="" coords="34,81,253,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="326,40,188,83,185,78,330,36"/>
+<area shape="rect" id="Node000007" href="$GGWaveEncoder_8h.html" title=" " alt="" coords="277,81,495,109"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="387,47,388,82,383,79,385,51"/>
+<area shape="rect" id="Node000008" href="$OFDMDecoder_8h.html" title=" " alt="" coords="519,81,722,109"/>
+<area shape="poly" id="edge12_Node000001_Node000008" title=" " alt="" coords="442,35,581,80,576,81,442,41"/>
+<area shape="rect" id="Node000009" href="$OFDMEncoder_8h.html" title=" " alt="" coords="747,81,948,109"/>
+<area shape="poly" id="edge15_Node000001_Node000009" title=" " alt="" coords="477,32,766,79,762,82,477,38"/>
+<area shape="rect" id="Node000003" href="$TinyModemRTOS_8h.html" title="TinyModem.h plus the stream classes which receive in a separate task (ModemStreamRTOS,..." alt="" coords="362,308,530,336"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="372,267,430,308,425,307,371,272"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="173,115,326,231,321,233,171,120"/>
+<area shape="rect" id="Node000005" href="$ModemStream_8h.html" title=" " alt="" coords="377,157,584,184"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="219,110,422,154,418,158,219,115"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="444,191,366,234,364,229,439,193"/>
+<area shape="rect" id="Node000006" href="$ModemStreamRTOS_8h.html" title=" " alt="" coords="431,232,671,260"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="504,193,541,232,536,231,503,198"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="523,268,466,310,463,305,518,270"/>
+<area shape="poly" id="edge10_Node000007_Node000002" title=" " alt="" coords="378,121,368,157,346,234,342,231,363,156,375,125"/>
+<area shape="poly" id="edge11_Node000007_Node000005" title=" " alt="" coords="415,116,466,156,461,156,414,121"/>
+<area shape="poly" id="edge13_Node000008_Node000002" title=" " alt="" coords="621,122,615,157,608,173,597,186,571,198,524,211,408,235,407,230,522,206,569,193,594,182,603,170,610,155,618,126"/>
+<area shape="poly" id="edge14_Node000008_Node000005" title=" " alt="" coords="584,115,506,159,504,154,579,117"/>
+<area shape="poly" id="edge16_Node000009_Node000002" title=" " alt="" coords="807,114,722,152,623,187,510,216,408,236,407,231,509,211,621,182,720,147,802,116"/>
+<area shape="poly" id="edge17_Node000009_Node000005" title=" " alt="" coords="764,113,547,159,546,153,769,111"/>
 </map>

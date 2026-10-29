@@ -4,6 +4,7 @@ var hierarchy =
       [ "tinymodem::ModemDecoder", "classtinymodem_1_1ModemDecoder.html", [
         [ "tinymodem::AX25Decoder", "classtinymodem_1_1AX25Decoder.html", null ],
         [ "tinymodem::FSKDecoder", "classtinymodem_1_1FSKDecoder.html", null ],
+        [ "tinymodem::GGWaveDecoder", "classtinymodem_1_1GGWaveDecoder.html", null ],
         [ "tinymodem::MFSKDecoder", "classtinymodem_1_1MFSKDecoder.html", null ],
         [ "tinymodem::OFDMDecoder", "classtinymodem_1_1OFDMDecoder.html", null ],
         [ "tinymodem::PSKDecoder", "classtinymodem_1_1PSKDecoder.html", null ]
@@ -13,6 +14,7 @@ var hierarchy =
       [ "tinymodem::ModemEncoder", "classtinymodem_1_1ModemEncoder.html", [
         [ "tinymodem::AX25Encoder", "classtinymodem_1_1AX25Encoder.html", null ],
         [ "tinymodem::FSKEncoder", "classtinymodem_1_1FSKEncoder.html", null ],
+        [ "tinymodem::GGWaveEncoder", "classtinymodem_1_1GGWaveEncoder.html", null ],
         [ "tinymodem::MFSKEncoder", "classtinymodem_1_1MFSKEncoder.html", null ],
         [ "tinymodem::OFDMEncoder", "classtinymodem_1_1OFDMEncoder.html", null ],
         [ "tinymodem::PSKEncoder", "classtinymodem_1_1PSKEncoder.html", null ]
@@ -20,6 +22,7 @@ var hierarchy =
     ] ],
     [ "audio_tools::AudioInfo", null, [
       [ "tinymodem::AX25Config", "structtinymodem_1_1AX25Config.html", null ],
+      [ "tinymodem::GGWaveConfig", "structtinymodem_1_1GGWaveConfig.html", null ],
       [ "tinymodem::MFSKConfig", "structtinymodem_1_1MFSKConfig.html", null ],
       [ "tinymodem::ModemConfig", "structtinymodem_1_1ModemConfig.html", null ],
       [ "tinymodem::OFDMConfig", "structtinymodem_1_1OFDMConfig.html", null ],
@@ -29,6 +32,7 @@ var hierarchy =
     [ "Base", null, [
       [ "tinymodem::BasicModemStreamRTOS< Base >", "classtinymodem_1_1BasicModemStreamRTOS.html", null ]
     ] ],
+    [ "tinymodem::GGWaveDecoder::Candidate", "structtinymodem_1_1GGWaveDecoder_1_1Candidate.html", null ],
     [ "tinymodem::Varicode::Code", "structtinymodem_1_1Varicode_1_1Code.html", null ],
     [ "tinymodem::DataCodec", "classtinymodem_1_1DataCodec.html", [
       [ "tinymodem::AsciiCodec", "classtinymodem_1_1AsciiCodec.html", null ],
@@ -42,6 +46,8 @@ var hierarchy =
       [ "tinymodem::FSKToneGenerator< T >", "classtinymodem_1_1FSKToneGenerator.html", null ]
     ] ],
     [ "tinymodem::FSKDemodulator", "classtinymodem_1_1FSKDemodulator.html", null ],
+    [ "tinymodem::GGWaveProtocol", "structtinymodem_1_1GGWaveProtocol.html", null ],
+    [ "tinymodem::GGWaveRS", "classtinymodem_1_1GGWaveRS.html", null ],
     [ "tinymodem::UICCodec::Message", "structtinymodem_1_1UICCodec_1_1Message.html", null ],
     [ "tinymodem::OFDMTable", "classtinymodem_1_1OFDMTable.html", null ],
     [ "tinymodem::PacketFormat", "structtinymodem_1_1PacketFormat.html", null ],
@@ -65,6 +71,9 @@ var hierarchy =
             [ "tinymodem::AX25StreamRTOS", "classtinymodem_1_1AX25StreamRTOS.html", null ]
           ] ]
         ] ]
+      ] ],
+      [ "tinymodem::BasicModemStream< GGWaveEncoder, GGWaveDecoder, GGWaveConfig >", "classtinymodem_1_1BasicModemStream.html", [
+        [ "tinymodem::GGWaveStream", "classtinymodem_1_1GGWaveStream.html", null ]
       ] ],
       [ "tinymodem::BasicModemStream< MFSKEncoder, MFSKDecoder, MFSKConfig >", "classtinymodem_1_1BasicModemStream.html", [
         [ "tinymodem::MFSKStream", "classtinymodem_1_1MFSKStream.html", [
@@ -97,6 +106,8 @@ var hierarchy =
       [ "tinymodem::BasicModemStream< Encoder, Decoder, Config >", "classtinymodem_1_1BasicModemStream.html", null ],
       [ "tinymodem::PacketStream< MAX_PAYLOAD, ECC_BYTES >", "classtinymodem_1_1PacketStream.html", null ]
     ] ],
+    [ "tinymodem::GGWaveRS::Tables", "structtinymodem_1_1GGWaveRS_1_1Tables.html", null ],
+    [ "tinymodem::GGWaveEncoder::Tone", "structtinymodem_1_1GGWaveEncoder_1_1Tone.html", null ],
     [ "tinymodem::ToneOutput", "classtinymodem_1_1ToneOutput.html", null ],
     [ "tinymodem::Varicode", "classtinymodem_1_1Varicode.html", null ]
 ];

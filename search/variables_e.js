@@ -16,7 +16,7 @@ var searchData=
   ['payload_5flen_13',['payload_len',['../classtinymodem_1_1PacketEncoder.html#a19fe3d09083db28d985ce5d84b6c8284',1,'tinymodem::PacketEncoder']]],
   ['peak_5fconfidence_14',['peak_confidence',['../classtinymodem_1_1FSKDecoder.html#a2ff7bcdc5728023d02ba06bf96ac34bb',1,'tinymodem::FSKDecoder']]],
   ['pending_5fsymbol_15',['pending_symbol',['../classtinymodem_1_1MFSKDecoder.html#ab4ef44afc87f4d69d558f971e8dd1d87',1,'tinymodem::MFSKDecoder']]],
-  ['phase_16',['phase',['../classtinymodem_1_1PSKDecoder.html#a3429748a01939d4b7256edb54115753d',1,'tinymodem::PSKDecoder']]],
+  ['phase_16',['phase',['../structtinymodem_1_1GGWaveEncoder_1_1Tone.html#a60c99c2c17d1114405b33ee3f9d0dddb',1,'tinymodem::GGWaveEncoder::Tone::phase'],['../classtinymodem_1_1PSKDecoder.html#a3429748a01939d4b7256edb54115753d',1,'tinymodem::PSKDecoder::phase']]],
   ['phase_5fsign_17',['phase_sign',['../classtinymodem_1_1PSKEncoder.html#aa7bdc576b59fa013ae094ebdfb0bbe70',1,'tinymodem::PSKEncoder']]],
   ['phases_18',['phases',['../classtinymodem_1_1OFDMEncoder.html#a59813d570eaf96d025abd53d1fd40ba4',1,'tinymodem::OFDMEncoder']]],
   ['plan_19',['plan',['../classtinymodem_1_1FSKDecoder.html#a92038c82f3a2aa8367c4288bef530325',1,'tinymodem::FSKDecoder']]],
@@ -40,5 +40,6 @@ var searchData=
   ['prev_5fre_37',['prev_re',['../classtinymodem_1_1OFDMDecoder.html#a7207f4478c259a452de908480921cc4b',1,'tinymodem::OFDMDecoder']]],
   ['print_5ffilter_38',['print_filter',['../classtinymodem_1_1FSKDecoder.html#abad6dbdddb615de1eca64a3090045103',1,'tinymodem::FSKDecoder::print_filter'],['../structtinymodem_1_1ModemConfig.html#a1e1bcefcd57f7124cfffbe5c1afe3b5a',1,'tinymodem::ModemConfig::print_filter']]],
   ['process_5fthreshold_39',['process_threshold',['../classtinymodem_1_1FSKDecoder.html#ae442a38e843deccbf9fcd177b71d58bc',1,'tinymodem::FSKDecoder']]],
-  ['products_40',['products',['../classtinymodem_1_1AX25Decoder.html#ae7cbdc3c20c902e0479d1eb7ad26dc78',1,'tinymodem::AX25Decoder']]]
+  ['products_40',['products',['../classtinymodem_1_1AX25Decoder.html#ae7cbdc3c20c902e0479d1eb7ad26dc78',1,'tinymodem::AX25Decoder']]],
+  ['protocol_41',['protocol',['../structtinymodem_1_1GGWaveConfig.html#abfc392d7a69dd6e99e9641f3b0759d0c',1,'tinymodem::GGWaveConfig::protocol'],['../structtinymodem_1_1GGWaveDecoder_1_1Candidate.html#ab7e1ca95a9dce6a8571d401268280e83',1,'tinymodem::GGWaveDecoder::Candidate::protocol'],['../classtinymodem_1_1GGWaveEncoder.html#a00dc93c3e32157e214db8d449bdc0a67',1,'tinymodem::GGWaveEncoder::protocol']]]
 ];

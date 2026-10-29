@@ -1,13 +1,15 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,109,172,137"/>
-<area shape="rect" id="Node000001" href="$structtinymodem_1_1AX25Config.html" title="Configuration of the AX.25 packet radio modem (AX25Encoder, AX25Decoder): Bell 202 AFSK with 1200 bau..." alt="" coords="227,5,406,33"/>
-<area shape="poly" id="edge13_Node000000_Node000001" title=" " alt="" coords="121,98,166,70,219,43,257,32,252,35,221,48,169,75,124,102"/>
-<area shape="rect" id="Node000002" href="$structtinymodem_1_1MFSKConfig.html" title="Configuration of the multi&#45;tone FSK modem (MFSKEncoder, MFSKDecoder). Each symbol is one of tones ton..." alt="" coords="227,57,407,85"/>
-<area shape="poly" id="edge14_Node000000_Node000002" title=" " alt="" coords="166,103,255,84,250,87,168,108"/>
-<area shape="rect" id="Node000003" href="$structtinymodem_1_1ModemConfig.html" title="Configuration of the FSK modem. The fields correspond to the command line options of minimodem...." alt="" coords="220,109,414,137"/>
-<area shape="poly" id="edge15_Node000000_Node000003" title=" " alt="" coords="186,121,222,122,217,124,188,126"/>
-<area shape="rect" id="Node000004" href="$structtinymodem_1_1OFDMConfig.html" title="Configuration of the OFDM modem (OFDMEncoder, OFDMDecoder): the data is transmitted in parallel on ca..." alt="" coords="224,161,410,189"/>
-<area shape="poly" id="edge16_Node000000_Node000004" title=" " alt="" coords="167,138,255,160,250,162,167,144"/>
-<area shape="rect" id="Node000005" href="$structtinymodem_1_1PSKConfig.html" title="Configuration of the PSK modem (PSKEncoder, PSKDecoder): BPSK with Varicode and cosine shaped phase r..." alt="" coords="232,213,402,241"/>
-<area shape="poly" id="edge17_Node000000_Node000005" title=" " alt="" coords="123,143,169,172,221,198,257,213,252,213,219,203,166,176,122,149"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,136,172,164"/>
+<area shape="rect" id="Node000001" href="$structtinymodem_1_1AX25Config.html" title="Configuration of the AX.25 packet radio modem (AX25Encoder, AX25Decoder): Bell 202 AFSK with 1200 bau..." alt="" coords="231,5,410,33"/>
+<area shape="poly" id="edge15_Node000000_Node000001" title=" " alt="" coords="112,123,159,82,218,43,252,32,248,35,221,48,163,86,116,127"/>
+<area shape="rect" id="Node000002" href="$structtinymodem_1_1GGWaveConfig.html" title="Configuration of the ggwave compatible modem (GGWaveEncoder, GGWaveDecoder). Each message (up to 140 ..." alt="" coords="220,57,421,85"/>
+<area shape="poly" id="edge16_Node000000_Node000002" title=" " alt="" coords="135,127,219,95,263,84,259,87,221,100,138,132"/>
+<area shape="rect" id="Node000003" href="$structtinymodem_1_1MFSKConfig.html" title="Configuration of the multi&#45;tone FSK modem (MFSKEncoder, MFSKDecoder). Each symbol is one of tones ton..." alt="" coords="230,109,410,137"/>
+<area shape="poly" id="edge17_Node000000_Node000003" title=" " alt="" coords="186,136,232,132,227,135,188,141"/>
+<area shape="rect" id="Node000004" href="$structtinymodem_1_1ModemConfig.html" title="Configuration of the FSK modem. The fields correspond to the command line options of minimodem...." alt="" coords="223,161,418,189"/>
+<area shape="poly" id="edge18_Node000000_Node000004" title=" " alt="" coords="187,158,225,164,220,165,188,163"/>
+<area shape="rect" id="Node000005" href="$structtinymodem_1_1OFDMConfig.html" title="Configuration of the OFDM modem (OFDMEncoder, OFDMDecoder): the data is transmitted in parallel on ca..." alt="" coords="228,213,413,241"/>
+<area shape="poly" id="edge19_Node000000_Node000005" title=" " alt="" coords="138,167,221,198,264,212,258,213,219,203,137,173"/>
+<area shape="rect" id="Node000006" href="$structtinymodem_1_1PSKConfig.html" title="Configuration of the PSK modem (PSKEncoder, PSKDecoder): BPSK with Varicode and cosine shaped phase r..." alt="" coords="236,265,405,293"/>
+<area shape="poly" id="edge20_Node000000_Node000006" title=" " alt="" coords="115,172,163,212,221,250,253,265,248,265,218,255,159,217,114,177"/>
 </map>

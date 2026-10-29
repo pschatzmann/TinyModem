@@ -5,5 +5,6 @@ var ModemStream_8h =
     [ "tinymodem::MFSKStream", "classtinymodem_1_1MFSKStream.html", "classtinymodem_1_1MFSKStream" ],
     [ "tinymodem::AX25Stream", "classtinymodem_1_1AX25Stream.html", "classtinymodem_1_1AX25Stream" ],
     [ "tinymodem::PSKStream", "classtinymodem_1_1PSKStream.html", "classtinymodem_1_1PSKStream" ],
-    [ "tinymodem::OFDMStream", "classtinymodem_1_1OFDMStream.html", "classtinymodem_1_1OFDMStream" ]
+    [ "tinymodem::OFDMStream", "classtinymodem_1_1OFDMStream.html", "classtinymodem_1_1OFDMStream" ],
+    [ "tinymodem::GGWaveStream", "classtinymodem_1_1GGWaveStream.html", "classtinymodem_1_1GGWaveStream" ]
 ];

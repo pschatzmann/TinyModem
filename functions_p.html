@@ -113,7 +113,7 @@ $(function(){initNavTree('functions_p.html','',''); });
 <li>peek()&#160;:&#160;<a class="el" href="classtinymodem_1_1BasicModemStream.html#a7023732782cb39b7328427d7175e51e3">tinymodem::BasicModemStream&lt; Encoder, Decoder, Config &gt;</a>, <a class="el" href="classtinymodem_1_1BasicModemStreamRTOS.html#af0a84e2e8133d4dfc38d196a7e1dc99a">tinymodem::BasicModemStreamRTOS&lt; Base &gt;</a>, <a class="el" href="classtinymodem_1_1ByteQueue.html#a803a92987e7881fb2b5bd7682451b801">tinymodem::ByteQueue</a>, <a class="el" href="classtinymodem_1_1PacketStream.html#ac171f74b75a7323d5e0eb46d8952d23d">tinymodem::PacketStream&lt; MAX_PAYLOAD, ECC_BYTES &gt;</a></li>
 <li>pending()&#160;:&#160;<a class="el" href="classtinymodem_1_1PacketEncoder.html#a1476934026fd31232f9fcbbf3a09bfc0">tinymodem::PacketEncoder&lt; MAX_PAYLOAD, ECC_BYTES &gt;</a></li>
 <li>pending_symbol&#160;:&#160;<a class="el" href="classtinymodem_1_1MFSKDecoder.html#ab4ef44afc87f4d69d558f971e8dd1d87">tinymodem::MFSKDecoder</a></li>
-<li>phase&#160;:&#160;<a class="el" href="classtinymodem_1_1PSKDecoder.html#a3429748a01939d4b7256edb54115753d">tinymodem::PSKDecoder</a></li>
+<li>phase&#160;:&#160;<a class="el" href="structtinymodem_1_1GGWaveEncoder_1_1Tone.html#a60c99c2c17d1114405b33ee3f9d0dddb">tinymodem::GGWaveEncoder::Tone</a>, <a class="el" href="classtinymodem_1_1PSKDecoder.html#a3429748a01939d4b7256edb54115753d">tinymodem::PSKDecoder</a></li>
 <li>phase_sign&#160;:&#160;<a class="el" href="classtinymodem_1_1PSKEncoder.html#aa7bdc576b59fa013ae094ebdfb0bbe70">tinymodem::PSKEncoder</a></li>
 <li>phases&#160;:&#160;<a class="el" href="classtinymodem_1_1OFDMEncoder.html#a59813d570eaf96d025abd53d1fd40ba4">tinymodem::OFDMEncoder</a></li>
 <li>phaseToGray()&#160;:&#160;<a class="el" href="classtinymodem_1_1OFDMDecoder.html#a31d551cb8d8325be6ac4618ec338503e">tinymodem::OFDMDecoder</a></li>
@@ -126,7 +126,9 @@ $(function(){initNavTree('functions_p.html','',''); });
 <li>pll_step&#160;:&#160;<a class="el" href="classtinymodem_1_1AX25Decoder.html#aecaacda7f92d68e2516ccf31993a8eb0">tinymodem::AX25Decoder</a></li>
 <li>pos&#160;:&#160;<a class="el" href="classtinymodem_1_1AX25Decoder.html#a88845f77eabfce4e33308fe6a3fbd702">tinymodem::AX25Decoder</a>, <a class="el" href="classtinymodem_1_1ByteQueue.html#aba5ab429e4af804308ff873235d65fbb">tinymodem::ByteQueue</a>, <a class="el" href="classtinymodem_1_1MFSKDecoder.html#a077a4b2eaf68917a957e0923a9203258">tinymodem::MFSKDecoder</a>, <a class="el" href="classtinymodem_1_1PSKDecoder.html#a27a49dcf5e73c703adb307ede17a504d">tinymodem::PSKDecoder</a></li>
 <li>postamble_symbols&#160;:&#160;<a class="el" href="structtinymodem_1_1PSKConfig.html#abf57f470596dbfe5f8563c89c8d12259">tinymodem::PSKConfig</a></li>
+<li>pow2()&#160;:&#160;<a class="el" href="classtinymodem_1_1GGWaveRS.html#a10d161607f021bd13a2d5dc77addbc11">tinymodem::GGWaveRS</a></li>
 <li>power&#160;:&#160;<a class="el" href="classtinymodem_1_1OFDMDecoder.html#a612150638bd66f0cc7be2ad33426ba4f">tinymodem::OFDMDecoder</a></li>
+<li>powOf()&#160;:&#160;<a class="el" href="classtinymodem_1_1GGWaveRS.html#a76329ef54b0b8c4b72b02bdd57104564">tinymodem::GGWaveRS</a></li>
 <li>preamble_count&#160;:&#160;<a class="el" href="classtinymodem_1_1MFSKDecoder.html#a7d2d2f291a7566b3f5551802bac463c0">tinymodem::MFSKDecoder</a></li>
 <li>preamble_symbols&#160;:&#160;<a class="el" href="structtinymodem_1_1MFSKConfig.html#adbd03e7d1d79a27400af3bee46883800">tinymodem::MFSKConfig</a>, <a class="el" href="structtinymodem_1_1PSKConfig.html#aff3039055d563842d2c44a64d8bfa757">tinymodem::PSKConfig</a></li>
 <li>preambleSymbol()&#160;:&#160;<a class="el" href="classtinymodem_1_1MFSKDecoder.html#a7b73d7773e1d36537ec32d01ff0f5f28">tinymodem::MFSKDecoder</a></li>
@@ -143,9 +145,15 @@ $(function(){initNavTree('functions_p.html','',''); });
 <li>printFmt()&#160;:&#160;<a class="el" href="classtinymodem_1_1CallerIDCodec.html#a5118e114b7d5869b8b8e09561c6fa583">tinymodem::CallerIDCodec</a></li>
 <li>printPhone()&#160;:&#160;<a class="el" href="classtinymodem_1_1CallerIDCodec.html#a1cf5de5628eeff2b3f69ecfc733f85bf">tinymodem::CallerIDCodec</a></li>
 <li>process_threshold&#160;:&#160;<a class="el" href="classtinymodem_1_1FSKDecoder.html#ae442a38e843deccbf9fcd177b71d58bc">tinymodem::FSKDecoder</a></li>
+<li>processBlock()&#160;:&#160;<a class="el" href="classtinymodem_1_1GGWaveDecoder.html#a98c20cd4e801eb0666211d6e814e903b">tinymodem::GGWaveDecoder</a></li>
+<li>processCandidates()&#160;:&#160;<a class="el" href="classtinymodem_1_1GGWaveDecoder.html#a870bc5cf62815232f996077b7d35e308">tinymodem::GGWaveDecoder</a></li>
 <li>processFrame()&#160;:&#160;<a class="el" href="classtinymodem_1_1AX25Decoder.html#a9be76b13e5cb5b267b7bb1ce201935c0">tinymodem::AX25Decoder</a>, <a class="el" href="classtinymodem_1_1PacketDecoder.html#a932addfedb56823095ced2448c2d2f8d">tinymodem::PacketDecoder&lt; MAX_PAYLOAD, ECC_BYTES &gt;</a></li>
 <li>processSymbol()&#160;:&#160;<a class="el" href="classtinymodem_1_1OFDMDecoder.html#a018c4e6d9c070a159f3c401f714a766e">tinymodem::OFDMDecoder</a></li>
 <li>products&#160;:&#160;<a class="el" href="classtinymodem_1_1AX25Decoder.html#ae7cbdc3c20c902e0479d1eb7ad26dc78">tinymodem::AX25Decoder</a></li>
+<li>protocol&#160;:&#160;<a class="el" href="structtinymodem_1_1GGWaveConfig.html#abfc392d7a69dd6e99e9641f3b0759d0c">tinymodem::GGWaveConfig</a>, <a class="el" href="structtinymodem_1_1GGWaveDecoder_1_1Candidate.html#ab7e1ca95a9dce6a8571d401268280e83">tinymodem::GGWaveDecoder::Candidate</a>, <a class="el" href="classtinymodem_1_1GGWaveEncoder.html#a00dc93c3e32157e214db8d449bdc0a67">tinymodem::GGWaveEncoder</a></li>
+<li>protocolCount()&#160;:&#160;<a class="el" href="structtinymodem_1_1GGWaveConfig.html#ae18a05d63cab257d32ee96dd35e0908c">tinymodem::GGWaveConfig</a></li>
+<li>protocolInfo()&#160;:&#160;<a class="el" href="structtinymodem_1_1GGWaveConfig.html#a16ee55fcbdaa2f4bcbb7d190d244838d">tinymodem::GGWaveConfig</a></li>
+<li>protocols()&#160;:&#160;<a class="el" href="structtinymodem_1_1GGWaveConfig.html#ac4d640f6166c8bb9e1d7be2c0073a8a0">tinymodem::GGWaveConfig</a></li>
 <li>PSKConfig()&#160;:&#160;<a class="el" href="structtinymodem_1_1PSKConfig.html#a02056b6325e8c6327b51501d3c7efb9c">tinymodem::PSKConfig</a></li>
 <li>PSKDecoder()&#160;:&#160;<a class="el" href="classtinymodem_1_1PSKDecoder.html#a90fa8c56de8a3a0fdb650ecb12ccc61e">tinymodem::PSKDecoder</a></li>
 <li>PSKEncoder()&#160;:&#160;<a class="el" href="classtinymodem_1_1PSKEncoder.html#aaed937a8ac167c265eb99eede574ae98">tinymodem::PSKEncoder</a></li>

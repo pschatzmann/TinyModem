@@ -16,9 +16,12 @@ var searchData=
   ['frame_5fn_5fbits_13',['frame_n_bits',['../classtinymodem_1_1FSKDecoder.html#aa9e1d66f17ccb748b8fad90b6723e3f9',1,'tinymodem::FSKDecoder']]],
   ['frame_5fnsamples_14',['frame_nsamples',['../classtinymodem_1_1FSKDecoder.html#a9169c7078f9f7e1ea6341d134a423303',1,'tinymodem::FSKDecoder']]],
   ['frame_5foverscan_15',['FRAME_OVERSCAN',['../classtinymodem_1_1FSKDecoder.html#a23c738103b4784b48c7576d9042af27c',1,'tinymodem::FSKDecoder']]],
-  ['frames_16',['frames',['../classtinymodem_1_1AX25Decoder.html#a690090938b270ca3109ad37ca664517d',1,'tinymodem::AX25Decoder::frames'],['../classtinymodem_1_1AX25Encoder.html#a0f7fee60878836631dbe138b611c8243',1,'tinymodem::AX25Encoder::frames'],['../classtinymodem_1_1OFDMDecoder.html#ae860087dd1cb4e8d9ac2d501c0e35d9f',1,'tinymodem::OFDMDecoder::frames']]],
-  ['freq_5foffset_17',['freq_offset',['../classtinymodem_1_1PSKDecoder.html#a23025e32ab6a10634537ad909ea34628',1,'tinymodem::PSKDecoder']]],
-  ['fsk_5fanalyze_5fnsteps_18',['FSK_ANALYZE_NSTEPS',['../classtinymodem_1_1FSKDecoder.html#a524933b7bdf25bf1d52bcc0096756287',1,'tinymodem::FSKDecoder']]],
-  ['fsk_5fanalyze_5fnsteps_5ffine_19',['FSK_ANALYZE_NSTEPS_FINE',['../classtinymodem_1_1FSKDecoder.html#ad1cdb03819860c724e03ede7208f7755',1,'tinymodem::FSKDecoder']]],
-  ['fsk_5fmax_5fnoconfidence_5fbits_20',['FSK_MAX_NOCONFIDENCE_BITS',['../classtinymodem_1_1FSKDecoder.html#a7d7a5a7faa28d2bac608279e83bc7ea3',1,'tinymodem::FSKDecoder']]]
+  ['frame_5fsize_16',['frame_size',['../classtinymodem_1_1GGWaveDecoder.html#abdbd0be920ff6f27566f08b230dc91d7',1,'tinymodem::GGWaveDecoder::frame_size'],['../classtinymodem_1_1GGWaveEncoder.html#a3838764248b114949aa26b38228108e8',1,'tinymodem::GGWaveEncoder::frame_size']]],
+  ['frames_17',['frames',['../classtinymodem_1_1AX25Decoder.html#a690090938b270ca3109ad37ca664517d',1,'tinymodem::AX25Decoder::frames'],['../classtinymodem_1_1AX25Encoder.html#a0f7fee60878836631dbe138b611c8243',1,'tinymodem::AX25Encoder::frames'],['../classtinymodem_1_1OFDMDecoder.html#ae860087dd1cb4e8d9ac2d501c0e35d9f',1,'tinymodem::OFDMDecoder::frames']]],
+  ['frames_5fper_5ftx_18',['frames_per_tx',['../structtinymodem_1_1GGWaveProtocol.html#adfa90034a500d5eb1e2dd20219b7013e',1,'tinymodem::GGWaveProtocol']]],
+  ['freq_5foffset_19',['freq_offset',['../classtinymodem_1_1PSKDecoder.html#a23025e32ab6a10634537ad909ea34628',1,'tinymodem::PSKDecoder']]],
+  ['freq_5fstart_20',['freq_start',['../structtinymodem_1_1GGWaveProtocol.html#ae78e8670c080fd3bbee978ef3da7fdb5',1,'tinymodem::GGWaveProtocol::freq_start'],['../classtinymodem_1_1GGWaveDecoder.html#acc7b57d578372b8404eb8db3fee066d7',1,'tinymodem::GGWaveDecoder::freq_start']]],
+  ['fsk_5fanalyze_5fnsteps_21',['FSK_ANALYZE_NSTEPS',['../classtinymodem_1_1FSKDecoder.html#a524933b7bdf25bf1d52bcc0096756287',1,'tinymodem::FSKDecoder']]],
+  ['fsk_5fanalyze_5fnsteps_5ffine_22',['FSK_ANALYZE_NSTEPS_FINE',['../classtinymodem_1_1FSKDecoder.html#ad1cdb03819860c724e03ede7208f7755',1,'tinymodem::FSKDecoder']]],
+  ['fsk_5fmax_5fnoconfidence_5fbits_23',['FSK_MAX_NOCONFIDENCE_BITS',['../classtinymodem_1_1FSKDecoder.html#a7d7a5a7faa28d2bac608279e83bc7ea3',1,'tinymodem::FSKDecoder']]]
 ];
