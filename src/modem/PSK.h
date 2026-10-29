@@ -9,12 +9,26 @@
 
 namespace tinymodem {
 
+/// Modulation of the PSK modem
+enum class PSKModulation {
+  /// 1 bit per symbol, PSK31 Varicode
+  BPSK,
+  /// 2 bits per symbol: rate 1/2 convolutional code (K=5) on 1 data bit per
+  /// symbol, PSK31 Varicode
+  QPSK,
+  /// 3 bits per symbol without FEC, MFSK Varicode
+  PSK8,
+};
+
 /**
- * @brief Configuration of the PSK modem (PSKEncoder, PSKDecoder): BPSK with
- * Varicode and cosine shaped phase reversals like PSK31.
+ * @brief Configuration of the PSK modem (PSKEncoder, PSKDecoder): differential
+ * PSK with cosine shaped transitions like PSK31, compatible with fldigi.
  *
- * setMode() selects "psk31", "psk63", "psk125", "psk250" or "psk500" (31.25
- * to 500 baud). The carrier frequency is 1000 Hz by default.
+ * setMode() selects "psk31", "psk63", "psk125", "psk250" or "psk500" (BPSK,
+ * 31.25 to 500 baud), "qpsk31" to "qpsk500" (QPSK with a K=5 convolutional
+ * code, same speed with FEC) or "8psk125", "8psk250", "8psk500" and
+ * "8psk1000" (8PSK without FEC, 3 bits per symbol). The carrier frequency is
+ * 1000 Hz by default: 8psk500 and 8psk1000 raise it to twice the symbol rate.
  * @copyright GPLv3
  */
 struct PSKConfig : public audio_tools::AudioInfo {
@@ -24,8 +38,10 @@ struct PSKConfig : public audio_tools::AudioInfo {
     bits_per_sample = 16;
   }
 
-  /// symbols (bits) per second
+  /// symbols per second
   float symbol_rate = 31.25f;
+  /// modulation (bits per symbol)
+  PSKModulation modulation = PSKModulation::BPSK;
   /// carrier frequency in Hz
   float carrier_freq = 1000.0f;
   /// transmit amplitude (0.0 - 1.0)
@@ -45,17 +61,30 @@ struct PSKConfig : public audio_tools::AudioInfo {
   /// receiver: (testing only) amplitude of added uniform noise
   float rx_noise = 0.0f;
 
-  /// Selects "psk31", "psk63", "psk125", "psk250" or "psk500": returns false
-  /// if invalid. The other settings are kept.
+  /// Selects e.g. "psk31", "qpsk63" or "8psk250": returns false if invalid.
+  /// The other settings are kept.
   bool setMode(const char* mode) {
-    float rate = modeRate(mode);
+    PSKModulation mod;
+    float rate = modeRate(mode, mod);
     if (rate <= 0) return false;
     symbol_rate = rate;
+    modulation = mod;
+    if (carrier_freq < 2 * symbol_rate) carrier_freq = 2 * symbol_rate;
     return true;
   }
 
+  /// bits per symbol: 1 (BPSK), 2 (QPSK) or 3 (8PSK)
+  int bitsPerSymbol() const {
+    return modulation == PSKModulation::BPSK   ? 1
+           : modulation == PSKModulation::QPSK ? 2
+                                               : 3;
+  }
+
   /// true if the mode is a PSK mode
-  static bool isMode(const char* mode) { return modeRate(mode) > 0; }
+  static bool isMode(const char* mode) {
+    PSKModulation mod;
+    return modeRate(mode, mod) > 0;
+  }
 
   /// number of samples per symbol
   float samplesPerSymbol() const { return sample_rate / symbol_rate; }
@@ -83,12 +112,25 @@ struct PSKConfig : public audio_tools::AudioInfo {
   }
 
  protected:
-  static float modeRate(const char* mode) {
+  static float modeRate(const char* mode, PSKModulation& mod) {
     if (mode == nullptr) return 0;
+    mod = PSKModulation::BPSK;
+    if (tolower(mode[0]) == 'q') {
+      mod = PSKModulation::QPSK;
+      mode++;
+    } else if (mode[0] == '8') {
+      mod = PSKModulation::PSK8;
+      mode++;
+    }
     const char* prefix = "psk";
     for (int j = 0; j < 3; j++)
       if (tolower(mode[j]) != prefix[j]) return 0;
-    int n = atoi(mode + 3);
+    const char* number = mode + 3;
+    for (const char* c = number; *c; c++)
+      if (!isdigit((unsigned char)*c)) return 0;
+    int n = atoi(number);
+    if (mod == PSKModulation::PSK8)
+      return (n == 125 || n == 250 || n == 500 || n == 1000) ? n : 0;
     switch (n) {
       case 31:
         return 31.25f;
@@ -177,6 +219,175 @@ class Varicode {
       {0xAFF, 12}, {0xB55, 12}, {0xB57, 12}, {0xB5B, 12}
     };
     return codes;
+  }
+};
+
+/**
+ * @brief The IZ8BLY MFSK Varicode (as used by fldigi for 8PSK): a code starts
+ * with 1 and does not contain "001", so a character ends when "001" is
+ * received (the 1 starts the next character).
+ * @copyright GPLv3
+ */
+class MFSKVaricode {
+ public:
+  using Code = Varicode::Code;
+
+  /// Code of the indicated byte
+  static Code encode(uint8_t ch) { return table()[ch]; }
+
+  /// Byte of the indicated code: returns -1 if the code is unknown
+  static int decode(uint16_t bits) {
+    for (int j = 0; j < 256; j++)
+      if (table()[j].bits == bits) return j;
+    return -1;
+  }
+
+ protected:
+  static const Code* table() {
+    // generated from fldigi's varicode table (src/mfsk/mfskvaricode.cxx)
+    static const Code codes[256] = {
+      {0x75C, 11}, {0x760, 11}, {0x768, 11}, {0x76C, 11}, {0x770, 11}, {0x774, 11},
+      {0x778, 11}, {0x77C, 11}, {0x0A8, 8}, {0x780, 11}, {0x7A0, 11}, {0x7A8, 11},
+      {0x7AC, 11}, {0x0AC, 8}, {0x7B0, 11}, {0x7B4, 11}, {0x7B8, 11}, {0x7BC, 11},
+      {0x7C0, 11}, {0x7D0, 11}, {0x7D4, 11}, {0x7D8, 11}, {0x7DC, 11}, {0x7E0, 11},
+      {0x7E8, 11}, {0x7EC, 11}, {0x7F0, 11}, {0x7F4, 11}, {0x7F8, 11}, {0x7FC, 11},
+      {0x800, 12}, {0xA00, 12}, {0x004, 3}, {0x1C0, 9}, {0x1FC, 9}, {0x2D8, 10},
+      {0x2A8, 10}, {0x2A0, 10}, {0x200, 10}, {0x1BC, 9}, {0x1F4, 9}, {0x1F0, 9},
+      {0x2B4, 10}, {0x1E0, 9}, {0x0A0, 8}, {0x1D8, 9}, {0x1D4, 9}, {0x1E8, 9},
+      {0x0E0, 8}, {0x0F0, 8}, {0x140, 9}, {0x154, 9}, {0x174, 9}, {0x160, 9},
+      {0x16C, 9}, {0x1A0, 9}, {0x180, 9}, {0x1AC, 9}, {0x1EC, 9}, {0x1F8, 9},
+      {0x2C0, 10}, {0x1DC, 9}, {0x2BC, 10}, {0x1D0, 9}, {0x280, 10}, {0x0BC, 8},
+      {0x100, 9}, {0x0D4, 8}, {0x0DC, 8}, {0x0B8, 8}, {0x0F8, 8}, {0x150, 9},
+      {0x158, 9}, {0x0C0, 8}, {0x1B4, 9}, {0x17C, 9}, {0x0F4, 8}, {0x0E8, 8},
+      {0x0FC, 8}, {0x0D0, 8}, {0x0EC, 8}, {0x1B0, 9}, {0x0D8, 8}, {0x0B4, 8},
+      {0x0B0, 8}, {0x15C, 9}, {0x1A8, 9}, {0x168, 9}, {0x170, 9}, {0x178, 9},
+      {0x1B8, 9}, {0x2E8, 10}, {0x2D0, 10}, {0x2EC, 10}, {0x2D4, 10}, {0x2B0, 10},
+      {0x2AC, 10}, {0x014, 5}, {0x060, 7}, {0x038, 6}, {0x034, 6}, {0x008, 4},
+      {0x050, 7}, {0x058, 7}, {0x030, 6}, {0x018, 5}, {0x080, 8}, {0x070, 7},
+      {0x02C, 6}, {0x040, 7}, {0x01C, 5}, {0x010, 5}, {0x054, 7}, {0x078, 7},
+      {0x020, 6}, {0x028, 6}, {0x00C, 4}, {0x03C, 6}, {0x06C, 7}, {0x068, 7},
+      {0x074, 7}, {0x05C, 7}, {0x07C, 7}, {0x2DC, 10}, {0x2B8, 10}, {0x2E0, 10},
+      {0x2F0, 10}, {0xA80, 12}, {0xAA0, 12}, {0xAA8, 12}, {0xAAC, 12}, {0xAB0, 12},
+      {0xAB4, 12}, {0xAB8, 12}, {0xABC, 12}, {0xAC0, 12}, {0xAD0, 12}, {0xAD4, 12},
+      {0xAD8, 12}, {0xADC, 12}, {0xAE0, 12}, {0xAE8, 12}, {0xAEC, 12}, {0xAF0, 12},
+      {0xAF4, 12}, {0xAF8, 12}, {0xAFC, 12}, {0xB00, 12}, {0xB40, 12}, {0xB50, 12},
+      {0xB54, 12}, {0xB58, 12}, {0xB5C, 12}, {0xB60, 12}, {0xB68, 12}, {0xB6C, 12},
+      {0xB70, 12}, {0xB74, 12}, {0xB78, 12}, {0xB7C, 12}, {0x2F4, 10}, {0x2F8, 10},
+      {0x2FC, 10}, {0x300, 10}, {0x340, 10}, {0x350, 10}, {0x354, 10}, {0x358, 10},
+      {0x35C, 10}, {0x360, 10}, {0x368, 10}, {0x36C, 10}, {0x370, 10}, {0x374, 10},
+      {0x378, 10}, {0x37C, 10}, {0x380, 10}, {0x3A0, 10}, {0x3A8, 10}, {0x3AC, 10},
+      {0x3B0, 10}, {0x3B4, 10}, {0x3B8, 10}, {0x3BC, 10}, {0x3C0, 10}, {0x3D0, 10},
+      {0x3D4, 10}, {0x3D8, 10}, {0x3DC, 10}, {0x3E0, 10}, {0x3E8, 10}, {0x3EC, 10},
+      {0x3F0, 10}, {0x3F4, 10}, {0x3F8, 10}, {0x3FC, 10}, {0x400, 11}, {0x500, 11},
+      {0x540, 11}, {0x550, 11}, {0x554, 11}, {0x558, 11}, {0x55C, 11}, {0x560, 11},
+      {0x568, 11}, {0x56C, 11}, {0x570, 11}, {0x574, 11}, {0x578, 11}, {0x57C, 11},
+      {0x580, 11}, {0x5A0, 11}, {0x5A8, 11}, {0x5AC, 11}, {0x5B0, 11}, {0x5B4, 11},
+      {0x5B8, 11}, {0x5BC, 11}, {0x5C0, 11}, {0x5D0, 11}, {0x5D4, 11}, {0x5D8, 11},
+      {0x5DC, 11}, {0x5E0, 11}, {0x5E8, 11}, {0x5EC, 11}, {0x5F0, 11}, {0x5F4, 11},
+      {0x5F8, 11}, {0x5FC, 11}, {0x600, 11}, {0x680, 11}, {0x6A0, 11}, {0x6A8, 11},
+      {0x6AC, 11}, {0x6B0, 11}, {0x6B4, 11}, {0x6B8, 11}, {0x6BC, 11}, {0x6C0, 11},
+      {0x6D0, 11}, {0x6D4, 11}, {0x6D8, 11}, {0x6DC, 11}, {0x6E0, 11}, {0x6E8, 11},
+      {0x6EC, 11}, {0x6F0, 11}, {0x6F4, 11}, {0x6F8, 11}, {0x6FC, 11}, {0x700, 11},
+      {0x740, 11}, {0x750, 11}, {0x754, 11}, {0x758, 11}
+    };
+    return codes;
+  }
+};
+
+/**
+ * @brief Rate 1/2 convolutional code with K=5 (polynomials 0x17 and 0x19)
+ * of QPSK31 (fldigi) and a soft decision Viterbi decoder.
+ * @copyright GPLv3
+ */
+class QPSKCode {
+ public:
+  static constexpr int K = 5;
+  static constexpr int STATES = 1 << (K - 1);
+  /// decisions which are kept for the trace back (decoding delay in bits)
+  static constexpr int DEPTH = 32;
+
+  /// encoder output (2 bits) for the register of the last K input bits
+  static int output(int reg) {
+    return parity(reg & 0x17) | (parity(reg & 0x19) << 1);
+  }
+
+  /// Encodes one bit: returns the 2 bit symbol
+  int encode(int bit) {
+    shreg = ((shreg << 1) | (bit & 1)) & ((1 << K) - 1);
+    return output(shreg);
+  }
+
+  /// Resets the encoder and decoder state
+  void reset() {
+    shreg = 0;
+    for (int s = 0; s < STATES; s++) metrics[s] = 0;
+    count = 0;
+    pos = 0;
+  }
+
+  /// Adds the metrics of the 4 possible symbols (higher = more likely):
+  /// returns the decoded bit of DEPTH steps ago or -1
+  int decode(const float metric[4]) {
+    float next[STATES];
+    uint16_t decisions = 0;
+    for (int s = 0; s < STATES; s++) {
+      // predecessors: the oldest bit (msb of the predecessor) was 0 or 1
+      int bit = s & 1;
+      int p0 = s >> 1, p1 = (s >> 1) | (STATES >> 1);
+      float m0 = metrics[p0] + metric[output((p0 << 1) | bit)];
+      float m1 = metrics[p1] + metric[output((p1 << 1) | bit)];
+      if (m1 > m0) {
+        next[s] = m1;
+        decisions |= 1 << s;
+      } else {
+        next[s] = m0;
+      }
+    }
+    float best = next[0];
+    for (int s = 1; s < STATES; s++)
+      if (next[s] > best) best = next[s];
+    for (int s = 0; s < STATES; s++) metrics[s] = next[s] - best;
+    history[pos] = decisions;
+    pos = (pos + 1) % DEPTH;
+    if (count < DEPTH) count++;
+    return count < DEPTH ? -1 : traceBack(DEPTH);
+  }
+
+  /// Provides the bits which are still in the decoder (oldest first)
+  template <class F>
+  void flush(F on_bit) {
+    // the bit of DEPTH steps ago was already provided
+    int n = count == DEPTH ? DEPTH - 1 : count;
+    for (int j = n; j > 0; j--) on_bit(traceBack(j));
+    count = 0;
+  }
+
+ protected:
+  int shreg = 0;
+  float metrics[STATES] = {0};
+  uint16_t history[DEPTH];
+  int pos = 0;
+  int count = 0;
+
+  static int parity(int v) {
+    v ^= v >> 4;
+    v ^= v >> 2;
+    v ^= v >> 1;
+    return v & 1;
+  }
+
+  /// Input bit of depth steps ago on the best path
+  int traceBack(int depth) {
+    int state = 0;
+    for (int s = 1; s < STATES; s++)
+      if (metrics[s] > metrics[state]) state = s;
+    int idx = pos;
+    for (int j = 0; j < depth - 1; j++) {
+      idx = (idx + DEPTH - 1) % DEPTH;
+      int msb = (history[idx] >> state) & 1;
+      state = (state >> 1) | (msb << (K - 2));
+    }
+    return state & 1;
   }
 };
 

@@ -12,9 +12,13 @@ set(UNIT_TESTS
     audiotools-pipeline mode-switch config-reuse baudot-transmissions
     stream-modes stream-no-loss stream-rtos packet-codec packet-modem
     mfsk-config mfsk-loopback mfsk-robust mfsk-formats mfsk-stream
-    ax25-frame ax25-loopback ax25-kiss ax25-stream psk-varicode psk-loopback
-    psk-robust psk-stream ofdm-config ofdm-loopback ofdm-robust ofdm-stream ggwave-config ggwave-rs
-    ggwave-signal ggwave-loopback ggwave-robust ggwave-stream rx-one)
+    ax25-frame ax25-loopback ax25-kiss ax25-stream fx25-codec
+    il2p-codec fx25-loopback psk-varicode psk-loopback
+    psk-robust psk-modes qpsk-loopback qpsk-robust psk-stream ofdm-config ofdm-loopback ofdm-robust ofdm-stream ggwave-config ggwave-rs
+    ggwave-signal ggwave-loopback ggwave-robust ggwave-stream dtmf-config
+    dtmf-loopback dtmf-robust dtmf-stream olivia-config olivia-loopback
+    olivia-robust olivia-stream css-config css-loopback css-robust css-stream
+    rx-one)
 foreach(test ${UNIT_TESTS})
     add_test(NAME unit-${test} COMMAND unit-tests ${test})
 endforeach()
@@ -35,10 +39,13 @@ set(CLI_TX_TESTS verify-tx-consistent tx-wav-header)
 set(CLI_OWN_TESTS
     mfsk4 mfsk8 mfsk16 mfsk32 mfsk64 mfsk-noise mfsk-clock mfsk-base-freq
     mfsk-tx-carrier packets-fsk packets-mfsk packets-binary ax25 ax25-22050hz
-    ax25-noise ax25-kiss psk31 psk125 psk500 psk-noise psk-offset packets-psk
+    ax25-noise ax25-kiss fx25 fx25-64 fx25-noise il2p il2p-noise fx25-rx-ax25
+    psk31 psk125 psk500 psk-noise psk-offset packets-psk qpsk31 qpsk250 qpsk-noise 8psk125 8psk1000
+   
     ofdm16 ofdm32 ofdm64 ofdm-noise packets-ofdm ggwave-fast ggwave-fastest
     ggwave-u-normal ggwave-dt-fast ggwave-auto-speed ggwave-noise ggwave-44100hz
-    packets-ggwave)
+    packets-ggwave dtmf dtmf-8000hz dtmf-noise olivia olivia-8-250 olivia-noise
+    olivia-offset contestia css7 css5 css-noise css-offset packets-css)
 
 set(CLI_TEST ${CMAKE_CURRENT_SOURCE_DIR}/cli-test.sh)
 foreach(test ${CLI_TESTS} ${CLI_TX_TESTS} ${CLI_OWN_TESTS})
@@ -71,7 +78,7 @@ find_program(DIREWOLF_GEN_PACKETS gen_packets)
 if(DIREWOLF_ATEST AND DIREWOLF_GEN_PACKETS)
     message(STATUS "direwolf for AX.25 interop tests: ${DIREWOLF_ATEST}")
     set(AX25_INTEROP ${CMAKE_CURRENT_SOURCE_DIR}/ax25-interop.sh)
-    foreach(test tx rx noise)
+    foreach(test tx rx noise fx25-tx fx25-rx il2p-tx il2p-rx)
         add_test(NAME interop-ax25-${test}
             COMMAND bash ${AX25_INTEROP} ${test} $<TARGET_FILE:tinymodem>
                 ${DIREWOLF_ATEST} ${DIREWOLF_GEN_PACKETS})

@@ -158,7 +158,11 @@ static void usage() {
           "		aprs, ax25     AX.25 packet radio 1200 bps\n"
           "     psk{31,63,125,250,500}   BPSK with Varicode 31.25-500 bps\n"
           "     ofdm{16,32,64}           OFDM with DQPSK 3200 bps\n"
-          "     ggwave[-u,-dt]-{normal,fast,fastest}  ggwave compatible\n");
+          "     ggwave[-u,-dt]-{normal,fast,fastest}  ggwave compatible\n"
+          "     olivia[-{tones}-{bw}]    Olivia (fldigi), e.g. olivia-8-250\n"
+          "     contestia[-{tones}-{bw}] Contestia (fldigi), e.g. contestia-8-250\n"
+          "     css{5-10}[-{bw}]         Chirp spread spectrum, e.g. css7, css9-500\n"
+          "		    dtmf       DTMF touch tones 0-9 * # A-D\n");
   exit(1);
 }
 
@@ -520,12 +524,63 @@ int main(int argc, char* argv[]) {
   bool psk = PSKConfig::isMode(modem_mode);
   bool ofdm = OFDMConfig::isMode(modem_mode);
   bool ggwave = GGWaveConfig::isMode(modem_mode);
+  bool dtmf = DTMFConfig::isMode(modem_mode);
+  bool olivia = OliviaConfig::isMode(modem_mode);
+  bool css = CSSConfig::isMode(modem_mode);
   MFSKConfig mfsk_cfg;
   AX25Config ax25_cfg;
   PSKConfig psk_cfg;
   OFDMConfig ofdm_cfg;
   GGWaveConfig ggwave_cfg;
-  if (ggwave) {
+  DTMFConfig dtmf_cfg;
+  OliviaConfig olivia_cfg;
+  CSSConfig css_cfg;
+  if (css) {
+    css_cfg.setMode(modem_mode);
+    css_cfg.sample_rate = cfg.sample_rate;
+    css_cfg.volume = cfg.volume;
+    css_cfg.rx_one = cfg.rx_one;
+    css_cfg.rx_noise = cfg.rx_noise;
+    if (cfg.mark_freq > 0) css_cfg.center_freq = cfg.mark_freq;
+    if (tx_carrier) {
+      fprintf(stderr, "E: --tx-carrier is not supported by %s.\n", modem_mode);
+      return 1;
+    }
+    if (!css_cfg.isValid()) {
+      fprintf(stderr, "E: invalid %s configuration\n", modem_mode);
+      return 1;
+    }
+  } else if (olivia) {
+    olivia_cfg.setMode(modem_mode);
+    olivia_cfg.sample_rate = cfg.sample_rate;
+    olivia_cfg.volume = cfg.volume;
+    olivia_cfg.rx_one = cfg.rx_one;
+    olivia_cfg.rx_noise = cfg.rx_noise;
+    if (cfg.mark_freq > 0) olivia_cfg.center_freq = cfg.mark_freq;
+    if (tx_carrier || use_packets) {
+      fprintf(stderr, "E: --tx-carrier and --packets are not supported by %s.\n",
+              modem_mode);
+      return 1;
+    }
+    if (!olivia_cfg.isValid()) {
+      fprintf(stderr, "E: invalid %s configuration\n", modem_mode);
+      return 1;
+    }
+  } else if (dtmf) {
+    dtmf_cfg.sample_rate = cfg.sample_rate;
+    dtmf_cfg.volume = cfg.volume;
+    dtmf_cfg.rx_one = cfg.rx_one;
+    dtmf_cfg.rx_noise = cfg.rx_noise;
+    if (tx_carrier || use_packets) {
+      fprintf(stderr, "E: --tx-carrier and --packets are not supported by %s.\n",
+              modem_mode);
+      return 1;
+    }
+    if (!dtmf_cfg.isValid()) {
+      fprintf(stderr, "E: invalid %s configuration\n", modem_mode);
+      return 1;
+    }
+  } else if (ggwave) {
     ggwave_cfg.setMode(modem_mode);
     ggwave_cfg.sample_rate = cfg.sample_rate;
     ggwave_cfg.volume = cfg.volume;
@@ -618,6 +673,9 @@ int main(int argc, char* argv[]) {
                          : psk  ? (AudioInfo)psk_cfg
                          : ofdm ? (AudioInfo)ofdm_cfg
                          : ggwave ? (AudioInfo)ggwave_cfg
+                         : dtmf ? (AudioInfo)dtmf_cfg
+                         : olivia ? (AudioInfo)olivia_cfg
+                         : css ? (AudioInfo)css_cfg
                                 : (AudioInfo)cfg;
   if (filename == nullptr) use_audio_device = true;
 
@@ -640,11 +698,17 @@ int main(int argc, char* argv[]) {
     PSKEncoder psk_encoder;
     OFDMEncoder ofdm_encoder;
     GGWaveEncoder ggwave_encoder;
+    DTMFEncoder dtmf_encoder;
+    OliviaEncoder olivia_encoder;
+    CSSEncoder css_encoder;
     ModemEncoder& encoder = mfsk     ? (ModemEncoder&)mfsk_encoder
                             : ax25   ? (ModemEncoder&)ax25_encoder
                             : psk    ? (ModemEncoder&)psk_encoder
                             : ofdm   ? (ModemEncoder&)ofdm_encoder
                             : ggwave ? (ModemEncoder&)ggwave_encoder
+                            : dtmf   ? (ModemEncoder&)dtmf_encoder
+                            : olivia ? (ModemEncoder&)olivia_encoder
+                            : css    ? (ModemEncoder&)css_encoder
                                      : (ModemEncoder&)fsk_encoder;
     auto beginEncoder = [&]() {
       bool ok = mfsk   ? mfsk_encoder.begin(mfsk_cfg)
@@ -652,6 +716,9 @@ int main(int argc, char* argv[]) {
                 : psk  ? psk_encoder.begin(psk_cfg)
                 : ofdm ? ofdm_encoder.begin(ofdm_cfg)
                 : ggwave ? ggwave_encoder.begin(ggwave_cfg)
+                : dtmf ? dtmf_encoder.begin(dtmf_cfg)
+                : olivia ? olivia_encoder.begin(olivia_cfg)
+                : css ? css_encoder.begin(css_cfg)
                        : fsk_encoder.begin(cfg);
       if (!ok) fprintf(stderr, "E: invalid configuration\n");
       return ok;
@@ -709,11 +776,17 @@ int main(int argc, char* argv[]) {
   PSKDecoder psk_decoder;
   OFDMDecoder ofdm_decoder;
   GGWaveDecoder ggwave_decoder;
+  DTMFDecoder dtmf_decoder;
+  OliviaDecoder olivia_decoder;
+  CSSDecoder css_decoder;
   ModemDecoder& decoder = mfsk     ? (ModemDecoder&)mfsk_decoder
                           : ax25   ? (ModemDecoder&)ax25_decoder
                           : psk    ? (ModemDecoder&)psk_decoder
                           : ofdm   ? (ModemDecoder&)ofdm_decoder
                           : ggwave ? (ModemDecoder&)ggwave_decoder
+                          : dtmf   ? (ModemDecoder&)dtmf_decoder
+                          : olivia ? (ModemDecoder&)olivia_decoder
+                          : css    ? (ModemDecoder&)css_decoder
                                    : (ModemDecoder&)fsk_decoder;
   // the decoded data is written to stdout or to the packet decoder
   CliPacketDecoder packets(out_stdout);
@@ -726,6 +799,9 @@ int main(int argc, char* argv[]) {
               : psk  ? psk_decoder.begin(psk_cfg)
               : ofdm ? ofdm_decoder.begin(ofdm_cfg)
               : ggwave ? ggwave_decoder.begin(ggwave_cfg)
+              : dtmf ? dtmf_decoder.begin(dtmf_cfg)
+              : olivia ? olivia_decoder.begin(olivia_cfg)
+              : css ? css_decoder.begin(css_cfg)
                      : fsk_decoder.begin(cfg);
     if (!ok) fprintf(stderr, "E: invalid configuration\n");
     return ok;

@@ -5,6 +5,10 @@
 #include "AudioTools.h"
 #include "AX25Decoder.h"
 #include "AX25Encoder.h"
+#include "CSSDecoder.h"
+#include "CSSEncoder.h"
+#include "DTMFDecoder.h"
+#include "DTMFEncoder.h"
 #include "FSKDecoder.h"
 #include "FSKEncoder.h"
 #include "GGWaveDecoder.h"
@@ -15,6 +19,8 @@
 #include "PSKEncoder.h"
 #include "OFDMDecoder.h"
 #include "OFDMEncoder.h"
+#include "OliviaDecoder.h"
+#include "OliviaEncoder.h"
 #include "ModemBase.h"
 #include "ModemConfig.h"
 
@@ -218,6 +224,40 @@ class OFDMStream : public BasicModemStream<OFDMEncoder, OFDMDecoder, OFDMConfig>
  */
 class GGWaveStream
     : public BasicModemStream<GGWaveEncoder, GGWaveDecoder, GGWaveConfig> {
+ public:
+  using BasicModemStream::BasicModemStream;
+};
+
+/**
+ * @brief Arduino Stream API for the Olivia and Contestia modems (compatible
+ * with fldigi): print() transmits, flush() completes the last block, read()
+ * receives. See BasicModemStream.
+ * @copyright GPLv3
+ */
+class OliviaStream
+    : public BasicModemStream<OliviaEncoder, OliviaDecoder, OliviaConfig> {
+ public:
+  using BasicModemStream::BasicModemStream;
+};
+
+/**
+ * @brief Arduino Stream API for the chirp spread spectrum modem (LoRa-like):
+ * print() collects the data, flush() sends it as frame, read() receives. See
+ * BasicModemStream.
+ * @copyright GPLv3
+ */
+class CSSStream : public BasicModemStream<CSSEncoder, CSSDecoder, CSSConfig> {
+ public:
+  using BasicModemStream::BasicModemStream;
+};
+
+/**
+ * @brief Arduino Stream API for the DTMF (touch tone) modem: print() sends
+ * the keys 0-9, *, #, A-D, read() provides the received keys. See
+ * BasicModemStream.
+ * @copyright GPLv3
+ */
+class DTMFStream : public BasicModemStream<DTMFEncoder, DTMFDecoder, DTMFConfig> {
  public:
   using BasicModemStream::BasicModemStream;
 };

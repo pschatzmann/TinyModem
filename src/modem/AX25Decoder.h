@@ -4,6 +4,7 @@
 #include <string.h>
 
 #include "AX25.h"
+#include "AX25FEC.h"
 #include "AudioTools.h"
 #include "ModemBase.h"
 
@@ -19,6 +20,11 @@ namespace tinymodem {
  * bit, a digital PLL recovers the bit clock, and the bits are NRZI and HDLC
  * decoded. The input can be 8, 16 or 32 bit signed samples with any number of
  * channels (only AX25Config::channel is evaluated).
+ *
+ * FX.25 and IL2P frames are decoded in parallel (independent of
+ * AX25Config::layer2) and corrected with their Reed-Solomon codes. An FX.25
+ * frame which is also received as standard AX.25 frame is provided only
+ * once.
  * @copyright GPLv3
  */
 class AX25Decoder : public ModemDecoder {
@@ -75,13 +81,18 @@ class AX25Decoder : public ModemDecoder {
   void end() override {
     if (!is_active) return;
     flush();
-    status("### AX25 frames=%u fcs_errors=%u ###\n", (unsigned)frames,
-           (unsigned)errors);
+    status(
+        "### AX25 frames=%u fcs_errors=%u fx25=%u il2p=%u corrected=%u ###\n",
+        (unsigned)frames, (unsigned)errors, (unsigned)fx25_frames,
+        (unsigned)il2p_frames, (unsigned)corrected_bytes);
     is_active = false;
   }
 
-  /// The decoding is done immediately: nothing to do
-  void flush() override {}
+  /// Provides a frame which is held back during an FX.25 block
+  void flush() override {
+    if (!is_active) return;
+    deliverPending();
+  }
 
   /// Provide PCM data to the decoder
   size_t write(const uint8_t* data, size_t len) override {
@@ -91,7 +102,9 @@ class AX25Decoder : public ModemDecoder {
   }
 
   /// true while a frame is received
-  bool isCarrier() override { return in_frame && frame_len > 0; }
+  bool isCarrier() override {
+    return (in_frame && frame_len > 0) || fx_tag != 0 || il_state != 0;
+  }
 
   /// The decoder never stops
   bool isFinished() override { return false; }
@@ -101,6 +114,15 @@ class AX25Decoder : public ModemDecoder {
 
   /// Number of frames with a wrong frame check sequence
   size_t errorCount() { return errors; }
+
+  /// Number of received FX.25 frames
+  size_t fx25Count() { return fx25_frames; }
+
+  /// Number of received IL2P frames
+  size_t il2pCount() { return il2p_frames; }
+
+  /// Number of bytes which were corrected by FX.25 and IL2P
+  size_t correctedCount() { return corrected_bytes; }
 
   /// The configuration which was provided in begin()
   AX25Config& config() { return cfg; }
@@ -136,6 +158,9 @@ class AX25Decoder : public ModemDecoder {
   uint32_t noise_seed = 1;
   size_t frames = 0;
   size_t errors = 0;
+  size_t fx25_frames = 0;
+  size_t il2p_frames = 0;
+  size_t corrected_bytes = 0;
 
   // correlators: products of the last window samples with the phasors
   int window = 40;
@@ -160,6 +185,26 @@ class AX25Decoder : public ModemDecoder {
   uint8_t current = 0;
   int current_bits = 0;
   char text[AX25Frame::MAX_FRAME * 2];
+  // frame which was received during an FX.25 block
+  uint8_t pending[AX25Frame::MAX_FRAME];
+  int pending_len = 0;
+
+  // FX.25
+  int fx_tag = 0;  // 0 = searching the correlation tag
+  uint64_t fx_accum = 0;
+  uint8_t fx_block[FX25::BLOCK_SIZE];
+  int fx_len = 0, fx_bits = 0, fx_total = 0;
+
+  // IL2P
+  static constexpr int IL2P_MAX_ENCODED = AX25Frame::MAX_FRAME + 2 * 16;
+  int il_state = 0;  // 0 = searching, 1 = header, 2 = payload
+  uint32_t il_accum = 0;
+  bool il_inverted = false;
+  int il_len = 0, il_bits = 0, il_need = 0;
+  uint8_t il_raw_header[IL2P::HEADER_SIZE + IL2P::HEADER_PARITY];
+  uint8_t il_header[IL2P::HEADER_SIZE];
+  uint8_t il_payload[IL2P_MAX_ENCODED];
+  int il_corrected = 0;
 
   void resetState() {
     for (int j = 0; j < window * 4; j++) products[j] = 0;
@@ -169,6 +214,11 @@ class AX25Decoder : public ModemDecoder {
     in_frame = false;
     history = 0;
     ones = 0;
+    pending_len = 0;
+    fx_tag = 0;
+    fx_accum = 0;
+    il_state = 0;
+    il_accum = 0;
     input.reset();
   }
 
@@ -209,6 +259,8 @@ class AX25Decoder : public ModemDecoder {
       int bit = tone == bit_tone ? 1 : 0;
       bit_tone = tone;
       hdlc(bit);
+      fx25(bit);
+      il2p(tone);  // IL2P does not use NRZI
     }
   }
 
@@ -267,6 +319,107 @@ class AX25Decoder : public ModemDecoder {
       errors++;
       return;
     }
+    if (fx_tag != 0) {
+      // probably the content of the FX.25 block: we wait for its result
+      deliverPending();
+      memcpy(pending, frame, len);
+      pending_len = len;
+      return;
+    }
+    deliver(frame, len);
+  }
+
+  void deliverPending() {
+    if (pending_len > 0) deliver(pending, pending_len);
+    pending_len = 0;
+  }
+
+  /// FX.25: correlation tag and Reed-Solomon block
+  void fx25(int bit) {
+    if (fx_tag == 0) {
+      fx_accum = (fx_accum >> 1) | ((uint64_t)bit << 63);
+      int tag = FX25::findTag(fx_accum);
+      if (tag == 0) return;
+      fx_tag = tag;
+      fx_total = FX25::tag(tag).data + FX25::tag(tag).check;
+      fx_len = fx_bits = 0;
+      memset(fx_block, 0, sizeof(fx_block));
+      return;
+    }
+    fx_block[fx_len] |= bit << fx_bits;
+    if (++fx_bits < 8) return;
+    fx_bits = 0;
+    if (++fx_len < fx_total) return;
+    int tag = fx_tag;
+    fx_tag = 0;
+    fx_accum = 0;
+    int corrected = FX25::correct(tag, fx_block);
+    uint8_t result[AX25Frame::MAX_FRAME + 2];
+    int len = corrected < 0 ? 0
+                            : FX25::extract(fx_block, FX25::tag(tag).data,
+                                            result, sizeof(result));
+    if (len <= 0) {
+      deliverPending();  // the standard frame (if any)
+      return;
+    }
+    pending_len = 0;  // duplicate
+    fx25_frames++;
+    corrected_bytes += corrected;
+    deliver(result, len);
+  }
+
+  /// IL2P: sync word, header and payload
+  void il2p(int raw) {
+    il_accum = ((il_accum << 1) | (raw & 1)) & 0xFFFFFF;
+    if (il_state == 0) {
+      if (popcount(il_accum ^ IL2P::SYNC_WORD) <= 1) {
+        il_inverted = false;
+      } else if (popcount((~il_accum & 0xFFFFFF) ^ IL2P::SYNC_WORD) <= 1) {
+        il_inverted = true;
+      } else {
+        return;
+      }
+      il_state = 1;
+      il_len = il_bits = 0;
+      return;
+    }
+    if (++il_bits < 8) return;
+    il_bits = 0;
+    uint8_t value = il_inverted ? ~il_accum & 0xFF : il_accum & 0xFF;
+    if (il_state == 1) {
+      il_raw_header[il_len++] = value;
+      if (il_len < (int)sizeof(il_raw_header)) return;
+      il_corrected = 0;
+      il_need = IL2P::decodeHeader(il_raw_header, il_header, &il_corrected);
+      if (il_need < 0 || il_need > IL2P_MAX_ENCODED) {
+        il_state = 0;
+        return;
+      }
+      il_len = 0;
+      il_state = 2;
+      if (il_need > 0) return;
+    } else {
+      il_payload[il_len++] = value;
+      if (il_len < il_need) return;
+    }
+    il_state = 0;
+    uint8_t result[AX25Frame::MAX_FRAME];
+    int len = IL2P::decodeFrame(il_header, il_payload, result, sizeof(result),
+                                &il_corrected);
+    if (len <= 0) return;
+    il2p_frames++;
+    corrected_bytes += il_corrected;
+    deliver(result, len);
+  }
+
+  static int popcount(uint32_t v) {
+    int n = 0;
+    for (; v; v &= v - 1) n++;
+    return n;
+  }
+
+  /// Writes a received frame (without FCS) to the output
+  void deliver(const uint8_t* frame, int len) {
     frames++;
     if (p_print == nullptr) return;
     if (cfg.format == AX25Format::KISS) {

@@ -10,18 +10,20 @@
 namespace tinymodem {
 
 /**
- * @brief PSK demodulator (BPSK like PSK31): the PCM audio data is written to
- * the decoder and the decoded bytes are written to the output. The input can
+ * @brief PSK demodulator (BPSK, QPSK and 8PSK compatible with fldigi): the PCM
+ * audio data is written to the decoder and the decoded bytes are written to
+ * the output. The input can
  * be 8, 16 or 32 bit signed samples with any number of channels (only
  * PSKConfig::channel is evaluated).
  *
  * The signal is mixed to the baseband and integrated over one symbol. The
  * symbol timing is determined from the energy distribution over the symbol
- * period, the bits from the phase difference of consecutive symbols. An
- * automatic frequency control tracks frequency offsets of up to a quarter of
- * the symbol rate. The receiver starts with a run of phase reversals
- * (preamble) and stops when the signal is lost or with a long steady carrier
- * (postamble).
+ * period, the bits from the phase difference of consecutive symbols: QPSK
+ * uses a soft decision Viterbi decoder. An automatic frequency control tracks
+ * frequency offsets of up to a quarter of the symbol rate (QPSK: 1/8, 8PSK:
+ * 1/16). The receiver starts with a run of phase reversals (preamble) and
+ * stops when the signal is lost or with a long steady carrier (postamble of
+ * BPSK and 8PSK).
  * @copyright GPLv3
  */
 class PSKDecoder : public ModemDecoder {
@@ -63,7 +65,11 @@ class PSKDecoder : public ModemDecoder {
     if (!input.begin(cfg.bits_per_sample, cfg.channels, cfg.channel))
       return false;
     samples_per_symbol = cfg.samplesPerSymbol();
-    window = lroundf(samples_per_symbol);
+    // 8PSK: a shorter integration reduces the interference with the
+    // neighboring symbols (the transitions take a full symbol)
+    window = lroundf(cfg.modulation == PSKModulation::PSK8
+                         ? samples_per_symbol / 2
+                         : samples_per_symbol);
     history.resize(window * 3);
     resetState();
     is_active = true;
@@ -149,13 +155,19 @@ class PSKDecoder : public ModemDecoder {
 
   // decisions
   float prev_i = 0, prev_q = 0;
-  float quality = 0;
+  float quality = 0;      // cos(2 * phase difference): preamble and BPSK
+  float quality_m = 0;    // cos(m * phase difference) for m positions
   bool carrier = false;
   int zeros = 0;
   int ones = 0;
   int weak = 0;
   int last_bit = 1;
   uint16_t code = 0;
+  QPSKCode qpsk;
+  uint32_t mfsk_code = 0;
+  // 8PSK: characters of a steady carrier, which might be the postamble
+  uint8_t held[MAX_ONES];
+  int nheld = 0;
   float track_amplitude = 0;
   // statistics
   unsigned ndata = 0;
@@ -176,7 +188,7 @@ class PSKDecoder : public ModemDecoder {
     target = 0.5f;
     countdown = samples_per_symbol / 2;
     prev_i = prev_q = 0;
-    quality = 0;
+    quality = quality_m = 0;
     carrier = false;
     zeros = ones = weak = 0;
     code = 0;
@@ -281,6 +293,9 @@ class PSKDecoder : public ModemDecoder {
     target = t < 0 ? t + 1.0f : t;
   }
 
+  /// number of phase positions
+  int positions() { return 2 << (cfg.bitsPerSymbol() - 1); }
+
   /// Bit decision from the phase difference to the previous symbol
   void decide() {
     float zi = sum_i, zq = sum_q;
@@ -294,16 +309,35 @@ class PSKDecoder : public ModemDecoder {
     bool present = amplitude >= cfg.min_amplitude &&
                    amplitude > 0.5f * rms_amplitude;
     float mag2 = dr * dr + di * di;
-    if (mag2 <= 0) return;
-    // cos(2 * phase difference): 1 for a clean BPSK signal
+    if (mag2 <= 0) {
+      // digital silence: the signal is lost
+      if (carrier && ++weak >= MAX_WEAK) endOfCarrier();
+      return;
+    }
+    // the mixer provides the conjugate: phase step like fldigi (0 - 2 pi)
+    float raw = atan2f(di, dr);
+    float step = -raw;
+    if (step < 0) step += 2.0f * (float)M_PI;
+    int m = positions();
+    // cos(2 * phase difference): 1 for a clean BPSK signal and the preamble
     quality += 0.1f * ((dr * dr - di * di) / mag2 - quality);
+    // cos(m * phase difference): QPSK and 8PSK are slowly averaged, because
+    // the FEC of QPSK works with a lot of phase noise
+    quality_m += (m == 2 ? 0.1f : 0.03f) * (cosf(m * raw) - quality_m);
     int bit = dr > 0 ? 1 : 0;
 
     if (present && cfg.afc) {
       // before the carrier is detected we expect the preamble (phase
       // reversals): this doubles the capture range to half the symbol rate
-      bool reversal = carrier ? bit == 0 : true;
-      float error = reversal ? atan2f(-di, -dr) : atan2f(di, dr);
+      float error;
+      if (!carrier || m == 2) {
+        bool reversal = carrier ? bit == 0 : true;
+        error = reversal ? atan2f(-di, -dr) : atan2f(di, dr);
+      } else {
+        // distance to the nearest phase position
+        float spacing = 2.0f * (float)M_PI / m;
+        error = raw - spacing * lroundf(raw / spacing);
+      }
       // a steady carrier is not a preamble with a frequency offset
       if (!carrier && fabsf(error) > 0.75f * (float)M_PI) error = 0;
       float offset = freq_offset + AFC_GAIN * error * cfg.symbol_rate /
@@ -325,18 +359,74 @@ class PSKDecoder : public ModemDecoder {
     bool weak_symbol = amplitude < cfg.min_amplitude ||
                        amplitude < LOST_LEVEL * track_amplitude;
     weak = weak_symbol ? weak + 1 : 0;
-    ones = bit ? ones + 1 : 0;
-    if (weak >= MAX_WEAK || ones >= MAX_ONES || quality < 0.2f) {
+    // a steady carrier ends BPSK and 8PSK (QPSK sends data with 0 degrees)
+    bool steady = fabsf(raw) < (float)M_PI / m;
+    ones = steady && cfg.modulation != PSKModulation::QPSK ? ones + 1 : 0;
+    if (ones >= MAX_ONES) nheld = 0;  // postamble
+    if (!steady) releaseHeld();
+    float min_quality = cfg.modulation == PSKModulation::BPSK   ? 0.2f
+                        : cfg.modulation == PSKModulation::QPSK ? 0.03f
+                                                                : 0.1f;
+    if (weak >= MAX_WEAK || ones >= MAX_ONES || quality_m < min_quality) {
       endOfCarrier();
       return;
     }
     if (!weak_symbol) {
       track_amplitude += 0.1f * (amplitude - track_amplitude);
-      quality_total += quality;
+      quality_total += quality_m;
       amplitude_total += amplitude;
       nsymbols++;
     }
-    varicode(bit);
+    switch (cfg.modulation) {
+      case PSKModulation::QPSK: {
+        // soft decision: correlation with the 4 possible phase steps
+        float metric[4];
+        for (int sym = 0; sym < 4; sym++) {
+          float expected = (float)M_PI + (float)M_PI / 2 * ((4 - sym) & 3);
+          metric[sym] = cosf(step - expected);
+        }
+        int decoded = qpsk.decode(metric);
+        if (decoded >= 0) varicode(decoded);
+        break;
+      }
+      case PSKModulation::PSK8: {
+        float pos = (step - (float)M_PI) / ((float)M_PI / 4);
+        int sym = ((int)lroundf(pos) % 8 + 8) % 8;
+        for (int b = 0; b < 3; b++) mfskVaricode((sym >> b) & 1);
+        break;
+      }
+      default:
+        varicode(bit);
+        break;
+    }
+  }
+
+  /// MFSK Varicode (8PSK): a character ends with "001"
+  void mfskVaricode(int bit) {
+    mfsk_code = (mfsk_code << 1) | bit;
+    if ((mfsk_code & 7) != 1) return;
+    uint32_t value = mfsk_code >> 1;
+    int ch = value <= 0xFFFF ? MFSKVaricode::decode(value) : -1;
+    // the character 0 is the idle signal
+    if (ch > 0) {
+      if (ones > 0 && nheld < MAX_ONES) {
+        // a steady carrier sends spaces: the postamble is not provided
+        held[nheld++] = ch;
+      } else {
+        output(ch);
+      }
+    }
+    mfsk_code = 1;
+  }
+
+  void releaseHeld() {
+    for (int j = 0; j < nheld; j++) output(held[j]);
+    nheld = 0;
+  }
+
+  void output(uint8_t ch) {
+    ndata++;
+    if (p_print != nullptr) p_print->write(ch);
   }
 
   /// Collects the bits of a character: characters are separated by "00"
@@ -362,16 +452,27 @@ class PSKDecoder : public ModemDecoder {
     zeros = ones = weak = 0;
     code = 0;
     last_bit = 0;
+    qpsk.reset();
+    mfsk_code = 0;
+    nheld = 0;
+    quality_m = quality;  // the preamble has the quality of a BPSK signal
     track_amplitude = amplitude;
     ndata = 0;
     nsymbols = 0;
     quality_total = 0;
     amplitude_total = 0;
-    status("### CARRIER psk %.2f baud @ %.1f Hz ###\n",
+    const char* name = cfg.modulation == PSKModulation::QPSK   ? "qpsk"
+                       : cfg.modulation == PSKModulation::PSK8 ? "8psk"
+                                                               : "psk";
+    status("### CARRIER %s %.2f baud @ %.1f Hz ###\n", name,
            (double)cfg.symbol_rate, (double)(cfg.carrier_freq + freq_offset));
   }
 
   void endOfCarrier() {
+    // the bits in the Viterbi decoder
+    if (cfg.modulation == PSKModulation::QPSK)
+      qpsk.flush([this](int bit) { varicode(bit); });
+    releaseHeld();
     carrier = false;
     zeros = 0;
     float n = nsymbols > 0 ? nsymbols : 1;

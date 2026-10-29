@@ -20,10 +20,25 @@ enum class AX25Format {
   KISS,
 };
 
+/// Frame format which is transmitted by the AX25Encoder: the AX25Decoder
+/// receives all formats
+enum class AX25Layer2 {
+  /// HDLC framing (standard AX.25)
+  AX25,
+  /// FX.25: HDLC frame with Reed-Solomon FEC (compatible with AX.25)
+  FX25,
+  /// IL2P: Improved Layer 2 Protocol with Reed-Solomon FEC
+  IL2P,
+};
+
 /**
  * @brief Configuration of the AX.25 packet radio modem (AX25Encoder,
  * AX25Decoder): Bell 202 AFSK with 1200 baud, NRZI and HDLC framing, as used
  * by APRS.
+ *
+ * setMode() selects "ax25" or "aprs" (standard AX.25), "fx25" (FX.25 with 16
+ * check bytes), "fx25-32", "fx25-64" or "il2p" (IL2P with max FEC) for the
+ * transmitter. The receiver decodes all of them (like direwolf).
  * @copyright GPLv3
  */
 struct AX25Config : public audio_tools::AudioInfo {
@@ -47,25 +62,42 @@ struct AX25Config : public audio_tools::AudioInfo {
   int tx_tail_ms = 50;
   /// format of the written and decoded data
   AX25Format format = AX25Format::TEXT;
+  /// transmitter: frame format (AX.25, FX.25 or IL2P)
+  AX25Layer2 layer2 = AX25Layer2::AX25;
+  /// transmitter: FX.25 check bytes (16, 32 or 64)
+  int fx25_check_bytes = 16;
+  /// transmitter: IL2P with 16 parity bytes per block (otherwise 2 - 8)
+  bool il2p_max_fec = true;
   /// receiver: input channel which is used for the decoding
   uint8_t channel = 0;
   /// receiver: (testing only) amplitude of added uniform noise
   float rx_noise = 0.0f;
 
-  /// Selects the mode "ax25" or "aprs" (both are AFSK 1200): returns false if
-  /// the mode is not supported
+  /// Selects the mode "ax25", "aprs", "fx25", "fx25-32", "fx25-64" or
+  /// "il2p" (all AFSK 1200): returns false if the mode is not supported
   bool setMode(const char* mode) {
     if (!isMode(mode)) return false;
     baud_rate = 1200.0f;
     mark_freq = 1200.0f;
     space_freq = 2200.0f;
+    layer2 = AX25Layer2::AX25;
+    if (equalsIgnoreCase(mode, "il2p")) {
+      layer2 = AX25Layer2::IL2P;
+    } else if (tolower(mode[0]) == 'f') {
+      layer2 = AX25Layer2::FX25;
+      fx25_check_bytes = mode[4] == 0 ? 16 : atoi(mode + 5);
+    }
     return true;
   }
 
-  /// true if the mode name is "ax25" or "aprs"
+  /// true if the mode name is "ax25", "aprs", "fx25", "fx25-32", "fx25-64"
+  /// or "il2p"
   static bool isMode(const char* mode) {
-    return mode != nullptr &&
-           (equalsIgnoreCase(mode, "ax25") || equalsIgnoreCase(mode, "aprs"));
+    if (mode == nullptr) return false;
+    for (const char* name :
+         {"ax25", "aprs", "fx25", "fx25-16", "fx25-32", "fx25-64", "il2p"})
+      if (equalsIgnoreCase(mode, name)) return true;
+    return false;
   }
 
   /// Checks the configuration: returns false (and logs the reason) if invalid
@@ -82,6 +114,11 @@ struct AX25Config : public audio_tools::AudioInfo {
     }
     if (sample_rate / baud_rate < 4) {
       LOGE("AX25: at least 4 samples per bit are needed");
+      return false;
+    }
+    if (!(fx25_check_bytes == 16 || fx25_check_bytes == 32 ||
+          fx25_check_bytes == 64)) {
+      LOGE("AX25: fx25_check_bytes must be 16, 32 or 64");
       return false;
     }
     return true;

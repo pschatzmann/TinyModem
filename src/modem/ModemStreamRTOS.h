@@ -218,4 +218,34 @@ class GGWaveStreamRTOS : public BasicModemStreamRTOS<GGWaveStream> {
   using BasicModemStreamRTOS::BasicModemStreamRTOS;
 };
 
+/**
+ * @brief OliviaStream which receives in a separate task. See
+ * BasicModemStreamRTOS.
+ * @copyright GPLv3
+ */
+class OliviaStreamRTOS : public BasicModemStreamRTOS<OliviaStream> {
+ public:
+  using BasicModemStreamRTOS::BasicModemStreamRTOS;
+};
+
+/**
+ * @brief CSSStream which receives in a separate task. See
+ * BasicModemStreamRTOS.
+ * @copyright GPLv3
+ */
+class CSSStreamRTOS : public BasicModemStreamRTOS<CSSStream> {
+ public:
+  using BasicModemStreamRTOS::BasicModemStreamRTOS;
+};
+
+/**
+ * @brief DTMFStream which receives in a separate task. See
+ * BasicModemStreamRTOS.
+ * @copyright GPLv3
+ */
+class DTMFStreamRTOS : public BasicModemStreamRTOS<DTMFStream> {
+ public:
+  using BasicModemStreamRTOS::BasicModemStreamRTOS;
+};
+
 }  // namespace tinymodem

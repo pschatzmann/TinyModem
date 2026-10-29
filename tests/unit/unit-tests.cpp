@@ -1496,6 +1496,153 @@ static void test_ax25_stream() {
   CHECK_EQ(result, std::string(APRS_TEXT));
 }
 
+static void test_fx25_codec() {
+  // Reed-Solomon with the first root alpha^1 (FX.25)
+  uint8_t msg[239], data[255];
+  for (int j = 0; j < 239; j++) msg[j] = j * 7 + 3;
+  RSCodec::encode(msg, 239, 16, data, 1);
+  data[5] ^= 0x55;
+  data[100] ^= 0x01;
+  data[250] ^= 0xFF;
+  CHECK_EQ(RSCodec::correct(data, 239, 16, 1), 3);
+  CHECK(memcmp(data, msg, 239) == 0);
+  // the codes are different
+  RSCodec::encode(msg, 239, 16, data, 0);
+  CHECK_EQ(RSCodec::correct(data, 239, 16, 1), -1);
+
+  // tag selection like direwolf
+  CHECK_EQ(FX25::pickTag(16, 32), 4);
+  CHECK_EQ(FX25::pickTag(16, 64), 3);
+  CHECK_EQ(FX25::pickTag(16, 128), 2);
+  CHECK_EQ(FX25::pickTag(16, 239), 1);
+  CHECK_EQ(FX25::pickTag(16, 240), 0);
+  CHECK_EQ(FX25::pickTag(32, 223), 5);
+  CHECK_EQ(FX25::pickTag(64, 128), 10);
+  CHECK_EQ(FX25::findTag(FX25::tag(7).value ^ 0x8101010101000000ull), 7);
+  CHECK_EQ(FX25::findTag(0), 0);
+
+  // frame -> code word -> frame with errors
+  uint8_t frame[AX25Frame::MAX_FRAME];
+  const char* line = "N0CALL>APRS,WIDE1-1:!4903.50N/07201.75W-Test";
+  int len = AX25Frame::fromText(line, strlen(line), frame);
+  for (int check : {16, 32, 64}) {
+    uint8_t block[255], result[AX25Frame::MAX_FRAME];
+    int block_len = 0;
+    int tag = FX25::encode(frame, len, check, block, block_len);
+    CHECK(tag > 0);
+    CHECK_EQ(block_len, FX25::tag(tag).data + check);
+    CHECK_EQ(block[0], (uint8_t)0x7E);
+    for (int j = 0; j < check / 2; j++) block[j * 3 + 1] ^= 0xA5;
+    CHECK_EQ(FX25::correct(tag, block), check / 2);
+    CHECK_EQ(FX25::extract(block, FX25::tag(tag).data, result, sizeof(result)), len);
+    CHECK(memcmp(result, frame, len) == 0);
+    // too many errors
+    FX25::encode(frame, len, check, block, block_len);
+    for (int j = 0; j <= check / 2; j++) block[j] ^= 0x11;
+    CHECK_EQ(FX25::correct(tag, block), -1);
+  }
+}
+
+static void test_il2p_codec() {
+  // the scrambler and descrambler are inverse
+  uint8_t data[40], scrambled[40], result[40];
+  for (int j = 0; j < 40; j++) data[j] = j * 37;
+  IL2P::scramble(data, scrambled, 40);
+  CHECK(memcmp(data, scrambled, 40) != 0);
+  IL2P::descramble(scrambled, result, 40);
+  CHECK(memcmp(data, result, 40) == 0);
+
+  // frames with type 1 headers (2 addresses) and type 0 headers
+  std::vector<std::vector<uint8_t>> frames;
+  for (const char* line : {"N0CALL>APRS:>Hello", "WB2OSZ-15>TEST:,The quick brown fox",
+                           "N0CALL>APRS,WIDE1-1,WIDE2-2:!4903.50N/07201.75W-"}) {
+    uint8_t frame[AX25Frame::MAX_FRAME];
+    int len = AX25Frame::fromText(line, strlen(line), frame);
+    frames.push_back(std::vector<uint8_t>(frame, frame + len));
+  }
+  // I, S (RR) and U (SABM, response) frames
+  uint8_t base[14];
+  AX25Frame::fromText("AB1CD-3>N0CALL:x", 16, base);
+  std::vector<uint8_t> i_frame(base, base + 14);
+  i_frame.insert(i_frame.end(), {0x54, 0xF0, 'd', 'a', 't', 'a'});
+  std::vector<uint8_t> s_frame(base, base + 14);
+  s_frame.push_back(0xB1);
+  std::vector<uint8_t> u_frame(base, base + 14);
+  u_frame[6] &= 0x7F;
+  u_frame[13] |= 0x80;
+  u_frame.push_back(0x3F);
+  frames.push_back(i_frame);
+  frames.push_back(s_frame);
+  frames.push_back(u_frame);
+  for (bool max_fec : {true, false}) {
+    for (auto& frame : frames) {
+      uint8_t encoded[IL2P::MAX_ENCODED], hdr[IL2P::HEADER_SIZE];
+      int n = IL2P::encode(frame.data(), frame.size(), max_fec, encoded);
+      CHECK(n > 0);
+      // errors in the header and in the payload (if any)
+      bool payload = n > IL2P::HEADER_SIZE + IL2P::HEADER_PARITY;
+      encoded[3] ^= 0x40;
+      if (payload) encoded[n - 1] ^= 0x01;
+      int corrected = 0;
+      int need = IL2P::decodeHeader(encoded, hdr, &corrected);
+      CHECK_EQ(need, n - IL2P::HEADER_SIZE - IL2P::HEADER_PARITY);
+      uint8_t out[AX25Frame::MAX_FRAME];
+      int len = IL2P::decodeFrame(hdr, encoded + IL2P::HEADER_SIZE + IL2P::HEADER_PARITY,
+                                  out, sizeof(out), &corrected);
+      CHECK_EQ(len, (int)frame.size());
+      CHECK(memcmp(out, frame.data(), frame.size()) == 0);
+      CHECK_EQ(corrected, payload ? 2 : 1);
+    }
+  }
+  // the type 1 header is shorter than the frame
+  uint8_t encoded[IL2P::MAX_ENCODED];
+  CHECK_EQ(IL2P::encode(frames[0].data(), frames[0].size(), true, encoded),
+           15 + (int)frames[0].size() - 16 + 16);
+}
+
+static void test_fx25_loopback() {
+  AX25Config base;
+  for (const char* mode : {"fx25", "fx25-32", "fx25-64", "il2p"}) {
+    for (int rate : {8000, 22050, 48000}) {
+      AX25Config cfg = base;
+      CHECK(cfg.setMode(mode));
+      cfg.sample_rate = rate;
+      std::string status;
+      std::string result = ax25Demodulate(cfg, ax25Modulate(cfg, APRS_TEXT), &status);
+      if (result != APRS_TEXT) fprintf(stderr, "%s %d failed\n", mode, rate);
+      CHECK_EQ(result, std::string(APRS_TEXT));
+      CHECK(status.find(cfg.layer2 == AX25Layer2::IL2P ? "il2p=3" : "fx25=3") !=
+            std::string::npos);
+      CHECK(status.find("frames=3 ") != std::string::npos);
+    }
+  }
+  // KISS
+  AX25Config cfg;
+  cfg.setMode("il2p");
+  cfg.format = AX25Format::KISS;
+  StringPrint kiss;
+  uint8_t frame[AX25Frame::MAX_FRAME];
+  int len = AX25Frame::fromText("N0CALL>APRS:>KISS", 17, frame);
+  AX25Frame::writeKiss(kiss, frame, len);
+  CHECK_EQ(ax25Demodulate(cfg, ax25Modulate(cfg, kiss.str)), kiss.str);
+
+  // a corrupted frame is corrected
+  for (const char* mode : {"fx25", "il2p"}) {
+    AX25Config cfg;
+    cfg.setMode(mode);
+    std::vector<int16_t> samples = ax25Modulate(cfg, "N0CALL>APRS:>Hello FEC with a longer text\n");
+    // destroy about 8 bits at the beginning of the frame
+    size_t start = cfg.sample_rate * cfg.tx_delay_ms / 1000 + 4000;
+    for (size_t j = start; j < start + 300; j++) samples[j] = -samples[j];
+    std::string status;
+    CHECK_EQ(ax25Demodulate(cfg, samples, &status),
+             std::string("N0CALL>APRS:>Hello FEC with a longer text\n"));
+    CHECK(status.find("corrected=0 ") == std::string::npos);
+  }
+  CHECK(AX25Config::isMode("FX25-64") && AX25Config::isMode("il2p"));
+  CHECK(!AX25Config::isMode("fx25-8"));
+}
+
 static std::string pskRun(PSKConfig tx, PSKConfig rx, const std::string& text,
                           int parts = 1, std::string* status = nullptr) {
   SamplePrint audio;
@@ -1600,6 +1747,140 @@ static void test_psk_robust() {
   // rx_one
   cfg.rx_one = true;
   CHECK_EQ(pskRun(cfg, cfg, "ABCDEF", 2), std::string("ABC"));
+}
+
+static void test_psk_modes() {
+  PSKConfig cfg;
+  CHECK(cfg.setMode("qpsk63") && cfg.modulation == PSKModulation::QPSK);
+  CHECK_EQ(cfg.symbol_rate, 62.5f);
+  CHECK(cfg.setMode("8PSK250") && cfg.modulation == PSKModulation::PSK8);
+  CHECK_EQ(cfg.bitsPerSymbol(), 3);
+  CHECK(cfg.setMode("psk31") && cfg.modulation == PSKModulation::BPSK);
+  CHECK(!cfg.setMode("8psk31") && !cfg.setMode("qpsk1000") && !cfg.setMode("psk31x"));
+  cfg = PSKConfig();
+  CHECK(cfg.setMode("8psk1000"));
+  CHECK_EQ(cfg.carrier_freq, 2000.0f);
+
+  // MFSK varicode: codes start with 1 and contain no "001"
+  for (int j = 0; j < 256; j++) {
+    Varicode::Code code = MFSKVaricode::encode(j);
+    CHECK_EQ(MFSKVaricode::decode(code.bits), j);
+    CHECK((code.bits >> (code.length - 1)) == 1);
+    for (int b = 0; b + 2 < code.length; b++) CHECK(((code.bits >> b) & 7) != 1);
+  }
+  CHECK_EQ(MFSKVaricode::encode(' ').bits, (uint16_t)0x4);  // 100
+
+  // convolutional code: the Viterbi decoder corrects wrong symbols
+  QPSKCode enc, dec;
+  enc.reset();
+  dec.reset();
+  std::vector<int> bits, decoded;
+  uint32_t seed = 3;
+  for (int j = 0; j < 400; j++) {
+    seed = seed * 1103515245u + 12345u;
+    bits.push_back((seed >> 16) & 1);
+  }
+  for (size_t j = 0; j < bits.size(); j++) {
+    int sym = enc.encode(bits[j]);
+    if (j % 17 == 5) sym ^= 1;  // errors
+    float metric[4];
+    for (int s = 0; s < 4; s++) metric[s] = s == sym ? 1.0f : (__builtin_popcount(s ^ sym) == 1 ? 0.0f : -1.0f);
+    int bit = dec.decode(metric);
+    if (bit >= 0) decoded.push_back(bit);
+  }
+  dec.flush([&](int bit) { decoded.push_back(bit); });
+  CHECK_EQ(decoded.size(), bits.size());
+  CHECK(decoded == bits);
+}
+
+static void test_qpsk_loopback() {
+  std::string binary;
+  for (int j = 0; j < 256; j++) binary += (char)j;
+  for (const char* mode : {"qpsk31", "qpsk63", "qpsk125", "qpsk250", "qpsk500",
+                           "8psk125", "8psk250", "8psk500", "8psk1000"}) {
+    for (int rate : {8000, 48000}) {
+      PSKConfig cfg = pskConfig(mode, rate);
+      std::string status;
+      std::string result = pskRun(cfg, cfg, TEXT, 1, &status);
+      if (result != TEXT) fprintf(stderr, "%s %d failed\n", mode, rate);
+      CHECK_EQ(result, std::string(TEXT));
+      CHECK(status.find("### NOCARRIER ndata=55 ") != std::string::npos);
+    }
+    // 8PSK: the character 0 is the idle signal
+    PSKConfig cfg = pskConfig(mode, 22050);
+    CHECK_EQ(pskRun(cfg, cfg, binary),
+             cfg.modulation == PSKModulation::PSK8 ? binary.substr(1) : binary);
+  }
+  // the transmitted phase steps: QPSK 90 degrees, 8PSK 45 degrees
+  for (const char* mode : {"qpsk125", "8psk125"}) {
+    PSKConfig cfg = pskConfig(mode);
+    cfg.carrier_freq = 1000;
+    SamplePrint audio;
+    PSKEncoder encoder(audio);
+    CHECK(encoder.begin(cfg));
+    encoder.write((const uint8_t*)TEXT, strlen(TEXT));
+    encoder.end();
+    std::vector<int16_t> samples = audio.samples();
+    int n = 8000 / 125;
+    int positions = cfg.modulation == PSKModulation::QPSK ? 4 : 8;
+    std::vector<int> used(positions, 0);
+    double prev = 0;
+    for (size_t k = 1; (k + 1) * n < samples.size(); k++) {
+      // phase at the end of the symbol (the transition is complete)
+      double re = 0, im = 0;
+      for (int j = -4; j < 4; j++) {
+        size_t idx = (k + 1) * n + j;
+        double w = 2 * M_PI * 1000 * idx / 8000;
+        re += samples[idx] * cos(w);
+        im += samples[idx] * sin(w);
+      }
+      double phase = atan2(im, re);
+      double step = phase - prev;
+      prev = phase;
+      int pos = (int)lround(step / (2 * M_PI / positions));
+      used[((pos % positions) + positions) % positions]++;
+    }
+    for (int p = 0; p < positions; p++) CHECK(used[p] > 0);
+  }
+}
+
+static void test_qpsk_robust() {
+  std::string text = std::string(TEXT) + TEXT;
+  for (const char* mode : {"qpsk31", "qpsk125", "8psk125", "8psk500"}) {
+    PSKConfig tx = pskConfig(mode);
+    PSKConfig rx = tx;
+    // 8PSK needs a better signal, the noise bandwidth grows with the speed
+    rx.rx_noise = tx.modulation == PSKModulation::QPSK ? 1.0f
+                  : tx.symbol_rate > 200                ? 0.1f
+                                                        : 0.5f;
+    CHECK_EQ(pskRun(tx, rx, text), text);
+  }
+  // frequency offset
+  for (float offset : {-5.0f, 5.0f}) {
+    PSKConfig tx = pskConfig("qpsk31");
+    tx.carrier_freq += offset;
+    CHECK_EQ(pskRun(tx, pskConfig("qpsk31"), text), text);
+  }
+  for (float offset : {-12.0f, 12.0f}) {
+    PSKConfig tx = pskConfig("8psk125");
+    tx.carrier_freq += offset;
+    CHECK_EQ(pskRun(tx, pskConfig("8psk125"), text), text);
+  }
+  // different clocks
+  for (float error : {-0.005f, 0.005f}) {
+    for (const char* mode : {"qpsk63", "8psk250"}) {
+      PSKConfig tx = pskConfig(mode);
+      tx.sample_rate = 8000 * (1.0f + error);
+      CHECK_EQ(pskRun(tx, pskConfig(mode), text), text);
+    }
+  }
+  // several transmissions
+  for (const char* mode : {"qpsk125", "8psk125"}) {
+    std::string status;
+    PSKConfig cfg = pskConfig(mode);
+    CHECK_EQ(pskRun(cfg, cfg, text, 4, &status), text);
+    CHECK_EQ(countOf(status, "### CARRIER"), 4);
+  }
 }
 
 static void test_psk_stream() {
@@ -2011,6 +2292,480 @@ static void test_ggwave_stream() {
   rtos.end();
 }
 
+static std::string dtmfRun(DTMFConfig tx, DTMFConfig rx, const std::string& text,
+                           std::string* status = nullptr, float offset = 0) {
+  SamplePrint audio;
+  DTMFEncoder encoder(audio);
+  CHECK(encoder.begin(tx));
+  encoder.write((const uint8_t*)text.data(), text.size());
+  encoder.endTransmission(tx.sample_rate / 10);
+  encoder.end();
+  std::vector<int16_t> samples = audio.samples();
+  StringPrint out, status_out;
+  DTMFDecoder decoder(out);
+  decoder.setStatusOutput(status_out);
+  CHECK(decoder.begin(rx));
+  decoder.write((const uint8_t*)samples.data(), samples.size() * 2);
+  decoder.end();
+  if (status) *status = status_out.str;
+  return out.str;
+}
+
+static const char* DTMF_KEYS = "0123456789*#ABCD";
+
+static void test_dtmf_config() {
+  CHECK(DTMFConfig::isMode("dtmf") && DTMFConfig::isMode("DTMF"));
+  CHECK(!DTMFConfig::isMode("dtmf1") && !DTMFConfig::isMode("psk31"));
+  int row, column;
+  CHECK(DTMFKeys::find('5', row, column) && row == 1 && column == 1);
+  CHECK(DTMFKeys::find('d', row, column) && row == 3 && column == 3);
+  CHECK(DTMFKeys::find('#', row, column) && row == 3 && column == 2);
+  CHECK(!DTMFKeys::find('E', row, column) && !DTMFKeys::find(0, row, column));
+  for (const char* key = DTMF_KEYS; *key; key++) {
+    CHECK(DTMFKeys::find(*key, row, column));
+    CHECK_EQ(DTMFKeys::key(row, column), *key);
+  }
+  DTMFConfig cfg;
+  CHECK(cfg.isValid());
+  cfg.tone_ms = 0;
+  CHECK(!cfg.isValid());
+
+  // the signal contains the row and column tone
+  cfg = DTMFConfig();
+  cfg.sample_rate = 8000;
+  SamplePrint audio;
+  DTMFEncoder encoder(audio);
+  CHECK(encoder.begin(cfg));
+  encoder.write((const uint8_t*)"1", 1);
+  std::vector<int16_t> samples = audio.samples();
+  CHECK_EQ(samples.size(), (size_t)(8000 * 140 / 1000));
+  int peak = 0;
+  for (int16_t v : samples) peak = std::max(peak, abs((int)v));
+  CHECK(peak > 30000);
+  CHECK_EQ(samples.back(), (int16_t)0);
+}
+
+static void test_dtmf_loopback() {
+  for (int rate : {8000, 11025, 16000, 22050, 44100, 48000}) {
+    DTMFConfig cfg;
+    cfg.sample_rate = rate;
+    std::string status;
+    std::string result = dtmfRun(cfg, cfg, DTMF_KEYS, &status);
+    if (result != DTMF_KEYS) fprintf(stderr, "dtmf %d failed\n", rate);
+    CHECK_EQ(result, std::string(DTMF_KEYS));
+    CHECK_EQ(countOf(status, "### CARRIER"), 1);
+    CHECK(status.find("### NOCARRIER ndata=16 ") != std::string::npos);
+  }
+  // other characters are ignored, lower case is accepted
+  DTMFConfig cfg;
+  cfg.sample_rate = 8000;
+  CHECK_EQ(dtmfRun(cfg, cfg, "+41 (79) 123-45,67\nabcd"),
+           std::string("41791234567ABCD"));
+  // repeated keys
+  CHECK_EQ(dtmfRun(cfg, cfg, "1111#00"), std::string("1111#00"));
+  // a ',' separates transmissions
+  cfg.comma_ms = 600;
+  std::string status;
+  CHECK_EQ(dtmfRun(cfg, cfg, "12,34", &status), std::string("1234"));
+  CHECK_EQ(countOf(status, "### CARRIER"), 2);
+}
+
+static void test_dtmf_robust() {
+  std::string keys = std::string(DTMF_KEYS) + DTMF_KEYS;
+  DTMFConfig cfg;
+  cfg.sample_rate = 8000;
+  // short tones and pauses
+  DTMFConfig tx = cfg;
+  tx.tone_ms = 45;
+  tx.pause_ms = 45;
+  CHECK_EQ(dtmfRun(tx, cfg, keys), keys);
+  // noise
+  DTMFConfig rx = cfg;
+  rx.rx_noise = 0.5f;
+  CHECK_EQ(dtmfRun(cfg, rx, keys), keys);
+  // low level
+  tx = cfg;
+  tx.volume = 0.05f;
+  CHECK_EQ(dtmfRun(tx, cfg, keys), keys);
+  // frequency deviation of 1.5 % (different clock)
+  for (float error : {-0.015f, 0.015f}) {
+    tx = cfg;
+    tx.sample_rate = 8000 * (1.0f + error);
+    CHECK_EQ(dtmfRun(tx, cfg, keys), keys);
+  }
+  // no keys from noise or a single tone
+  std::vector<int16_t> samples(8000 * 2);
+  uint32_t seed = 7;
+  for (size_t j = 0; j < samples.size(); j++) {
+    seed = seed * 1103515245u + 12345u;
+    float tone = j < 8000 ? 0.0f : 16000.0f * sinf(2.0f * M_PI * 1209 * j / 8000);
+    samples[j] = (int16_t)((int)((seed >> 16) % 16000) - 8000 + tone);
+  }
+  StringPrint out;
+  DTMFDecoder decoder(out);
+  CHECK(decoder.begin(cfg));
+  decoder.write((const uint8_t*)samples.data(), samples.size() * 2);
+  decoder.end();
+  CHECK_EQ(out.str, std::string(""));
+}
+
+static void test_dtmf_stream() {
+  SyncLoopbackStream audio;
+  DTMFStream modem(audio, RXTX_MODE);
+  DTMFConfig cfg = modem.defaultConfig();
+  cfg.sample_rate = 8000;
+  CHECK(modem.begin(cfg));
+  modem.print("*123#");
+  modem.flush();
+  modem.getEncoder().writeSilence(cfg.sample_rate / 4);
+  std::string result;
+  while (audio.available() > 0 || modem.available() > 0)
+    while (modem.available() > 0) result += (char)modem.read();
+  CHECK_EQ(result, std::string("*123#"));
+}
+
+static std::vector<int16_t> oliviaModulate(OliviaConfig cfg, const std::string& text,
+                                           int parts = 1) {
+  SamplePrint audio;
+  OliviaEncoder encoder(audio);
+  CHECK(encoder.begin(cfg));
+  size_t chunk = text.size() / parts;
+  for (int p = 0; p < parts; p++) {
+    size_t len = p == parts - 1 ? text.size() - p * chunk : chunk;
+    encoder.write((const uint8_t*)text.data() + p * chunk, len);
+    encoder.endTransmission(cfg.sample_rate / 2);
+  }
+  encoder.end();
+  return audio.samples();
+}
+
+static std::string oliviaDemodulate(OliviaConfig cfg,
+                                    const std::vector<int16_t>& samples,
+                                    std::string* status = nullptr) {
+  StringPrint out, status_out;
+  OliviaDecoder decoder(out);
+  decoder.setStatusOutput(status_out);
+  CHECK(decoder.begin(cfg));
+  decoder.write((const uint8_t*)samples.data(), samples.size() * 2);
+  decoder.end();
+  if (status) *status = status_out.str;
+  return out.str;
+}
+
+static OliviaConfig oliviaConfig(const char* mode, int sample_rate = 8000) {
+  OliviaConfig cfg;
+  CHECK(cfg.setMode(mode));
+  cfg.sample_rate = sample_rate;
+  return cfg;
+}
+
+static void test_olivia_config() {
+  OliviaConfig cfg;
+  CHECK(cfg.setMode("olivia"));
+  CHECK_EQ(cfg.tones, 32);
+  CHECK_EQ(cfg.bandwidth, 1000);
+  CHECK(cfg.setMode("Olivia-8-250") && cfg.tones == 8 && cfg.bandwidth == 250);
+  CHECK(cfg.setMode("olivia-64-2k") && cfg.tones == 64 && cfg.bandwidth == 2000);
+  CHECK(cfg.setMode("contestia") && cfg.contestia && cfg.tones == 8);
+  CHECK(!cfg.setMode("olivia-6-250") && !cfg.setMode("olivia-8-300"));
+  CHECK(!cfg.setMode("olivia-8") && !cfg.setMode("psk31"));
+  CHECK(OliviaConfig::isMode("contestia-16-1000"));
+  // parameters of fldigi
+  cfg.setMode("olivia-32-1000");
+  CHECK_EQ(cfg.symbolLen(), 512);
+  CHECK_EQ(cfg.symbolRate(), 31.25f);
+  CHECK_EQ(cfg.firstCarrier(), 65);
+  CHECK_NEAR(cfg.toneFreq(0), 1015.625f, 0.001f);
+  CHECK_NEAR(cfg.toneFreq(31), 1984.375f, 0.001f);
+  CHECK_NEAR(cfg.charRate(), 2.44f, 0.01f);
+  cfg.setMode("olivia-8-250");
+  CHECK_EQ(cfg.symbolLen(), 512);
+  CHECK_EQ(cfg.symbolRate(), 31.25f);
+  CHECK_NEAR(cfg.toneFreq(0), 1390.625f, 0.001f);
+  cfg.setMode("contestia-8-250");
+  CHECK_EQ(cfg.symbolsPerBlock(), 32);
+  CHECK(cfg.isValid());
+  cfg.center_freq = 100;
+  CHECK(!cfg.isValid());
+
+  // FEC: every character survives the encoding of a block
+  for (bool contestia : {false, true}) {
+    for (int bits : {1, 3, 5, 8}) {
+      OliviaCodec codec;
+      codec.begin(bits, contestia);
+      for (int start = 0; start < 128; start += bits) {
+        uint8_t chars[8], symbols[64];
+        for (int b = 0; b < bits; b++) chars[b] = contestia ? 'A' + (start + b) % 26 : (start + b) % 128;
+        codec.encodeBlock(chars, symbols);
+        int8_t soft[64 * 8];
+        for (int t = 0; t < codec.blockLen(); t++)
+          for (int b = 0; b < bits; b++)
+            soft[t * bits + b] = (symbols[t] >> b) & 1 ? -100 : 100;
+        // a few wrong bits are corrected
+        soft[3] = -soft[3];
+        soft[bits * 10] = -soft[bits * 10];
+        for (int b = 0; b < bits; b++) {
+          float peak, noise;
+          CHECK_EQ((int)codec.decodeChar(soft, b, peak, noise), (int)chars[b]);
+        }
+      }
+    }
+  }
+  CHECK_EQ((int)OliviaCodec::binaryCode(OliviaCodec::grayCode(23)), 23);
+}
+
+static void test_olivia_loopback() {
+  for (const char* mode : {"olivia-4-125", "olivia-8-250", "olivia-16-500",
+                           "olivia-32-1000", "olivia-64-2000", "contestia-8-250",
+                           "contestia-32-1000"}) {
+    OliviaConfig cfg = oliviaConfig(mode);
+    std::string text = cfg.contestia ? "HELLO OLIVIA 0123456789\n" : TEXT;
+    std::string status;
+    std::string result = oliviaDemodulate(cfg, oliviaModulate(cfg, text), &status);
+    if (result != text) fprintf(stderr, "%s failed\n", mode);
+    CHECK_EQ(result, text);
+    CHECK_EQ(countOf(status, "### CARRIER"), 1);
+    char expected[40];
+    snprintf(expected, sizeof(expected), "### NOCARRIER ndata=%d ", (int)text.size());
+    CHECK(status.find(expected) != std::string::npos);
+  }
+  // sample rates
+  for (int rate : {11025, 22050, 44100, 48000}) {
+    OliviaConfig cfg = oliviaConfig("olivia-16-500", rate);
+    CHECK_EQ(oliviaDemodulate(cfg, oliviaModulate(cfg, TEXT)), std::string(TEXT));
+  }
+  // 8 bit characters (escaped with 127)
+  std::string binary;
+  for (int j = 1; j < 256; j++)
+    if (j != 127) binary += (char)j;
+  OliviaConfig cfg = oliviaConfig("olivia-64-2000");
+  CHECK_EQ(oliviaDemodulate(cfg, oliviaModulate(cfg, binary)), binary);
+  // Contestia: upper case, '\r' is ignored
+  cfg = oliviaConfig("contestia-16-500");
+  CHECK_EQ(oliviaDemodulate(cfg, oliviaModulate(cfg, "Hello\r\nWorld\n")),
+           std::string("HELLO\nWORLD\n"));
+  // without start tones
+  cfg = oliviaConfig("olivia-8-500");
+  cfg.start_tones = false;
+  CHECK_EQ(oliviaDemodulate(cfg, oliviaModulate(cfg, TEXT)), std::string(TEXT));
+}
+
+static void test_olivia_robust() {
+  std::string text = std::string(TEXT) + TEXT;
+  // noise: about -10 dB in 3 kHz
+  for (const char* mode : {"olivia-8-250", "olivia-32-1000"}) {
+    OliviaConfig tx = oliviaConfig(mode);
+    OliviaConfig rx = tx;
+    rx.rx_noise = 5.0f;
+    CHECK_EQ(oliviaDemodulate(rx, oliviaModulate(tx, text)), text);
+  }
+  // frequency offset
+  for (float offset : {-60.0f, -20.0f, 45.0f}) {
+    OliviaConfig tx = oliviaConfig("olivia-32-1000");
+    tx.center_freq += offset;
+    std::string status;
+    CHECK_EQ(oliviaDemodulate(oliviaConfig("olivia-32-1000"), oliviaModulate(tx, text),
+                              &status),
+             text);
+  }
+  // different clocks
+  for (float error : {-0.002f, 0.002f}) {
+    OliviaConfig tx = oliviaConfig("olivia-16-500");
+    tx.sample_rate = 8000 * (1.0f + error);
+    CHECK_EQ(oliviaDemodulate(oliviaConfig("olivia-16-500"), oliviaModulate(tx, text)),
+             text);
+  }
+  // several transmissions
+  std::string status;
+  OliviaConfig cfg = oliviaConfig("olivia-8-500");
+  CHECK_EQ(oliviaDemodulate(cfg, oliviaModulate(cfg, text, 3), &status), text);
+  CHECK_EQ(countOf(status, "### CARRIER"), 3);
+  // silence and noise: no output
+  std::vector<int16_t> silence(8000 * 10);
+  CHECK_EQ(oliviaDemodulate(cfg, silence), std::string(""));
+}
+
+static void test_olivia_stream() {
+  SyncLoopbackStream audio;
+  OliviaStream modem(audio, RXTX_MODE);
+  OliviaConfig cfg = modem.defaultConfig();
+  cfg.setMode("olivia-16-1000");
+  cfg.sample_rate = 8000;
+  CHECK(modem.begin(cfg));
+  modem.print("Hello Olivia");
+  modem.flush();
+  modem.getEncoder().writeSilence(cfg.sample_rate * 2);
+  std::string result;
+  while (audio.available() > 0 || modem.available() > 0)
+    while (modem.available() > 0) result += (char)modem.read();
+  CHECK_EQ(result, std::string("Hello Olivia"));
+}
+
+static std::vector<int16_t> cssModulate(CSSConfig cfg, const std::string& text,
+                                        int parts = 1) {
+  SamplePrint audio;
+  CSSEncoder encoder(audio);
+  CHECK(encoder.begin(cfg));
+  encoder.writeSilence(cfg.sample_rate / 4);
+  size_t chunk = text.size() / parts;
+  for (int p = 0; p < parts; p++) {
+    size_t len = p == parts - 1 ? text.size() - p * chunk : chunk;
+    encoder.write((const uint8_t*)text.data() + p * chunk, len);
+    encoder.endTransmission(cfg.sample_rate / 4);
+  }
+  encoder.end();
+  return audio.samples();
+}
+
+static std::string cssDemodulate(CSSConfig cfg, const std::vector<int16_t>& samples,
+                                 std::string* status = nullptr) {
+  StringPrint out, status_out;
+  CSSDecoder decoder(out);
+  decoder.setStatusOutput(status_out);
+  CHECK(decoder.begin(cfg));
+  decoder.write((const uint8_t*)samples.data(), samples.size() * 2);
+  decoder.end();
+  if (status) *status = status_out.str;
+  return out.str;
+}
+
+static CSSConfig cssConfig(const char* mode, int sample_rate = 8000) {
+  CSSConfig cfg;
+  CHECK(cfg.setMode(mode));
+  cfg.sample_rate = sample_rate;
+  return cfg;
+}
+
+static void test_css_config() {
+  CSSConfig cfg;
+  CHECK(cfg.setMode("css") && cfg.spreading_factor == 7 && cfg.bandwidth == 1000);
+  CHECK(cfg.setMode("CSS9-500") && cfg.spreading_factor == 9 && cfg.bandwidth == 500);
+  CHECK(!cfg.setMode("css4") && !cfg.setMode("css11") && !cfg.setMode("css7-") &&
+        !cfg.setMode("css7x"));
+  CHECK(CSSConfig::isMode("css10") && !CSSConfig::isMode("psk31"));
+  cfg = cssConfig("css7");
+  CHECK_EQ(cfg.chips(), 128);
+  CHECK_NEAR(cfg.symbolTime(), 0.128f, 1e-6f);
+  CHECK(cfg.isValid());
+  cfg.center_freq = 3500;
+  CHECK(!cfg.isValid());
+
+  // frame codec: bytes <-> symbols, header and payload with errors
+  for (int sf = 5; sf <= 10; sf++) {
+    uint8_t data[40], back[40];
+    for (int j = 0; j < 40; j++) data[j] = j * 37 + sf;
+    uint16_t symbols[80];
+    int n = CSSFrame::toSymbols(data, 40, sf, symbols);
+    CHECK_EQ(n, (40 * 8 + sf - 1) / sf);
+    for (int j = 0; j < n; j++) CHECK(symbols[j] < (1 << sf));
+    CSSFrame::fromSymbols(symbols, n, sf, back, 40);
+    CHECK(memcmp(data, back, 40) == 0);
+    // a neighbor bin changes only 1 bit
+    symbols[3] = (symbols[3] + 1) % (1 << sf);
+    CSSFrame::fromSymbols(symbols, n, sf, back, 40);
+    int bits = 0;
+    for (int j = 0; j < 40; j++) bits += __builtin_popcount(data[j] ^ back[j]);
+    CHECK_EQ(bits, 1);
+  }
+  uint8_t header[CSSFrame::HEADER_BYTES];
+  CSSFrame::header(42, header);
+  header[1] ^= 0x55;
+  header[4] ^= 0x0F;
+  CHECK_EQ(CSSFrame::decodeHeader(header), 42);
+  uint8_t payload[100];
+  CSSFrame::payload((const uint8_t*)"Hello", 5, 8, payload);
+  for (int j = 0; j < 4; j++) payload[j * 3] ^= 0xA0;
+  CHECK_EQ(CSSFrame::decodePayload(payload, 5, 8), 4);
+  CHECK(memcmp(payload, "Hello", 5) == 0);
+}
+
+static void test_css_loopback() {
+  for (const char* mode : {"css5", "css6", "css7", "css8", "css9", "css10",
+                           "css7-500", "css6-2000"}) {
+    for (int rate : {8000, 22050, 48000}) {
+      CSSConfig cfg = cssConfig(mode, rate);
+      std::string status;
+      std::string result = cssDemodulate(cfg, cssModulate(cfg, TEXT), &status);
+      if (result != TEXT) fprintf(stderr, "%s %d failed\n", mode, rate);
+      CHECK_EQ(result, std::string(TEXT));
+      CHECK(status.find("### NOCARRIER ndata=55 corrected=0 ") != std::string::npos);
+    }
+  }
+  // binary data in several frames
+  std::string binary;
+  for (int j = 0; j < 256; j++) binary += (char)j;
+  CSSConfig cfg = cssConfig("css6", 16000);
+  cfg.max_frame = 100;
+  std::string status;
+  CHECK_EQ(cssDemodulate(cfg, cssModulate(cfg, binary), &status), binary);
+  CHECK(status.find("frames=3 errors=0") != std::string::npos);
+}
+
+static void test_css_robust() {
+  std::string text = std::string(TEXT) + TEXT;
+  // noise: about -9 dB SNR in 3 kHz
+  for (const char* mode : {"css7", "css9"}) {
+    CSSConfig tx = cssConfig(mode);
+    CSSConfig rx = tx;
+    rx.rx_noise = 4.0f;
+    CHECK_EQ(cssDemodulate(rx, cssModulate(tx, text)), text);
+  }
+  // frequency offset
+  for (float offset : {-40.0f, -13.3f, 6.1f, 40.0f}) {
+    CSSConfig tx = cssConfig("css7");
+    tx.center_freq += offset;
+    std::string status;
+    CHECK_EQ(cssDemodulate(cssConfig("css7"), cssModulate(tx, text), &status), text);
+  }
+  // different clocks: sound cards are usually within 0.01 %
+  struct ClockTest {
+    const char* mode;
+    float max_error;
+  };
+  for (ClockTest t : {ClockTest{"css6", 0.01f}, ClockTest{"css8", 0.002f},
+                      ClockTest{"css10", 0.0005f}}) {
+    for (float f : {-1.0f, -0.3f, -0.1f, 0.1f, 0.3f, 1.0f}) {
+      CSSConfig tx = cssConfig(t.mode);
+      tx.sample_rate = 8000 * (1.0f + f * t.max_error);
+      std::string result = cssDemodulate(cssConfig(t.mode), cssModulate(tx, text));
+      if (result != text)
+        fprintf(stderr, "css clock %s %f failed\n", t.mode, f * t.max_error);
+      CHECK_EQ(result, text);
+    }
+  }
+  // several transmissions and corrupted frames
+  CSSConfig cfg = cssConfig("css6");
+  std::string status;
+  CHECK_EQ(cssDemodulate(cfg, cssModulate(cfg, text, 4), &status), text);
+  CHECK_EQ(countOf(status, "### CARRIER"), 4);
+  std::vector<int16_t> samples = cssModulate(cfg, "Hello");
+  for (size_t j = samples.size() / 2; j < samples.size() / 2 + 3000; j++)
+    samples[j] = 0;
+  CHECK_EQ(cssDemodulate(cfg, samples, &status), std::string(""));
+  CHECK(status.find("errors=1") != std::string::npos);
+  // noise only: nothing is received
+  std::vector<int16_t> silence(8000 * 10);
+  CSSConfig rx = cfg;
+  rx.rx_noise = 1.0f;
+  CHECK_EQ(cssDemodulate(rx, silence, &status), std::string(""));
+}
+
+static void test_css_stream() {
+  SyncLoopbackStream audio;
+  CSSStream modem(audio, RXTX_MODE);
+  CSSConfig cfg = modem.defaultConfig();
+  cfg.setMode("css6");
+  cfg.sample_rate = 8000;
+  CHECK(modem.begin(cfg));
+  modem.print("Hello Chirp");
+  modem.flush();
+  modem.getEncoder().writeSilence(cfg.sample_rate);
+  std::string result;
+  while (audio.available() > 0 || modem.available() > 0)
+    while (modem.available() > 0) result += (char)modem.read();
+  CHECK_EQ(result, std::string("Hello Chirp"));
+}
+
 /// With rx_one the decoding stops after the first transmission and stays
 /// stopped after flush() until begin() is called again
 template <class Encoder, class Decoder, class Config>
@@ -2047,8 +2802,15 @@ static void test_rx_one() {
   CHECK(psk.setMode("psk125"));
   psk.sample_rate = 8000;
   check_rx_one<PSKEncoder, PSKDecoder>(psk);
+  check_rx_one<PSKEncoder, PSKDecoder>(pskConfig("qpsk125"));
+  check_rx_one<PSKEncoder, PSKDecoder>(pskConfig("8psk250"));
   check_rx_one<OFDMEncoder, OFDMDecoder>(ofdmConfig("ofdm32"));
   check_rx_one<GGWaveEncoder, GGWaveDecoder>(ggwaveConfig("ggwave-fastest"));
+  DTMFConfig dtmf;
+  dtmf.sample_rate = 8000;
+  check_rx_one<DTMFEncoder, DTMFDecoder>(dtmf);
+  check_rx_one<OliviaEncoder, OliviaDecoder>(oliviaConfig("olivia-8-1000"));
+  check_rx_one<CSSEncoder, CSSDecoder>(cssConfig("css6"));
 }
 
 static void test_audiotools_pipeline() {
@@ -2128,9 +2890,15 @@ static TestCase tests[] = {
     {"ax25-loopback", test_ax25_loopback},
     {"ax25-kiss", test_ax25_kiss},
     {"ax25-stream", test_ax25_stream},
+    {"fx25-codec", test_fx25_codec},
+    {"il2p-codec", test_il2p_codec},
+    {"fx25-loopback", test_fx25_loopback},
     {"psk-varicode", test_psk_varicode},
     {"psk-loopback", test_psk_loopback},
     {"psk-robust", test_psk_robust},
+    {"psk-modes", test_psk_modes},
+    {"qpsk-loopback", test_qpsk_loopback},
+    {"qpsk-robust", test_qpsk_robust},
     {"psk-stream", test_psk_stream},
     {"ofdm-config", test_ofdm_config},
     {"ofdm-loopback", test_ofdm_loopback},
@@ -2142,6 +2910,18 @@ static TestCase tests[] = {
     {"ggwave-loopback", test_ggwave_loopback},
     {"ggwave-robust", test_ggwave_robust},
     {"ggwave-stream", test_ggwave_stream},
+    {"dtmf-config", test_dtmf_config},
+    {"dtmf-loopback", test_dtmf_loopback},
+    {"dtmf-robust", test_dtmf_robust},
+    {"dtmf-stream", test_dtmf_stream},
+    {"olivia-config", test_olivia_config},
+    {"olivia-loopback", test_olivia_loopback},
+    {"olivia-robust", test_olivia_robust},
+    {"olivia-stream", test_olivia_stream},
+    {"css-config", test_css_config},
+    {"css-loopback", test_css_loopback},
+    {"css-robust", test_css_robust},
+    {"css-stream", test_css_stream},
     {"rx-one", test_rx_one},
 };
 

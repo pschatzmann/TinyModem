@@ -1,6 +1,7 @@
 #pragma once
 
 #include "AX25.h"
+#include "AX25FEC.h"
 #include "AudioTools.h"
 #include "ModemBase.h"
 
@@ -16,6 +17,11 @@ namespace tinymodem {
  * consists of KISS frames. A frame is sent as soon as it is complete: the
  * first frame of a transmission is preceded by tx_delay_ms of flags. Call
  * endTransmission() (or flush()) to send the tail flags.
+ *
+ * AX25Config::layer2 selects FX.25 (the HDLC frame is sent as data of a
+ * Reed-Solomon code word with a correlation tag) or IL2P (preamble 0x55, sync
+ * word, scrambled header and payload with Reed-Solomon parity, without NRZI)
+ * instead of standard AX.25.
  * @copyright GPLv3
  */
 class AX25Encoder : public ModemEncoder {
@@ -89,12 +95,9 @@ class AX25Encoder : public ModemEncoder {
   /// Sends a frame (without FCS)
   bool writeFrame(const uint8_t* frame, size_t len) {
     if (!is_active || len < (size_t)AX25Frame::MIN_FRAME) return false;
-    if (!transmitting) {
-      transmitting = true;
-      bit_index = 0;
-      nrzi_tone = true;
-      sendFlags(cfg.tx_delay_ms);
-    }
+    if (cfg.layer2 == AX25Layer2::FX25) return writeFX25(frame, len);
+    if (cfg.layer2 == AX25Layer2::IL2P) return writeIL2P(frame, len);
+    startTransmission();
     sendFlag();
     ones = 0;
     for (size_t j = 0; j < len; j++) sendByte(frame[j]);
@@ -110,7 +113,7 @@ class AX25Encoder : public ModemEncoder {
   /// transmission was ended.
   bool endTransmission(size_t silence_samples = 0) override {
     if (!is_active || !transmitting) return false;
-    sendFlags(cfg.tx_tail_ms);
+    sendPreamble(cfg.tx_tail_ms);
     if (silence_samples) tones.tone(0, silence_samples);
     transmitting = false;
     return true;
@@ -124,8 +127,13 @@ class AX25Encoder : public ModemEncoder {
       bit_index = 0;
       nrzi_tone = true;
     }
-    size_t flags = nsamples / (samples_per_bit * 8) + 1;
-    for (size_t j = 0; j < flags; j++) sendFlag();
+    size_t n = nsamples / (samples_per_bit * 8) + 1;
+    for (size_t j = 0; j < n; j++) {
+      if (cfg.layer2 == AX25Layer2::IL2P)
+        sendRawByte(IL2P::PREAMBLE);
+      else
+        sendFlag();
+    }
     return true;
   }
 
@@ -211,10 +219,73 @@ class AX25Encoder : public ModemEncoder {
     if (input_len < AX25Frame::MAX_FRAME) input[input_len++] = ch;
   }
 
-  void sendFlags(int ms) {
+  void startTransmission() {
+    if (transmitting) return;
+    transmitting = true;
+    bit_index = 0;
+    nrzi_tone = true;
+    sendPreamble(cfg.tx_delay_ms);
+  }
+
+  /// Flags (IL2P: 0x55) for the indicated time
+  void sendPreamble(int ms) {
     int n = ms * cfg.baud_rate / 8000;
     if (n < 1) n = 1;
-    for (int j = 0; j < n; j++) sendFlag();
+    for (int j = 0; j < n; j++) {
+      if (cfg.layer2 == AX25Layer2::IL2P)
+        sendRawByte(IL2P::PREAMBLE);
+      else
+        sendFlag();
+    }
+  }
+
+  /// FX.25: correlation tag and Reed-Solomon code word (NRZI, no stuffing)
+  bool writeFX25(const uint8_t* frame, size_t len) {
+    uint8_t block[FX25::BLOCK_SIZE];
+    int block_len = 0;
+    int tag = FX25::encode(frame, len, cfg.fx25_check_bytes, block, block_len);
+    if (tag == 0) {
+      LOGW("AX25Encoder: frame is too long for FX.25");
+      return false;
+    }
+    startTransmission();
+    uint64_t value = FX25::tag(tag).value;
+    for (int k = 0; k < 8; k++) sendBits((value >> (8 * k)) & 0xFF);
+    for (int j = 0; j < block_len; j++) sendBits(block[j]);
+    sendFlag();
+    frames++;
+    return true;
+  }
+
+  /// IL2P: preamble, sync word and the encoded frame (no NRZI)
+  bool writeIL2P(const uint8_t* frame, size_t len) {
+    // a frame of up to MAX_FRAME bytes needs at most 2 payload blocks
+    uint8_t encoded[IL2P::HEADER_SIZE + IL2P::HEADER_PARITY +
+                    AX25Frame::MAX_FRAME + 2 * 16];
+    int n = IL2P::encode(frame, len, cfg.il2p_max_fec, encoded);
+    if (n > 0) {
+      startTransmission();
+      sendRawByte(IL2P::PREAMBLE);
+      for (int k = 2; k >= 0; k--) sendRawByte((IL2P::SYNC_WORD >> (8 * k)) & 0xFF);
+      for (int j = 0; j < n; j++) sendRawByte(encoded[j]);
+      frames++;
+    } else {
+      LOGW("AX25Encoder: frame can't be encoded with IL2P");
+    }
+    return n > 0;
+  }
+
+  /// least significant bit first without bit stuffing (NRZI)
+  void sendBits(uint8_t value) {
+    for (int b = 0; b < 8; b++) sendBit((value >> b) & 1);
+  }
+
+  /// most significant bit first without NRZI: 1 = mark
+  void sendRawByte(uint8_t value) {
+    for (int b = 7; b >= 0; b--) {
+      nrzi_tone = (value >> b) & 1;
+      sendTone();
+    }
   }
 
   /// 0x7E without bit stuffing
@@ -241,6 +312,11 @@ class AX25Encoder : public ModemEncoder {
   /// NRZI: a 0 changes the tone, a 1 keeps it
   void sendBit(int bit) {
     if (bit == 0) nrzi_tone = !nrzi_tone;
+    sendTone();
+  }
+
+  /// sends the current tone for one bit
+  void sendTone() {
     size_t start = llround(bit_index * samples_per_bit);
     size_t stop = llround((bit_index + 1) * samples_per_bit);
     bit_index++;
