@@ -244,5 +244,13 @@ case "$TEST" in
     ofdm64)               self_test testdata-ascii.txt ofdm64 -R 22050 ;;
     ofdm-noise)           self_test testdata-ascii.txt ofdm32 -R 8000 -- ofdm32 --Xrxnoise 0.1 ;;
     packets-ofdm)         self_test testdata-ascii.txt --packets -R 8000 ofdm32 -- --packets --Xrxnoise 0.12 ofdm32 ;;
+    ggwave-fast)          self_test testdata-ascii.txt ggwave-fast ;;
+    ggwave-fastest)       self_test testdata-multibyte.txt ggwave-fastest -R 24000 ;;
+    ggwave-u-normal)      self_test testdata-multibyte.txt ggwave-u-normal ;;
+    ggwave-dt-fast)       self_test testdata-multibyte.txt ggwave-dt-fast -R 24000 ;;
+    ggwave-auto-speed)    self_test testdata-multibyte.txt ggwave-fastest -- ggwave-normal ;;
+    ggwave-noise)         self_test testdata-ascii.txt ggwave-fast -- ggwave-fast --Xrxnoise 0.5 ;;
+    ggwave-44100hz)       ! "$TX" --tx --file "$TMPD/test.wav" -R 44100 ggwave < /dev/null 2> /dev/null ;;
+    packets-ggwave)       self_test testdata-ascii.txt --packets ggwave-fast -- --packets --Xrxnoise 0.5 ggwave-fast ;;
     *) echo "unknown test: $TEST" 1>&2; exit 2 ;;
 esac

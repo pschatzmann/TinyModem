@@ -3,7 +3,7 @@
  * @file TinyModem.h
  * @brief Header only software audio modem library based on the
  * arduino-audio-tools: FSK (compatible with minimodem), multi-tone FSK, PSK,
- * OFDM, AX.25/APRS and packets with error correction. Include
+ * OFDM, AX.25/APRS, ggwave and packets with error correction. Include
  * "AudioTools.h" before this file.
  */
 #include "AudioTools.h"
@@ -14,6 +14,9 @@
 #include "modem/FSKDecoder.h"
 #include "modem/FSKDemodulator.h"
 #include "modem/FSKEncoder.h"
+#include "modem/GGWave.h"
+#include "modem/GGWaveDecoder.h"
+#include "modem/GGWaveEncoder.h"
 #include "modem/MFSKConfig.h"
 #include "modem/OFDM.h"
 #include "modem/OFDMDecoder.h"

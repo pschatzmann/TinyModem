@@ -17,8 +17,9 @@ TinyModem runs on microcontrollers (ESP32, RP2040) and on the desktop, where the
 | [PSK](https://github.com/pschatzmann/TinyModem/wiki/PSK) | phase of 1 carrier | `psk31` … `psk500` | 4 – 68 bytes/s of text | Narrow band, very weak signals, amateur radio | PSK31 (fldigi), untested |
 | [OFDM](https://github.com/pschatzmann/TinyModem/wiki/OFDM) | phase of 16 to 64 carriers | `ofdm16`, `ofdm32`, `ofdm64` | 400 bytes/s | Fast transfers over a cable or a good audio path | – |
 | [AX.25](https://github.com/pschatzmann/TinyModem/wiki/AX25) | 2 tones (AFSK), HDLC frames | `aprs`, `ax25` | 1200 bit/s | APRS and packet radio | direwolf, multimon-ng |
+| [ggwave](https://github.com/pschatzmann/TinyModem/wiki/ggwave) | 2 – 6 of 96 tones at once, messages of up to 140 bytes with Reed-Solomon | `ggwave-normal`, `ggwave-fast`, `ggwave-fastest`, `ggwave-u-*` (ultrasound), `ggwave-dt-*` (dual tone) | 5 – 47 bytes/s | Exchanging short messages with phones and browsers | [ggwave](https://github.com/ggerganov/ggwave), Waver |
 
-All modem types transmit an audio signal made of tones, not a digital line signal like a UART. Most modes use tones between about 1000 and 3000 Hz, which pass a telephone line, a radio and most speakers and microphones. Only FSK with high baud rates needs higher frequencies. Even AX.25, which sends digital frames, transmits the bits with two audio tones.
+All modem types transmit an audio signal made of tones, not a digital line signal like a UART. Most modes use tones between about 1000 and 3000 Hz, which pass a telephone line, a radio and most speakers and microphones. Only FSK with high baud rates and ggwave (1875 – 6375 Hz, ultrasound 15 – 19.5 kHz) need higher frequencies. Even AX.25, which sends digital frames, transmits the bits with two audio tones.
 
 [Packets](https://github.com/pschatzmann/TinyModem/wiki/Packets) add a CRC and Reed-Solomon error correction to any modem type, and also work over a plain `Serial`. The [modem overview](https://github.com/pschatzmann/TinyModem/wiki/Modem-Types) describes the advantages and disadvantages of each modem type and helps you choose.
 
@@ -43,7 +44,7 @@ To build the `tinymodem` command line tool and the tests on the desktop, you nee
 #include "TinyModem.h"
 
 I2SStream i2s;
-MFSKStream modem(i2s, RXTX_MODE);  // or ModemStream, PSKStream, OFDMStream, AX25Stream
+MFSKStream modem(i2s, RXTX_MODE);  // or ModemStream, PSKStream, OFDMStream, AX25Stream, GGWaveStream
 
 void setup() {
   Serial.begin(115200);
@@ -84,7 +85,8 @@ The documentation is in the [Wiki](https://github.com/pschatzmann/TinyModem/wiki
   - [MFSK](https://github.com/pschatzmann/TinyModem/wiki/MFSK), 
   - [PSK](https://github.com/pschatzmann/TinyModem/wiki/PSK), 
   - [OFDM](https://github.com/pschatzmann/TinyModem/wiki/OFDM), 
-  - [AX.25/APRS](https://github.com/pschatzmann/TinyModem/wiki/AX25)
+  - [AX.25/APRS](https://github.com/pschatzmann/TinyModem/wiki/AX25),
+  - [ggwave](https://github.com/pschatzmann/TinyModem/wiki/ggwave)
 - [Packets with error correction](https://github.com/pschatzmann/TinyModem/wiki/Packets)
 - [Arduino API](https://github.com/pschatzmann/TinyModem/wiki/Arduino)
 - [Class documentation](https://pschatzmann.github.io/TinyModem/annotated.html) (Doxygen)
@@ -95,4 +97,4 @@ The documentation is in the [Wiki](https://github.com/pschatzmann/TinyModem/wiki
 
 ## License
 
-GPLv3 or later. The FSK modem is a rewrite of [minimodem](https://github.com/kamalmostafa/minimodem) by Kamal Mostafa. See [COPYING](COPYING).
+GPLv3 or later. The FSK modem is a rewrite of [minimodem](https://github.com/kamalmostafa/minimodem) by Kamal Mostafa. The ggwave modem implements the protocol of [ggwave](https://github.com/ggerganov/ggwave) by Georgi Gerganov. See [COPYING](COPYING).

@@ -1766,6 +1766,241 @@ static void test_ofdm_stream() {
   CHECK_EQ(result, std::string("Hello OFDM"));
 }
 
+static std::vector<int16_t> ggwaveModulate(GGWaveConfig cfg,
+                                           const std::string& text,
+                                           int parts = 1) {
+  SamplePrint audio;
+  GGWaveEncoder encoder(audio);
+  CHECK(encoder.begin(cfg));
+  size_t chunk = text.size() / parts;
+  for (int p = 0; p < parts; p++) {
+    size_t len = p == parts - 1 ? text.size() - p * chunk : chunk;
+    encoder.write((const uint8_t*)text.data() + p * chunk, len);
+    encoder.endTransmission(cfg.sample_rate / 10);
+  }
+  encoder.end();
+  return audio.samples();
+}
+
+static std::string ggwaveDemodulate(GGWaveConfig cfg,
+                                    const std::vector<int16_t>& samples,
+                                    std::string* status = nullptr,
+                                    size_t chunk = 4096) {
+  StringPrint out, status_out;
+  GGWaveDecoder decoder(out);
+  decoder.setStatusOutput(status_out);
+  CHECK(decoder.begin(cfg));
+  const uint8_t* data = (const uint8_t*)samples.data();
+  size_t len = samples.size() * 2;
+  for (size_t pos = 0; pos < len; pos += chunk)
+    decoder.write(data + pos, len - pos < chunk ? len - pos : chunk);
+  decoder.end();
+  if (status) *status = status_out.str;
+  return out.str;
+}
+
+static GGWaveConfig ggwaveConfig(const char* mode, int sample_rate = 48000) {
+  GGWaveConfig cfg;
+  CHECK(cfg.setMode(mode));
+  cfg.sample_rate = sample_rate;
+  return cfg;
+}
+
+static void test_ggwave_config() {
+  GGWaveConfig cfg = ggwaveConfig("ggwave");
+  CHECK_EQ(cfg.protocol, GGWAVE_AUDIBLE_FAST);  // default of the ggwave tools
+  CHECK_EQ(cfg.frameSize(), 1024);
+  CHECK_NEAR(cfg.binFrequency(40), 1875.0, 0.01);
+  CHECK(cfg.isValid());
+  CHECK(cfg.setMode("GGWAVE-DT-Fastest"));
+  CHECK_EQ(cfg.protocol, GGWAVE_DT_FASTEST);
+  CHECK(!cfg.setMode("ggwave-mt-normal"));  // mono-tone: not supported
+  CHECK(GGWaveConfig::isMode("ggwave-u-fast") && !GGWaveConfig::isMode("ofdm32"));
+  // the protocol ids are those of ggwave
+  for (int id = 0; id < GGWaveConfig::protocolCount(); id++)
+    CHECK_EQ((int)GGWaveConfig::protocols()[id].id, id);
+  // parity bytes like ggwave's getECCBytesForLength()
+  CHECK_EQ(GGWaveConfig::eccBytes(1), 2);
+  CHECK_EQ(GGWaveConfig::eccBytes(4), 4);
+  CHECK_EQ(GGWaveConfig::eccBytes(25), 10);
+  CHECK_EQ(GGWaveConfig::eccBytes(140), 56);
+  // "Hello": 3 + 5 + 4 = 12 bytes = 4 symbols of 6 frames + 2 markers
+  cfg = ggwaveConfig("ggwave-fast");
+  CHECK_EQ(cfg.dataSymbols(5), 4);
+  CHECK_EQ(cfg.messageSamples(5), (size_t)(32 + 4 * 6) * 1024);
+  CHECK_EQ(ggwaveConfig("ggwave-fast", 24000).frameSize(), 512);
+  CHECK(!ggwaveConfig("ggwave-fast", 44100).isValid());
+  CHECK(!ggwaveConfig("ggwave-u-fast", 24000).isValid());  // above nyquist
+  CHECK(ggwaveConfig("ggwave-dt-fast", 12000).isValid());
+}
+
+static void test_ggwave_rs() {
+  // the length byte: generator (x + 1)(x + 2) = x^2 + 3x + 2, so the parity
+  // of L is L * 3, L * 2 in GF(256)
+  uint8_t len = 5, encoded[3];
+  GGWaveRS::encode(&len, 1, 2, encoded);
+  CHECK_EQ((int)encoded[0], 5);
+  CHECK_EQ((int)encoded[1], 15);
+  CHECK_EQ((int)encoded[2], 10);
+  uint32_t seed = 1;
+  auto rnd = [&]() {
+    seed = seed * 1103515245u + 12345u;
+    return seed >> 8;
+  };
+  for (int trial = 0; trial < 500; trial++) {
+    int n = 1 + rnd() % GGWaveConfig::MAX_PAYLOAD;
+    int ecc = GGWaveConfig::eccBytes(n);
+    uint8_t msg[256], data[256];
+    for (int i = 0; i < n; i++) msg[i] = rnd();
+    GGWaveRS::encode(msg, n, ecc, data);
+    CHECK(memcmp(msg, data, n) == 0);
+    // up to ecc / 2 errors are corrected
+    int errors = rnd() % (ecc / 2 + 1);
+    for (int e = 0; e < errors; e++) data[rnd() % (n + ecc)] ^= 1 + rnd() % 255;
+    CHECK(GGWaveRS::decode(data, n, ecc));
+    CHECK(memcmp(msg, data, n) == 0);
+  }
+  // too many errors are detected
+  uint8_t msg[20] = "too many errors!!!!", data[40];
+  GGWaveRS::encode(msg, 20, 8, data);
+  for (int i = 0; i < 9; i++) data[i * 3] ^= 0x55;
+  CHECK(!GGWaveRS::decode(data, 20, 8));
+}
+
+static void test_ggwave_signal() {
+  // the samples in the middle of the start marker (full amplitude) are the
+  // sum of 16 sines like in ggwave: tone i has the frequency bin
+  // freq_start + 2i + i % 2 and the phase offset pi * i / (8 * bytes_per_tx)
+  GGWaveConfig cfg = ggwaveConfig("ggwave-fast");
+  std::vector<int16_t> samples = ggwaveModulate(cfg, "Hello");
+  CHECK_EQ(samples.size(), cfg.messageSamples(5) + cfg.sample_rate / 10);
+  const int n = 1024, frame = 8;
+  double max_error = 0;
+  for (int i = 0; i < n; i++) {
+    double value = 0;
+    for (int t = 0; t < 16; t++) {
+      double phase = M_PI * t / 24;
+      value += sin(2 * M_PI * i * (40 + 2 * t + t % 2) / n + phase);
+    }
+    value = value / 16 * 32767;
+    double error = fabs(value - samples[frame * n + i]);
+    if (error > max_error) max_error = error;
+  }
+  CHECK(max_error <= 2.0);
+  // the envelope rises during the first 15% of the marker
+  CHECK_EQ(samples[0], 0);
+  double rms_start = 0, rms_mid = 0;
+  for (int i = 0; i < n; i++) {
+    rms_start += (double)samples[i] * samples[i];
+    rms_mid += (double)samples[frame * n + i] * samples[frame * n + i];
+  }
+  CHECK(rms_start < rms_mid / 10);
+}
+
+static void test_ggwave_loopback() {
+  std::string binary, big;
+  for (int j = 0; j < GGWaveConfig::MAX_PAYLOAD; j++) binary += (char)(j * 7);
+  for (int j = 0; j < 6; j++) big += TEXT;  // more than 2 messages
+  for (int id = 0; id < GGWaveConfig::protocolCount(); id++) {
+    const char* mode = GGWaveConfig::protocols()[id].mode;
+    for (int rate : {24000, 48000}) {
+      GGWaveConfig cfg = ggwaveConfig(mode, rate);
+      if (!cfg.isValid()) continue;  // ultrasound at 24 kHz
+      std::string status;
+      std::string result = ggwaveDemodulate(cfg, ggwaveModulate(cfg, TEXT), &status);
+      if (result != TEXT) fprintf(stderr, "%s %d failed\n", mode, rate);
+      CHECK_EQ(result, std::string(TEXT));
+      CHECK(status.find(std::string("ndata=55 ") + mode) != std::string::npos);
+    }
+    GGWaveConfig cfg = ggwaveConfig(mode);
+    CHECK_EQ(ggwaveDemodulate(cfg, ggwaveModulate(cfg, binary)), binary);
+    std::string status;
+    CHECK_EQ(ggwaveDemodulate(cfg, ggwaveModulate(cfg, big), &status), big);
+    CHECK_EQ(countOf(status, "### NOCARRIER ndata="), 3);  // 140 + 140 + 50
+  }
+  // the receiver detects the speed of the protocol
+  GGWaveConfig rx = ggwaveConfig("ggwave-normal");
+  CHECK_EQ(ggwaveDemodulate(rx, ggwaveModulate(ggwaveConfig("ggwave-fastest"), TEXT)),
+           std::string(TEXT));
+  rx.rx_any_speed = false;
+  CHECK_EQ(ggwaveDemodulate(rx, ggwaveModulate(ggwaveConfig("ggwave-fastest"), TEXT)),
+           std::string(""));
+  // the other bands are not received
+  CHECK_EQ(ggwaveDemodulate(ggwaveConfig("ggwave-dt-fast"),
+                            ggwaveModulate(ggwaveConfig("ggwave-fast"), TEXT)),
+           std::string(""));
+  // DSS
+  GGWaveConfig dss = ggwaveConfig("ggwave-fast");
+  dss.dss = true;
+  CHECK_EQ(ggwaveDemodulate(dss, ggwaveModulate(dss, TEXT)), std::string(TEXT));
+  CHECK(ggwaveDemodulate(ggwaveConfig("ggwave-fast"), ggwaveModulate(dss, TEXT)) != TEXT);
+}
+
+static void test_ggwave_robust() {
+  for (const char* mode : {"ggwave-normal", "ggwave-fastest", "ggwave-u-fast",
+                           "ggwave-dt-fastest"}) {
+    // noise
+    GGWaveConfig rx = ggwaveConfig(mode);
+    rx.rx_noise = 0.5f;
+    CHECK_EQ(ggwaveDemodulate(rx, ggwaveModulate(ggwaveConfig(mode), TEXT)),
+             std::string(TEXT));
+    // different clocks
+    for (float error : {-0.001f, 0.001f}) {
+      GGWaveConfig tx = ggwaveConfig(mode);
+      std::vector<int16_t> s = ggwaveModulate(tx, TEXT), resampled;
+      for (double pos = 0; pos + 1 < s.size(); pos += 1.0 + error) {
+        size_t i = (size_t)pos;
+        double frac = pos - i;
+        resampled.push_back(s[i] * (1 - frac) + s[i + 1] * frac);
+      }
+      CHECK_EQ(ggwaveDemodulate(ggwaveConfig(mode), resampled), std::string(TEXT));
+    }
+    // any start position, after a steady tone
+    GGWaveConfig cfg = ggwaveConfig(mode);
+    for (int offset : {1, 100, 255, 777}) {
+      std::vector<int16_t> s;
+      for (int i = 0; i < 48000 / 2; i++)
+        s.push_back(8000 * sin(2 * M_PI * 3000 * i / 48000));
+      s.resize(s.size() + offset);
+      std::vector<int16_t> msg = ggwaveModulate(cfg, TEXT);
+      s.insert(s.end(), msg.begin(), msg.end());
+      CHECK_EQ(ggwaveDemodulate(cfg, s), std::string(TEXT));
+    }
+  }
+  // volume, chunk sizes and many messages
+  GGWaveConfig cfg = ggwaveConfig("ggwave-fastest");
+  cfg.volume = 0.02f;
+  CHECK_EQ(ggwaveDemodulate(cfg, ggwaveModulate(cfg, TEXT)), std::string(TEXT));
+  cfg.volume = 1.0f;
+  std::vector<int16_t> samples = ggwaveModulate(cfg, TEXT, 5);
+  for (size_t chunk : {1, 7, 1000}) {
+    std::string status;
+    CHECK_EQ(ggwaveDemodulate(cfg, samples, &status, chunk), std::string(TEXT));
+    CHECK_EQ(countOf(status, "### NOCARRIER ndata="), 5);
+  }
+  // pure noise does not produce data
+  GGWaveConfig noise = ggwaveConfig("ggwave-fast");
+  noise.rx_noise = 0.5f;
+  std::string status;
+  CHECK_EQ(ggwaveDemodulate(noise, std::vector<int16_t>(48000 * 20), &status),
+           std::string(""));
+  CHECK_EQ(countOf(status, "### CARRIER"), 0);
+}
+
+static void test_ggwave_stream() {
+  SyncLoopbackStream audio;
+  GGWaveStream modem(audio, RXTX_MODE);
+  GGWaveConfig cfg = modem.defaultConfig();
+  CHECK(modem.begin(cfg));
+  modem.print("Hello ggwave");
+  modem.flush();
+  modem.getEncoder().writeSilence(cfg.sample_rate / 4);
+  std::string result;
+  while (audio.available() > 0 || modem.available() > 0)
+    while (modem.available() > 0) result += (char)modem.read();
+  CHECK_EQ(result, std::string("Hello ggwave"));
+}
+
 /// With rx_one the decoding stops after the first transmission and stays
 /// stopped after flush() until begin() is called again
 template <class Encoder, class Decoder, class Config>
@@ -1803,6 +2038,7 @@ static void test_rx_one() {
   psk.sample_rate = 8000;
   check_rx_one<PSKEncoder, PSKDecoder>(psk);
   check_rx_one<OFDMEncoder, OFDMDecoder>(ofdmConfig("ofdm32"));
+  check_rx_one<GGWaveEncoder, GGWaveDecoder>(ggwaveConfig("ggwave-fastest"));
 }
 
 static void test_audiotools_pipeline() {
@@ -1890,6 +2126,12 @@ static TestCase tests[] = {
     {"ofdm-loopback", test_ofdm_loopback},
     {"ofdm-robust", test_ofdm_robust},
     {"ofdm-stream", test_ofdm_stream},
+    {"ggwave-config", test_ggwave_config},
+    {"ggwave-rs", test_ggwave_rs},
+    {"ggwave-signal", test_ggwave_signal},
+    {"ggwave-loopback", test_ggwave_loopback},
+    {"ggwave-robust", test_ggwave_robust},
+    {"ggwave-stream", test_ggwave_stream},
     {"rx-one", test_rx_one},
 };
 

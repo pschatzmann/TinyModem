@@ -157,7 +157,8 @@ static void usage() {
           "     mfsk{4,8,16,32,64}       Multi-tone FSK 1000-187 bps\n"
           "		aprs, ax25     AX.25 packet radio 1200 bps\n"
           "     psk{31,63,125,250,500}   BPSK with Varicode 31.25-500 bps\n"
-          "     ofdm{16,32,64}           OFDM with DQPSK 3200 bps\n");
+          "     ofdm{16,32,64}           OFDM with DQPSK 3200 bps\n"
+          "     ggwave[-u,-dt]-{normal,fast,fastest}  ggwave compatible\n");
   exit(1);
 }
 
@@ -518,11 +519,27 @@ int main(int argc, char* argv[]) {
   bool ax25 = AX25Config::isMode(modem_mode);
   bool psk = PSKConfig::isMode(modem_mode);
   bool ofdm = OFDMConfig::isMode(modem_mode);
+  bool ggwave = GGWaveConfig::isMode(modem_mode);
   MFSKConfig mfsk_cfg;
   AX25Config ax25_cfg;
   PSKConfig psk_cfg;
   OFDMConfig ofdm_cfg;
-  if (ofdm) {
+  GGWaveConfig ggwave_cfg;
+  if (ggwave) {
+    ggwave_cfg.setMode(modem_mode);
+    ggwave_cfg.sample_rate = cfg.sample_rate;
+    ggwave_cfg.volume = cfg.volume;
+    ggwave_cfg.rx_one = cfg.rx_one;
+    ggwave_cfg.rx_noise = cfg.rx_noise;
+    if (tx_carrier) {
+      fprintf(stderr, "E: --tx-carrier is not supported by %s.\n", modem_mode);
+      return 1;
+    }
+    if (!ggwave_cfg.isValid()) {
+      fprintf(stderr, "E: invalid %s configuration\n", modem_mode);
+      return 1;
+    }
+  } else if (ofdm) {
     ofdm_cfg.setMode(modem_mode);
     ofdm_cfg.sample_rate = cfg.sample_rate;
     ofdm_cfg.volume = cfg.volume;
@@ -600,6 +617,7 @@ int main(int argc, char* argv[]) {
                          : ax25 ? (AudioInfo)ax25_cfg
                          : psk  ? (AudioInfo)psk_cfg
                          : ofdm ? (AudioInfo)ofdm_cfg
+                         : ggwave ? (AudioInfo)ggwave_cfg
                                 : (AudioInfo)cfg;
   if (filename == nullptr) use_audio_device = true;
 
@@ -621,16 +639,19 @@ int main(int argc, char* argv[]) {
     AX25Encoder ax25_encoder;
     PSKEncoder psk_encoder;
     OFDMEncoder ofdm_encoder;
-    ModemEncoder& encoder = mfsk   ? (ModemEncoder&)mfsk_encoder
-                            : ax25 ? (ModemEncoder&)ax25_encoder
-                            : psk  ? (ModemEncoder&)psk_encoder
-                            : ofdm ? (ModemEncoder&)ofdm_encoder
-                                   : (ModemEncoder&)fsk_encoder;
+    GGWaveEncoder ggwave_encoder;
+    ModemEncoder& encoder = mfsk     ? (ModemEncoder&)mfsk_encoder
+                            : ax25   ? (ModemEncoder&)ax25_encoder
+                            : psk    ? (ModemEncoder&)psk_encoder
+                            : ofdm   ? (ModemEncoder&)ofdm_encoder
+                            : ggwave ? (ModemEncoder&)ggwave_encoder
+                                     : (ModemEncoder&)fsk_encoder;
     auto beginEncoder = [&]() {
       bool ok = mfsk   ? mfsk_encoder.begin(mfsk_cfg)
                 : ax25 ? ax25_encoder.begin(ax25_cfg)
                 : psk  ? psk_encoder.begin(psk_cfg)
                 : ofdm ? ofdm_encoder.begin(ofdm_cfg)
+                : ggwave ? ggwave_encoder.begin(ggwave_cfg)
                        : fsk_encoder.begin(cfg);
       if (!ok) fprintf(stderr, "E: invalid configuration\n");
       return ok;
@@ -687,11 +708,13 @@ int main(int argc, char* argv[]) {
   AX25Decoder ax25_decoder;
   PSKDecoder psk_decoder;
   OFDMDecoder ofdm_decoder;
-  ModemDecoder& decoder = mfsk   ? (ModemDecoder&)mfsk_decoder
-                          : ax25 ? (ModemDecoder&)ax25_decoder
-                          : psk  ? (ModemDecoder&)psk_decoder
-                          : ofdm ? (ModemDecoder&)ofdm_decoder
-                                 : (ModemDecoder&)fsk_decoder;
+  GGWaveDecoder ggwave_decoder;
+  ModemDecoder& decoder = mfsk     ? (ModemDecoder&)mfsk_decoder
+                          : ax25   ? (ModemDecoder&)ax25_decoder
+                          : psk    ? (ModemDecoder&)psk_decoder
+                          : ofdm   ? (ModemDecoder&)ofdm_decoder
+                          : ggwave ? (ModemDecoder&)ggwave_decoder
+                                   : (ModemDecoder&)fsk_decoder;
   // the decoded data is written to stdout or to the packet decoder
   CliPacketDecoder packets(out_stdout);
   decoder.setOutput(use_packets ? (Print&)packets : (Print&)out_stdout);
@@ -702,6 +725,7 @@ int main(int argc, char* argv[]) {
               : ax25 ? ax25_decoder.begin(ax25_cfg)
               : psk  ? psk_decoder.begin(psk_cfg)
               : ofdm ? ofdm_decoder.begin(ofdm_cfg)
+              : ggwave ? ggwave_decoder.begin(ggwave_cfg)
                      : fsk_decoder.begin(cfg);
     if (!ok) fprintf(stderr, "E: invalid configuration\n");
     return ok;

@@ -34,6 +34,8 @@ jobs:
             sketches: |
               - examples/aprs-beacon
               - examples/benchmark
+              - examples/ggwave-loopback
+              - examples/ggwave-send-i2s
               - examples/loopback
               - examples/mfsk-loopback
               - examples/modem-stream

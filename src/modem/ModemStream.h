@@ -7,6 +7,8 @@
 #include "AX25Encoder.h"
 #include "FSKDecoder.h"
 #include "FSKEncoder.h"
+#include "GGWaveDecoder.h"
+#include "GGWaveEncoder.h"
 #include "MFSKDecoder.h"
 #include "MFSKEncoder.h"
 #include "PSKDecoder.h"
@@ -204,6 +206,18 @@ class PSKStream : public BasicModemStream<PSKEncoder, PSKDecoder, PSKConfig> {
  * @copyright GPLv3
  */
 class OFDMStream : public BasicModemStream<OFDMEncoder, OFDMDecoder, OFDMConfig> {
+ public:
+  using BasicModemStream::BasicModemStream;
+};
+
+/**
+ * @brief Arduino Stream API for the ggwave compatible modem: print() collects
+ * the data (up to 140 bytes), flush() sends it as message, read() receives.
+ * See BasicModemStream.
+ * @copyright GPLv3
+ */
+class GGWaveStream
+    : public BasicModemStream<GGWaveEncoder, GGWaveDecoder, GGWaveConfig> {
  public:
   using BasicModemStream::BasicModemStream;
 };
