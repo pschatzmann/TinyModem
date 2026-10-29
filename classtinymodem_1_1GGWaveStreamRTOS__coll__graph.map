@@ -1,0 +1,51 @@
+<map id="tinymodem::GGWaveStreamRTOS" name="tinymodem::GGWaveStreamRTOS">
+<area shape="rect" id="Node000001" title="GGWaveStream which receives in a separate task. See BasicModemStreamRTOS." alt="" coords="2766,505,3008,533"/>
+<area shape="rect" id="Node000002" href="$classtinymodem_1_1BasicModemStreamRTOS.html" title=" " alt="" coords="2482,497,2717,542"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2732,517,2769,519,2763,519,2733,522"/>
+<area shape="rect" id="Node000003" href="$classtinymodem_1_1GGWaveStream.html" title="Arduino Stream API for the ggwave compatible modem: print() collects the data (up to 140 bytes),..." alt="" coords="2225,453,2432,481"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="2420,482,2484,497,2478,496,2419,487"/>
+<area shape="rect" id="Node000004" href="$classtinymodem_1_1BasicModemStream.html" title=" " alt="" coords="1814,407,2080,469"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="2095,447,2227,459,2222,459,2095,452"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="1389,260,1457,288"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1472,271,1538,273,1618,281,1706,297,1791,323,1826,340,1859,361,1915,407,1910,406,1856,366,1823,345,1789,328,1704,302,1617,286,1537,279,1473,276"/>
+<area shape="rect" id="Node000006" href="$classtinymodem_1_1GGWaveEncoder.html" title="ggwave compatible modulator: the written bytes are collected into messages of up to 140 bytes...." alt="" coords="1317,312,1529,340"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="1507,341,1816,409,1810,409,1506,346"/>
+<area shape="rect" id="Node000007" href="$classtinymodem_1_1ModemEncoder.html" title="Common API of the modulators (FSKEncoder, MFSKEncoder): the written data is converted to 16 bit PCM a..." alt="" coords="971,43,1176,70"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1161,38,1196,38,1231,43,1265,54,1294,75,1304,94,1309,121,1308,187,1306,253,1310,279,1318,298,1333,312,1328,311,1314,301,1304,281,1301,254,1302,187,1303,121,1299,95,1290,78,1262,59,1230,48,1196,43,1162,43"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="680,5,874,33"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="888,29,943,35,976,41,971,43,942,40,889,34"/>
+<area shape="rect" id="Node000009" href="$classtinymodem_1_1ToneOutput.html" title="Writes tones of a SoundGenerator as 16 bit PCM with the requested number of channels and volume to a ..." alt="" coords="688,57,866,85"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="881,63,973,61,967,62,882,69"/>
+<area shape="rect" id="Node000010" href="$classtinymodem_1_1FSKToneGenerator.html" title=" " alt="" coords="285,49,507,94"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="522,69,690,70,685,72,524,74"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="5,49,236,94"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="250,69,287,70,282,73,253,73"/>
+<area shape="rect" id="Node000012" href="$structtinymodem_1_1GGWaveConfig.html" title="Configuration of the ggwave compatible modem (GGWaveEncoder, GGWaveDecoder). Each message (up to 140 ..." alt="" coords="973,133,1174,161"/>
+<area shape="poly" id="edge11_Node000006_Node000012" title=" " alt="" coords="1118,125,1159,112,1206,104,1252,108,1274,116,1294,129,1310,149,1315,170,1314,192,1309,213,1302,256,1305,277,1318,297,1334,312,1329,311,1314,301,1300,279,1296,256,1304,212,1309,191,1310,171,1305,151,1290,133,1272,121,1251,113,1206,110,1161,117,1120,130"/>
+<area shape="rect" id="Node000017" href="$classtinymodem_1_1GGWaveDecoder.html" title="ggwave compatible demodulator: the PCM audio data is written to the decoder and the payload of the re..." alt="" coords="1316,424,1530,452"/>
+<area shape="poly" id="edge19_Node000017_Node000012" title=" " alt="" coords="1189,160,1257,173,1294,186,1308,207,1315,227,1312,266,1307,306,1309,327,1318,350,1335,372,1355,392,1397,424,1392,423,1351,396,1331,376,1314,352,1304,329,1301,306,1307,266,1309,228,1304,209,1290,191,1255,178,1190,166"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="694,133,860,161"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="875,145,975,146,969,148,876,150"/>
+<area shape="rect" id="Node000014" href="$structtinymodem_1_1GGWaveProtocol.html" title="Transmission protocol of ggwave (https://github.com/ggerganov/ggwave): the ids and parameters are ide..." alt="" coords="967,228,1180,256"/>
+<area shape="poly" id="edge13_Node000006_Node000014" title=" " alt="" coords="1140,222,1178,217,1217,217,1257,224,1294,241,1305,255,1307,270,1309,284,1318,297,1338,312,1333,311,1314,301,1304,286,1302,271,1300,257,1290,245,1255,229,1217,222,1178,222,1141,227"/>
+<area shape="poly" id="edge22_Node000017_Node000014" title=" " alt="" coords="1149,257,1242,281,1294,297,1304,310,1308,323,1311,336,1318,350,1359,391,1401,424,1396,423,1356,395,1314,353,1306,338,1303,324,1299,313,1290,301,1240,286,1149,263"/>
+<area shape="rect" id="Node000015" href="$classtinymodem_1_1SampleOutput.html" title="Writes float samples (&#45;1.0 to 1.0) as 16 bit PCM with the requested number of channels and volume to ..." alt="" coords="975,312,1172,340"/>
+<area shape="poly" id="edge14_Node000006_Node000015" title=" " alt="" coords="1187,323,1319,325,1314,326,1188,328"/>
+<area shape="rect" id="Node000016" href="$classtinymodem_1_1OFDMTable.html" title="Sine and cosine of 2 * PI * i / size." alt="" coords="984,389,1162,417"/>
+<area shape="poly" id="edge15_Node000006_Node000016" title=" " alt="" coords="1157,383,1291,354,1359,341,1364,340,1293,359,1158,388"/>
+<area shape="poly" id="edge21_Node000017_Node000016" title=" " alt="" coords="1134,419,1204,434,1260,438,1318,442,1313,442,1260,444,1204,439,1134,424"/>
+<area shape="poly" id="edge16_Node000004_Node000017" title=" " alt="" coords="1546,435,1816,438,1811,438,1546,440"/>
+<area shape="rect" id="Node000018" href="$classtinymodem_1_1ModemDecoder.html" title="Common API of the demodulators (FSKDecoder, MFSKDecoder): PCM audio data is written to the decoder an..." alt="" coords="970,461,1177,489"/>
+<area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="1192,460,1318,449,1313,450,1193,465"/>
+<area shape="rect" id="Node000019" title=" " alt="" coords="679,461,875,489"/>
+<area shape="poly" id="edge18_Node000018_Node000019" title=" " alt="" coords="890,473,972,475,966,475,891,478"/>
+<area shape="rect" id="Node000020" href="$classtinymodem_1_1PcmInput.html" title="Assembles the PCM frames from the written bytes and provides the samples of the selected channel as f..." alt="" coords="991,513,1156,541"/>
+<area shape="poly" id="edge20_Node000017_Node000020" title=" " alt="" coords="1171,513,1231,503,1291,488,1345,470,1389,453,1395,452,1347,475,1293,493,1232,508,1172,518"/>
+<area shape="rect" id="Node000021" href="$classtinymodem_1_1ByteQueue.html" title="FIFO for received data which grows when needed: e.g. one decoding step can produce more data than exp..." alt="" coords="1335,524,1511,552"/>
+<area shape="poly" id="edge23_Node000004_Node000021" title=" " alt="" coords="1515,518,1789,466,1811,464,1816,463,1790,471,1516,523"/>
+<area shape="rect" id="Node000022" title=" " alt="" coords="1048,577,1099,605"/>
+<area shape="poly" id="edge24_Node000021_Node000022" title=" " alt="" coords="1114,582,1332,551,1337,551,1115,588"/>
+<area shape="rect" id="Node000023" href="$structtinymodem_1_1BasicModemStreamRTOS_1_1LockedQueue.html" title="Print which writes the decoded data into the queue with a lock." alt="" coords="1554,568,1790,612"/>
+<area shape="poly" id="edge26_Node000023_Node000022" title=" " alt="" coords="1114,588,1557,590,1551,590,1115,594"/>
+<area shape="poly" id="edge25_Node000002_Node000023" title=" " alt="" coords="1805,577,2479,528,2484,528,1805,582"/>
+</map>

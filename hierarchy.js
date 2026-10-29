@@ -73,7 +73,11 @@ var hierarchy =
         ] ]
       ] ],
       [ "tinymodem::BasicModemStream< GGWaveEncoder, GGWaveDecoder, GGWaveConfig >", "classtinymodem_1_1BasicModemStream.html", [
-        [ "tinymodem::GGWaveStream", "classtinymodem_1_1GGWaveStream.html", null ]
+        [ "tinymodem::GGWaveStream", "classtinymodem_1_1GGWaveStream.html", [
+          [ "tinymodem::BasicModemStreamRTOS< GGWaveStream >", "classtinymodem_1_1BasicModemStreamRTOS.html", [
+            [ "tinymodem::GGWaveStreamRTOS", "classtinymodem_1_1GGWaveStreamRTOS.html", null ]
+          ] ]
+        ] ]
       ] ],
       [ "tinymodem::BasicModemStream< MFSKEncoder, MFSKDecoder, MFSKConfig >", "classtinymodem_1_1BasicModemStream.html", [
         [ "tinymodem::MFSKStream", "classtinymodem_1_1MFSKStream.html", [

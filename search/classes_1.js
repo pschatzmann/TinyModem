@@ -9,11 +9,12 @@ var searchData=
   ['basicmodemstream_3c_20pskencoder_2c_20pskdecoder_2c_20pskconfig_20_3e_6',['BasicModemStream&lt; PSKEncoder, PSKDecoder, PSKConfig &gt;',['../classtinymodem_1_1BasicModemStream.html',1,'tinymodem']]],
   ['basicmodemstreamrtos_7',['BasicModemStreamRTOS',['../classtinymodem_1_1BasicModemStreamRTOS.html',1,'tinymodem']]],
   ['basicmodemstreamrtos_3c_20ax25stream_20_3e_8',['BasicModemStreamRTOS&lt; AX25Stream &gt;',['../classtinymodem_1_1BasicModemStreamRTOS.html',1,'tinymodem']]],
-  ['basicmodemstreamrtos_3c_20mfskstream_20_3e_9',['BasicModemStreamRTOS&lt; MFSKStream &gt;',['../classtinymodem_1_1BasicModemStreamRTOS.html',1,'tinymodem']]],
-  ['basicmodemstreamrtos_3c_20modemstream_20_3e_10',['BasicModemStreamRTOS&lt; ModemStream &gt;',['../classtinymodem_1_1BasicModemStreamRTOS.html',1,'tinymodem']]],
-  ['basicmodemstreamrtos_3c_20ofdmstream_20_3e_11',['BasicModemStreamRTOS&lt; OFDMStream &gt;',['../classtinymodem_1_1BasicModemStreamRTOS.html',1,'tinymodem']]],
-  ['basicmodemstreamrtos_3c_20pskstream_20_3e_12',['BasicModemStreamRTOS&lt; PSKStream &gt;',['../classtinymodem_1_1BasicModemStreamRTOS.html',1,'tinymodem']]],
-  ['baudotcodec_13',['BaudotCodec',['../classtinymodem_1_1BaudotCodec.html',1,'tinymodem']]],
-  ['binarycodec_14',['BinaryCodec',['../classtinymodem_1_1BinaryCodec.html',1,'tinymodem']]],
-  ['bytequeue_15',['ByteQueue',['../classtinymodem_1_1ByteQueue.html',1,'tinymodem']]]
+  ['basicmodemstreamrtos_3c_20ggwavestream_20_3e_9',['BasicModemStreamRTOS&lt; GGWaveStream &gt;',['../classtinymodem_1_1BasicModemStreamRTOS.html',1,'tinymodem']]],
+  ['basicmodemstreamrtos_3c_20mfskstream_20_3e_10',['BasicModemStreamRTOS&lt; MFSKStream &gt;',['../classtinymodem_1_1BasicModemStreamRTOS.html',1,'tinymodem']]],
+  ['basicmodemstreamrtos_3c_20modemstream_20_3e_11',['BasicModemStreamRTOS&lt; ModemStream &gt;',['../classtinymodem_1_1BasicModemStreamRTOS.html',1,'tinymodem']]],
+  ['basicmodemstreamrtos_3c_20ofdmstream_20_3e_12',['BasicModemStreamRTOS&lt; OFDMStream &gt;',['../classtinymodem_1_1BasicModemStreamRTOS.html',1,'tinymodem']]],
+  ['basicmodemstreamrtos_3c_20pskstream_20_3e_13',['BasicModemStreamRTOS&lt; PSKStream &gt;',['../classtinymodem_1_1BasicModemStreamRTOS.html',1,'tinymodem']]],
+  ['baudotcodec_14',['BaudotCodec',['../classtinymodem_1_1BaudotCodec.html',1,'tinymodem']]],
+  ['binarycodec_15',['BinaryCodec',['../classtinymodem_1_1BinaryCodec.html',1,'tinymodem']]],
+  ['bytequeue_16',['ByteQueue',['../classtinymodem_1_1ByteQueue.html',1,'tinymodem']]]
 ];

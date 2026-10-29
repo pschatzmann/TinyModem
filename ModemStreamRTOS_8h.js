@@ -6,5 +6,6 @@ var ModemStreamRTOS_8h =
     [ "tinymodem::MFSKStreamRTOS", "classtinymodem_1_1MFSKStreamRTOS.html", null ],
     [ "tinymodem::AX25StreamRTOS", "classtinymodem_1_1AX25StreamRTOS.html", null ],
     [ "tinymodem::PSKStreamRTOS", "classtinymodem_1_1PSKStreamRTOS.html", null ],
-    [ "tinymodem::OFDMStreamRTOS", "classtinymodem_1_1OFDMStreamRTOS.html", null ]
+    [ "tinymodem::OFDMStreamRTOS", "classtinymodem_1_1OFDMStreamRTOS.html", null ],
+    [ "tinymodem::GGWaveStreamRTOS", "classtinymodem_1_1GGWaveStreamRTOS.html", null ]
 ];

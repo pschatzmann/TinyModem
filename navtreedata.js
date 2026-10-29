@@ -68,12 +68,12 @@ var NAVTREEINDEX =
 "classtinymodem_1_1AX25StreamRTOS.html",
 "classtinymodem_1_1FSKDecoder.html#a9c907981715812fcb56b313b34b3ae75",
 "classtinymodem_1_1GGWaveDecoder.html#a9713724b9c8ca27aa5bcee745a9a83b4",
-"classtinymodem_1_1MFSKDecoder.html#acf6a79fae4117b1165f7ee690bd17a96",
-"classtinymodem_1_1OFDMDecoder.html#ab7512cc24461931ae04ca564dca9c35d",
-"classtinymodem_1_1PSKDecoder.html#adac23726b9c9011375ac6587a05e7d30",
-"classtinymodem_1_1SampleOutput.html#a85ce4111b5c1f42944f2f1ea13084e94",
-"structtinymodem_1_1GGWaveConfig.html#abfc392d7a69dd6e99e9641f3b0759d0c",
-"structtinymodem_1_1PSKConfig.html#ab00e672145a71b03de0054d707687eb3"
+"classtinymodem_1_1MFSKDecoder.html#acb919e0ebb5aa9ee6d5df4009113eefa",
+"classtinymodem_1_1OFDMDecoder.html#ab06196634b9c20273885fa10d2976689",
+"classtinymodem_1_1PSKDecoder.html#ada88e0c6aae4db4844a66fa2930b256d",
+"classtinymodem_1_1SampleOutput.html#a5a01aa1ec903890cf9fda583060d72bd",
+"structtinymodem_1_1GGWaveConfig.html#ab87f2b5b048cea8311bcc2b91972a436",
+"structtinymodem_1_1PSKConfig.html#aa4aee729adf6ad723d28223478bbc1aa"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

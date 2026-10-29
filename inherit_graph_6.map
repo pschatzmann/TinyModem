@@ -4,48 +4,52 @@
 <area shape="poly" id="edge31_Node000000_Node000001" title=" " alt="" coords="39,305,44,256,57,195,81,132,98,103,120,77,138,64,135,69,124,81,103,106,86,134,62,196,49,257,44,305"/>
 <area shape="rect" id="Node000005" href="$classtinymodem_1_1BasicModemStream.html" title=" " alt="" coords="122,91,388,152"/>
 <area shape="poly" id="edge35_Node000000_Node000005" title=" " alt="" coords="44,305,54,272,69,234,91,195,120,162,138,151,135,155,123,166,95,198,74,236,59,274,50,306"/>
-<area shape="rect" id="Node000007" href="$classtinymodem_1_1BasicModemStream.html" title=" " alt="" coords="137,176,372,238"/>
-<area shape="poly" id="edge37_Node000000_Node000007" title=" " alt="" coords="57,307,85,276,120,247,144,236,141,240,123,252,89,280,62,310"/>
-<area shape="rect" id="Node000011" href="$classtinymodem_1_1BasicModemStream.html" title=" " alt="" coords="137,261,372,323"/>
-<area shape="poly" id="edge41_Node000000_Node000011" title=" " alt="" coords="87,323,138,314,135,318,90,327"/>
-<area shape="rect" id="Node000015" href="$classtinymodem_1_1BasicModemStream.html" title=" " alt="" coords="137,347,372,408"/>
-<area shape="poly" id="edge45_Node000000_Node000015" title=" " alt="" coords="88,342,139,352,134,356,90,347"/>
-<area shape="rect" id="Node000019" href="$classtinymodem_1_1BasicModemStream.html" title=" " alt="" coords="137,432,372,494"/>
-<area shape="poly" id="edge49_Node000000_Node000019" title=" " alt="" coords="59,358,89,390,123,418,145,431,140,432,120,422,85,394,60,364"/>
-<area shape="rect" id="Node000023" href="$classtinymodem_1_1BasicModemStream.html" title="Arduino Stream API for a modem (encoder and decoder): the written characters are modulated to the aud..." alt="" coords="137,518,372,562"/>
-<area shape="poly" id="edge53_Node000000_Node000023" title=" " alt="" coords="47,362,59,396,73,434,95,472,123,503,142,517,137,518,120,508,90,475,69,437,54,398,47,367"/>
-<area shape="rect" id="Node000024" href="$classtinymodem_1_1PacketStream.html" title="Reliable data transfer over any Stream (e.g. a ModemStream, an MFSKStream or a Serial): the written d..." alt="" coords="141,587,369,632"/>
-<area shape="poly" id="edge54_Node000000_Node000024" title=" " alt="" coords="42,361,50,410,63,466,87,524,103,550,123,573,143,588,137,588,120,577,99,553,82,526,58,468,45,411,42,367"/>
+<area shape="rect" id="Node000009" href="$classtinymodem_1_1BasicModemStream.html" title=" " alt="" coords="137,176,372,238"/>
+<area shape="poly" id="edge39_Node000000_Node000009" title=" " alt="" coords="57,307,85,276,120,247,144,236,141,240,123,252,89,280,62,310"/>
+<area shape="rect" id="Node000013" href="$classtinymodem_1_1BasicModemStream.html" title=" " alt="" coords="137,261,372,323"/>
+<area shape="poly" id="edge43_Node000000_Node000013" title=" " alt="" coords="87,323,138,314,135,318,90,327"/>
+<area shape="rect" id="Node000017" href="$classtinymodem_1_1BasicModemStream.html" title=" " alt="" coords="137,347,372,408"/>
+<area shape="poly" id="edge47_Node000000_Node000017" title=" " alt="" coords="88,342,139,352,134,356,90,347"/>
+<area shape="rect" id="Node000021" href="$classtinymodem_1_1BasicModemStream.html" title=" " alt="" coords="137,432,372,494"/>
+<area shape="poly" id="edge51_Node000000_Node000021" title=" " alt="" coords="59,358,89,390,123,418,145,431,140,432,120,422,85,394,60,364"/>
+<area shape="rect" id="Node000025" href="$classtinymodem_1_1BasicModemStream.html" title="Arduino Stream API for a modem (encoder and decoder): the written characters are modulated to the aud..." alt="" coords="137,518,372,562"/>
+<area shape="poly" id="edge55_Node000000_Node000025" title=" " alt="" coords="47,362,59,396,73,434,95,472,123,503,142,517,137,518,120,508,90,475,69,437,54,398,47,367"/>
+<area shape="rect" id="Node000026" href="$classtinymodem_1_1PacketStream.html" title="Reliable data transfer over any Stream (e.g. a ModemStream, an MFSKStream or a Serial): the written d..." alt="" coords="141,587,369,632"/>
+<area shape="poly" id="edge56_Node000000_Node000026" title=" " alt="" coords="42,361,50,410,63,466,87,524,103,550,123,573,143,588,137,588,120,577,99,553,82,526,58,468,45,411,42,367"/>
 <area shape="rect" id="Node000002" href="$classtinymodem_1_1AX25Stream.html" title="Arduino Stream API for the AX.25 packet radio modem (APRS): print() transmits the frames,..." alt="" coords="447,22,632,50"/>
 <area shape="poly" id="edge32_Node000001_Node000002" title=" " alt="" coords="387,34,449,35,444,38,389,39"/>
 <area shape="rect" id="Node000003" href="$classtinymodem_1_1BasicModemStreamRTOS.html" title=" " alt="" coords="691,14,927,58"/>
 <area shape="poly" id="edge33_Node000002_Node000003" title=" " alt="" coords="647,34,693,35,688,37,649,39"/>
-<area shape="rect" id="Node000004" href="$classtinymodem_1_1AX25StreamRTOS.html" title="AX25Stream (APRS) which receives in a separate task. See BasicModemStreamRTOS." alt="" coords="982,22,1202,50"/>
-<area shape="poly" id="edge34_Node000003_Node000004" title=" " alt="" coords="942,34,984,35,979,37,943,39"/>
+<area shape="rect" id="Node000004" href="$classtinymodem_1_1AX25StreamRTOS.html" title="AX25Stream (APRS) which receives in a separate task. See BasicModemStreamRTOS." alt="" coords="986,22,1205,50"/>
+<area shape="poly" id="edge34_Node000003_Node000004" title=" " alt="" coords="941,34,988,35,983,37,943,39"/>
 <area shape="rect" id="Node000006" href="$classtinymodem_1_1GGWaveStream.html" title="Arduino Stream API for the ggwave compatible modem: print() collects the data (up to 140 bytes),..." alt="" coords="436,108,643,135"/>
 <area shape="poly" id="edge36_Node000005_Node000006" title=" " alt="" coords="403,119,438,120,433,123,405,124"/>
-<area shape="rect" id="Node000008" href="$classtinymodem_1_1MFSKStream.html" title="Arduino Stream API for the multi&#45;tone FSK modem: print() transmits, read() receives...." alt="" coords="446,193,633,221"/>
-<area shape="poly" id="edge38_Node000007_Node000008" title=" " alt="" coords="387,204,448,206,443,208,389,209"/>
-<area shape="rect" id="Node000009" href="$classtinymodem_1_1BasicModemStreamRTOS.html" title=" " alt="" coords="691,184,927,229"/>
-<area shape="poly" id="edge39_Node000008_Node000009" title=" " alt="" coords="648,204,693,206,688,208,650,209"/>
-<area shape="rect" id="Node000010" href="$classtinymodem_1_1MFSKStreamRTOS.html" title="MFSKStream (multi&#45;tone FSK) which receives in a separate task. See BasicModemStreamRTOS." alt="" coords="981,193,1202,221"/>
-<area shape="poly" id="edge40_Node000009_Node000010" title=" " alt="" coords="942,204,983,206,978,207,943,209"/>
-<area shape="rect" id="Node000012" href="$classtinymodem_1_1ModemStream.html" title="Arduino Stream API for the minimodem compatible FSK modem: print() transmits, read() receives...." alt="" coords="440,278,640,306"/>
-<area shape="poly" id="edge42_Node000011_Node000012" title=" " alt="" coords="387,290,442,291,437,293,389,295"/>
-<area shape="rect" id="Node000013" href="$classtinymodem_1_1BasicModemStreamRTOS.html" title=" " alt="" coords="691,270,927,314"/>
-<area shape="poly" id="edge43_Node000012_Node000013" title=" " alt="" coords="655,290,693,292,688,293,656,295"/>
-<area shape="rect" id="Node000014" href="$classtinymodem_1_1ModemStreamRTOS.html" title="ModemStream (FSK) which receives in a separate task. See BasicModemStreamRTOS." alt="" coords="975,278,1209,306"/>
-<area shape="poly" id="edge44_Node000013_Node000014" title=" " alt="" coords="942,290,977,292,972,293,943,295"/>
-<area shape="rect" id="Node000016" href="$classtinymodem_1_1OFDMStream.html" title="Arduino Stream API for the OFDM modem: print() collects the data, flush() sends it as frame,..." alt="" coords="444,364,635,391"/>
-<area shape="poly" id="edge46_Node000015_Node000016" title=" " alt="" coords="387,375,446,377,441,378,389,380"/>
-<area shape="rect" id="Node000017" href="$classtinymodem_1_1BasicModemStreamRTOS.html" title=" " alt="" coords="691,355,927,400"/>
-<area shape="poly" id="edge47_Node000016_Node000017" title=" " alt="" coords="651,375,693,377,688,378,651,380"/>
-<area shape="rect" id="Node000018" href="$classtinymodem_1_1OFDMStreamRTOS.html" title="OFDMStream which receives in a separate task. See BasicModemStreamRTOS." alt="" coords="979,364,1204,391"/>
-<area shape="poly" id="edge48_Node000017_Node000018" title=" " alt="" coords="942,375,981,377,976,378,943,380"/>
-<area shape="rect" id="Node000020" href="$classtinymodem_1_1PSKStream.html" title="Arduino Stream API for the PSK modem (PSK31 to PSK500): print() transmits, read() receives...." alt="" coords="452,449,628,477"/>
-<area shape="poly" id="edge50_Node000019_Node000020" title=" " alt="" coords="387,460,454,462,448,463,388,465"/>
-<area shape="rect" id="Node000021" href="$classtinymodem_1_1BasicModemStreamRTOS.html" title=" " alt="" coords="691,440,927,485"/>
-<area shape="poly" id="edge51_Node000020_Node000021" title=" " alt="" coords="643,460,694,462,688,463,644,465"/>
-<area shape="rect" id="Node000022" href="$classtinymodem_1_1PSKStreamRTOS.html" title="PSKStream which receives in a separate task. See BasicModemStreamRTOS." alt="" coords="987,449,1197,477"/>
-<area shape="poly" id="edge52_Node000021_Node000022" title=" " alt="" coords="942,460,989,463,984,463,943,465"/>
+<area shape="rect" id="Node000007" href="$classtinymodem_1_1BasicModemStreamRTOS.html" title=" " alt="" coords="691,99,927,144"/>
+<area shape="poly" id="edge37_Node000006_Node000007" title=" " alt="" coords="658,119,693,121,688,122,660,124"/>
+<area shape="rect" id="Node000008" href="$classtinymodem_1_1GGWaveStreamRTOS.html" title="GGWaveStream which receives in a separate task. See BasicModemStreamRTOS." alt="" coords="975,108,1216,135"/>
+<area shape="poly" id="edge38_Node000007_Node000008" title=" " alt="" coords="941,119,977,121,972,122,943,124"/>
+<area shape="rect" id="Node000010" href="$classtinymodem_1_1MFSKStream.html" title="Arduino Stream API for the multi&#45;tone FSK modem: print() transmits, read() receives...." alt="" coords="446,193,633,221"/>
+<area shape="poly" id="edge40_Node000009_Node000010" title=" " alt="" coords="387,204,448,206,443,208,389,209"/>
+<area shape="rect" id="Node000011" href="$classtinymodem_1_1BasicModemStreamRTOS.html" title=" " alt="" coords="691,184,927,229"/>
+<area shape="poly" id="edge41_Node000010_Node000011" title=" " alt="" coords="648,204,693,206,688,208,650,209"/>
+<area shape="rect" id="Node000012" href="$classtinymodem_1_1MFSKStreamRTOS.html" title="MFSKStream (multi&#45;tone FSK) which receives in a separate task. See BasicModemStreamRTOS." alt="" coords="985,193,1206,221"/>
+<area shape="poly" id="edge42_Node000011_Node000012" title=" " alt="" coords="942,204,987,206,982,207,943,209"/>
+<area shape="rect" id="Node000014" href="$classtinymodem_1_1ModemStream.html" title="Arduino Stream API for the minimodem compatible FSK modem: print() transmits, read() receives...." alt="" coords="440,278,640,306"/>
+<area shape="poly" id="edge44_Node000013_Node000014" title=" " alt="" coords="387,290,442,291,437,293,389,295"/>
+<area shape="rect" id="Node000015" href="$classtinymodem_1_1BasicModemStreamRTOS.html" title=" " alt="" coords="691,270,927,314"/>
+<area shape="poly" id="edge45_Node000014_Node000015" title=" " alt="" coords="655,290,693,292,688,293,656,295"/>
+<area shape="rect" id="Node000016" href="$classtinymodem_1_1ModemStreamRTOS.html" title="ModemStream (FSK) which receives in a separate task. See BasicModemStreamRTOS." alt="" coords="978,278,1212,306"/>
+<area shape="poly" id="edge46_Node000015_Node000016" title=" " alt="" coords="942,290,980,292,975,293,942,295"/>
+<area shape="rect" id="Node000018" href="$classtinymodem_1_1OFDMStream.html" title="Arduino Stream API for the OFDM modem: print() collects the data, flush() sends it as frame,..." alt="" coords="444,364,635,391"/>
+<area shape="poly" id="edge48_Node000017_Node000018" title=" " alt="" coords="387,375,446,377,441,378,389,380"/>
+<area shape="rect" id="Node000019" href="$classtinymodem_1_1BasicModemStreamRTOS.html" title=" " alt="" coords="691,355,927,400"/>
+<area shape="poly" id="edge49_Node000018_Node000019" title=" " alt="" coords="651,375,693,377,688,378,651,380"/>
+<area shape="rect" id="Node000020" href="$classtinymodem_1_1OFDMStreamRTOS.html" title="OFDMStream which receives in a separate task. See BasicModemStreamRTOS." alt="" coords="983,364,1208,391"/>
+<area shape="poly" id="edge50_Node000019_Node000020" title=" " alt="" coords="942,375,985,377,980,378,942,380"/>
+<area shape="rect" id="Node000022" href="$classtinymodem_1_1PSKStream.html" title="Arduino Stream API for the PSK modem (PSK31 to PSK500): print() transmits, read() receives...." alt="" coords="452,449,628,477"/>
+<area shape="poly" id="edge52_Node000021_Node000022" title=" " alt="" coords="387,460,454,462,448,463,388,465"/>
+<area shape="rect" id="Node000023" href="$classtinymodem_1_1BasicModemStreamRTOS.html" title=" " alt="" coords="691,440,927,485"/>
+<area shape="poly" id="edge53_Node000022_Node000023" title=" " alt="" coords="643,460,694,462,688,463,644,465"/>
+<area shape="rect" id="Node000024" href="$classtinymodem_1_1PSKStreamRTOS.html" title="PSKStream which receives in a separate task. See BasicModemStreamRTOS." alt="" coords="990,449,1200,477"/>
+<area shape="poly" id="edge54_Node000023_Node000024" title=" " alt="" coords="942,460,992,463,987,463,942,465"/>
 </map>

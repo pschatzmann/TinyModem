@@ -1,0 +1,11 @@
+<map id="tinymodem::GGWaveStreamRTOS" name="tinymodem::GGWaveStreamRTOS">
+<area shape="rect" id="Node000001" title="GGWaveStream which receives in a separate task. See BasicModemStreamRTOS." alt="" coords="18,359,259,387"/>
+<area shape="rect" id="Node000002" href="$classtinymodem_1_1BasicModemStreamRTOS.html" title=" " alt="" coords="21,266,256,311"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,325,141,360,136,357,137,329"/>
+<area shape="rect" id="Node000003" href="$classtinymodem_1_1GGWaveStream.html" title="Arduino Stream API for the ggwave compatible modem: print() collects the data (up to 140 bytes),..." alt="" coords="35,191,242,218"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="140,232,141,267,136,265,137,237"/>
+<area shape="rect" id="Node000004" href="$classtinymodem_1_1BasicModemStream.html" title=" " alt="" coords="5,81,272,143"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="139,156,141,191,136,190,138,161"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="104,5,173,33"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="139,46,141,81,136,80,138,51"/>
+</map>

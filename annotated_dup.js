@@ -44,6 +44,7 @@ var annotated_dup =
       [ "AX25StreamRTOS", "classtinymodem_1_1AX25StreamRTOS.html", null ],
       [ "PSKStreamRTOS", "classtinymodem_1_1PSKStreamRTOS.html", null ],
       [ "OFDMStreamRTOS", "classtinymodem_1_1OFDMStreamRTOS.html", null ],
+      [ "GGWaveStreamRTOS", "classtinymodem_1_1GGWaveStreamRTOS.html", null ],
       [ "OFDMConfig", "structtinymodem_1_1OFDMConfig.html", "structtinymodem_1_1OFDMConfig" ],
       [ "OFDMTable", "classtinymodem_1_1OFDMTable.html", "classtinymodem_1_1OFDMTable" ],
       [ "OFDMDecoder", "classtinymodem_1_1OFDMDecoder.html", "classtinymodem_1_1OFDMDecoder" ],

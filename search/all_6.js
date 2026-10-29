@@ -24,8 +24,9 @@ var searchData=
   ['ggwaveprotocolid_21',['GGWaveProtocolId',['../namespacetinymodem.html#a0274672aba98792b0a7567ab7566230e',1,'tinymodem']]],
   ['ggwavers_22',['GGWaveRS',['../classtinymodem_1_1GGWaveRS.html',1,'tinymodem']]],
   ['ggwavestream_23',['GGWaveStream',['../classtinymodem_1_1GGWaveStream.html',1,'tinymodem']]],
-  ['graydecode_24',['grayDecode',['../namespacetinymodem.html#a50fb0eafbaa89da54a0dbdadc35d5a58',1,'tinymodem']]],
-  ['grayencode_25',['grayEncode',['../namespacetinymodem.html#a3df52d510a9b409ce63cab7631708eee',1,'tinymodem']]],
-  ['graytophase_26',['grayToPhase',['../classtinymodem_1_1OFDMEncoder.html#ac394ef39db467c5bb84abc498c1c4c8d',1,'tinymodem::OFDMEncoder']]],
-  ['guard_27',['guard',['../structtinymodem_1_1OFDMConfig.html#acc32976f8e13b5847867ae589a01e98c',1,'tinymodem::OFDMConfig']]]
+  ['ggwavestreamrtos_24',['GGWaveStreamRTOS',['../classtinymodem_1_1GGWaveStreamRTOS.html',1,'tinymodem']]],
+  ['graydecode_25',['grayDecode',['../namespacetinymodem.html#a50fb0eafbaa89da54a0dbdadc35d5a58',1,'tinymodem']]],
+  ['grayencode_26',['grayEncode',['../namespacetinymodem.html#a3df52d510a9b409ce63cab7631708eee',1,'tinymodem']]],
+  ['graytophase_27',['grayToPhase',['../classtinymodem_1_1OFDMEncoder.html#ac394ef39db467c5bb84abc498c1c4c8d',1,'tinymodem::OFDMEncoder']]],
+  ['guard_28',['guard',['../structtinymodem_1_1OFDMConfig.html#acc32976f8e13b5847867ae589a01e98c',1,'tinymodem::OFDMConfig']]]
 ];

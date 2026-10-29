@@ -125,6 +125,8 @@ var NAVTREEINDEX3 =
 "classtinymodem_1_1GGWaveStream.html#ac50a9484127b06a2311a82c8f1ccace1":[7,0,0,36,2],
 "classtinymodem_1_1GGWaveStream.html#ac8fd9e948b362935ebcd13bd28d8e50d":[6,0,0,36,3],
 "classtinymodem_1_1GGWaveStream.html#ac8fd9e948b362935ebcd13bd28d8e50d":[7,0,0,36,3],
+"classtinymodem_1_1GGWaveStreamRTOS.html":[6,0,0,43],
+"classtinymodem_1_1GGWaveStreamRTOS.html":[7,0,0,43],
 "classtinymodem_1_1MFSKDecoder.html":[6,0,0,20],
 "classtinymodem_1_1MFSKDecoder.html":[7,0,0,20],
 "classtinymodem_1_1MFSKDecoder.html#a0196335839c7840f42519ff7b6fa8367":[6,0,0,20,37],
@@ -247,7 +249,5 @@ var NAVTREEINDEX3 =
 "classtinymodem_1_1MFSKDecoder.html#abb692b838f759aa39ca2d1e0f74c200b":[7,0,0,20,67],
 "classtinymodem_1_1MFSKDecoder.html#aca6a299cad1fedf473215e8827be7fdb":[6,0,0,20,45],
 "classtinymodem_1_1MFSKDecoder.html#aca6a299cad1fedf473215e8827be7fdb":[7,0,0,20,45],
-"classtinymodem_1_1MFSKDecoder.html#acb919e0ebb5aa9ee6d5df4009113eefa":[6,0,0,20,38],
-"classtinymodem_1_1MFSKDecoder.html#acb919e0ebb5aa9ee6d5df4009113eefa":[7,0,0,20,38],
-"classtinymodem_1_1MFSKDecoder.html#acf6a79fae4117b1165f7ee690bd17a96":[6,0,0,20,7]
+"classtinymodem_1_1MFSKDecoder.html#acb919e0ebb5aa9ee6d5df4009113eefa":[6,0,0,20,38]
 };
