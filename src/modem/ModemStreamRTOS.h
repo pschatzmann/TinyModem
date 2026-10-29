@@ -239,6 +239,16 @@ class CSSStreamRTOS : public BasicModemStreamRTOS<CSSStream> {
 };
 
 /**
+ * @brief MorseStream which receives in a separate task. See
+ * BasicModemStreamRTOS.
+ * @copyright GPLv3
+ */
+class MorseStreamRTOS : public BasicModemStreamRTOS<MorseStream> {
+ public:
+  using BasicModemStreamRTOS::BasicModemStreamRTOS;
+};
+
+/**
  * @brief DTMFStream which receives in a separate task. See
  * BasicModemStreamRTOS.
  * @copyright GPLv3

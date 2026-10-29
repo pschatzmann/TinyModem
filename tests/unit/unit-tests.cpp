@@ -2766,6 +2766,183 @@ static void test_css_stream() {
   CHECK_EQ(result, std::string("Hello Chirp"));
 }
 
+static std::vector<int16_t> morseModulate(MorseConfig cfg, const std::string& text,
+                                          int parts = 1) {
+  SamplePrint audio;
+  MorseEncoder encoder(audio);
+  CHECK(encoder.begin(cfg));
+  size_t chunk = text.size() / parts;
+  for (int p = 0; p < parts; p++) {
+    size_t len = p == parts - 1 ? text.size() - p * chunk : chunk;
+    encoder.write((const uint8_t*)text.data() + p * chunk, len);
+    encoder.endTransmission(cfg.sample_rate * 2);
+  }
+  encoder.end();
+  return audio.samples();
+}
+
+static std::string morseDemodulate(MorseConfig cfg, const std::vector<int16_t>& samples,
+                                   std::string* status = nullptr) {
+  StringPrint out, status_out;
+  MorseDecoder decoder(out);
+  decoder.setStatusOutput(status_out);
+  CHECK(decoder.begin(cfg));
+  decoder.write((const uint8_t*)samples.data(), samples.size() * 2);
+  decoder.end();
+  if (status) *status = status_out.str;
+  return out.str;
+}
+
+static MorseConfig morseConfig(const char* mode, int sample_rate = 8000) {
+  MorseConfig cfg;
+  CHECK(cfg.setMode(mode));
+  cfg.sample_rate = sample_rate;
+  return cfg;
+}
+
+static const char* MORSE_TEXT = "CQ CQ DE N0CALL K\nTHE QUICK BROWN FOX 0123456789. RST 599?";
+static const char* AMERICAN_TEXT = "THE QUICK BROWN FOX 0123456789. CALL ME, OK?";
+
+static void test_morse_codec() {
+  MorseConfig cfg;
+  CHECK(cfg.alphabet == MorseAlphabet::INTERNATIONAL);
+  CHECK(cfg.setMode("morse-25") && cfg.wpm == 25);
+  CHECK(cfg.setMode("morse-american") && cfg.alphabet == MorseAlphabet::AMERICAN);
+  CHECK(cfg.setMode("CW30") && cfg.alphabet == MorseAlphabet::INTERNATIONAL && cfg.wpm == 30);
+  CHECK(cfg.setMode("morse-american-12") && cfg.wpm == 12);
+  CHECK(!cfg.setMode("morse-x") && !cfg.setMode("morse-0") && !cfg.setMode("css7"));
+  CHECK_NEAR(morseConfig("morse").unitTime(), 0.06f, 1e-6f);
+  // the codes are unique and decoded again
+  for (MorseAlphabet a : {MorseAlphabet::INTERNATIONAL, MorseAlphabet::AMERICAN}) {
+    int count = 0;
+    for (int ch = 1; ch < 128; ch++) {
+      const char* code = MorseCode::encode(a, ch);
+      if (code == nullptr) continue;
+      if (islower(ch)) continue;
+      count++;
+      CHECK_EQ(MorseCode::decode(a, code), (char)ch);
+    }
+    CHECK(count >= 40);
+  }
+  CHECK_EQ(std::string(MorseCode::encode(MorseAlphabet::INTERNATIONAL, 'c')), std::string("-.-."));
+  CHECK_EQ(std::string(MorseCode::encode(MorseAlphabet::AMERICAN, 'C')), std::string(".. ."));
+  CHECK_EQ(std::string(MorseCode::encode(MorseAlphabet::AMERICAN, 'L')), std::string("_"));
+  CHECK(MorseCode::encode(MorseAlphabet::AMERICAN, '@') == nullptr);
+
+  // timing: "PARIS " is 50 units, the tone of "E" one unit
+  cfg = morseConfig("morse");
+  cfg.ramp_ms = 0;
+  std::vector<int16_t> samples = morseModulate(cfg, "PARIS PARIS");
+  size_t unit = 0.06 * 8000;
+  // the second PARIS ends with the letter space (3 units) of the S and 2 s of
+  // silence
+  CHECK_EQ(samples.size(), unit * (50 + 46) + 2 * 8000);
+  // length of the tone: from the first to the last sample which is not 0
+  auto toneLength = [](const std::vector<int16_t>& v) {
+    int first = -1, last = -1;
+    for (int j = 0; j < (int)v.size(); j++)
+      if (v[j] != 0) {
+        if (first < 0) first = j;
+        last = j;
+      }
+    return first < 0 ? 0 : last - first + 1;
+  };
+  samples = morseModulate(cfg, "E");
+  CHECK(abs(toneLength(samples) - (int)unit) < 3);
+  // American: L is a long dash of 4 units
+  cfg = morseConfig("morse-american");
+  cfg.ramp_ms = 0;
+  samples = morseModulate(cfg, "L");
+  CHECK(abs(toneLength(samples) - 4 * (int)unit) < 3);
+}
+
+static void test_morse_loopback() {
+  for (const char* mode : {"morse", "morse-5", "morse-40"}) {
+    for (int rate : {8000, 48000}) {
+      MorseConfig cfg = morseConfig(mode, rate);
+      std::string status;
+      std::string result = morseDemodulate(cfg, morseModulate(cfg, MORSE_TEXT), &status);
+      if (result != MORSE_TEXT) fprintf(stderr, "%s %d failed\n", mode, rate);
+      CHECK_EQ(result, std::string(MORSE_TEXT));
+      CHECK_EQ(countOf(status, "### CARRIER"), 1);
+    }
+  }
+  for (const char* mode : {"morse-american", "morse-american-12", "morse-american-30"}) {
+    for (int rate : {8000, 44100}) {
+      MorseConfig cfg = morseConfig(mode, rate);
+      std::string result = morseDemodulate(cfg, morseModulate(cfg, AMERICAN_TEXT));
+      if (result != AMERICAN_TEXT) fprintf(stderr, "%s %d failed\n", mode, rate);
+      CHECK_EQ(result, std::string(AMERICAN_TEXT));
+    }
+  }
+  // lower case, unknown characters and several spaces
+  MorseConfig cfg = morseConfig("morse");
+  CHECK_EQ(morseDemodulate(cfg, morseModulate(cfg, "hello   world #")), std::string("HELLO WORLD"));
+}
+
+static void test_morse_robust() {
+  // noise
+  for (const char* mode : {"morse", "morse-american"}) {
+    MorseConfig tx = morseConfig(mode);
+    MorseConfig rx = tx;
+    rx.rx_noise = 1.0f;
+    const char* text = tx.alphabet == MorseAlphabet::AMERICAN ? AMERICAN_TEXT : MORSE_TEXT;
+    CHECK_EQ(morseDemodulate(rx, morseModulate(tx, text)), std::string(text));
+  }
+  // the receiver follows the speed of the sender
+  for (int wpm : {13, 30}) {
+    MorseConfig tx = morseConfig("morse");
+    tx.wpm = wpm;
+    std::string status;
+    CHECK_EQ(morseDemodulate(morseConfig("morse"), morseModulate(tx, MORSE_TEXT), &status),
+             std::string(MORSE_TEXT));
+  }
+  for (int wpm : {16, 26}) {
+    MorseConfig tx = morseConfig("morse-american");
+    tx.wpm = wpm;
+    CHECK_EQ(morseDemodulate(morseConfig("morse-american"), morseModulate(tx, AMERICAN_TEXT)),
+             std::string(AMERICAN_TEXT));
+  }
+  // frequency offset and level
+  for (float offset : {-12.0f, 12.0f}) {
+    MorseConfig tx = morseConfig("morse");
+    tx.frequency += offset;
+    CHECK_EQ(morseDemodulate(morseConfig("morse"), morseModulate(tx, MORSE_TEXT)),
+             std::string(MORSE_TEXT));
+  }
+  MorseConfig tx = morseConfig("morse");
+  tx.volume = 0.05f;
+  CHECK_EQ(morseDemodulate(morseConfig("morse"), morseModulate(tx, MORSE_TEXT)),
+           std::string(MORSE_TEXT));
+  // several transmissions
+  std::string status;
+  MorseConfig cfg = morseConfig("morse");
+  CHECK_EQ(morseDemodulate(cfg, morseModulate(cfg, "AAABBBCCC", 3), &status),
+           std::string("AAABBBCCC"));
+  CHECK_EQ(countOf(status, "### CARRIER"), 3);
+  // noise only: nothing is received
+  std::vector<int16_t> silence(8000 * 5);
+  MorseConfig rx = cfg;
+  rx.rx_noise = 0.3f;
+  CHECK_EQ(morseDemodulate(rx, silence), std::string(""));
+}
+
+static void test_morse_stream() {
+  SyncLoopbackStream audio;
+  MorseStream modem(audio, RXTX_MODE);
+  MorseConfig cfg = modem.defaultConfig();
+  cfg.sample_rate = 8000;
+  cfg.wpm = 30;
+  CHECK(modem.begin(cfg));
+  modem.print("Hello Morse");
+  modem.flush();
+  modem.getEncoder().writeSilence(cfg.sample_rate * 2);
+  std::string result;
+  while (audio.available() > 0 || modem.available() > 0)
+    while (modem.available() > 0) result += (char)modem.read();
+  CHECK_EQ(result, std::string("HELLO MORSE"));
+}
+
 /// With rx_one the decoding stops after the first transmission and stays
 /// stopped after flush() until begin() is called again
 template <class Encoder, class Decoder, class Config>
@@ -2811,6 +2988,9 @@ static void test_rx_one() {
   check_rx_one<DTMFEncoder, DTMFDecoder>(dtmf);
   check_rx_one<OliviaEncoder, OliviaDecoder>(oliviaConfig("olivia-8-1000"));
   check_rx_one<CSSEncoder, CSSDecoder>(cssConfig("css6"));
+  MorseConfig morse = morseConfig("morse-30");
+  morse.rx_timeout_units = 10;  // the test has a pause of 0.5 s
+  check_rx_one<MorseEncoder, MorseDecoder>(morse);
 }
 
 static void test_audiotools_pipeline() {
@@ -2922,6 +3102,10 @@ static TestCase tests[] = {
     {"css-loopback", test_css_loopback},
     {"css-robust", test_css_robust},
     {"css-stream", test_css_stream},
+    {"morse-codec", test_morse_codec},
+    {"morse-loopback", test_morse_loopback},
+    {"morse-robust", test_morse_robust},
+    {"morse-stream", test_morse_stream},
     {"rx-one", test_rx_one},
 };
 

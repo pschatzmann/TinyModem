@@ -162,7 +162,8 @@ static void usage() {
           "     olivia[-{tones}-{bw}]    Olivia (fldigi), e.g. olivia-8-250\n"
           "     contestia[-{tones}-{bw}] Contestia (fldigi), e.g. contestia-8-250\n"
           "     css{5-10}[-{bw}]         Chirp spread spectrum, e.g. css7, css9-500\n"
-          "		    dtmf       DTMF touch tones 0-9 * # A-D\n");
+          "		    dtmf       DTMF touch tones 0-9 * # A-D\n"
+          "     morse[-american][-{wpm}] Morse code (International, American), cw\n");
   exit(1);
 }
 
@@ -527,6 +528,7 @@ int main(int argc, char* argv[]) {
   bool dtmf = DTMFConfig::isMode(modem_mode);
   bool olivia = OliviaConfig::isMode(modem_mode);
   bool css = CSSConfig::isMode(modem_mode);
+  bool morse = MorseConfig::isMode(modem_mode);
   MFSKConfig mfsk_cfg;
   AX25Config ax25_cfg;
   PSKConfig psk_cfg;
@@ -535,7 +537,24 @@ int main(int argc, char* argv[]) {
   DTMFConfig dtmf_cfg;
   OliviaConfig olivia_cfg;
   CSSConfig css_cfg;
-  if (css) {
+  MorseConfig morse_cfg;
+  if (morse) {
+    morse_cfg.setMode(modem_mode);
+    morse_cfg.sample_rate = cfg.sample_rate;
+    morse_cfg.volume = cfg.volume;
+    morse_cfg.rx_one = cfg.rx_one;
+    morse_cfg.rx_noise = cfg.rx_noise;
+    if (cfg.mark_freq > 0) morse_cfg.frequency = cfg.mark_freq;
+    if (tx_carrier || use_packets) {
+      fprintf(stderr, "E: --tx-carrier and --packets are not supported by %s.\n",
+              modem_mode);
+      return 1;
+    }
+    if (!morse_cfg.isValid()) {
+      fprintf(stderr, "E: invalid %s configuration\n", modem_mode);
+      return 1;
+    }
+  } else if (css) {
     css_cfg.setMode(modem_mode);
     css_cfg.sample_rate = cfg.sample_rate;
     css_cfg.volume = cfg.volume;
@@ -676,6 +695,7 @@ int main(int argc, char* argv[]) {
                          : dtmf ? (AudioInfo)dtmf_cfg
                          : olivia ? (AudioInfo)olivia_cfg
                          : css ? (AudioInfo)css_cfg
+                         : morse ? (AudioInfo)morse_cfg
                                 : (AudioInfo)cfg;
   if (filename == nullptr) use_audio_device = true;
 
@@ -701,6 +721,7 @@ int main(int argc, char* argv[]) {
     DTMFEncoder dtmf_encoder;
     OliviaEncoder olivia_encoder;
     CSSEncoder css_encoder;
+    MorseEncoder morse_encoder;
     ModemEncoder& encoder = mfsk     ? (ModemEncoder&)mfsk_encoder
                             : ax25   ? (ModemEncoder&)ax25_encoder
                             : psk    ? (ModemEncoder&)psk_encoder
@@ -709,6 +730,7 @@ int main(int argc, char* argv[]) {
                             : dtmf   ? (ModemEncoder&)dtmf_encoder
                             : olivia ? (ModemEncoder&)olivia_encoder
                             : css    ? (ModemEncoder&)css_encoder
+                            : morse  ? (ModemEncoder&)morse_encoder
                                      : (ModemEncoder&)fsk_encoder;
     auto beginEncoder = [&]() {
       bool ok = mfsk   ? mfsk_encoder.begin(mfsk_cfg)
@@ -719,6 +741,7 @@ int main(int argc, char* argv[]) {
                 : dtmf ? dtmf_encoder.begin(dtmf_cfg)
                 : olivia ? olivia_encoder.begin(olivia_cfg)
                 : css ? css_encoder.begin(css_cfg)
+                : morse ? morse_encoder.begin(morse_cfg)
                        : fsk_encoder.begin(cfg);
       if (!ok) fprintf(stderr, "E: invalid configuration\n");
       return ok;
@@ -779,6 +802,7 @@ int main(int argc, char* argv[]) {
   DTMFDecoder dtmf_decoder;
   OliviaDecoder olivia_decoder;
   CSSDecoder css_decoder;
+  MorseDecoder morse_decoder;
   ModemDecoder& decoder = mfsk     ? (ModemDecoder&)mfsk_decoder
                           : ax25   ? (ModemDecoder&)ax25_decoder
                           : psk    ? (ModemDecoder&)psk_decoder
@@ -787,6 +811,7 @@ int main(int argc, char* argv[]) {
                           : dtmf   ? (ModemDecoder&)dtmf_decoder
                           : olivia ? (ModemDecoder&)olivia_decoder
                           : css    ? (ModemDecoder&)css_decoder
+                          : morse  ? (ModemDecoder&)morse_decoder
                                    : (ModemDecoder&)fsk_decoder;
   // the decoded data is written to stdout or to the packet decoder
   CliPacketDecoder packets(out_stdout);
@@ -802,6 +827,7 @@ int main(int argc, char* argv[]) {
               : dtmf ? dtmf_decoder.begin(dtmf_cfg)
               : olivia ? olivia_decoder.begin(olivia_cfg)
               : css ? css_decoder.begin(css_cfg)
+              : morse ? morse_decoder.begin(morse_cfg)
                      : fsk_decoder.begin(cfg);
     if (!ok) fprintf(stderr, "E: invalid configuration\n");
     return ok;

@@ -15,6 +15,8 @@
 #include "GGWaveEncoder.h"
 #include "MFSKDecoder.h"
 #include "MFSKEncoder.h"
+#include "MorseDecoder.h"
+#include "MorseEncoder.h"
 #include "PSKDecoder.h"
 #include "PSKEncoder.h"
 #include "OFDMDecoder.h"
@@ -247,6 +249,17 @@ class OliviaStream
  * @copyright GPLv3
  */
 class CSSStream : public BasicModemStream<CSSEncoder, CSSDecoder, CSSConfig> {
+ public:
+  using BasicModemStream::BasicModemStream;
+};
+
+/**
+ * @brief Arduino Stream API for Morse code (International or American):
+ * print() transmits, read() receives. See BasicModemStream.
+ * @copyright GPLv3
+ */
+class MorseStream
+    : public BasicModemStream<MorseEncoder, MorseDecoder, MorseConfig> {
  public:
   using BasicModemStream::BasicModemStream;
 };

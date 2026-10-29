@@ -128,6 +128,13 @@ void setup() {
     benchmark<CSSEncoder, CSSDecoder>(mode, css);
   }
 
+  for (const char* mode : {"morse", "morse-american"}) {
+    MorseConfig morse;
+    morse.setMode(mode);
+    morse.sample_rate = SAMPLE_RATE;
+    benchmark<MorseEncoder, MorseDecoder>(mode, morse, "CQ CQ DE N0CALL K");
+  }
+
   DTMFConfig dtmf;
   dtmf.sample_rate = SAMPLE_RATE;
   benchmark<DTMFEncoder, DTMFDecoder>("dtmf", dtmf, "0123456789*#ABCD");

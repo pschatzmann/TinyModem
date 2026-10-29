@@ -18,7 +18,7 @@ set(UNIT_TESTS
     ggwave-signal ggwave-loopback ggwave-robust ggwave-stream dtmf-config
     dtmf-loopback dtmf-robust dtmf-stream olivia-config olivia-loopback
     olivia-robust olivia-stream css-config css-loopback css-robust css-stream
-    rx-one)
+    morse-codec morse-loopback morse-robust morse-stream rx-one)
 foreach(test ${UNIT_TESTS})
     add_test(NAME unit-${test} COMMAND unit-tests ${test})
 endforeach()
@@ -45,7 +45,8 @@ set(CLI_OWN_TESTS
     ofdm16 ofdm32 ofdm64 ofdm-noise packets-ofdm ggwave-fast ggwave-fastest
     ggwave-u-normal ggwave-dt-fast ggwave-auto-speed ggwave-noise ggwave-44100hz
     packets-ggwave dtmf dtmf-8000hz dtmf-noise olivia olivia-8-250 olivia-noise
-    olivia-offset contestia css7 css5 css-noise css-offset packets-css)
+    olivia-offset contestia css7 css5 css-noise css-offset packets-css
+    morse morse-40 morse-american morse-noise morse-speed)
 
 set(CLI_TEST ${CMAKE_CURRENT_SOURCE_DIR}/cli-test.sh)
 foreach(test ${CLI_TESTS} ${CLI_TX_TESTS} ${CLI_OWN_TESTS})

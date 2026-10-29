@@ -20,6 +20,7 @@ TinyModem runs on microcontrollers (ESP32, RP2040) and on the desktop, where the
 | [ggwave](https://github.com/pschatzmann/TinyModem/wiki/ggwave) | 2 – 6 of 96 tones at once, messages of up to 140 bytes with Reed-Solomon | `ggwave-normal`, `ggwave-fast`, `ggwave-fastest`, `ggwave-u-*` (ultrasound), `ggwave-dt-*` (dual tone) | 5 – 47 bytes/s | Exchanging short messages with phones and browsers | [ggwave](https://github.com/ggerganov/ggwave), Waver |
 | [Olivia](https://github.com/pschatzmann/TinyModem/wiki/Olivia) | 2 to 256 tones with Walsh-Hadamard FEC | `olivia-8-250`, `olivia-32-1000` (`olivia`), any `olivia-T-B`, `contestia-T-B` | 1 – 5 characters/s of text | Keyboard chat with extremely weak signals | fldigi, untested |
 | [CSS](https://github.com/pschatzmann/TinyModem/wiki/CSS) | chirps (LoRa-like), frames with Reed-Solomon | `css5` … `css10`, e.g. `css9-500` | 1 – 20 bytes/s | Very weak signals, speakers and microphones, different clocks | – |
+| [Morse](https://github.com/pschatzmann/TinyModem/wiki/Morse) | tone on/off (CW) | `morse` (International, default), `morse-american`, with speed e.g. `morse-25` | about 2 characters/s at 20 wpm | Amateur radio CW, beacons, historic telegraph | CW programs, by ear |
 | [DTMF](https://github.com/pschatzmann/TinyModem/wiki/DTMF) | 2 of 8 tones (touch tones) | `dtmf` | 7 keys/s | Telephones, radio remote control | telephones, DTMF decoders |
 
 All modem types transmit an audio signal made of tones, not a digital line signal like a UART. Most modes use tones between about 1000 and 3000 Hz, which pass a telephone line, a radio and most speakers and microphones. Only FSK with high baud rates, `8psk1000` and ggwave (1875 – 6375 Hz, ultrasound 15 – 19.5 kHz) need higher frequencies. Even AX.25, which sends digital frames, transmits the bits with two audio tones.
@@ -48,7 +49,7 @@ To build the `tinymodem` command line tool and the tests on the desktop, you nee
 
 I2SStream i2s;
 MFSKStream modem(i2s, RXTX_MODE);  // or ModemStream, PSKStream, OFDMStream, AX25Stream, GGWaveStream,
-                                   // OliviaStream, CSSStream, DTMFStream
+                                   // OliviaStream, CSSStream, MorseStream, DTMFStream
 
 void setup() {
   Serial.begin(115200);
@@ -93,6 +94,7 @@ The documentation is in the [Wiki](https://github.com/pschatzmann/TinyModem/wiki
   - [ggwave](https://github.com/pschatzmann/TinyModem/wiki/ggwave),
   - [Olivia/Contestia](https://github.com/pschatzmann/TinyModem/wiki/Olivia),
   - [Chirp spread spectrum](https://github.com/pschatzmann/TinyModem/wiki/CSS),
+  - [Morse code](https://github.com/pschatzmann/TinyModem/wiki/Morse),
   - [DTMF](https://github.com/pschatzmann/TinyModem/wiki/DTMF)
 - [Packets with error correction](https://github.com/pschatzmann/TinyModem/wiki/Packets)
 - [Arduino API](https://github.com/pschatzmann/TinyModem/wiki/Arduino)

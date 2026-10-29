@@ -276,5 +276,10 @@ case "$TEST" in
     css-noise)            self_test testdata-ascii.txt css9 -R 8000 -- css9 --Xrxnoise 4 ;;
     css-offset)           self_test testdata-ascii.txt css7 -R 8000 -M 1520 -- css7 ;;
     packets-css)          self_test testdata-ascii.txt --packets css6 -- --packets --Xrxnoise 1.0 css6 ;;
+    morse)                self_test testdata-morse.txt morse -R 8000 ;;
+    morse-40)             self_test testdata-morse.txt morse-40 ;;
+    morse-american)       self_test testdata-morse-american.txt morse-american -R 22050 ;;
+    morse-noise)          self_test testdata-morse.txt morse -R 8000 -- morse --Xrxnoise 1.0 ;;
+    morse-speed)          self_test testdata-morse.txt morse-14 -R 8000 -- morse ;;
     *) echo "unknown test: $TEST" 1>&2; exit 2 ;;
 esac
