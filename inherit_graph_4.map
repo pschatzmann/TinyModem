@@ -1,5 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="Node000000" title=" " alt="" coords="5,14,59,42"/>
 <area shape="rect" id="Node000001" href="$classtinymodem_1_1BasicModemStreamRTOS.html" title="BasicModemStream which receives in a separate task (FreeRTOS on ESP32 and RP2040, a std::thread on th..." alt="" coords="107,5,342,50"/>
-<area shape="poly" id="edge23_Node000000_Node000001" title=" " alt="" coords="74,25,109,27,104,28,75,30"/>
+<area shape="poly" id="edge32_Node000000_Node000001" title=" " alt="" coords="74,25,109,27,104,28,75,30"/>
 </map>

@@ -98,24 +98,30 @@ $(function(){initNavTree('GGWave_8h.html','',''); });
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &quot;AudioTools.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="ReedSolomon_8h_source.html">ReedSolomon.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for GGWave.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="GGWave_8h__incl.png" border="0" usemap="#asrc_2modem_2GGWave_8h" loading="lazy" alt=""/></div>
 <map name="asrc_2modem_2GGWave_8h" id="asrc_2modem_2GGWave_8h">
-<area shape="rect" title=" " alt="" coords="189,5,355,33"/>
+<area shape="rect" title=" " alt="" coords="170,5,336,33"/>
 <area shape="rect" title=" " alt="" coords="5,81,75,109"/>
-<area shape="poly" title=" " alt="" coords="231,36,90,80,89,75,230,31"/>
+<area shape="poly" title=" " alt="" coords="214,36,91,79,89,74,216,31"/>
 <area shape="rect" title=" " alt="" coords="98,81,166,109"/>
-<area shape="poly" title=" " alt="" coords="250,33,171,76,169,71,244,34"/>
-<area shape="rect" title=" " alt="" coords="190,81,260,109"/>
-<area shape="poly" title=" " alt="" coords="266,32,243,70,240,66,261,35"/>
-<area shape="rect" title=" " alt="" coords="284,81,353,109"/>
-<area shape="poly" title=" " alt="" coords="282,31,305,69,300,67,279,36"/>
-<area shape="rect" title=" " alt="" coords="377,81,447,109"/>
-<area shape="poly" title=" " alt="" coords="298,31,376,74,371,74,296,36"/>
-<area shape="rect" title=" " alt="" coords="471,81,574,109"/>
-<area shape="poly" title=" " alt="" coords="317,31,466,76,461,77,316,36"/>
+<area shape="poly" title=" " alt="" coords="229,35,168,75,165,71,234,32"/>
+<area shape="rect" title=" " alt="" coords="189,157,259,184"/>
+<area shape="poly" title=" " alt="" coords="251,31,237,82,228,143,224,140,232,80,247,35"/>
+<area shape="rect" title=" " alt="" coords="488,81,557,109"/>
+<area shape="poly" title=" " alt="" coords="302,31,476,79,471,81,301,36"/>
+<area shape="rect" title=" " alt="" coords="294,157,364,184"/>
+<area shape="poly" title=" " alt="" coords="257,31,266,67,281,107,308,146,303,145,276,110,261,69,254,35"/>
+<area shape="rect" title=" " alt="" coords="394,157,497,184"/>
+<area shape="poly" title=" " alt="" coords="337,30,386,48,408,62,427,79,443,109,448,143,443,140,438,111,423,83,405,66,383,53,337,35"/>
+<area shape="rect" href="ReedSolomon_8h.html" title=" " alt="" coords="290,81,414,109"/>
+<area shape="poly" title=" " alt="" coords="272,31,325,72,320,72,270,36"/>
+<area shape="poly" title=" " alt="" coords="332,109,261,151,259,146,327,110"/>
+<area shape="poly" title=" " alt="" coords="350,108,340,144,336,140,346,111"/>
+<area shape="poly" title=" " alt="" coords="370,107,420,147,414,147,368,112"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -150,9 +156,6 @@ This graph shows which files directly or indirectly include this file:</div>
 Classes</h2></td></tr>
 <tr class="memitem:tinymodem_3A_3AGGWaveProtocol" id="r_tinymodem_3A_3AGGWaveProtocol"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtinymodem_1_1GGWaveProtocol.html">tinymodem::GGWaveProtocol</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transmission protocol of ggwave (<a href="https://github.com/ggerganov/ggwave">https://github.com/ggerganov/ggwave</a>): the ids and parameters are identical to the original. The tones are multiples of sample_rate / samplesPerFrame (46.875 Hz at 48 kHz).  <a href="structtinymodem_1_1GGWaveProtocol.html#details">More...</a><br /></td></tr>
-<tr class="memitem:tinymodem_3A_3AGGWaveRS" id="r_tinymodem_3A_3AGGWaveRS"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtinymodem_1_1GGWaveRS.html">tinymodem::GGWaveRS</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reed-Solomon code with lengths which are defined at runtime: it is identical to the code which is used by ggwave (Mike Lubinets' library): GF(256) with the polynomial 0x11d and the generator roots alpha^0 to alpha^(ecc-1). The parity bytes follow the message.  <a href="classtinymodem_1_1GGWaveRS.html#details">More...</a><br /></td></tr>
-<tr class="memitem:tinymodem_3A_3AGGWaveRS_3A_3ATables" id="r_tinymodem_3A_3AGGWaveRS_3A_3ATables"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtinymodem_1_1GGWaveRS_1_1Tables.html">tinymodem::GGWaveRS::Tables</a></td></tr>
 <tr class="memitem:tinymodem_3A_3AGGWaveConfig" id="r_tinymodem_3A_3AGGWaveConfig"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtinymodem_1_1GGWaveConfig.html">tinymodem::GGWaveConfig</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration of the ggwave compatible modem (<a class="el" href="classtinymodem_1_1GGWaveEncoder.html" title="ggwave compatible modulator: the written bytes are collected into messages of up to 140 bytes....">GGWaveEncoder</a>, <a class="el" href="classtinymodem_1_1GGWaveDecoder.html" title="ggwave compatible demodulator: the PCM audio data is written to the decoder and the payload of the re...">GGWaveDecoder</a>). Each message (up to 140 bytes) starts and ends with a marker and is protected by Reed-Solomon codes. Each byte is sent as 2 of 16 tones which are transmitted at the same time.  <a href="structtinymodem_1_1GGWaveConfig.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
@@ -160,6 +163,10 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:tinymodem" id="r_tinymodem"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetinymodem.html">tinymodem</a></td></tr>
 <tr class="memdesc:namespacetinymodem"><td class="mdescLeft">&#160;</td><td class="mdescRight">TinyModem: software audio modems and packets with error correction. <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a577dac85ad1134ff78f0037eb5edb08e" id="r_a577dac85ad1134ff78f0037eb5edb08e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetinymodem.html#a577dac85ad1134ff78f0037eb5edb08e">tinymodem::GGWaveRS</a> = <a class="el" href="classtinymodem_1_1RSCodec.html">RSCodec</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>

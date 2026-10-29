@@ -106,15 +106,21 @@ Modem types</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><a href="https://github.com/pschatzmann/TinyModem/wiki/MFSK">MFSK</a>  </td><td class="markdownTableBodyNone">4 to 64 tones  </td><td class="markdownTableBodyNone"><span class="tt">mfsk4</span> … <span class="tt">mfsk64</span>  </td><td class="markdownTableBodyNone">23 – 125 bytes/s  </td><td class="markdownTableBodyNone">Speakers and microphones, noise, different clocks  </td><td class="markdownTableBodyNone">–  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a href="https://github.com/pschatzmann/TinyModem/wiki/PSK">PSK</a>  </td><td class="markdownTableBodyNone">phase of 1 carrier  </td><td class="markdownTableBodyNone"><span class="tt">psk31</span> … <span class="tt">psk500</span>  </td><td class="markdownTableBodyNone">4 – 68 bytes/s of text  </td><td class="markdownTableBodyNone">Narrow band, very weak signals, amateur radio  </td><td class="markdownTableBodyNone">PSK31 (fldigi), untested  </td></tr>
+<td class="markdownTableBodyNone"><a href="https://github.com/pschatzmann/TinyModem/wiki/PSK">PSK</a>  </td><td class="markdownTableBodyNone">phase of 1 carrier: BPSK, QPSK with FEC, 8PSK  </td><td class="markdownTableBodyNone"><span class="tt">psk31</span> … <span class="tt">psk500</span>, <span class="tt">qpsk31</span> … <span class="tt">qpsk500</span>, <span class="tt">8psk125</span> … <span class="tt">8psk1000</span>  </td><td class="markdownTableBodyNone">4 – 320 characters/s of text  </td><td class="markdownTableBodyNone">Narrow band, very weak signals, amateur radio  </td><td class="markdownTableBodyNone">fldigi, untested  </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><a href="https://github.com/pschatzmann/TinyModem/wiki/OFDM">OFDM</a>  </td><td class="markdownTableBodyNone">phase of 16 to 64 carriers  </td><td class="markdownTableBodyNone"><span class="tt">ofdm16</span>, <span class="tt">ofdm32</span>, <span class="tt">ofdm64</span>  </td><td class="markdownTableBodyNone">400 bytes/s  </td><td class="markdownTableBodyNone">Fast transfers over a cable or a good audio path  </td><td class="markdownTableBodyNone">–  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a href="https://github.com/pschatzmann/TinyModem/wiki/AX25">AX.25</a>  </td><td class="markdownTableBodyNone">2 tones (AFSK), HDLC frames  </td><td class="markdownTableBodyNone"><span class="tt">aprs</span>, <span class="tt">ax25</span>  </td><td class="markdownTableBodyNone">1200 bit/s  </td><td class="markdownTableBodyNone">APRS and packet radio  </td><td class="markdownTableBodyNone">direwolf, multimon-ng  </td></tr>
+<td class="markdownTableBodyNone"><a href="https://github.com/pschatzmann/TinyModem/wiki/AX25">AX.25</a>  </td><td class="markdownTableBodyNone">2 tones (AFSK), HDLC frames, FX.25 and IL2P with Reed-Solomon  </td><td class="markdownTableBodyNone"><span class="tt">aprs</span>, <span class="tt">ax25</span>, <span class="tt">fx25</span>, <span class="tt">fx25-32</span>, <span class="tt">fx25-64</span>, <span class="tt">il2p</span>  </td><td class="markdownTableBodyNone">1200 bit/s  </td><td class="markdownTableBodyNone">APRS and packet radio  </td><td class="markdownTableBodyNone">direwolf, multimon-ng  </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><a href="https://github.com/pschatzmann/TinyModem/wiki/ggwave">ggwave</a>  </td><td class="markdownTableBodyNone">2 – 6 of 96 tones at once, messages of up to 140 bytes with Reed-Solomon  </td><td class="markdownTableBodyNone"><span class="tt">ggwave-normal</span>, <span class="tt">ggwave-fast</span>, <span class="tt">ggwave-fastest</span>, <span class="tt">ggwave-u-*</span> (ultrasound), <span class="tt">ggwave-dt-*</span> (dual tone)  </td><td class="markdownTableBodyNone">5 – 47 bytes/s  </td><td class="markdownTableBodyNone">Exchanging short messages with phones and browsers  </td><td class="markdownTableBodyNone"><a href="https://github.com/ggerganov/ggwave">ggwave</a>, Waver  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a href="https://github.com/pschatzmann/TinyModem/wiki/Olivia">Olivia</a>  </td><td class="markdownTableBodyNone">2 to 256 tones with Walsh-Hadamard FEC  </td><td class="markdownTableBodyNone"><span class="tt">olivia-8-250</span>, <span class="tt">olivia-32-1000</span> (<span class="tt">olivia</span>), any <span class="tt">olivia-T-B</span>, <span class="tt">contestia-T-B</span>  </td><td class="markdownTableBodyNone">1 – 5 characters/s of text  </td><td class="markdownTableBodyNone">Keyboard chat with extremely weak signals  </td><td class="markdownTableBodyNone">fldigi, untested  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a href="https://github.com/pschatzmann/TinyModem/wiki/CSS">CSS</a>  </td><td class="markdownTableBodyNone">chirps (LoRa-like), frames with Reed-Solomon  </td><td class="markdownTableBodyNone"><span class="tt">css5</span> … <span class="tt">css10</span>, e.g. <span class="tt">css9-500</span>  </td><td class="markdownTableBodyNone">1 – 20 bytes/s  </td><td class="markdownTableBodyNone">Very weak signals, speakers and microphones, different clocks  </td><td class="markdownTableBodyNone">–  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a href="https://github.com/pschatzmann/TinyModem/wiki/DTMF">DTMF</a>  </td><td class="markdownTableBodyNone">2 of 8 tones (touch tones)  </td><td class="markdownTableBodyNone"><span class="tt">dtmf</span>  </td><td class="markdownTableBodyNone">7 keys/s  </td><td class="markdownTableBodyNone">Telephones, radio remote control  </td><td class="markdownTableBodyNone">telephones, DTMF decoders  </td></tr>
 </table>
-<p>All modem types transmit an audio signal made of tones, not a digital line signal like a UART. Most modes use tones between about 1000 and 3000 Hz, which pass a telephone line, a radio and most speakers and microphones. Only FSK with high baud rates and ggwave (1875 – 6375 Hz, ultrasound 15 – 19.5 kHz) need higher frequencies. Even AX.25, which sends digital frames, transmits the bits with two audio tones.</p>
+<p>All modem types transmit an audio signal made of tones, not a digital line signal like a UART. Most modes use tones between about 1000 and 3000 Hz, which pass a telephone line, a radio and most speakers and microphones. Only FSK with high baud rates, <span class="tt">8psk1000</span> and ggwave (1875 – 6375 Hz, ultrasound 15 – 19.5 kHz) need higher frequencies. Even AX.25, which sends digital frames, transmits the bits with two audio tones.</p>
 <p><a href="https://github.com/pschatzmann/TinyModem/wiki/Packets">Packets</a> add a CRC and Reed-Solomon error correction to any modem type, and also work over a plain <span class="tt">Serial</span>. The <a href="https://github.com/pschatzmann/TinyModem/wiki/Modem-Types">modem overview</a> describes the advantages and disadvantages of each modem type and helps you choose.</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
 Installation in Arduino</h1>
@@ -130,7 +136,8 @@ Arduino</h1>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="TinyModem_8h.html">TinyModem.h</a>&quot;</span></div>
 <div class="line"> </div>
 <div class="line">I2SStream i2s;</div>
-<div class="line">MFSKStream modem(i2s, RXTX_MODE);  <span class="comment">// or ModemStream, PSKStream, OFDMStream, AX25Stream, GGWaveStream</span></div>
+<div class="line">MFSKStream modem(i2s, RXTX_MODE);  <span class="comment">// or ModemStream, PSKStream, OFDMStream, AX25Stream, GGWaveStream,</span></div>
+<div class="line">                                   <span class="comment">// OliviaStream, CSSStream, DTMFStream</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup() {</div>
 <div class="line">  Serial.begin(115200);</div>
@@ -148,7 +155,7 @@ Arduino</h1>
 <div class="line">  <span class="keywordflow">while</span> (modem.available()) Serial.write(modem.read());  <span class="comment">// receive</span></div>
 <div class="line">}</div>
 <div class="ttc" id="aTinyModem_8h_html"><div class="ttname"><a href="TinyModem_8h.html">TinyModem.h</a></div><div class="ttdoc">Header only software audio modem library based on the arduino-audio-tools: FSK (compatible with minim...</div></div>
-</div><!-- fragment --><p>See the [examples](examples) and the <a href="https://github.com/pschatzmann/TinyModem/wiki/Arduino">Arduino documentation</a>. The library compiles for ESP32 and RP2040, but it hasn't been tested on real hardware yet.</p>
+</div><!-- fragment --><p>See the [examples](examples) and the <a href="https://github.com/pschatzmann/TinyModem/wiki/Arduino">Arduino documentation</a>. The library runs on ESP32-S3, ESP32-P4 and RP2040 (see the <a href="https://github.com/pschatzmann/TinyModem/wiki/Performance">performance</a>; the RP2040 is too slow for Olivia).</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
 Command line</h1>
 <div class="fragment"><div class="line">cmake -S . -B build &amp;&amp; cmake --build build</div>
@@ -166,11 +173,15 @@ Documentation</h1>
 <li><a href="https://github.com/pschatzmann/TinyModem/wiki/PSK">PSK</a>,</li>
 <li><a href="https://github.com/pschatzmann/TinyModem/wiki/OFDM">OFDM</a>,</li>
 <li><a href="https://github.com/pschatzmann/TinyModem/wiki/AX25">AX.25/APRS</a>,</li>
-<li><a href="https://github.com/pschatzmann/TinyModem/wiki/ggwave">ggwave</a></li>
+<li><a href="https://github.com/pschatzmann/TinyModem/wiki/ggwave">ggwave</a>,</li>
+<li><a href="https://github.com/pschatzmann/TinyModem/wiki/Olivia">Olivia/Contestia</a>,</li>
+<li><a href="https://github.com/pschatzmann/TinyModem/wiki/CSS">Chirp spread spectrum</a>,</li>
+<li><a href="https://github.com/pschatzmann/TinyModem/wiki/DTMF">DTMF</a></li>
 </ul>
 </li>
 <li><a href="https://github.com/pschatzmann/TinyModem/wiki/Packets">Packets with error correction</a></li>
 <li><a href="https://github.com/pschatzmann/TinyModem/wiki/Arduino">Arduino API</a></li>
+<li><a href="https://github.com/pschatzmann/TinyModem/wiki/Performance">Performance on PC and microcontrollers</a></li>
 <li><a href="https://pschatzmann.github.io/TinyModem/annotated.html">Class documentation</a> (Doxygen)</li>
 <li><a href="https://github.com/pschatzmann/TinyModem/wiki/Memory">Memory usage</a></li>
 <li><a href="https://github.com/pschatzmann/TinyModem/wiki/Command-Line">Command line tool</a></li>
@@ -179,7 +190,7 @@ Documentation</h1>
 </ul>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
 License</h1>
-<p>GPLv3 or later. The FSK modem is a rewrite of <a href="https://github.com/kamalmostafa/minimodem">minimodem</a> by Kamal Mostafa. The ggwave modem implements the protocol of <a href="https://github.com/ggerganov/ggwave">ggwave</a> by Georgi Gerganov. See [COPYING](COPYING). </p>
+<p>GPLv3 or later. The FSK modem is a rewrite of <a href="https://github.com/kamalmostafa/minimodem">minimodem</a> by Kamal Mostafa. The ggwave modem implements the protocol of <a href="https://github.com/ggerganov/ggwave">ggwave</a> by Georgi Gerganov. Olivia/Contestia, QPSK and 8PSK follow <a href="https://www.w1hkj.org/">fldigi</a> (Olivia by Pawel Jalocha), FX.25 and IL2P follow <a href="https://github.com/wb2osz/direwolf">direwolf</a> by John Langner, WB2OSZ. See [COPYING](COPYING). </p>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->

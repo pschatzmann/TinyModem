@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['receivequeue_0',['ReceiveQueue',['../classtinymodem_1_1BasicModemStream.html#a492e1b4748bdf0be4ad8a84c7159f023',1,'tinymodem::BasicModemStream']]]
+  ['queue_0',['Queue',['../classtinymodem_1_1BasicModemStreamRTOS.html#ab7250a044eb48f7e42ea647bcabdc4bc',1,'tinymodem::BasicModemStreamRTOS']]]
 ];

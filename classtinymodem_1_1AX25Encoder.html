@@ -187,13 +187,25 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:ad597a309db5948b334ab7b775ee78f05" id="r_ad597a309db5948b334ab7b775ee78f05"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad597a309db5948b334ab7b775ee78f05">writeText</a> (uint8_t ch)</td></tr>
 <tr class="memitem:ab47a70685a44121b62668faa891c48ae" id="r_ab47a70685a44121b62668faa891c48ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab47a70685a44121b62668faa891c48ae">writeKiss</a> (uint8_t ch)</td></tr>
 <tr class="memitem:a4a8e857c44e9b9c0adb9ae5d1e1a7a30" id="r_a4a8e857c44e9b9c0adb9ae5d1e1a7a30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a8e857c44e9b9c0adb9ae5d1e1a7a30">addKiss</a> (uint8_t ch)</td></tr>
-<tr class="memitem:a0fb1ca777de0b2876e9152f8f5b318a5" id="r_a0fb1ca777de0b2876e9152f8f5b318a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fb1ca777de0b2876e9152f8f5b318a5">sendFlags</a> (int ms)</td></tr>
+<tr class="memitem:ab46469ca055c61d13f29461f2707386d" id="r_ab46469ca055c61d13f29461f2707386d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab46469ca055c61d13f29461f2707386d">startTransmission</a> ()</td></tr>
+<tr class="memitem:a56170ffefb8c02a4a5b962bdb267993e" id="r_a56170ffefb8c02a4a5b962bdb267993e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56170ffefb8c02a4a5b962bdb267993e">sendPreamble</a> (int ms)</td></tr>
+<tr class="memdesc:a56170ffefb8c02a4a5b962bdb267993e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flags (<a class="el" href="classtinymodem_1_1IL2P.html" title="IL2P (Improved Layer 2 Protocol, as implemented by direwolf): an AX.25 frame is sent as a scrambled h...">IL2P</a>: 0x55) for the indicated time.  <br /></td></tr>
+<tr class="memitem:a4533ce4dba6c1304275099427df2b51d" id="r_a4533ce4dba6c1304275099427df2b51d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4533ce4dba6c1304275099427df2b51d">writeFX25</a> (const uint8_t *<a class="el" href="#a8fdc1af3b2331713451ce65bc3651cc1">frame</a>, size_t len)</td></tr>
+<tr class="memdesc:a4533ce4dba6c1304275099427df2b51d"><td class="mdescLeft">&#160;</td><td class="mdescRight">FX.25: correlation tag and Reed-Solomon code word (NRZI, no stuffing).  <br /></td></tr>
+<tr class="memitem:a663a1f26fd1b20b56ff06d9307bf1fff" id="r_a663a1f26fd1b20b56ff06d9307bf1fff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a663a1f26fd1b20b56ff06d9307bf1fff">writeIL2P</a> (const uint8_t *<a class="el" href="#a8fdc1af3b2331713451ce65bc3651cc1">frame</a>, size_t len)</td></tr>
+<tr class="memdesc:a663a1f26fd1b20b56ff06d9307bf1fff"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classtinymodem_1_1IL2P.html" title="IL2P (Improved Layer 2 Protocol, as implemented by direwolf): an AX.25 frame is sent as a scrambled h...">IL2P</a>: preamble, sync word and the encoded frame (no NRZI).  <br /></td></tr>
+<tr class="memitem:a057919b817760468879411565c3bb9bf" id="r_a057919b817760468879411565c3bb9bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a057919b817760468879411565c3bb9bf">sendBits</a> (uint8_t value)</td></tr>
+<tr class="memdesc:a057919b817760468879411565c3bb9bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">least significant bit first without bit stuffing (NRZI)  <br /></td></tr>
+<tr class="memitem:abf83d2aaaef2f08b44d1c2218ef29122" id="r_abf83d2aaaef2f08b44d1c2218ef29122"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf83d2aaaef2f08b44d1c2218ef29122">sendRawByte</a> (uint8_t value)</td></tr>
+<tr class="memdesc:abf83d2aaaef2f08b44d1c2218ef29122"><td class="mdescLeft">&#160;</td><td class="mdescRight">most significant bit first without NRZI: 1 = mark  <br /></td></tr>
 <tr class="memitem:aab4093ab1cd49c7022d04056391a416b" id="r_aab4093ab1cd49c7022d04056391a416b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab4093ab1cd49c7022d04056391a416b">sendFlag</a> ()</td></tr>
 <tr class="memdesc:aab4093ab1cd49c7022d04056391a416b"><td class="mdescLeft">&#160;</td><td class="mdescRight">0x7E without bit stuffing  <br /></td></tr>
 <tr class="memitem:ab2bef88905d9aa906cd6062d1e3b457e" id="r_ab2bef88905d9aa906cd6062d1e3b457e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2bef88905d9aa906cd6062d1e3b457e">sendByte</a> (uint8_t value)</td></tr>
 <tr class="memdesc:ab2bef88905d9aa906cd6062d1e3b457e"><td class="mdescLeft">&#160;</td><td class="mdescRight">least significant bit first with bit stuffing  <br /></td></tr>
 <tr class="memitem:ab43c061535944830ec04a8092d498b87" id="r_ab43c061535944830ec04a8092d498b87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab43c061535944830ec04a8092d498b87">sendBit</a> (int bit)</td></tr>
 <tr class="memdesc:ab43c061535944830ec04a8092d498b87"><td class="mdescLeft">&#160;</td><td class="mdescRight">NRZI: a 0 changes the tone, a 1 keeps it.  <br /></td></tr>
+<tr class="memitem:ab22f70ad820e0ada3e512e8272a61b81" id="r_ab22f70ad820e0ada3e512e8272a61b81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab22f70ad820e0ada3e512e8272a61b81">sendTone</a> ()</td></tr>
+<tr class="memdesc:ab22f70ad820e0ada3e512e8272a61b81"><td class="mdescLeft">&#160;</td><td class="mdescRight">sends the current tone for one bit  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -216,7 +228,8 @@ Protected Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>AX.25 packet radio modulator (APRS, 1200 baud AFSK). The written data is converted to AX.25 frames, which are sent with HDLC framing (flags, bit stuffing, frame check sequence) and NRZI coding. </p>
 <p>In <a class="el" href="namespacetinymodem.html#a69fb6b2138b14fcf087924e43e1c51a3a61a96ffcb251bb9bf0abf8fec19d0ea8" title="one frame per line in the monitor format: SRC&gt;DEST,DIGI1,DIGI2:info">AX25Format::TEXT</a> each line (terminated by '<br  />
-') is a frame in the monitor format SRC&gt;DEST,DIGI1,DIGI2:info. In <a class="el" href="namespacetinymodem.html#a69fb6b2138b14fcf087924e43e1c51a3a6ffaaf49fbeb772fa6db6160a5dfbf49">AX25Format::KISS</a> the data consists of KISS frames. A frame is sent as soon as it is complete: the first frame of a transmission is preceded by tx_delay_ms of flags. Call <a class="el" href="#aa525689ef167444e346befee9da78779">endTransmission()</a> (or <a class="el" href="classtinymodem_1_1ModemEncoder.html#aeff1601276d0439eb7fb9deac3606276" title="Ends the transmission.">flush()</a>) to send the tail flags. </p><dl class="section copyright"><dt>Copyright</dt><dd>GPLv3 </dd></dl>
+') is a frame in the monitor format SRC&gt;DEST,DIGI1,DIGI2:info. In <a class="el" href="namespacetinymodem.html#a69fb6b2138b14fcf087924e43e1c51a3a6ffaaf49fbeb772fa6db6160a5dfbf49">AX25Format::KISS</a> the data consists of KISS frames. A frame is sent as soon as it is complete: the first frame of a transmission is preceded by tx_delay_ms of flags. Call <a class="el" href="#aa525689ef167444e346befee9da78779">endTransmission()</a> (or <a class="el" href="classtinymodem_1_1ModemEncoder.html#aeff1601276d0439eb7fb9deac3606276" title="Ends the transmission.">flush()</a>) to send the tail flags.</p>
+<p><a class="el" href="structtinymodem_1_1AX25Config.html#a76a8edd56f8ea4660209a39e2085cf62" title="transmitter: frame format (AX.25, FX.25 or IL2P)">AX25Config::layer2</a> selects FX.25 (the HDLC frame is sent as data of a Reed-Solomon code word with a correlation tag) or <a class="el" href="classtinymodem_1_1IL2P.html" title="IL2P (Improved Layer 2 Protocol, as implemented by direwolf): an AX.25 frame is sent as a scrambled h...">IL2P</a> (preamble 0x55, sync word, scrambled header and payload with Reed-Solomon parity, without NRZI) instead of standard AX.25. </p><dl class="section copyright"><dt>Copyright</dt><dd>GPLv3 </dd></dl>
 </div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Member Enumeration Documentation</h2>
 <a id="a7c121882de15cac8cd8e3ba576ad3cfa" name="a7c121882de15cac8cd8e3ba576ad3cfa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7c121882de15cac8cd8e3ba576ad3cfa">&#9670;&#160;</a></span>KissState</h2>
@@ -615,6 +628,33 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a057919b817760468879411565c3bb9bf" name="a057919b817760468879411565c3bb9bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a057919b817760468879411565c3bb9bf">&#9670;&#160;</a></span>sendBits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tinymodem::AX25Encoder::sendBits </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>least significant bit first without bit stuffing (NRZI) </p>
+
+</div>
+</div>
 <a id="ab2bef88905d9aa906cd6062d1e3b457e" name="ab2bef88905d9aa906cd6062d1e3b457e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab2bef88905d9aa906cd6062d1e3b457e">&#9670;&#160;</a></span>sendByte()</h2>
 
@@ -669,8 +709,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a0fb1ca777de0b2876e9152f8f5b318a5" name="a0fb1ca777de0b2876e9152f8f5b318a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0fb1ca777de0b2876e9152f8f5b318a5">&#9670;&#160;</a></span>sendFlags()</h2>
+<a id="a56170ffefb8c02a4a5b962bdb267993e" name="a56170ffefb8c02a4a5b962bdb267993e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56170ffefb8c02a4a5b962bdb267993e">&#9670;&#160;</a></span>sendPreamble()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -679,7 +719,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void tinymodem::AX25Encoder::sendFlags </td>
+          <td class="memname">void tinymodem::AX25Encoder::sendPreamble </td>
           <td>(</td>
           <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>ms</em></span></td><td>)</td>
           <td></td>
@@ -691,6 +731,62 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Flags (<a class="el" href="classtinymodem_1_1IL2P.html" title="IL2P (Improved Layer 2 Protocol, as implemented by direwolf): an AX.25 frame is sent as a scrambled h...">IL2P</a>: 0x55) for the indicated time. </p>
+
+</div>
+</div>
+<a id="abf83d2aaaef2f08b44d1c2218ef29122" name="abf83d2aaaef2f08b44d1c2218ef29122"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf83d2aaaef2f08b44d1c2218ef29122">&#9670;&#160;</a></span>sendRawByte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tinymodem::AX25Encoder::sendRawByte </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>most significant bit first without NRZI: 1 = mark </p>
+
+</div>
+</div>
+<a id="ab22f70ad820e0ada3e512e8272a61b81" name="ab22f70ad820e0ada3e512e8272a61b81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab22f70ad820e0ada3e512e8272a61b81">&#9670;&#160;</a></span>sendTone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tinymodem::AX25Encoder::sendTone </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>sends the current tone for one bit </p>
 
 </div>
 </div>
@@ -718,6 +814,31 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Defines the sample rate and number of channels of the generated audio. </p>
+
+</div>
+</div>
+<a id="ab46469ca055c61d13f29461f2707386d" name="ab46469ca055c61d13f29461f2707386d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab46469ca055c61d13f29461f2707386d">&#9670;&#160;</a></span>startTransmission()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tinymodem::AX25Encoder::startTransmission </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -812,6 +933,37 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a4533ce4dba6c1304275099427df2b51d" name="a4533ce4dba6c1304275099427df2b51d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4533ce4dba6c1304275099427df2b51d">&#9670;&#160;</a></span>writeFX25()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool tinymodem::AX25Encoder::writeFX25 </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>FX.25: correlation tag and Reed-Solomon code word (NRZI, no stuffing). </p>
+
+</div>
+</div>
 <a id="acb5bcd6ca1d9eedc1a0c26798105dd77" name="acb5bcd6ca1d9eedc1a0c26798105dd77"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acb5bcd6ca1d9eedc1a0c26798105dd77">&#9670;&#160;</a></span>writeIdle()</h2>
 
@@ -838,6 +990,37 @@ Protected Attributes</h2></td></tr>
 <p>Sends flags for the indicated number of samples. </p>
 
 <p>Reimplemented from <a class="el" href="classtinymodem_1_1ModemEncoder.html#a000cc282f8c3f6a99e3432f0808a187a">tinymodem::ModemEncoder</a>.</p>
+
+</div>
+</div>
+<a id="a663a1f26fd1b20b56ff06d9307bf1fff" name="a663a1f26fd1b20b56ff06d9307bf1fff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a663a1f26fd1b20b56ff06d9307bf1fff">&#9670;&#160;</a></span>writeIL2P()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool tinymodem::AX25Encoder::writeIL2P </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classtinymodem_1_1IL2P.html" title="IL2P (Improved Layer 2 Protocol, as implemented by direwolf): an AX.25 frame is sent as a scrambled h...">IL2P</a>: preamble, sync word and the encoded frame (no NRZI). </p>
 
 </div>
 </div>

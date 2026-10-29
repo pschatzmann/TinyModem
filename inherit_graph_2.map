@@ -1,15 +1,21 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,136,172,164"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,213,172,241"/>
 <area shape="rect" id="Node000001" href="$structtinymodem_1_1AX25Config.html" title="Configuration of the AX.25 packet radio modem (AX25Encoder, AX25Decoder): Bell 202 AFSK with 1200 bau..." alt="" coords="231,5,410,33"/>
-<area shape="poly" id="edge15_Node000000_Node000001" title=" " alt="" coords="112,123,159,82,218,43,252,32,248,35,221,48,163,86,116,127"/>
-<area shape="rect" id="Node000002" href="$structtinymodem_1_1GGWaveConfig.html" title="Configuration of the ggwave compatible modem (GGWaveEncoder, GGWaveDecoder). Each message (up to 140 ..." alt="" coords="220,57,421,85"/>
-<area shape="poly" id="edge16_Node000000_Node000002" title=" " alt="" coords="135,127,219,95,263,84,259,87,221,100,138,132"/>
-<area shape="rect" id="Node000003" href="$structtinymodem_1_1MFSKConfig.html" title="Configuration of the multi&#45;tone FSK modem (MFSKEncoder, MFSKDecoder). Each symbol is one of tones ton..." alt="" coords="230,109,410,137"/>
-<area shape="poly" id="edge17_Node000000_Node000003" title=" " alt="" coords="186,136,232,132,227,135,188,141"/>
-<area shape="rect" id="Node000004" href="$structtinymodem_1_1ModemConfig.html" title="Configuration of the FSK modem. The fields correspond to the command line options of minimodem...." alt="" coords="223,161,418,189"/>
-<area shape="poly" id="edge18_Node000000_Node000004" title=" " alt="" coords="187,158,225,164,220,165,188,163"/>
-<area shape="rect" id="Node000005" href="$structtinymodem_1_1OFDMConfig.html" title="Configuration of the OFDM modem (OFDMEncoder, OFDMDecoder): the data is transmitted in parallel on ca..." alt="" coords="228,213,413,241"/>
-<area shape="poly" id="edge19_Node000000_Node000005" title=" " alt="" coords="138,167,221,198,264,212,258,213,219,203,137,173"/>
-<area shape="rect" id="Node000006" href="$structtinymodem_1_1PSKConfig.html" title="Configuration of the PSK modem (PSKEncoder, PSKDecoder): BPSK with Varicode and cosine shaped phase r..." alt="" coords="236,265,405,293"/>
-<area shape="poly" id="edge20_Node000000_Node000006" title=" " alt="" coords="115,172,163,212,221,250,253,265,248,265,218,255,159,217,114,177"/>
+<area shape="poly" id="edge21_Node000000_Node000001" title=" " alt="" coords="100,198,118,163,145,121,178,79,218,44,245,32,241,35,221,48,182,83,149,124,123,165,105,200"/>
+<area shape="rect" id="Node000002" href="$structtinymodem_1_1CSSConfig.html" title="Configuration of the chirp spread spectrum modem (CSSEncoder, CSSDecoder), which works like LoRa in t..." alt="" coords="235,57,406,85"/>
+<area shape="poly" id="edge22_Node000000_Node000002" title=" " alt="" coords="107,199,154,146,185,119,218,96,249,84,245,87,221,100,188,123,158,150,112,202"/>
+<area shape="rect" id="Node000003" href="$structtinymodem_1_1DTMFConfig.html" title="Configuration of the DTMF (touch tone) modem (DTMFEncoder, DTMFDecoder): each of the characters 0&#45;9,..." alt="" coords="229,109,412,137"/>
+<area shape="poly" id="edge23_Node000000_Node000003" title=" " alt="" coords="121,202,166,174,219,147,257,136,253,139,221,152,169,178,124,206"/>
+<area shape="rect" id="Node000004" href="$structtinymodem_1_1GGWaveConfig.html" title="Configuration of the ggwave compatible modem (GGWaveEncoder, GGWaveDecoder). Each message (up to 140 ..." alt="" coords="220,161,421,189"/>
+<area shape="poly" id="edge24_Node000000_Node000004" title=" " alt="" coords="167,207,257,188,253,191,170,212"/>
+<area shape="rect" id="Node000005" href="$structtinymodem_1_1MFSKConfig.html" title="Configuration of the multi&#45;tone FSK modem (MFSKEncoder, MFSKDecoder). Each symbol is one of tones ton..." alt="" coords="230,213,410,241"/>
+<area shape="poly" id="edge25_Node000000_Node000005" title=" " alt="" coords="186,225,232,226,227,228,188,230"/>
+<area shape="rect" id="Node000006" href="$structtinymodem_1_1ModemConfig.html" title="Configuration of the FSK modem. The fields correspond to the command line options of minimodem...." alt="" coords="223,265,418,293"/>
+<area shape="poly" id="edge26_Node000000_Node000006" title=" " alt="" coords="168,242,257,263,253,266,169,248"/>
+<area shape="rect" id="Node000007" href="$structtinymodem_1_1OFDMConfig.html" title="Configuration of the OFDM modem (OFDMEncoder, OFDMDecoder): the data is transmitted in parallel on ca..." alt="" coords="228,317,413,345"/>
+<area shape="poly" id="edge27_Node000000_Node000007" title=" " alt="" coords="123,247,169,276,221,302,258,316,252,317,219,307,166,280,123,253"/>
+<area shape="rect" id="Node000008" href="$structtinymodem_1_1OliviaConfig.html" title="Configuration of the Olivia and Contestia modems (OliviaEncoder, OliviaDecoder): MFSK with 2 to 256 t..." alt="" coords="229,369,412,397"/>
+<area shape="poly" id="edge28_Node000000_Node000008" title=" " alt="" coords="110,251,158,304,188,331,221,354,250,369,245,369,218,359,185,336,154,308,109,256"/>
+<area shape="rect" id="Node000009" href="$structtinymodem_1_1PSKConfig.html" title="Configuration of the PSK modem (PSKEncoder, PSKDecoder): differential PSK with cosine shaped transiti..." alt="" coords="236,421,405,449"/>
+<area shape="poly" id="edge29_Node000000_Node000009" title=" " alt="" coords="103,252,123,289,149,330,182,372,221,406,246,421,241,421,218,411,178,375,145,334,118,292,102,258"/>
 </map>

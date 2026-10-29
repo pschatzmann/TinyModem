@@ -4,7 +4,6 @@ var searchData=
   ['ggwavedecoder_1',['GGWaveDecoder',['../classtinymodem_1_1GGWaveDecoder.html',1,'tinymodem']]],
   ['ggwaveencoder_2',['GGWaveEncoder',['../classtinymodem_1_1GGWaveEncoder.html',1,'tinymodem']]],
   ['ggwaveprotocol_3',['GGWaveProtocol',['../structtinymodem_1_1GGWaveProtocol.html',1,'tinymodem']]],
-  ['ggwavers_4',['GGWaveRS',['../classtinymodem_1_1GGWaveRS.html',1,'tinymodem']]],
-  ['ggwavestream_5',['GGWaveStream',['../classtinymodem_1_1GGWaveStream.html',1,'tinymodem']]],
-  ['ggwavestreamrtos_6',['GGWaveStreamRTOS',['../classtinymodem_1_1GGWaveStreamRTOS.html',1,'tinymodem']]]
+  ['ggwavestream_4',['GGWaveStream',['../classtinymodem_1_1GGWaveStream.html',1,'tinymodem']]],
+  ['ggwavestreamrtos_5',['GGWaveStreamRTOS',['../classtinymodem_1_1GGWaveStreamRTOS.html',1,'tinymodem']]]
 ];

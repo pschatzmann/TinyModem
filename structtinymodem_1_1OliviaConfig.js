@@ -1,0 +1,27 @@
+var structtinymodem_1_1OliviaConfig =
+[
+    [ "OliviaConfig", "structtinymodem_1_1OliviaConfig.html#aa45de5170f70b3ec8878688c5dec18de", null ],
+    [ "bitsPerCharacter", "structtinymodem_1_1OliviaConfig.html#aefaebf95c550df2832bff4995e3ceae6", null ],
+    [ "bitsPerSymbol", "structtinymodem_1_1OliviaConfig.html#a7ea96304bd84cb6b954b92ee74849bc2", null ],
+    [ "charRate", "structtinymodem_1_1OliviaConfig.html#aa644560ba8c768da60cf6b89d9c666d4", null ],
+    [ "firstCarrier", "structtinymodem_1_1OliviaConfig.html#afadbe76f49b59fd3ed4d56bdfd11afc9", null ],
+    [ "isValid", "structtinymodem_1_1OliviaConfig.html#a758c1d70972250c228f5541469ee1a29", null ],
+    [ "setMode", "structtinymodem_1_1OliviaConfig.html#a4d5d487265caf1109308a542630f46b7", null ],
+    [ "symbolLen", "structtinymodem_1_1OliviaConfig.html#a5288233bf18b9249c5d307aa30b830bf", null ],
+    [ "symbolRate", "structtinymodem_1_1OliviaConfig.html#aa5e0f405ef12c76f7cb526fa802fb902", null ],
+    [ "symbolSepar", "structtinymodem_1_1OliviaConfig.html#ae52c761ac760fe982f91f9ddf3540c5f", null ],
+    [ "symbolsPerBlock", "structtinymodem_1_1OliviaConfig.html#a009f2dfbeec618140281cbe29f309260", null ],
+    [ "toneFreq", "structtinymodem_1_1OliviaConfig.html#ac9cde2655af41d9f8b1919f645f34f05", null ],
+    [ "bandwidth", "structtinymodem_1_1OliviaConfig.html#aef27064c2ad76f7813ab0fbb7f0d98b6", null ],
+    [ "center_freq", "structtinymodem_1_1OliviaConfig.html#ad4d6a0d77ce2d8f1a0d57bda1a3c3705", null ],
+    [ "channel", "structtinymodem_1_1OliviaConfig.html#a065d2ec209caad9043e4c8e046d50c59", null ],
+    [ "contestia", "structtinymodem_1_1OliviaConfig.html#a32e7e02e05637c6b2d5719c4e9f9487c", null ],
+    [ "rx_noise", "structtinymodem_1_1OliviaConfig.html#a64a0f7632b99264654e8285c8003c7c3", null ],
+    [ "rx_one", "structtinymodem_1_1OliviaConfig.html#a457ff95684073462dba409523c09a90a", null ],
+    [ "start_tones", "structtinymodem_1_1OliviaConfig.html#a4ad15204f29d16a25a8548fe2d9edbf3", null ],
+    [ "sync_integration", "structtinymodem_1_1OliviaConfig.html#a9fb268288a6e5478e63088c8deac84d9", null ],
+    [ "sync_margin", "structtinymodem_1_1OliviaConfig.html#adaf1aa01c7092e0b1ee8c333d544ddaf", null ],
+    [ "sync_threshold", "structtinymodem_1_1OliviaConfig.html#aaead6477373df49d1ebb6c416cdf45ed", null ],
+    [ "tones", "structtinymodem_1_1OliviaConfig.html#a347bd574c46d02ad3ba921a4063e0c1e", null ],
+    [ "volume", "structtinymodem_1_1OliviaConfig.html#ad643c4f18382bf4332a586c940b3cfee", null ]
+];

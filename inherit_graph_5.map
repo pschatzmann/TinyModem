@@ -1,17 +1,17 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="Node000000" title=" " alt="" coords="5,212,57,240"/>
 <area shape="rect" id="Node000001" href="$classtinymodem_1_1PacketDecoder.html" title=" " alt="" coords="122,5,322,50"/>
-<area shape="poly" id="edge24_Node000000_Node000001" title=" " alt="" coords="35,197,43,165,56,128,76,92,103,60,123,48,120,52,106,64,80,95,61,131,48,167,40,198"/>
+<area shape="poly" id="edge33_Node000000_Node000001" title=" " alt="" coords="35,197,43,165,56,128,76,92,103,60,123,48,120,52,106,64,80,95,61,131,48,167,40,198"/>
 <area shape="rect" id="Node000002" href="$classtinymodem_1_1PacketEncoder.html" title=" " alt="" coords="123,75,322,119"/>
-<area shape="poly" id="edge25_Node000000_Node000002" title=" " alt="" coords="45,197,69,162,103,130,127,118,124,122,106,134,73,165,49,200"/>
+<area shape="poly" id="edge34_Node000000_Node000002" title=" " alt="" coords="45,197,69,162,103,130,127,118,124,122,106,134,73,165,49,200"/>
 <area shape="rect" id="Node000003" href="$structtinymodem_1_1BasicModemStreamRTOS_1_1LockedQueue.html" title="Print which writes the decoded data into the queue with a lock." alt="" coords="105,144,340,189"/>
-<area shape="poly" id="edge26_Node000000_Node000003" title=" " alt="" coords="70,210,104,198,144,187,140,191,105,204,73,214"/>
+<area shape="poly" id="edge35_Node000000_Node000003" title=" " alt="" coords="70,210,104,198,144,187,140,191,105,204,73,214"/>
 <area shape="rect" id="Node000004" href="$classtinymodem_1_1ByteQueue.html" title="FIFO for received data which grows when needed: e.g. one decoding step can produce more data than exp..." alt="" coords="134,212,310,240"/>
-<area shape="poly" id="edge27_Node000000_Node000004" title=" " alt="" coords="71,224,136,224,132,228,73,229"/>
+<area shape="poly" id="edge36_Node000000_Node000004" title=" " alt="" coords="71,224,136,224,132,228,73,229"/>
 <area shape="rect" id="Node000005" href="$classtinymodem_1_1PacketDecoder.html" title="Receives the packets of a PacketEncoder: the written bytes (e.g. the output of a modem decoder) are d..." alt="" coords="108,264,336,309"/>
-<area shape="poly" id="edge28_Node000000_Node000005" title=" " alt="" coords="71,238,105,249,144,262,140,265,104,254,72,243"/>
+<area shape="poly" id="edge37_Node000000_Node000005" title=" " alt="" coords="71,238,105,249,144,262,140,265,104,254,72,243"/>
 <area shape="rect" id="Node000006" href="$classtinymodem_1_1PacketEncoder.html" title="Splits the written data into packets with a CRC&#45;16 and Reed&#45;Solomon forward error correction,..." alt="" coords="108,333,336,378"/>
-<area shape="poly" id="edge29_Node000000_Node000006" title=" " alt="" coords="47,251,73,287,106,319,128,332,123,333,103,323,69,291,47,257"/>
+<area shape="poly" id="edge38_Node000000_Node000006" title=" " alt="" coords="47,251,73,287,106,319,128,332,123,333,103,323,69,291,47,257"/>
 <area shape="rect" id="Node000007" href="$classtinymodem_1_1PrintFilter.html" title="Print which replaces non printable characters with &#39;.&#39;." alt="" coords="139,402,306,430"/>
-<area shape="poly" id="edge30_Node000000_Node000007" title=" " alt="" coords="37,253,47,287,60,323,80,359,106,388,141,408,136,408,103,392,75,362,56,325,42,289,37,259"/>
+<area shape="poly" id="edge39_Node000000_Node000007" title=" " alt="" coords="37,253,47,287,60,323,80,359,106,388,141,408,136,408,103,392,75,362,56,325,42,289,37,259"/>
 </map>

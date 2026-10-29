@@ -93,7 +93,7 @@ $(function(){initNavTree('classtinymodem_1_1PSKDecoder.html','','classtinymodem_
 </div><!--header-->
 <div class="contents">
 
-<p>PSK demodulator (BPSK like PSK31): the PCM audio data is written to the decoder and the decoded bytes are written to the output. The input can be 8, 16 or 32 bit signed samples with any number of channels (only <a class="el" href="structtinymodem_1_1PSKConfig.html#aa38c9a0df471fc7d46a3aef6d2005714" title="receiver: input channel which is used for the decoding">PSKConfig::channel</a> is evaluated).  
+<p>PSK demodulator (BPSK, QPSK and 8PSK compatible with fldigi): the PCM audio data is written to the decoder and the decoded bytes are written to the output. The input can be 8, 16 or 32 bit signed samples with any number of channels (only <a class="el" href="structtinymodem_1_1PSKConfig.html#aa38c9a0df471fc7d46a3aef6d2005714" title="receiver: input channel which is used for the decoding">PSKConfig::channel</a> is evaluated).  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="PSKDecoder_8h_source.html">PSKDecoder.h</a>&gt;</code></p>
@@ -102,7 +102,7 @@ Inheritance diagram for tinymodem::PSKDecoder:</div>
 <div class="dyncontent">
 <div class="center"><img src="classtinymodem_1_1PSKDecoder__inherit__graph.png" border="0" usemap="#atinymodem_1_1PSKDecoder_inherit__map" loading="lazy" alt="Inheritance graph"/></div>
 <map name="atinymodem_1_1PSKDecoder_inherit__map" id="atinymodem_1_1PSKDecoder_inherit__map">
-<area shape="rect" title="PSK demodulator (BPSK like PSK31): the PCM audio data is written to the decoder and the decoded bytes..." alt="" coords="17,157,201,184"/>
+<area shape="rect" title="PSK demodulator (BPSK, QPSK and 8PSK compatible with fldigi): the PCM audio data is written to the de..." alt="" coords="17,157,201,184"/>
 <area shape="rect" href="classtinymodem_1_1ModemDecoder.html" title="Common API of the demodulators (FSKDecoder, MFSKDecoder): PCM audio data is written to the decoder an..." alt="" coords="5,81,213,109"/>
 <area shape="poly" title=" " alt="" coords="111,123,111,157,107,155,107,126"/>
 <area shape="rect" title=" " alt="" coords="11,5,207,33"/>
@@ -114,17 +114,19 @@ Collaboration diagram for tinymodem::PSKDecoder:</div>
 <div class="dyncontent">
 <div class="center"><img src="classtinymodem_1_1PSKDecoder__coll__graph.png" border="0" usemap="#atinymodem_1_1PSKDecoder_coll__map" loading="lazy" alt="Collaboration graph"/></div>
 <map name="atinymodem_1_1PSKDecoder_coll__map" id="atinymodem_1_1PSKDecoder_coll__map">
-<area shape="rect" title="PSK demodulator (BPSK like PSK31): the PCM audio data is written to the decoder and the decoded bytes..." alt="" coords="229,183,413,211"/>
-<area shape="rect" href="classtinymodem_1_1ModemDecoder.html" title="Common API of the demodulators (FSKDecoder, MFSKDecoder): PCM audio data is written to the decoder an..." alt="" coords="5,82,213,110"/>
-<area shape="poly" title=" " alt="" coords="152,114,295,181,290,184,150,120"/>
-<area shape="rect" title=" " alt="" coords="11,5,207,33"/>
-<area shape="poly" title=" " alt="" coords="110,46,112,83,106,81,108,51"/>
-<area shape="rect" href="structtinymodem_1_1PSKConfig.html" title="Configuration of the PSK modem (PSKEncoder, PSKDecoder): BPSK with Varicode and cosine shaped phase r..." alt="" coords="236,82,406,110"/>
-<area shape="poly" title=" " alt="" coords="323,124,323,184,319,181,319,127"/>
-<area shape="rect" title=" " alt="" coords="238,5,404,33"/>
-<area shape="poly" title=" " alt="" coords="323,46,323,83,319,81,319,51"/>
-<area shape="rect" href="classtinymodem_1_1PcmInput.html" title="Assembles the PCM frames from the written bytes and provides the samples of the selected channel as f..." alt="" coords="430,82,596,110"/>
-<area shape="poly" title=" " alt="" coords="477,117,348,185,346,180,471,118"/>
+<area shape="rect" title="PSK demodulator (BPSK, QPSK and 8PSK compatible with fldigi): the PCM audio data is written to the de..." alt="" coords="546,83,730,110"/>
+<area shape="rect" href="classtinymodem_1_1ModemDecoder.html" title="Common API of the demodulators (FSKDecoder, MFSKDecoder): PCM audio data is written to the decoder an..." alt="" coords="250,5,457,33"/>
+<area shape="poly" title=" " alt="" coords="457,34,523,50,606,82,601,82,522,55,457,39"/>
+<area shape="rect" title=" " alt="" coords="5,5,201,33"/>
+<area shape="poly" title=" " alt="" coords="216,17,252,18,247,20,217,22"/>
+<area shape="rect" href="structtinymodem_1_1PSKConfig.html" title="Configuration of the PSK modem (PSKEncoder, PSKDecoder): differential PSK with cosine shaped transiti..." alt="" coords="269,57,438,85"/>
+<area shape="poly" title=" " alt="" coords="454,77,549,88,543,89,454,83"/>
+<area shape="rect" title=" " alt="" coords="20,57,186,85"/>
+<area shape="poly" title=" " alt="" coords="201,69,271,70,266,72,202,74"/>
+<area shape="rect" href="classtinymodem_1_1PcmInput.html" title="Assembles the PCM frames from the written bytes and provides the samples of the selected channel as f..." alt="" coords="271,111,436,138"/>
+<area shape="poly" title=" " alt="" coords="452,119,522,114,563,111,558,111,523,119,452,124"/>
+<area shape="rect" href="classtinymodem_1_1QPSKCode.html" title="Rate 1/2 convolutional code with K=5 (polynomials 0x17 and 0x19) of QPSK31 (fldigi) and a soft decisi..." alt="" coords="268,167,439,194"/>
+<area shape="poly" title=" " alt="" coords="454,164,522,147,569,128,608,112,613,110,571,133,523,152,455,169"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -173,8 +175,14 @@ Protected Member Functions</h2></td></tr>
 <tr class="memdesc:af48b79de0cdb753b74f69c3ef0cbb14b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Avoids the accumulation of rounding errors.  <br /></td></tr>
 <tr class="memitem:ada88e0c6aae4db4844a66fa2930b256d" id="r_ada88e0c6aae4db4844a66fa2930b256d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada88e0c6aae4db4844a66fa2930b256d">updateTiming</a> ()</td></tr>
 <tr class="memdesc:ada88e0c6aae4db4844a66fa2930b256d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The decision time is the circular center of the energy distribution.  <br /></td></tr>
+<tr class="memitem:a840014f911c28348590196b9a13ecf33" id="r_a840014f911c28348590196b9a13ecf33"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a840014f911c28348590196b9a13ecf33">positions</a> ()</td></tr>
+<tr class="memdesc:a840014f911c28348590196b9a13ecf33"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of phase positions  <br /></td></tr>
 <tr class="memitem:ad289236f4329a4359417c528f13ed8d4" id="r_ad289236f4329a4359417c528f13ed8d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad289236f4329a4359417c528f13ed8d4">decide</a> ()</td></tr>
 <tr class="memdesc:ad289236f4329a4359417c528f13ed8d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bit decision from the phase difference to the previous symbol.  <br /></td></tr>
+<tr class="memitem:acb4d42c741d7096c9bbfc538c167d81f" id="r_acb4d42c741d7096c9bbfc538c167d81f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb4d42c741d7096c9bbfc538c167d81f">mfskVaricode</a> (int bit)</td></tr>
+<tr class="memdesc:acb4d42c741d7096c9bbfc538c167d81f"><td class="mdescLeft">&#160;</td><td class="mdescRight">MFSK <a class="el" href="classtinymodem_1_1Varicode.html" title="The PSK31 Varicode (as extended by fldigi to all 256 byte values): frequent characters have short cod...">Varicode</a> (8PSK): a character ends with "001".  <br /></td></tr>
+<tr class="memitem:aeaa852f7af58d81caa1f0819b0c98924" id="r_aeaa852f7af58d81caa1f0819b0c98924"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeaa852f7af58d81caa1f0819b0c98924">releaseHeld</a> ()</td></tr>
+<tr class="memitem:a110701e4a4d0f231a6dff6801ab37eba" id="r_a110701e4a4d0f231a6dff6801ab37eba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a110701e4a4d0f231a6dff6801ab37eba">output</a> (uint8_t ch)</td></tr>
 <tr class="memitem:a5a97283867de3ad7cdf85a45b38d71f3" id="r_a5a97283867de3ad7cdf85a45b38d71f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a97283867de3ad7cdf85a45b38d71f3">varicode</a> (int bit)</td></tr>
 <tr class="memdesc:a5a97283867de3ad7cdf85a45b38d71f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collects the bits of a character: characters are separated by "00".  <br /></td></tr>
 <tr class="memitem:ab577976b8acba06716051e40bda51dbb" id="r_ab577976b8acba06716051e40bda51dbb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab577976b8acba06716051e40bda51dbb">startOfCarrier</a> (float amplitude)</td></tr>
@@ -211,12 +219,17 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a315dfd8e705a515697f6efe0875378af" id="r_a315dfd8e705a515697f6efe0875378af"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a315dfd8e705a515697f6efe0875378af">prev_i</a> = 0</td></tr>
 <tr class="memitem:a83ee9bdade146b1354aa2331adbd193e" id="r_a83ee9bdade146b1354aa2331adbd193e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83ee9bdade146b1354aa2331adbd193e">prev_q</a> = 0</td></tr>
 <tr class="memitem:a65f6d50a07a9580219405b7bfe727659" id="r_a65f6d50a07a9580219405b7bfe727659"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a65f6d50a07a9580219405b7bfe727659">quality</a> = 0</td></tr>
+<tr class="memitem:a7f9a397f614dd622148762c598532b1a" id="r_a7f9a397f614dd622148762c598532b1a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f9a397f614dd622148762c598532b1a">quality_m</a> = 0</td></tr>
 <tr class="memitem:a626ea192d2a1f55bc26462f6bf91c9f7" id="r_a626ea192d2a1f55bc26462f6bf91c9f7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a626ea192d2a1f55bc26462f6bf91c9f7">carrier</a> = false</td></tr>
 <tr class="memitem:aee22dc5dd24f8973efe0d4f285a7b293" id="r_aee22dc5dd24f8973efe0d4f285a7b293"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee22dc5dd24f8973efe0d4f285a7b293">zeros</a> = 0</td></tr>
 <tr class="memitem:a6c188c77c8022fb0966ebc9765025f22" id="r_a6c188c77c8022fb0966ebc9765025f22"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c188c77c8022fb0966ebc9765025f22">ones</a> = 0</td></tr>
 <tr class="memitem:a71585964c457d6dc370bdaa93b60909e" id="r_a71585964c457d6dc370bdaa93b60909e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71585964c457d6dc370bdaa93b60909e">weak</a> = 0</td></tr>
 <tr class="memitem:ae7764fd74416fcbb5e8e5d382d04501c" id="r_ae7764fd74416fcbb5e8e5d382d04501c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7764fd74416fcbb5e8e5d382d04501c">last_bit</a> = 1</td></tr>
 <tr class="memitem:af5f9e19d12d1ad3c2e1da34e98c2e82f" id="r_af5f9e19d12d1ad3c2e1da34e98c2e82f"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5f9e19d12d1ad3c2e1da34e98c2e82f">code</a> = 0</td></tr>
+<tr class="memitem:a906cc82a868fec4f95594267c19f9f9d" id="r_a906cc82a868fec4f95594267c19f9f9d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classtinymodem_1_1QPSKCode.html">QPSKCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a906cc82a868fec4f95594267c19f9f9d">qpsk</a></td></tr>
+<tr class="memitem:a76bc0fae64f54a66a97ca705fddbad1b" id="r_a76bc0fae64f54a66a97ca705fddbad1b"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76bc0fae64f54a66a97ca705fddbad1b">mfsk_code</a> = 0</td></tr>
+<tr class="memitem:a2104665dfd5804a704f06b73e1a02a1b" id="r_a2104665dfd5804a704f06b73e1a02a1b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2104665dfd5804a704f06b73e1a02a1b">held</a> [<a class="el" href="#a0e9355b36e07b6387f3134ce37eead6d">MAX_ONES</a>]</td></tr>
+<tr class="memitem:a949036c9a6afa0ba24e28a3c2780a9fd" id="r_a949036c9a6afa0ba24e28a3c2780a9fd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a949036c9a6afa0ba24e28a3c2780a9fd">nheld</a> = 0</td></tr>
 <tr class="memitem:a32ed95c57923bd664d6d11165fab6f83" id="r_a32ed95c57923bd664d6d11165fab6f83"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a32ed95c57923bd664d6d11165fab6f83">track_amplitude</a> = 0</td></tr>
 <tr class="memitem:a6b5d70564028a16cd5179d2782c153e9" id="r_a6b5d70564028a16cd5179d2782c153e9"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b5d70564028a16cd5179d2782c153e9">ndata</a> = 0</td></tr>
 <tr class="memitem:aae05733fef2f99d630b4d2e9db8bf70a" id="r_aae05733fef2f99d630b4d2e9db8bf70a"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae05733fef2f99d630b4d2e9db8bf70a">nsymbols</a> = 0</td></tr>
@@ -240,8 +253,8 @@ Static Protected Attributes</h2></td></tr>
 <tr class="memitem:a3c49bc51db9a5f4a678fb2946ca80686" id="r_a3c49bc51db9a5f4a678fb2946ca80686"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c49bc51db9a5f4a678fb2946ca80686">MAX_CORRECTION</a> = 0.125f</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>PSK demodulator (BPSK like PSK31): the PCM audio data is written to the decoder and the decoded bytes are written to the output. The input can be 8, 16 or 32 bit signed samples with any number of channels (only <a class="el" href="structtinymodem_1_1PSKConfig.html#aa38c9a0df471fc7d46a3aef6d2005714" title="receiver: input channel which is used for the decoding">PSKConfig::channel</a> is evaluated). </p>
-<p>The signal is mixed to the baseband and integrated over one symbol. The symbol timing is determined from the energy distribution over the symbol period, the bits from the phase difference of consecutive symbols. An automatic frequency control tracks frequency offsets of up to a quarter of the symbol rate. The receiver starts with a run of phase reversals (preamble) and stops when the signal is lost or with a long steady carrier (postamble). </p><dl class="section copyright"><dt>Copyright</dt><dd>GPLv3 </dd></dl>
+<div class="textblock"><p>PSK demodulator (BPSK, QPSK and 8PSK compatible with fldigi): the PCM audio data is written to the decoder and the decoded bytes are written to the output. The input can be 8, 16 or 32 bit signed samples with any number of channels (only <a class="el" href="structtinymodem_1_1PSKConfig.html#aa38c9a0df471fc7d46a3aef6d2005714" title="receiver: input channel which is used for the decoding">PSKConfig::channel</a> is evaluated). </p>
+<p>The signal is mixed to the baseband and integrated over one symbol. The symbol timing is determined from the energy distribution over the symbol period, the bits from the phase difference of consecutive symbols: QPSK uses a soft decision Viterbi decoder. An automatic frequency control tracks frequency offsets of up to a quarter of the symbol rate (QPSK: 1/8, 8PSK: 1/16). The receiver starts with a run of phase reversals (preamble) and stops when the signal is lost or with a long steady carrier (postamble of BPSK and 8PSK). </p><dl class="section copyright"><dt>Copyright</dt><dd>GPLv3 </dd></dl>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a90fa8c56de8a3a0fdb650ecb12ccc61e" name="a90fa8c56de8a3a0fdb650ecb12ccc61e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a90fa8c56de8a3a0fdb650ecb12ccc61e">&#9670;&#160;</a></span>PSKDecoder() <span class="overload">[1/2]</span></h2>
@@ -647,6 +660,33 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="acb4d42c741d7096c9bbfc538c167d81f" name="acb4d42c741d7096c9bbfc538c167d81f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb4d42c741d7096c9bbfc538c167d81f">&#9670;&#160;</a></span>mfskVaricode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tinymodem::PSKDecoder::mfskVaricode </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>bit</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>MFSK <a class="el" href="classtinymodem_1_1Varicode.html" title="The PSK31 Varicode (as extended by fldigi to all 256 byte values): frequent characters have short cod...">Varicode</a> (8PSK): a character ends with "001". </p>
+
+</div>
+</div>
 <a id="a9d76df2378af5e128613a35e7f1a3ba8" name="a9d76df2378af5e128613a35e7f1a3ba8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9d76df2378af5e128613a35e7f1a3ba8">&#9670;&#160;</a></span>noise()</h2>
 
@@ -699,6 +739,58 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a110701e4a4d0f231a6dff6801ab37eba" name="a110701e4a4d0f231a6dff6801ab37eba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a110701e4a4d0f231a6dff6801ab37eba">&#9670;&#160;</a></span>output()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tinymodem::PSKDecoder::output </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>ch</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a840014f911c28348590196b9a13ecf33" name="a840014f911c28348590196b9a13ecf33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a840014f911c28348590196b9a13ecf33">&#9670;&#160;</a></span>positions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tinymodem::PSKDecoder::positions </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>number of phase positions </p>
+
+</div>
+</div>
 <a id="af48b79de0cdb753b74f69c3ef0cbb14b" name="af48b79de0cdb753b74f69c3ef0cbb14b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af48b79de0cdb753b74f69c3ef0cbb14b">&#9670;&#160;</a></span>recalculate()</h2>
 
@@ -723,6 +815,31 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Avoids the accumulation of rounding errors. </p>
+
+</div>
+</div>
+<a id="aeaa852f7af58d81caa1f0819b0c98924" name="aeaa852f7af58d81caa1f0819b0c98924"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaa852f7af58d81caa1f0819b0c98924">&#9670;&#160;</a></span>releaseHeld()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tinymodem::PSKDecoder::releaseHeld </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -1134,6 +1251,28 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a2104665dfd5804a704f06b73e1a02a1b" name="a2104665dfd5804a704f06b73e1a02a1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2104665dfd5804a704f06b73e1a02a1b">&#9670;&#160;</a></span>held</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t tinymodem::PSKDecoder::held[<a class="el" href="#a0e9355b36e07b6387f3134ce37eead6d">MAX_ONES</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a7c67bfa70d2e7982f7253d92de58e902" name="a7c67bfa70d2e7982f7253d92de58e902"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7c67bfa70d2e7982f7253d92de58e902">&#9670;&#160;</a></span>hist</h2>
 
@@ -1356,6 +1495,28 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a76bc0fae64f54a66a97ca705fddbad1b" name="a76bc0fae64f54a66a97ca705fddbad1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76bc0fae64f54a66a97ca705fddbad1b">&#9670;&#160;</a></span>mfsk_code</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t tinymodem::PSKDecoder::mfsk_code = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ab9521e328d44ad01a613b9a06465f524" name="ab9521e328d44ad01a613b9a06465f524"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab9521e328d44ad01a613b9a06465f524">&#9670;&#160;</a></span>MIN_PREAMBLE</h2>
 
@@ -1433,6 +1594,28 @@ Static Protected Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">unsigned tinymodem::PSKDecoder::ndata = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a949036c9a6afa0ba24e28a3c2780a9fd" name="a949036c9a6afa0ba24e28a3c2780a9fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a949036c9a6afa0ba24e28a3c2780a9fd">&#9670;&#160;</a></span>nheld</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tinymodem::PSKDecoder::nheld = 0</td>
         </tr>
       </table>
   </td>
@@ -1598,6 +1781,28 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a906cc82a868fec4f95594267c19f9f9d" name="a906cc82a868fec4f95594267c19f9f9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a906cc82a868fec4f95594267c19f9f9d">&#9670;&#160;</a></span>qpsk</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classtinymodem_1_1QPSKCode.html">QPSKCode</a> tinymodem::PSKDecoder::qpsk</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a65f6d50a07a9580219405b7bfe727659" name="a65f6d50a07a9580219405b7bfe727659"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a65f6d50a07a9580219405b7bfe727659">&#9670;&#160;</a></span>quality</h2>
 
@@ -1609,6 +1814,28 @@ Static Protected Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">float tinymodem::PSKDecoder::quality = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7f9a397f614dd622148762c598532b1a" name="a7f9a397f614dd622148762c598532b1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f9a397f614dd622148762c598532b1a">&#9670;&#160;</a></span>quality_m</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float tinymodem::PSKDecoder::quality_m = 0</td>
         </tr>
       </table>
   </td>

@@ -128,7 +128,6 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a6373b383735fcd32849ae6809f9f9271" id="r_a6373b383735fcd32849ae6809f9f9271"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6373b383735fcd32849ae6809f9f9271">isMode</a> (const char *mode)</td></tr>
-<tr class="memdesc:a6373b383735fcd32849ae6809f9f9271"><td class="mdescLeft">&#160;</td><td class="mdescRight">true if the mode name is "ax25" or "aprs"  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -146,6 +145,12 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:aa14ebcb116577da575cbf08e1dca319d"><td class="mdescLeft">&#160;</td><td class="mdescRight">transmitter: flags which are sent after the last frame (in ms)  <br /></td></tr>
 <tr class="memitem:a31c934da6ee5de66f9f6de3201d94896" id="r_a31c934da6ee5de66f9f6de3201d94896"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacetinymodem.html#a69fb6b2138b14fcf087924e43e1c51a3">AX25Format</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31c934da6ee5de66f9f6de3201d94896">format</a> = <a class="el" href="namespacetinymodem.html#a69fb6b2138b14fcf087924e43e1c51a3a61a96ffcb251bb9bf0abf8fec19d0ea8">AX25Format::TEXT</a></td></tr>
 <tr class="memdesc:a31c934da6ee5de66f9f6de3201d94896"><td class="mdescLeft">&#160;</td><td class="mdescRight">format of the written and decoded data  <br /></td></tr>
+<tr class="memitem:a76a8edd56f8ea4660209a39e2085cf62" id="r_a76a8edd56f8ea4660209a39e2085cf62"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacetinymodem.html#ad09a33a6b21bb5e48fda47559fcd9a6f">AX25Layer2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a76a8edd56f8ea4660209a39e2085cf62">layer2</a> = <a class="el" href="namespacetinymodem.html#ad09a33a6b21bb5e48fda47559fcd9a6fa2dee3025b92d805b29b31502b291c8b5">AX25Layer2::AX25</a></td></tr>
+<tr class="memdesc:a76a8edd56f8ea4660209a39e2085cf62"><td class="mdescLeft">&#160;</td><td class="mdescRight">transmitter: frame format (AX.25, FX.25 or <a class="el" href="classtinymodem_1_1IL2P.html" title="IL2P (Improved Layer 2 Protocol, as implemented by direwolf): an AX.25 frame is sent as a scrambled h...">IL2P</a>)  <br /></td></tr>
+<tr class="memitem:ac56e1bdb1ccdba103feb68d85194d09c" id="r_ac56e1bdb1ccdba103feb68d85194d09c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac56e1bdb1ccdba103feb68d85194d09c">fx25_check_bytes</a> = 16</td></tr>
+<tr class="memdesc:ac56e1bdb1ccdba103feb68d85194d09c"><td class="mdescLeft">&#160;</td><td class="mdescRight">transmitter: FX.25 check bytes (16, 32 or 64)  <br /></td></tr>
+<tr class="memitem:a642fdff61e5e196975f894016c123623" id="r_a642fdff61e5e196975f894016c123623"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a642fdff61e5e196975f894016c123623">il2p_max_fec</a> = true</td></tr>
+<tr class="memdesc:a642fdff61e5e196975f894016c123623"><td class="mdescLeft">&#160;</td><td class="mdescRight">transmitter: <a class="el" href="classtinymodem_1_1IL2P.html" title="IL2P (Improved Layer 2 Protocol, as implemented by direwolf): an AX.25 frame is sent as a scrambled h...">IL2P</a> with 16 parity bytes per block (otherwise 2 - 8)  <br /></td></tr>
 <tr class="memitem:a7f73f3efddfefc71bdf1d2c3b2598c61" id="r_a7f73f3efddfefc71bdf1d2c3b2598c61"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f73f3efddfefc71bdf1d2c3b2598c61">channel</a> = 0</td></tr>
 <tr class="memdesc:a7f73f3efddfefc71bdf1d2c3b2598c61"><td class="mdescLeft">&#160;</td><td class="mdescRight">receiver: input channel which is used for the decoding  <br /></td></tr>
 <tr class="memitem:aa4bbbd046fa7a6db6be4082bb0b68427" id="r_aa4bbbd046fa7a6db6be4082bb0b68427"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4bbbd046fa7a6db6be4082bb0b68427">rx_noise</a> = 0.0f</td></tr>
@@ -157,7 +162,7 @@ Static Protected Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Configuration of the AX.25 packet radio modem (<a class="el" href="classtinymodem_1_1AX25Encoder.html" title="AX.25 packet radio modulator (APRS, 1200 baud AFSK). The written data is converted to AX....">AX25Encoder</a>, <a class="el" href="classtinymodem_1_1AX25Decoder.html" title="AX.25 packet radio demodulator (APRS, 1200 baud AFSK). The PCM audio data is written to the decoder a...">AX25Decoder</a>): Bell 202 AFSK with 1200 baud, NRZI and HDLC framing, as used by APRS. </p>
-<dl class="section copyright"><dt>Copyright</dt><dd>GPLv3 </dd></dl>
+<p><a class="el" href="#a5ac0de15524426e4a1d3c99601e828ef">setMode()</a> selects "ax25" or "aprs" (standard AX.25), "fx25" (FX.25 with 16 check bytes), "fx25-32", "fx25-64" or "il2p" (<a class="el" href="classtinymodem_1_1IL2P.html" title="IL2P (Improved Layer 2 Protocol, as implemented by direwolf): an AX.25 frame is sent as a scrambled h...">IL2P</a> with max FEC) for the transmitter. The receiver decodes all of them (like direwolf). </p><dl class="section copyright"><dt>Copyright</dt><dd>GPLv3 </dd></dl>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="add472b86d0cc70ae4bbc1cec83e7577d" name="add472b86d0cc70ae4bbc1cec83e7577d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#add472b86d0cc70ae4bbc1cec83e7577d">&#9670;&#160;</a></span>AX25Config()</h2>
@@ -236,8 +241,7 @@ Static Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>true if the mode name is "ax25" or "aprs" </p>
+<p>true if the mode name is "ax25", "aprs", "fx25", "fx25-32", "fx25-64" or "il2p" </p>
 
 </div>
 </div>
@@ -290,7 +294,7 @@ Static Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Selects the mode "ax25" or "aprs" (both are AFSK 1200): returns false if the mode is not supported </p>
+<p>Selects the mode "ax25", "aprs", "fx25", "fx25-32", "fx25-64" or "il2p" (all AFSK 1200): returns false if the mode is not supported </p>
 
 </div>
 </div>
@@ -340,6 +344,54 @@ Static Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>format of the written and decoded data </p>
+
+</div>
+</div>
+<a id="ac56e1bdb1ccdba103feb68d85194d09c" name="ac56e1bdb1ccdba103feb68d85194d09c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac56e1bdb1ccdba103feb68d85194d09c">&#9670;&#160;</a></span>fx25_check_bytes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tinymodem::AX25Config::fx25_check_bytes = 16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>transmitter: FX.25 check bytes (16, 32 or 64) </p>
+
+</div>
+</div>
+<a id="a642fdff61e5e196975f894016c123623" name="a642fdff61e5e196975f894016c123623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a642fdff61e5e196975f894016c123623">&#9670;&#160;</a></span>il2p_max_fec</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool tinymodem::AX25Config::il2p_max_fec = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>transmitter: <a class="el" href="classtinymodem_1_1IL2P.html" title="IL2P (Improved Layer 2 Protocol, as implemented by direwolf): an AX.25 frame is sent as a scrambled h...">IL2P</a> with 16 parity bytes per block (otherwise 2 - 8) </p>
+
+</div>
+</div>
+<a id="a76a8edd56f8ea4660209a39e2085cf62" name="a76a8edd56f8ea4660209a39e2085cf62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76a8edd56f8ea4660209a39e2085cf62">&#9670;&#160;</a></span>layer2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacetinymodem.html#ad09a33a6b21bb5e48fda47559fcd9a6f">AX25Layer2</a> tinymodem::AX25Config::layer2 = <a class="el" href="namespacetinymodem.html#ad09a33a6b21bb5e48fda47559fcd9a6fa2dee3025b92d805b29b31502b291c8b5">AX25Layer2::AX25</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>transmitter: frame format (AX.25, FX.25 or <a class="el" href="classtinymodem_1_1IL2P.html" title="IL2P (Improved Layer 2 Protocol, as implemented by direwolf): an AX.25 frame is sent as a scrambled h...">IL2P</a>) </p>
 
 </div>
 </div>

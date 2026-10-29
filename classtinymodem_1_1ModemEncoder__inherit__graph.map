@@ -1,17 +1,23 @@
 <map id="tinymodem::ModemEncoder" name="tinymodem::ModemEncoder">
-<area shape="rect" id="Node000001" title="Common API of the modulators (FSKEncoder, MFSKEncoder): the written data is converted to 16 bit PCM a..." alt="" coords="247,136,452,164"/>
+<area shape="rect" id="Node000001" title="Common API of the modulators (FSKEncoder, MFSKEncoder): the written data is converted to 16 bit PCM a..." alt="" coords="247,213,452,241"/>
 <area shape="rect" id="Node000003" href="$classtinymodem_1_1AX25Encoder.html" title="AX.25 packet radio modulator (APRS, 1200 baud AFSK). The written data is converted to AX...." alt="" coords="511,5,701,33"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="377,124,431,83,499,43,536,32,531,35,501,48,434,87,380,128"/>
-<area shape="rect" id="Node000004" href="$classtinymodem_1_1FSKEncoder.html" title="FSK modulator: converts the written characters into 16 bit PCM audio which is written to the defined ..." alt="" coords="516,57,696,85"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="402,128,499,95,547,85,542,87,501,100,404,133"/>
-<area shape="rect" id="Node000005" href="$classtinymodem_1_1GGWaveEncoder.html" title="ggwave compatible modulator: the written bytes are collected into messages of up to 140 bytes...." alt="" coords="500,109,712,137"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="467,135,502,134,497,135,468,140"/>
-<area shape="rect" id="Node000006" href="$classtinymodem_1_1MFSKEncoder.html" title="Multi&#45;tone FSK modulator: converts the written bytes into 16 bit PCM audio. Each symbol is one of MFS..." alt="" coords="510,161,702,189"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="468,159,512,165,507,166,468,164"/>
-<area shape="rect" id="Node000007" href="$classtinymodem_1_1OFDMEncoder.html" title="OFDM modulator: the written bytes are collected into frames (up to OFDMConfig::max_frame bytes) which..." alt="" coords="508,213,704,241"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="405,167,501,198,547,213,542,213,499,203,405,172"/>
-<area shape="rect" id="Node000008" href="$classtinymodem_1_1PSKEncoder.html" title="PSK modulator (BPSK like PSK31): the written bytes are Varicode encoded (characters separated by &quot;00&quot;..." alt="" coords="516,265,697,293"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="380,171,435,212,501,250,536,265,531,264,499,255,432,216,378,176"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,136,199,164"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="214,147,249,149,244,151,215,152"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="364,198,385,163,416,121,454,79,499,44,528,32,523,35,501,48,458,83,420,124,390,166,368,201"/>
+<area shape="rect" id="Node000004" href="$classtinymodem_1_1CSSEncoder.html" title="Chirp spread spectrum modulator (LoRa&#45;like): the written bytes are collected and sent as frame when C..." alt="" coords="516,57,697,85"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="371,200,426,147,461,119,499,95,532,84,528,87,501,100,464,123,429,151,375,204"/>
+<area shape="rect" id="Node000005" href="$classtinymodem_1_1DTMFEncoder.html" title="DTMF (touch tone) modulator: each written character 0&#45;9, *, #, A&#45;D (also a&#45;d) is sent as a tone pair ..." alt="" coords="509,109,703,137"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="386,203,438,174,499,147,541,136,536,139,501,152,441,179,388,208"/>
+<area shape="rect" id="Node000006" href="$classtinymodem_1_1FSKEncoder.html" title="FSK modulator: converts the written characters into 16 bit PCM audio which is written to the defined ..." alt="" coords="516,161,696,189"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="435,207,536,189,532,191,437,212"/>
+<area shape="rect" id="Node000007" href="$classtinymodem_1_1GGWaveEncoder.html" title="ggwave compatible modulator: the written bytes are collected into messages of up to 140 bytes...." alt="" coords="500,213,712,241"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="467,225,502,227,497,228,468,230"/>
+<area shape="rect" id="Node000008" href="$classtinymodem_1_1MFSKEncoder.html" title="Multi&#45;tone FSK modulator: converts the written bytes into 16 bit PCM audio. Each symbol is one of MFS..." alt="" coords="510,265,702,293"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="436,242,537,264,531,265,436,247"/>
+<area shape="rect" id="Node000009" href="$classtinymodem_1_1OFDMEncoder.html" title="OFDM modulator: the written bytes are collected into frames (up to OFDMConfig::max_frame bytes) which..." alt="" coords="508,317,704,345"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="387,246,441,275,501,302,541,317,536,317,499,307,438,280,387,252"/>
+<area shape="rect" id="Node000010" href="$classtinymodem_1_1OliviaEncoder.html" title="Olivia and Contestia modulator (compatible with fldigi): the written characters are collected in bloc..." alt="" coords="509,369,703,397"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="374,250,429,304,464,331,501,354,533,369,527,368,499,359,461,335,426,308,372,255"/>
+<area shape="rect" id="Node000011" href="$classtinymodem_1_1PSKEncoder.html" title="PSK modulator (compatible with fldigi): the written bytes are Varicode encoded and each symbol is a p..." alt="" coords="516,421,697,449"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="367,252,390,289,420,330,458,372,501,406,528,421,523,420,499,411,454,375,416,334,385,292,365,257"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,213,199,241"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="214,225,249,226,244,228,216,230"/>
 </map>

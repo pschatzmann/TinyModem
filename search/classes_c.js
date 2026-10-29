@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['uiccodec_0',['UICCodec',['../classtinymodem_1_1UICCodec.html',1,'tinymodem']]]
+  ['rscodec_0',['RSCodec',['../classtinymodem_1_1RSCodec.html',1,'tinymodem']]]
 ];

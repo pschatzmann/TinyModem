@@ -1,0 +1,5 @@
+<map id="tinymodem::OliviaConfig" name="tinymodem::OliviaConfig">
+<area shape="rect" id="Node000001" title="Configuration of the Olivia and Contestia modems (OliviaEncoder, OliviaDecoder): MFSK with 2 to 256 t..." alt="" coords="5,81,189,109"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="14,5,180,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,47,99,82,95,80,95,51"/>
+</map>

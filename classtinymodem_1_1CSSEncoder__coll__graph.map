@@ -1,0 +1,19 @@
+<map id="tinymodem::CSSEncoder" name="tinymodem::CSSEncoder">
+<area shape="rect" id="Node000001" title="Chirp spread spectrum modulator (LoRa&#45;like): the written bytes are collected and sent as frame when C..." alt="" coords="421,418,602,446"/>
+<area shape="rect" id="Node000002" href="$classtinymodem_1_1ModemEncoder.html" title="Common API of the modulators (FSKEncoder, MFSKEncoder): the written data is converted to 16 bit PCM a..." alt="" coords="197,318,402,345"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="342,350,486,417,480,418,341,355"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,217,199,245"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="142,249,275,316,271,318,141,254"/>
+<area shape="rect" id="Node000004" href="$classtinymodem_1_1ToneOutput.html" title="Writes tones of a SoundGenerator as 16 bit PCM with the requested number of channels and volume to a ..." alt="" coords="222,217,400,245"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="310,258,303,318,299,316,306,262"/>
+<area shape="rect" id="Node000005" href="$classtinymodem_1_1FSKToneGenerator.html" title=" " alt="" coords="200,99,422,144"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="313,157,314,218,309,216,310,162"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="196,5,426,50"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="312,63,314,100,309,98,310,68"/>
+<area shape="rect" id="Node000007" href="$structtinymodem_1_1CSSConfig.html" title="Configuration of the chirp spread spectrum modem (CSSEncoder, CSSDecoder), which works like LoRa in t..." alt="" coords="426,318,596,345"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="513,359,513,419,509,416,509,363"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="428,217,594,245"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="513,258,514,318,509,316,510,262"/>
+<area shape="rect" id="Node000009" href="$classtinymodem_1_1SampleOutput.html" title="Writes float samples (&#45;1.0 to 1.0) as 16 bit PCM with the requested number of channels and volume to ..." alt="" coords="621,318,818,345"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="681,352,540,420,538,415,675,353"/>
+</map>

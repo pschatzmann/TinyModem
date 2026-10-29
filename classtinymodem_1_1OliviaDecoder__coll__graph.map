@@ -1,0 +1,19 @@
+<map id="tinymodem::OliviaDecoder" name="tinymodem::OliviaDecoder">
+<area shape="rect" id="Node000001" title="Olivia and Contestia demodulator (compatible with fldigi): the PCM audio data is written to the decod..." alt="" coords="615,139,812,166"/>
+<area shape="rect" id="Node000002" href="$classtinymodem_1_1ModemDecoder.html" title="Common API of the demodulators (FSKDecoder, MFSKDecoder): PCM audio data is written to the decoder an..." alt="" coords="270,5,477,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="492,29,543,41,592,58,625,76,655,97,701,139,695,138,651,101,622,80,590,63,542,46,493,34"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,201,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="215,17,272,18,267,21,217,22"/>
+<area shape="rect" id="Node000004" href="$structtinymodem_1_1OliviaConfig.html" title="Configuration of the Olivia and Contestia modems (OliviaEncoder, OliviaDecoder): MFSK with 2 to 256 t..." alt="" coords="282,57,465,85"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="481,81,592,103,639,119,683,138,678,138,638,124,591,108,481,86"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="20,57,186,85"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="201,69,284,70,279,73,202,74"/>
+<area shape="rect" id="Node000006" href="$classtinymodem_1_1PcmInput.html" title="Assembles the PCM frames from the written bytes and provides the samples of the selected channel as f..." alt="" coords="291,111,456,138"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="471,130,618,144,613,145,472,135"/>
+<area shape="rect" id="Node000007" href="$classtinymodem_1_1SampleRateConverter.html" title="Converts the sample rate of a signal with a windowed sinc low pass filter (by default the cut off is ..." alt="" coords="250,167,497,194"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="512,175,591,170,635,166,630,167,592,175,513,180"/>
+<area shape="rect" id="Node000008" href="$classtinymodem_1_1OliviaCodec.html" title="The forward error correction of Olivia and Contestia (as in fldigi): each character of a block of bit..." alt="" coords="282,223,465,250"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="480,226,535,217,591,204,641,185,684,168,689,166,644,190,592,209,536,222,481,231"/>
+<area shape="rect" id="Node000009" href="$classtinymodem_1_1SimpleFFT.html" title="Radix 2 complex FFT with a precomputed twiddle table." alt="" coords="288,279,460,306"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="475,282,533,270,590,250,623,231,653,208,697,168,702,166,657,212,626,235,592,255,535,275,475,287"/>
+</map>

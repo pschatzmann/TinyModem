@@ -1,13 +1,15 @@
 <map id="tinymodem::PSKDecoder" name="tinymodem::PSKDecoder">
-<area shape="rect" id="Node000001" title="PSK demodulator (BPSK like PSK31): the PCM audio data is written to the decoder and the decoded bytes..." alt="" coords="229,183,413,211"/>
-<area shape="rect" id="Node000002" href="$classtinymodem_1_1ModemDecoder.html" title="Common API of the demodulators (FSKDecoder, MFSKDecoder): PCM audio data is written to the decoder an..." alt="" coords="5,82,213,110"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,114,295,181,290,184,150,120"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="11,5,207,33"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="110,46,112,83,106,81,108,51"/>
-<area shape="rect" id="Node000004" href="$structtinymodem_1_1PSKConfig.html" title="Configuration of the PSK modem (PSKEncoder, PSKDecoder): BPSK with Varicode and cosine shaped phase r..." alt="" coords="236,82,406,110"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="323,124,323,184,319,181,319,127"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="238,5,404,33"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="323,46,323,83,319,81,319,51"/>
-<area shape="rect" id="Node000006" href="$classtinymodem_1_1PcmInput.html" title="Assembles the PCM frames from the written bytes and provides the samples of the selected channel as f..." alt="" coords="430,82,596,110"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="477,117,348,185,346,180,471,118"/>
+<area shape="rect" id="Node000001" title="PSK demodulator (BPSK, QPSK and 8PSK compatible with fldigi): the PCM audio data is written to the de..." alt="" coords="546,83,730,110"/>
+<area shape="rect" id="Node000002" href="$classtinymodem_1_1ModemDecoder.html" title="Common API of the demodulators (FSKDecoder, MFSKDecoder): PCM audio data is written to the decoder an..." alt="" coords="250,5,457,33"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="457,34,523,50,606,82,601,82,522,55,457,39"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,201,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="216,17,252,18,247,20,217,22"/>
+<area shape="rect" id="Node000004" href="$structtinymodem_1_1PSKConfig.html" title="Configuration of the PSK modem (PSKEncoder, PSKDecoder): differential PSK with cosine shaped transiti..." alt="" coords="269,57,438,85"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="454,77,549,88,543,89,454,83"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="20,57,186,85"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="201,69,271,70,266,72,202,74"/>
+<area shape="rect" id="Node000006" href="$classtinymodem_1_1PcmInput.html" title="Assembles the PCM frames from the written bytes and provides the samples of the selected channel as f..." alt="" coords="271,111,436,138"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="452,119,522,114,563,111,558,111,523,119,452,124"/>
+<area shape="rect" id="Node000007" href="$classtinymodem_1_1QPSKCode.html" title="Rate 1/2 convolutional code with K=5 (polynomials 0x17 and 0x19) of QPSK31 (fldigi) and a soft decisi..." alt="" coords="268,167,439,194"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="454,164,522,147,569,128,608,112,613,110,571,133,523,152,455,169"/>
 </map>

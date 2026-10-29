@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['queue_0',['Queue',['../classtinymodem_1_1BasicModemStreamRTOS.html#ab7250a044eb48f7e42ea647bcabdc4bc',1,'tinymodem::BasicModemStreamRTOS']]]
+  ['ggwavers_0',['GGWaveRS',['../namespacetinymodem.html#a577dac85ad1134ff78f0037eb5edb08e',1,'tinymodem']]]
 ];

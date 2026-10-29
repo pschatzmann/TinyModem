@@ -150,7 +150,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af4756c3aeb0ca2e3d70e801dbdf909f2" id="r_af4756c3aeb0ca2e3d70e801dbdf909f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af4756c3aeb0ca2e3d70e801dbdf909f2">end</a> () override</td></tr>
 <tr class="memdesc:af4756c3aeb0ca2e3d70e801dbdf909f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reports the statistics.  <br /></td></tr>
 <tr class="memitem:a4362563559516480f3454198e0a34b56" id="r_a4362563559516480f3454198e0a34b56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4362563559516480f3454198e0a34b56">flush</a> () override</td></tr>
-<tr class="memdesc:a4362563559516480f3454198e0a34b56"><td class="mdescLeft">&#160;</td><td class="mdescRight">The decoding is done immediately: nothing to do.  <br /></td></tr>
+<tr class="memdesc:a4362563559516480f3454198e0a34b56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a frame which is held back during an FX.25 block.  <br /></td></tr>
 <tr class="memitem:a345933bc80bb258ff78ae38eb743100e" id="r_a345933bc80bb258ff78ae38eb743100e"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a345933bc80bb258ff78ae38eb743100e">write</a> (const uint8_t *data, size_t len) override</td></tr>
 <tr class="memdesc:a345933bc80bb258ff78ae38eb743100e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provide PCM data to the decoder.  <br /></td></tr>
 <tr class="memitem:ae8a98fbe91ce4bbc2393e0072f19a8bc" id="r_ae8a98fbe91ce4bbc2393e0072f19a8bc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8a98fbe91ce4bbc2393e0072f19a8bc">isCarrier</a> () override</td></tr>
@@ -161,6 +161,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a0933b79cfd951d7427cfde8ad3d29920"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of received frames with a correct frame check sequence.  <br /></td></tr>
 <tr class="memitem:a3a68068b94de68dd2890b821e459e0f5" id="r_a3a68068b94de68dd2890b821e459e0f5"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a68068b94de68dd2890b821e459e0f5">errorCount</a> ()</td></tr>
 <tr class="memdesc:a3a68068b94de68dd2890b821e459e0f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of frames with a wrong frame check sequence.  <br /></td></tr>
+<tr class="memitem:aea6ca448a1c4aa43ca2695b68caddde5" id="r_aea6ca448a1c4aa43ca2695b68caddde5"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea6ca448a1c4aa43ca2695b68caddde5">fx25Count</a> ()</td></tr>
+<tr class="memdesc:aea6ca448a1c4aa43ca2695b68caddde5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of received FX.25 frames.  <br /></td></tr>
+<tr class="memitem:a34ba795e99d3f3201ecfa383229cc611" id="r_a34ba795e99d3f3201ecfa383229cc611"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34ba795e99d3f3201ecfa383229cc611">il2pCount</a> ()</td></tr>
+<tr class="memdesc:a34ba795e99d3f3201ecfa383229cc611"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of received <a class="el" href="classtinymodem_1_1IL2P.html" title="IL2P (Improved Layer 2 Protocol, as implemented by direwolf): an AX.25 frame is sent as a scrambled h...">IL2P</a> frames.  <br /></td></tr>
+<tr class="memitem:a7fad1a96f04d422e0675a3b42102897c" id="r_a7fad1a96f04d422e0675a3b42102897c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7fad1a96f04d422e0675a3b42102897c">correctedCount</a> ()</td></tr>
+<tr class="memdesc:a7fad1a96f04d422e0675a3b42102897c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bytes which were corrected by FX.25 and <a class="el" href="classtinymodem_1_1IL2P.html" title="IL2P (Improved Layer 2 Protocol, as implemented by direwolf): an AX.25 frame is sent as a scrambled h...">IL2P</a>.  <br /></td></tr>
 <tr class="memitem:a9ac12b1884b8d5dfeb323a6fe552ee5e" id="r_a9ac12b1884b8d5dfeb323a6fe552ee5e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtinymodem_1_1AX25Config.html">AX25Config</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ac12b1884b8d5dfeb323a6fe552ee5e">config</a> ()</td></tr>
 <tr class="memdesc:a9ac12b1884b8d5dfeb323a6fe552ee5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The configuration which was provided in <a class="el" href="#aff5265adb687b6610b953bcd8c6807db">begin()</a>.  <br /></td></tr>
 <tr class="memitem:aa9e6972f4f6cc7fbcb358d4bcf36f88f" id="r_aa9e6972f4f6cc7fbcb358d4bcf36f88f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9e6972f4f6cc7fbcb358d4bcf36f88f">operator bool</a> () override</td></tr>
@@ -181,8 +187,19 @@ Protected Member Functions</h2></td></tr>
 <tr class="memdesc:ab3ef6f1e1c1c5325dfc1a46edee2c138"><td class="mdescLeft">&#160;</td><td class="mdescRight">Avoids the accumulation of rounding errors.  <br /></td></tr>
 <tr class="memitem:a43d1a6df37ecbeffc8d5b7a93579d166" id="r_a43d1a6df37ecbeffc8d5b7a93579d166"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43d1a6df37ecbeffc8d5b7a93579d166">hdlc</a> (int bit)</td></tr>
 <tr class="memitem:a9be76b13e5cb5b267b7bb1ce201935c0" id="r_a9be76b13e5cb5b267b7bb1ce201935c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9be76b13e5cb5b267b7bb1ce201935c0">processFrame</a> ()</td></tr>
+<tr class="memitem:a3b5aaa268c3175bcfff29fcf3ccbd853" id="r_a3b5aaa268c3175bcfff29fcf3ccbd853"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b5aaa268c3175bcfff29fcf3ccbd853">deliverPending</a> ()</td></tr>
+<tr class="memitem:a25923b1460b30dbeb615dc6c16d740ab" id="r_a25923b1460b30dbeb615dc6c16d740ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25923b1460b30dbeb615dc6c16d740ab">fx25</a> (int bit)</td></tr>
+<tr class="memdesc:a25923b1460b30dbeb615dc6c16d740ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">FX.25: correlation tag and Reed-Solomon block.  <br /></td></tr>
+<tr class="memitem:a6bdd7124589e032c7d893bf9d31fdb49" id="r_a6bdd7124589e032c7d893bf9d31fdb49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bdd7124589e032c7d893bf9d31fdb49">il2p</a> (int raw)</td></tr>
+<tr class="memdesc:a6bdd7124589e032c7d893bf9d31fdb49"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classtinymodem_1_1IL2P.html" title="IL2P (Improved Layer 2 Protocol, as implemented by direwolf): an AX.25 frame is sent as a scrambled h...">IL2P</a>: sync word, header and payload.  <br /></td></tr>
+<tr class="memitem:a0772a1a9162958600f826e2bb0be8801" id="r_a0772a1a9162958600f826e2bb0be8801"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0772a1a9162958600f826e2bb0be8801">deliver</a> (const uint8_t *<a class="el" href="#a151845b061a475ff359ff502618ee61a">frame</a>, int len)</td></tr>
+<tr class="memdesc:a0772a1a9162958600f826e2bb0be8801"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a received frame (without FCS) to the output.  <br /></td></tr>
 <tr class="inherit_header pro_methods_classtinymodem_1_1ModemDecoder"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_classtinymodem_1_1ModemDecoder')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Member Functions inherited from <a class="el" href="classtinymodem_1_1ModemDecoder.html">tinymodem::ModemDecoder</a></td></tr>
 <tr class="memitem:aa5bf4cd6e234f6151ff362b38eed9404 inherit pro_methods_classtinymodem_1_1ModemDecoder" id="r_aa5bf4cd6e234f6151ff362b38eed9404"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtinymodem_1_1ModemDecoder.html#aa5bf4cd6e234f6151ff362b38eed9404">status</a> (const char *fmt,...)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pro-static-methods" class="groupheader"><a id="pro-static-methods" name="pro-static-methods"></a>
+Static Protected Member Functions</h2></td></tr>
+<tr class="memitem:af29634f22ea701d5f8797b3de1cb1789" id="r_af29634f22ea701d5f8797b3de1cb1789"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af29634f22ea701d5f8797b3de1cb1789">popcount</a> (uint32_t v)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -192,6 +209,9 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a84c24c18fb460bb1f10b4c01e34799e5" id="r_a84c24c18fb460bb1f10b4c01e34799e5"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84c24c18fb460bb1f10b4c01e34799e5">noise_seed</a> = 1</td></tr>
 <tr class="memitem:a690090938b270ca3109ad37ca664517d" id="r_a690090938b270ca3109ad37ca664517d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a690090938b270ca3109ad37ca664517d">frames</a> = 0</td></tr>
 <tr class="memitem:a516f251e5e21e6089bed8930e4644616" id="r_a516f251e5e21e6089bed8930e4644616"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a516f251e5e21e6089bed8930e4644616">errors</a> = 0</td></tr>
+<tr class="memitem:a6d6cecd7b0fad0a146f575b6b616ae13" id="r_a6d6cecd7b0fad0a146f575b6b616ae13"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6d6cecd7b0fad0a146f575b6b616ae13">fx25_frames</a> = 0</td></tr>
+<tr class="memitem:a5b07d6f30bd4c145fbff8e1ed0574404" id="r_a5b07d6f30bd4c145fbff8e1ed0574404"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b07d6f30bd4c145fbff8e1ed0574404">il2p_frames</a> = 0</td></tr>
+<tr class="memitem:a0b2b17309255498ce7b3414ffb3dd0fc" id="r_a0b2b17309255498ce7b3414ffb3dd0fc"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b2b17309255498ce7b3414ffb3dd0fc">corrected_bytes</a> = 0</td></tr>
 <tr class="memitem:af01df8f103315eca9e43355d8050811d" id="r_af01df8f103315eca9e43355d8050811d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af01df8f103315eca9e43355d8050811d">window</a> = 40</td></tr>
 <tr class="memitem:ae7cbdc3c20c902e0479d1eb7ad26dc78" id="r_ae7cbdc3c20c902e0479d1eb7ad26dc78"><td class="memItemLeft" align="right" valign="top">audio_tools::Vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7cbdc3c20c902e0479d1eb7ad26dc78">products</a></td></tr>
 <tr class="memitem:a88845f77eabfce4e33308fe6a3fbd702" id="r_a88845f77eabfce4e33308fe6a3fbd702"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a88845f77eabfce4e33308fe6a3fbd702">pos</a> = 0</td></tr>
@@ -211,17 +231,37 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:abf506b82bae0c153a743242490b9e280" id="r_abf506b82bae0c153a743242490b9e280"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf506b82bae0c153a743242490b9e280">current</a> = 0</td></tr>
 <tr class="memitem:a280e8521dcd54c0e6b62d63e36e82bfb" id="r_a280e8521dcd54c0e6b62d63e36e82bfb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a280e8521dcd54c0e6b62d63e36e82bfb">current_bits</a> = 0</td></tr>
 <tr class="memitem:a1f5010b35e53c64ef06843889ffbaf0a" id="r_a1f5010b35e53c64ef06843889ffbaf0a"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f5010b35e53c64ef06843889ffbaf0a">text</a> [<a class="el" href="classtinymodem_1_1AX25Frame.html#addef1d3a4cc37da74c8b3d19a7524f33">AX25Frame::MAX_FRAME</a> *2]</td></tr>
+<tr class="memitem:ad7c0a27529acdef9fbd5047def14fab6" id="r_ad7c0a27529acdef9fbd5047def14fab6"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7c0a27529acdef9fbd5047def14fab6">pending</a> [<a class="el" href="classtinymodem_1_1AX25Frame.html#addef1d3a4cc37da74c8b3d19a7524f33">AX25Frame::MAX_FRAME</a>]</td></tr>
+<tr class="memitem:a44ef6aaa3daf93f65c066f98950d6d60" id="r_a44ef6aaa3daf93f65c066f98950d6d60"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44ef6aaa3daf93f65c066f98950d6d60">pending_len</a> = 0</td></tr>
+<tr class="memitem:a0fce0cd75c914d7e76d703b4fa2a21b5" id="r_a0fce0cd75c914d7e76d703b4fa2a21b5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fce0cd75c914d7e76d703b4fa2a21b5">fx_tag</a> = 0</td></tr>
+<tr class="memitem:acaec77e992aaf71b39e9d36c59744506" id="r_acaec77e992aaf71b39e9d36c59744506"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acaec77e992aaf71b39e9d36c59744506">fx_accum</a> = 0</td></tr>
+<tr class="memitem:a1e59413115e002a90bcdd594852d4a49" id="r_a1e59413115e002a90bcdd594852d4a49"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e59413115e002a90bcdd594852d4a49">fx_block</a> [<a class="el" href="classtinymodem_1_1FX25.html#a35ff080fcd4d0a4fe446a19926650dfe">FX25::BLOCK_SIZE</a>]</td></tr>
+<tr class="memitem:ad7d0d277cdce7024bdbb7ab383adede1" id="r_ad7d0d277cdce7024bdbb7ab383adede1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7d0d277cdce7024bdbb7ab383adede1">fx_len</a> = 0</td></tr>
+<tr class="memitem:aaa9943adb60b665f8297fb7c31e5ae07" id="r_aaa9943adb60b665f8297fb7c31e5ae07"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa9943adb60b665f8297fb7c31e5ae07">fx_bits</a> = 0</td></tr>
+<tr class="memitem:a859e94cfb93de9410becd54a96f88e04" id="r_a859e94cfb93de9410becd54a96f88e04"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a859e94cfb93de9410becd54a96f88e04">fx_total</a> = 0</td></tr>
+<tr class="memitem:a6903226a5f44fd91d1ca9d7241508e1f" id="r_a6903226a5f44fd91d1ca9d7241508e1f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6903226a5f44fd91d1ca9d7241508e1f">il_state</a> = 0</td></tr>
+<tr class="memitem:a2cca635737a5574c64356e6e6e7664bd" id="r_a2cca635737a5574c64356e6e6e7664bd"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cca635737a5574c64356e6e6e7664bd">il_accum</a> = 0</td></tr>
+<tr class="memitem:ab8cfc13a9180415ad53e3b0e37f61035" id="r_ab8cfc13a9180415ad53e3b0e37f61035"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8cfc13a9180415ad53e3b0e37f61035">il_inverted</a> = false</td></tr>
+<tr class="memitem:ab854abcd2ff6e910cf7de2797546f348" id="r_ab854abcd2ff6e910cf7de2797546f348"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab854abcd2ff6e910cf7de2797546f348">il_len</a> = 0</td></tr>
+<tr class="memitem:a2dd905beaa51177c4d7dae152dae84ee" id="r_a2dd905beaa51177c4d7dae152dae84ee"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2dd905beaa51177c4d7dae152dae84ee">il_bits</a> = 0</td></tr>
+<tr class="memitem:a74de7af88aff84841d6e2e95ac6fed54" id="r_a74de7af88aff84841d6e2e95ac6fed54"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74de7af88aff84841d6e2e95ac6fed54">il_need</a> = 0</td></tr>
+<tr class="memitem:aff106521b332014f5d0d9709c064eef6" id="r_aff106521b332014f5d0d9709c064eef6"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff106521b332014f5d0d9709c064eef6">il_raw_header</a> [<a class="el" href="classtinymodem_1_1IL2P.html#aeb0f6d5897c9ec825b65231d792e5a22">IL2P::HEADER_SIZE</a>+<a class="el" href="classtinymodem_1_1IL2P.html#a572d3115e15b0f28c905e738f17bc578">IL2P::HEADER_PARITY</a>]</td></tr>
+<tr class="memitem:ac3ed588f0518bba9da92429a0e041a2c" id="r_ac3ed588f0518bba9da92429a0e041a2c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3ed588f0518bba9da92429a0e041a2c">il_header</a> [<a class="el" href="classtinymodem_1_1IL2P.html#aeb0f6d5897c9ec825b65231d792e5a22">IL2P::HEADER_SIZE</a>]</td></tr>
+<tr class="memitem:a049484aafc84f7bb1f67ad2e53b07410" id="r_a049484aafc84f7bb1f67ad2e53b07410"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a049484aafc84f7bb1f67ad2e53b07410">il_payload</a> [<a class="el" href="#aa8e7ad3bd47c8fc8ade5504befb3eb8d">IL2P_MAX_ENCODED</a>]</td></tr>
+<tr class="memitem:add1b9cc65a5e0eb0cc6b25f31d702ff8" id="r_add1b9cc65a5e0eb0cc6b25f31d702ff8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add1b9cc65a5e0eb0cc6b25f31d702ff8">il_corrected</a> = 0</td></tr>
 <tr class="inherit_header pro_attribs_classtinymodem_1_1ModemDecoder"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classtinymodem_1_1ModemDecoder')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Attributes inherited from <a class="el" href="classtinymodem_1_1ModemDecoder.html">tinymodem::ModemDecoder</a></td></tr>
 <tr class="memitem:a7e92ab7e98d227c82e7e395cf9beb890 inherit pro_attribs_classtinymodem_1_1ModemDecoder" id="r_a7e92ab7e98d227c82e7e395cf9beb890"><td class="memItemLeft" align="right" valign="top">Print *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtinymodem_1_1ModemDecoder.html#a7e92ab7e98d227c82e7e395cf9beb890">p_status</a> = nullptr</td></tr>
 <tr class="memitem:a0a25657750b4beef163d5fc90542170c inherit pro_attribs_classtinymodem_1_1ModemDecoder" id="r_a0a25657750b4beef163d5fc90542170c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classtinymodem_1_1ModemDecoder.html#a0a25657750b4beef163d5fc90542170c">is_quiet</a> = false</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-static-attribs" class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
 Static Protected Attributes</h2></td></tr>
+<tr class="memitem:aa8e7ad3bd47c8fc8ade5504befb3eb8d" id="r_aa8e7ad3bd47c8fc8ade5504befb3eb8d"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8e7ad3bd47c8fc8ade5504befb3eb8d">IL2P_MAX_ENCODED</a> = <a class="el" href="classtinymodem_1_1AX25Frame.html#addef1d3a4cc37da74c8b3d19a7524f33">AX25Frame::MAX_FRAME</a> + 2 * 16</td></tr>
 <tr class="memitem:a72fe84fa45df979af73cf5d8789e7b0b" id="r_a72fe84fa45df979af73cf5d8789e7b0b"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72fe84fa45df979af73cf5d8789e7b0b">PLL_GAIN</a> = 0.15f</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>AX.25 packet radio demodulator (APRS, 1200 baud AFSK). The PCM audio data is written to the decoder and the received frames with a correct frame check sequence are written to the output: as monitor text lines (SRC&gt;DEST,DIGI:info) or as KISS frames (see <a class="el" href="structtinymodem_1_1AX25Config.html#a31c934da6ee5de66f9f6de3201d94896" title="format of the written and decoded data">AX25Config::format</a>). </p>
-<p>The mark and space energy is measured with sliding correlators over one bit, a digital PLL recovers the bit clock, and the bits are NRZI and HDLC decoded. The input can be 8, 16 or 32 bit signed samples with any number of channels (only <a class="el" href="structtinymodem_1_1AX25Config.html#a7f73f3efddfefc71bdf1d2c3b2598c61" title="receiver: input channel which is used for the decoding">AX25Config::channel</a> is evaluated). </p><dl class="section copyright"><dt>Copyright</dt><dd>GPLv3 </dd></dl>
+<p>The mark and space energy is measured with sliding correlators over one bit, a digital PLL recovers the bit clock, and the bits are NRZI and HDLC decoded. The input can be 8, 16 or 32 bit signed samples with any number of channels (only <a class="el" href="structtinymodem_1_1AX25Config.html#a7f73f3efddfefc71bdf1d2c3b2598c61" title="receiver: input channel which is used for the decoding">AX25Config::channel</a> is evaluated).</p>
+<p>FX.25 and <a class="el" href="classtinymodem_1_1IL2P.html" title="IL2P (Improved Layer 2 Protocol, as implemented by direwolf): an AX.25 frame is sent as a scrambled h...">IL2P</a> frames are decoded in parallel (independent of <a class="el" href="structtinymodem_1_1AX25Config.html#a76a8edd56f8ea4660209a39e2085cf62" title="transmitter: frame format (AX.25, FX.25 or IL2P)">AX25Config::layer2</a>) and corrected with their Reed-Solomon codes. An FX.25 frame which is also received as standard AX.25 frame is provided only once. </p><dl class="section copyright"><dt>Copyright</dt><dd>GPLv3 </dd></dl>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6cb8d0c72a1e237792953dd3f6267b94" name="a6cb8d0c72a1e237792953dd3f6267b94"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6cb8d0c72a1e237792953dd3f6267b94">&#9670;&#160;</a></span>AX25Decoder() <span class="overload">[1/2]</span></h2>
@@ -403,6 +443,33 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a7fad1a96f04d422e0675a3b42102897c" name="a7fad1a96f04d422e0675a3b42102897c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fad1a96f04d422e0675a3b42102897c">&#9670;&#160;</a></span>correctedCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t tinymodem::AX25Decoder::correctedCount </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Number of bytes which were corrected by FX.25 and <a class="el" href="classtinymodem_1_1IL2P.html" title="IL2P (Improved Layer 2 Protocol, as implemented by direwolf): an AX.25 frame is sent as a scrambled h...">IL2P</a>. </p>
+
+</div>
+</div>
 <a id="af120e3ebef59539a66f37f0e9aa8d6da" name="af120e3ebef59539a66f37f0e9aa8d6da"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af120e3ebef59539a66f37f0e9aa8d6da">&#9670;&#160;</a></span>defaultConfig()</h2>
 
@@ -427,6 +494,62 @@ Static Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Provides a default configuration: APRS (1200 baud AFSK). </p>
+
+</div>
+</div>
+<a id="a0772a1a9162958600f826e2bb0be8801" name="a0772a1a9162958600f826e2bb0be8801"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0772a1a9162958600f826e2bb0be8801">&#9670;&#160;</a></span>deliver()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tinymodem::AX25Decoder::deliver </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>frame</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a received frame (without FCS) to the output. </p>
+
+</div>
+</div>
+<a id="a3b5aaa268c3175bcfff29fcf3ccbd853" name="a3b5aaa268c3175bcfff29fcf3ccbd853"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b5aaa268c3175bcfff29fcf3ccbd853">&#9670;&#160;</a></span>deliverPending()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tinymodem::AX25Decoder::deliverPending </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -507,7 +630,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>The decoding is done immediately: nothing to do. </p>
+<p>Provides a frame which is held back during an FX.25 block. </p>
 
 <p>Implements <a class="el" href="classtinymodem_1_1ModemDecoder.html#ae3b7908621a937aa3d6b04304bbc2446">tinymodem::ModemDecoder</a>.</p>
 
@@ -540,6 +663,60 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a25923b1460b30dbeb615dc6c16d740ab" name="a25923b1460b30dbeb615dc6c16d740ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25923b1460b30dbeb615dc6c16d740ab">&#9670;&#160;</a></span>fx25()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tinymodem::AX25Decoder::fx25 </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>bit</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>FX.25: correlation tag and Reed-Solomon block. </p>
+
+</div>
+</div>
+<a id="aea6ca448a1c4aa43ca2695b68caddde5" name="aea6ca448a1c4aa43ca2695b68caddde5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea6ca448a1c4aa43ca2695b68caddde5">&#9670;&#160;</a></span>fx25Count()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t tinymodem::AX25Decoder::fx25Count </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Number of received FX.25 frames. </p>
+
+</div>
+</div>
 <a id="a43d1a6df37ecbeffc8d5b7a93579d166" name="a43d1a6df37ecbeffc8d5b7a93579d166"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a43d1a6df37ecbeffc8d5b7a93579d166">&#9670;&#160;</a></span>hdlc()</h2>
 
@@ -562,6 +739,60 @@ Static Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6bdd7124589e032c7d893bf9d31fdb49" name="a6bdd7124589e032c7d893bf9d31fdb49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bdd7124589e032c7d893bf9d31fdb49">&#9670;&#160;</a></span>il2p()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tinymodem::AX25Decoder::il2p </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>raw</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classtinymodem_1_1IL2P.html" title="IL2P (Improved Layer 2 Protocol, as implemented by direwolf): an AX.25 frame is sent as a scrambled h...">IL2P</a>: sync word, header and payload. </p>
+
+</div>
+</div>
+<a id="a34ba795e99d3f3201ecfa383229cc611" name="a34ba795e99d3f3201ecfa383229cc611"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34ba795e99d3f3201ecfa383229cc611">&#9670;&#160;</a></span>il2pCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t tinymodem::AX25Decoder::il2pCount </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Number of received <a class="el" href="classtinymodem_1_1IL2P.html" title="IL2P (Improved Layer 2 Protocol, as implemented by direwolf): an AX.25 frame is sent as a scrambled h...">IL2P</a> frames. </p>
 
 </div>
 </div>
@@ -669,6 +900,31 @@ Static Protected Attributes</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af29634f22ea701d5f8797b3de1cb1789" name="af29634f22ea701d5f8797b3de1cb1789"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af29634f22ea701d5f8797b3de1cb1789">&#9670;&#160;</a></span>popcount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tinymodem::AX25Decoder::popcount </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>v</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span><span class="mlabel protected">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -855,6 +1111,28 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a0b2b17309255498ce7b3414ffb3dd0fc" name="a0b2b17309255498ce7b3414ffb3dd0fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b2b17309255498ce7b3414ffb3dd0fc">&#9670;&#160;</a></span>corrected_bytes</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t tinymodem::AX25Decoder::corrected_bytes = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="abf506b82bae0c153a743242490b9e280" name="abf506b82bae0c153a743242490b9e280"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abf506b82bae0c153a743242490b9e280">&#9670;&#160;</a></span>current</h2>
 
@@ -987,6 +1265,160 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a6d6cecd7b0fad0a146f575b6b616ae13" name="a6d6cecd7b0fad0a146f575b6b616ae13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d6cecd7b0fad0a146f575b6b616ae13">&#9670;&#160;</a></span>fx25_frames</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t tinymodem::AX25Decoder::fx25_frames = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acaec77e992aaf71b39e9d36c59744506" name="acaec77e992aaf71b39e9d36c59744506"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaec77e992aaf71b39e9d36c59744506">&#9670;&#160;</a></span>fx_accum</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t tinymodem::AX25Decoder::fx_accum = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaa9943adb60b665f8297fb7c31e5ae07" name="aaa9943adb60b665f8297fb7c31e5ae07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa9943adb60b665f8297fb7c31e5ae07">&#9670;&#160;</a></span>fx_bits</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tinymodem::AX25Decoder::fx_bits = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1e59413115e002a90bcdd594852d4a49" name="a1e59413115e002a90bcdd594852d4a49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e59413115e002a90bcdd594852d4a49">&#9670;&#160;</a></span>fx_block</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t tinymodem::AX25Decoder::fx_block[<a class="el" href="classtinymodem_1_1FX25.html#a35ff080fcd4d0a4fe446a19926650dfe">FX25::BLOCK_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad7d0d277cdce7024bdbb7ab383adede1" name="ad7d0d277cdce7024bdbb7ab383adede1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7d0d277cdce7024bdbb7ab383adede1">&#9670;&#160;</a></span>fx_len</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tinymodem::AX25Decoder::fx_len = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0fce0cd75c914d7e76d703b4fa2a21b5" name="a0fce0cd75c914d7e76d703b4fa2a21b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fce0cd75c914d7e76d703b4fa2a21b5">&#9670;&#160;</a></span>fx_tag</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tinymodem::AX25Decoder::fx_tag = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a859e94cfb93de9410becd54a96f88e04" name="a859e94cfb93de9410becd54a96f88e04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a859e94cfb93de9410becd54a96f88e04">&#9670;&#160;</a></span>fx_total</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tinymodem::AX25Decoder::fx_total = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ace4c590b62cb31e02009b45f42e9d737" name="ace4c590b62cb31e02009b45f42e9d737"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ace4c590b62cb31e02009b45f42e9d737">&#9670;&#160;</a></span>history</h2>
 
@@ -998,6 +1430,270 @@ Static Protected Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">uint8_t tinymodem::AX25Decoder::history = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5b07d6f30bd4c145fbff8e1ed0574404" name="a5b07d6f30bd4c145fbff8e1ed0574404"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b07d6f30bd4c145fbff8e1ed0574404">&#9670;&#160;</a></span>il2p_frames</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t tinymodem::AX25Decoder::il2p_frames = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa8e7ad3bd47c8fc8ade5504befb3eb8d" name="aa8e7ad3bd47c8fc8ade5504befb3eb8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8e7ad3bd47c8fc8ade5504befb3eb8d">&#9670;&#160;</a></span>IL2P_MAX_ENCODED</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tinymodem::AX25Decoder::IL2P_MAX_ENCODED = <a class="el" href="classtinymodem_1_1AX25Frame.html#addef1d3a4cc37da74c8b3d19a7524f33">AX25Frame::MAX_FRAME</a> + 2 * 16</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2cca635737a5574c64356e6e6e7664bd" name="a2cca635737a5574c64356e6e6e7664bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cca635737a5574c64356e6e6e7664bd">&#9670;&#160;</a></span>il_accum</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t tinymodem::AX25Decoder::il_accum = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2dd905beaa51177c4d7dae152dae84ee" name="a2dd905beaa51177c4d7dae152dae84ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dd905beaa51177c4d7dae152dae84ee">&#9670;&#160;</a></span>il_bits</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tinymodem::AX25Decoder::il_bits = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="add1b9cc65a5e0eb0cc6b25f31d702ff8" name="add1b9cc65a5e0eb0cc6b25f31d702ff8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add1b9cc65a5e0eb0cc6b25f31d702ff8">&#9670;&#160;</a></span>il_corrected</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tinymodem::AX25Decoder::il_corrected = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac3ed588f0518bba9da92429a0e041a2c" name="ac3ed588f0518bba9da92429a0e041a2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3ed588f0518bba9da92429a0e041a2c">&#9670;&#160;</a></span>il_header</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t tinymodem::AX25Decoder::il_header[<a class="el" href="classtinymodem_1_1IL2P.html#aeb0f6d5897c9ec825b65231d792e5a22">IL2P::HEADER_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab8cfc13a9180415ad53e3b0e37f61035" name="ab8cfc13a9180415ad53e3b0e37f61035"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8cfc13a9180415ad53e3b0e37f61035">&#9670;&#160;</a></span>il_inverted</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool tinymodem::AX25Decoder::il_inverted = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab854abcd2ff6e910cf7de2797546f348" name="ab854abcd2ff6e910cf7de2797546f348"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab854abcd2ff6e910cf7de2797546f348">&#9670;&#160;</a></span>il_len</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tinymodem::AX25Decoder::il_len = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a74de7af88aff84841d6e2e95ac6fed54" name="a74de7af88aff84841d6e2e95ac6fed54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74de7af88aff84841d6e2e95ac6fed54">&#9670;&#160;</a></span>il_need</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tinymodem::AX25Decoder::il_need = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a049484aafc84f7bb1f67ad2e53b07410" name="a049484aafc84f7bb1f67ad2e53b07410"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a049484aafc84f7bb1f67ad2e53b07410">&#9670;&#160;</a></span>il_payload</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t tinymodem::AX25Decoder::il_payload[<a class="el" href="#aa8e7ad3bd47c8fc8ade5504befb3eb8d">IL2P_MAX_ENCODED</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aff106521b332014f5d0d9709c064eef6" name="aff106521b332014f5d0d9709c064eef6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff106521b332014f5d0d9709c064eef6">&#9670;&#160;</a></span>il_raw_header</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t tinymodem::AX25Decoder::il_raw_header[<a class="el" href="classtinymodem_1_1IL2P.html#aeb0f6d5897c9ec825b65231d792e5a22">IL2P::HEADER_SIZE</a>+<a class="el" href="classtinymodem_1_1IL2P.html#a572d3115e15b0f28c905e738f17bc578">IL2P::HEADER_PARITY</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6903226a5f44fd91d1ca9d7241508e1f" name="a6903226a5f44fd91d1ca9d7241508e1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6903226a5f44fd91d1ca9d7241508e1f">&#9670;&#160;</a></span>il_state</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tinymodem::AX25Decoder::il_state = 0</td>
         </tr>
       </table>
   </td>
@@ -1152,6 +1848,50 @@ Static Protected Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">int tinymodem::AX25Decoder::ones = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad7c0a27529acdef9fbd5047def14fab6" name="ad7c0a27529acdef9fbd5047def14fab6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7c0a27529acdef9fbd5047def14fab6">&#9670;&#160;</a></span>pending</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t tinymodem::AX25Decoder::pending[<a class="el" href="classtinymodem_1_1AX25Frame.html#addef1d3a4cc37da74c8b3d19a7524f33">AX25Frame::MAX_FRAME</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a44ef6aaa3daf93f65c066f98950d6d60" name="a44ef6aaa3daf93f65c066f98950d6d60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44ef6aaa3daf93f65c066f98950d6d60">&#9670;&#160;</a></span>pending_len</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tinymodem::AX25Decoder::pending_len = 0</td>
         </tr>
       </table>
   </td>

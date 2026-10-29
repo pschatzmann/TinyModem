@@ -1,6 +1,20 @@
 var searchData=
 [
-  ['uiccodec_0',['UICCodec',['../classtinymodem_1_1UICCodec.html#ab92053cb9d1281543233dc82eaa64e68',1,'tinymodem::UICCodec']]],
-  ['update_1',['update',['../classtinymodem_1_1BasicModemStream.html#a01f60a2a53019f73ee3046e19b59129b',1,'tinymodem::BasicModemStream::update()'],['../classtinymodem_1_1BasicModemStreamRTOS.html#abfc6bf4bbba5da2107b8828f5bbb241f',1,'tinymodem::BasicModemStreamRTOS::update()'],['../classtinymodem_1_1PacketStream.html#aa8a07c3b3b502d3071ff57a6cffd2a9e',1,'tinymodem::PacketStream::update()']]],
-  ['updatetiming_2',['updateTiming',['../classtinymodem_1_1PSKDecoder.html#ada88e0c6aae4db4844a66fa2930b256d',1,'tinymodem::PSKDecoder']]]
+  ['table_0',['table',['../classtinymodem_1_1Varicode.html#aed33eb8b7d646435127c9e595ce67844',1,'tinymodem::Varicode::table()'],['../classtinymodem_1_1MFSKVaricode.html#a9d90294f96da838f1f034d3d33f0779b',1,'tinymodem::MFSKVaricode::table()']]],
+  ['tables_1',['Tables',['../structtinymodem_1_1RSCodec_1_1Tables.html#ad23d3b650c60cd70c470d67cb6e7f869',1,'tinymodem::RSCodec::Tables']]],
+  ['tables_2',['tables',['../classtinymodem_1_1RSCodec.html#a38b2a827771d439f6c1270e2957f94e5',1,'tinymodem::RSCodec']]],
+  ['tag_3',['tag',['../classtinymodem_1_1FX25.html#a242262296fb7a5e76e42ae86905363d5',1,'tinymodem::FX25']]],
+  ['tone_4',['tone',['../classtinymodem_1_1FSKEncoder.html#a2670ab06ee01a4dff7f7fbbe5c690e64',1,'tinymodem::FSKEncoder::tone()'],['../classtinymodem_1_1ToneOutput.html#a3cd82b5d88e613172c9b4088b0c4803c',1,'tinymodem::ToneOutput::tone()']]],
+  ['tonefreq_5',['toneFreq',['../structtinymodem_1_1OliviaConfig.html#ac9cde2655af41d9f8b1919f645f34f05',1,'tinymodem::OliviaConfig']]],
+  ['tonefrequency_6',['toneFrequency',['../structtinymodem_1_1MFSKConfig.html#a52177bd49a78b5fbc2744bc192fc5ffc',1,'tinymodem::MFSKConfig']]],
+  ['tones_7',['tones',['../structtinymodem_1_1GGWaveProtocol.html#a6e334786103773229cf68126b07a4aa5',1,'tinymodem::GGWaveProtocol']]],
+  ['tosymbols_8',['toSymbols',['../classtinymodem_1_1CSSFrame.html#a51429b97927ea3eeea5113e7653f588f',1,'tinymodem::CSSFrame']]],
+  ['totext_9',['toText',['../classtinymodem_1_1AX25Frame.html#a5966a1e3e87947af2065e3ef3298f359',1,'tinymodem::AX25Frame']]],
+  ['traceback_10',['traceBack',['../classtinymodem_1_1QPSKCode.html#ab37bd1fc08d2a93bbb9089c69fb4c6bf',1,'tinymodem::QPSKCode']]],
+  ['trackstartmarker_11',['trackStartMarker',['../classtinymodem_1_1GGWaveDecoder.html#a6bb1520e13635b238e6ad6c1773af92e',1,'tinymodem::GGWaveDecoder']]],
+  ['transmitframe_12',['transmitFrame',['../classtinymodem_1_1FSKEncoder.html#ae287fdc5ad9f1f6834a3776ae6d6be82',1,'tinymodem::FSKEncoder']]],
+  ['tune_13',['tune',['../classtinymodem_1_1MFSKDecoder.html#af342e1ed3ab4e296dbfd69416c1b38de',1,'tinymodem::MFSKDecoder']]],
+  ['type1frame_14',['type1Frame',['../classtinymodem_1_1IL2P.html#ab0d4414aee9658120cfd51f1dea54e93',1,'tinymodem::IL2P']]],
+  ['type1header_15',['type1Header',['../classtinymodem_1_1IL2P.html#a43d0ea5bd3474ec095dfa8cba920f005',1,'tinymodem::IL2P']]],
+  ['typename_16',['typeName',['../classtinymodem_1_1CallerIDCodec.html#abf14a3423eecb1241cc905f6087eb6b7',1,'tinymodem::CallerIDCodec']]]
 ];

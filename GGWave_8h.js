@@ -1,9 +1,8 @@
 var GGWave_8h =
 [
     [ "tinymodem::GGWaveProtocol", "structtinymodem_1_1GGWaveProtocol.html", "structtinymodem_1_1GGWaveProtocol" ],
-    [ "tinymodem::GGWaveRS", "classtinymodem_1_1GGWaveRS.html", "classtinymodem_1_1GGWaveRS" ],
-    [ "tinymodem::GGWaveRS::Tables", "structtinymodem_1_1GGWaveRS_1_1Tables.html", "structtinymodem_1_1GGWaveRS_1_1Tables" ],
     [ "tinymodem::GGWaveConfig", "structtinymodem_1_1GGWaveConfig.html", "structtinymodem_1_1GGWaveConfig" ],
+    [ "tinymodem::GGWaveRS", "namespacetinymodem.html#a577dac85ad1134ff78f0037eb5edb08e", null ],
     [ "tinymodem::GGWaveProtocolId", "namespacetinymodem.html#a0274672aba98792b0a7567ab7566230e", [
       [ "tinymodem::GGWAVE_AUDIBLE_NORMAL", "namespacetinymodem.html#a0274672aba98792b0a7567ab7566230ead01c1b94960c61b030b8ef68e4eab744", null ],
       [ "tinymodem::GGWAVE_AUDIBLE_FAST", "namespacetinymodem.html#a0274672aba98792b0a7567ab7566230ea44814d6a5dee90b82e0ec456c6d9ae6e", null ],

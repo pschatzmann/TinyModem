@@ -1,5 +1,5 @@
 <map id="tinymodem::PSKDecoder" name="tinymodem::PSKDecoder">
-<area shape="rect" id="Node000001" title="PSK demodulator (BPSK like PSK31): the PCM audio data is written to the decoder and the decoded bytes..." alt="" coords="17,157,201,184"/>
+<area shape="rect" id="Node000001" title="PSK demodulator (BPSK, QPSK and 8PSK compatible with fldigi): the PCM audio data is written to the de..." alt="" coords="17,157,201,184"/>
 <area shape="rect" id="Node000002" href="$classtinymodem_1_1ModemDecoder.html" title="Common API of the demodulators (FSKDecoder, MFSKDecoder): PCM audio data is written to the decoder an..." alt="" coords="5,81,213,109"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,123,111,157,107,155,107,126"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="11,5,207,33"/>
