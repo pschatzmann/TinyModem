@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['ggwaveconfig_0',['GGWaveConfig',['../structtinymodem_1_1GGWaveConfig.html',1,'tinymodem']]],
-  ['ggwavedecoder_1',['GGWaveDecoder',['../classtinymodem_1_1GGWaveDecoder.html',1,'tinymodem']]],
-  ['ggwaveencoder_2',['GGWaveEncoder',['../classtinymodem_1_1GGWaveEncoder.html',1,'tinymodem']]],
-  ['ggwaveprotocol_3',['GGWaveProtocol',['../structtinymodem_1_1GGWaveProtocol.html',1,'tinymodem']]],
-  ['ggwavestream_4',['GGWaveStream',['../classtinymodem_1_1GGWaveStream.html',1,'tinymodem']]],
-  ['ggwavestreamrtos_5',['GGWaveStreamRTOS',['../classtinymodem_1_1GGWaveStreamRTOS.html',1,'tinymodem']]]
+  ['fskdecoder_0',['FSKDecoder',['../classtinymodem_1_1FSKDecoder.html',1,'tinymodem']]],
+  ['fskdemodulator_1',['FSKDemodulator',['../classtinymodem_1_1FSKDemodulator.html',1,'tinymodem']]],
+  ['fskencoder_2',['FSKEncoder',['../classtinymodem_1_1FSKEncoder.html',1,'tinymodem']]],
+  ['fsktonegenerator_3',['FSKToneGenerator',['../classtinymodem_1_1FSKToneGenerator.html',1,'tinymodem']]],
+  ['fsktonegenerator_3c_20int16_5ft_20_3e_4',['FSKToneGenerator&lt; int16_t &gt;',['../classtinymodem_1_1FSKToneGenerator.html',1,'tinymodem']]],
+  ['fx25_5',['FX25',['../classtinymodem_1_1FX25.html',1,'tinymodem']]]
 ];

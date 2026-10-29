@@ -1,21 +1,23 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,213,172,241"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,240,172,268"/>
 <area shape="rect" id="Node000001" href="$structtinymodem_1_1AX25Config.html" title="Configuration of the AX.25 packet radio modem (AX25Encoder, AX25Decoder): Bell 202 AFSK with 1200 bau..." alt="" coords="231,5,410,33"/>
-<area shape="poly" id="edge21_Node000000_Node000001" title=" " alt="" coords="100,198,118,163,145,121,178,79,218,44,245,32,241,35,221,48,182,83,149,124,123,165,105,200"/>
+<area shape="poly" id="edge23_Node000000_Node000001" title=" " alt="" coords="97,225,114,184,140,135,175,86,218,44,244,32,240,35,221,48,179,89,145,138,119,186,102,227"/>
 <area shape="rect" id="Node000002" href="$structtinymodem_1_1CSSConfig.html" title="Configuration of the chirp spread spectrum modem (CSSEncoder, CSSDecoder), which works like LoRa in t..." alt="" coords="235,57,406,85"/>
-<area shape="poly" id="edge22_Node000000_Node000002" title=" " alt="" coords="107,199,154,146,185,119,218,96,249,84,245,87,221,100,188,123,158,150,112,202"/>
+<area shape="poly" id="edge24_Node000000_Node000002" title=" " alt="" coords="103,225,149,160,181,125,218,96,247,84,243,88,221,100,185,129,153,163,107,228"/>
 <area shape="rect" id="Node000003" href="$structtinymodem_1_1DTMFConfig.html" title="Configuration of the DTMF (touch tone) modem (DTMFEncoder, DTMFDecoder): each of the characters 0&#45;9,..." alt="" coords="229,109,412,137"/>
-<area shape="poly" id="edge23_Node000000_Node000003" title=" " alt="" coords="121,202,166,174,219,147,257,136,253,139,221,152,169,178,124,206"/>
+<area shape="poly" id="edge25_Node000000_Node000003" title=" " alt="" coords="112,227,159,186,218,147,252,136,248,139,221,152,163,190,116,231"/>
 <area shape="rect" id="Node000004" href="$structtinymodem_1_1GGWaveConfig.html" title="Configuration of the ggwave compatible modem (GGWaveEncoder, GGWaveDecoder). Each message (up to 140 ..." alt="" coords="220,161,421,189"/>
-<area shape="poly" id="edge24_Node000000_Node000004" title=" " alt="" coords="167,207,257,188,253,191,170,212"/>
+<area shape="poly" id="edge26_Node000000_Node000004" title=" " alt="" coords="135,231,219,199,263,188,259,191,221,204,138,236"/>
 <area shape="rect" id="Node000005" href="$structtinymodem_1_1MFSKConfig.html" title="Configuration of the multi&#45;tone FSK modem (MFSKEncoder, MFSKDecoder). Each symbol is one of tones ton..." alt="" coords="230,213,410,241"/>
-<area shape="poly" id="edge25_Node000000_Node000005" title=" " alt="" coords="186,225,232,226,227,228,188,230"/>
+<area shape="poly" id="edge27_Node000000_Node000005" title=" " alt="" coords="186,240,232,236,228,239,188,245"/>
 <area shape="rect" id="Node000006" href="$structtinymodem_1_1ModemConfig.html" title="Configuration of the FSK modem. The fields correspond to the command line options of minimodem...." alt="" coords="223,265,418,293"/>
-<area shape="poly" id="edge26_Node000000_Node000006" title=" " alt="" coords="168,242,257,263,253,266,169,248"/>
-<area shape="rect" id="Node000007" href="$structtinymodem_1_1OFDMConfig.html" title="Configuration of the OFDM modem (OFDMEncoder, OFDMDecoder): the data is transmitted in parallel on ca..." alt="" coords="228,317,413,345"/>
-<area shape="poly" id="edge27_Node000000_Node000007" title=" " alt="" coords="123,247,169,276,221,302,258,316,252,317,219,307,166,280,123,253"/>
-<area shape="rect" id="Node000008" href="$structtinymodem_1_1OliviaConfig.html" title="Configuration of the Olivia and Contestia modems (OliviaEncoder, OliviaDecoder): MFSK with 2 to 256 t..." alt="" coords="229,369,412,397"/>
-<area shape="poly" id="edge28_Node000000_Node000008" title=" " alt="" coords="110,251,158,304,188,331,221,354,250,369,245,369,218,359,185,336,154,308,109,256"/>
-<area shape="rect" id="Node000009" href="$structtinymodem_1_1PSKConfig.html" title="Configuration of the PSK modem (PSKEncoder, PSKDecoder): differential PSK with cosine shaped transiti..." alt="" coords="236,421,405,449"/>
-<area shape="poly" id="edge29_Node000000_Node000009" title=" " alt="" coords="103,252,123,289,149,330,182,372,221,406,246,421,241,421,218,411,178,375,145,334,118,292,102,258"/>
+<area shape="poly" id="edge28_Node000000_Node000006" title=" " alt="" coords="186,262,225,267,220,270,188,267"/>
+<area shape="rect" id="Node000007" href="$structtinymodem_1_1MorseConfig.html" title="Configuration of the Morse code modem (MorseEncoder, MorseDecoder): a tone which is switched on and o..." alt="" coords="228,317,413,345"/>
+<area shape="poly" id="edge29_Node000000_Node000007" title=" " alt="" coords="137,271,221,302,263,316,258,317,219,307,138,277"/>
+<area shape="rect" id="Node000008" href="$structtinymodem_1_1OFDMConfig.html" title="Configuration of the OFDM modem (OFDMEncoder, OFDMDecoder): the data is transmitted in parallel on ca..." alt="" coords="228,369,413,397"/>
+<area shape="poly" id="edge30_Node000000_Node000008" title=" " alt="" coords="115,276,163,316,221,354,253,368,248,369,218,359,159,321,114,281"/>
+<area shape="rect" id="Node000009" href="$structtinymodem_1_1OliviaConfig.html" title="Configuration of the Olivia and Contestia modems (OliviaEncoder, OliviaDecoder): MFSK with 2 to 256 t..." alt="" coords="229,421,412,449"/>
+<area shape="poly" id="edge31_Node000000_Node000009" title=" " alt="" coords="106,279,153,344,185,378,221,406,247,421,242,421,218,411,181,382,149,347,105,284"/>
+<area shape="rect" id="Node000010" href="$structtinymodem_1_1PSKConfig.html" title="Configuration of the PSK modem (PSKEncoder, PSKDecoder): differential PSK with cosine shaped transiti..." alt="" coords="236,473,405,501"/>
+<area shape="poly" id="edge32_Node000000_Node000010" title=" " alt="" coords="100,279,119,321,145,369,179,417,221,458,245,473,239,473,218,463,175,421,140,372,114,323,99,284"/>
 </map>

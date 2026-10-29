@@ -118,6 +118,8 @@ Modem types</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><a href="https://github.com/pschatzmann/TinyModem/wiki/CSS">CSS</a>  </td><td class="markdownTableBodyNone">chirps (LoRa-like), frames with Reed-Solomon  </td><td class="markdownTableBodyNone"><span class="tt">css5</span> … <span class="tt">css10</span>, e.g. <span class="tt">css9-500</span>  </td><td class="markdownTableBodyNone">1 – 20 bytes/s  </td><td class="markdownTableBodyNone">Very weak signals, speakers and microphones, different clocks  </td><td class="markdownTableBodyNone">–  </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a href="https://github.com/pschatzmann/TinyModem/wiki/Morse">Morse</a>  </td><td class="markdownTableBodyNone">tone on/off (CW)  </td><td class="markdownTableBodyNone"><span class="tt">morse</span> (International, default), <span class="tt">morse-american</span>, with speed e.g. <span class="tt">morse-25</span>  </td><td class="markdownTableBodyNone">about 2 characters/s at 20 wpm  </td><td class="markdownTableBodyNone">Amateur radio CW, beacons, historic telegraph  </td><td class="markdownTableBodyNone">CW programs, by ear  </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><a href="https://github.com/pschatzmann/TinyModem/wiki/DTMF">DTMF</a>  </td><td class="markdownTableBodyNone">2 of 8 tones (touch tones)  </td><td class="markdownTableBodyNone"><span class="tt">dtmf</span>  </td><td class="markdownTableBodyNone">7 keys/s  </td><td class="markdownTableBodyNone">Telephones, radio remote control  </td><td class="markdownTableBodyNone">telephones, DTMF decoders  </td></tr>
 </table>
 <p>All modem types transmit an audio signal made of tones, not a digital line signal like a UART. Most modes use tones between about 1000 and 3000 Hz, which pass a telephone line, a radio and most speakers and microphones. Only FSK with high baud rates, <span class="tt">8psk1000</span> and ggwave (1875 – 6375 Hz, ultrasound 15 – 19.5 kHz) need higher frequencies. Even AX.25, which sends digital frames, transmits the bits with two audio tones.</p>
@@ -137,7 +139,7 @@ Arduino</h1>
 <div class="line"> </div>
 <div class="line">I2SStream i2s;</div>
 <div class="line">MFSKStream modem(i2s, RXTX_MODE);  <span class="comment">// or ModemStream, PSKStream, OFDMStream, AX25Stream, GGWaveStream,</span></div>
-<div class="line">                                   <span class="comment">// OliviaStream, CSSStream, DTMFStream</span></div>
+<div class="line">                                   <span class="comment">// OliviaStream, CSSStream, MorseStream, DTMFStream</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup() {</div>
 <div class="line">  Serial.begin(115200);</div>
@@ -176,6 +178,7 @@ Documentation</h1>
 <li><a href="https://github.com/pschatzmann/TinyModem/wiki/ggwave">ggwave</a>,</li>
 <li><a href="https://github.com/pschatzmann/TinyModem/wiki/Olivia">Olivia/Contestia</a>,</li>
 <li><a href="https://github.com/pschatzmann/TinyModem/wiki/CSS">Chirp spread spectrum</a>,</li>
+<li><a href="https://github.com/pschatzmann/TinyModem/wiki/Morse">Morse code</a>,</li>
 <li><a href="https://github.com/pschatzmann/TinyModem/wiki/DTMF">DTMF</a></li>
 </ul>
 </li>

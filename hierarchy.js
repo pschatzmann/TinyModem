@@ -8,6 +8,7 @@ var hierarchy =
         [ "tinymodem::FSKDecoder", "classtinymodem_1_1FSKDecoder.html", null ],
         [ "tinymodem::GGWaveDecoder", "classtinymodem_1_1GGWaveDecoder.html", null ],
         [ "tinymodem::MFSKDecoder", "classtinymodem_1_1MFSKDecoder.html", null ],
+        [ "tinymodem::MorseDecoder", "classtinymodem_1_1MorseDecoder.html", null ],
         [ "tinymodem::OFDMDecoder", "classtinymodem_1_1OFDMDecoder.html", null ],
         [ "tinymodem::OliviaDecoder", "classtinymodem_1_1OliviaDecoder.html", null ],
         [ "tinymodem::PSKDecoder", "classtinymodem_1_1PSKDecoder.html", null ]
@@ -21,6 +22,7 @@ var hierarchy =
         [ "tinymodem::FSKEncoder", "classtinymodem_1_1FSKEncoder.html", null ],
         [ "tinymodem::GGWaveEncoder", "classtinymodem_1_1GGWaveEncoder.html", null ],
         [ "tinymodem::MFSKEncoder", "classtinymodem_1_1MFSKEncoder.html", null ],
+        [ "tinymodem::MorseEncoder", "classtinymodem_1_1MorseEncoder.html", null ],
         [ "tinymodem::OFDMEncoder", "classtinymodem_1_1OFDMEncoder.html", null ],
         [ "tinymodem::OliviaEncoder", "classtinymodem_1_1OliviaEncoder.html", null ],
         [ "tinymodem::PSKEncoder", "classtinymodem_1_1PSKEncoder.html", null ]
@@ -33,6 +35,7 @@ var hierarchy =
       [ "tinymodem::GGWaveConfig", "structtinymodem_1_1GGWaveConfig.html", null ],
       [ "tinymodem::MFSKConfig", "structtinymodem_1_1MFSKConfig.html", null ],
       [ "tinymodem::ModemConfig", "structtinymodem_1_1ModemConfig.html", null ],
+      [ "tinymodem::MorseConfig", "structtinymodem_1_1MorseConfig.html", null ],
       [ "tinymodem::OFDMConfig", "structtinymodem_1_1OFDMConfig.html", null ],
       [ "tinymodem::OliviaConfig", "structtinymodem_1_1OliviaConfig.html", null ],
       [ "tinymodem::PSKConfig", "structtinymodem_1_1PSKConfig.html", null ]
@@ -53,6 +56,7 @@ var hierarchy =
       [ "tinymodem::UICCodec", "classtinymodem_1_1UICCodec.html", null ]
     ] ],
     [ "tinymodem::DTMFKeys", "classtinymodem_1_1DTMFKeys.html", null ],
+    [ "tinymodem::MorseCode::Entry", "structtinymodem_1_1MorseCode_1_1Entry.html", null ],
     [ "audio_tools::FloatSineGenerator", null, [
       [ "tinymodem::FSKToneGenerator< int16_t >", "classtinymodem_1_1FSKToneGenerator.html", null ],
       [ "tinymodem::FSKToneGenerator< T >", "classtinymodem_1_1FSKToneGenerator.html", null ]
@@ -63,6 +67,7 @@ var hierarchy =
     [ "tinymodem::IL2P", "classtinymodem_1_1IL2P.html", null ],
     [ "tinymodem::UICCodec::Message", "structtinymodem_1_1UICCodec_1_1Message.html", null ],
     [ "tinymodem::MFSKVaricode", "classtinymodem_1_1MFSKVaricode.html", null ],
+    [ "tinymodem::MorseCode", "classtinymodem_1_1MorseCode.html", null ],
     [ "tinymodem::OFDMTable", "classtinymodem_1_1OFDMTable.html", null ],
     [ "tinymodem::OliviaCodec", "classtinymodem_1_1OliviaCodec.html", null ],
     [ "tinymodem::PacketFormat", "structtinymodem_1_1PacketFormat.html", null ],
@@ -127,6 +132,13 @@ var hierarchy =
           ] ]
         ] ]
       ] ],
+      [ "tinymodem::BasicModemStream< MorseEncoder, MorseDecoder, MorseConfig >", "classtinymodem_1_1BasicModemStream.html", [
+        [ "tinymodem::MorseStream", "classtinymodem_1_1MorseStream.html", [
+          [ "tinymodem::BasicModemStreamRTOS< MorseStream >", "classtinymodem_1_1BasicModemStreamRTOS.html", [
+            [ "tinymodem::MorseStreamRTOS", "classtinymodem_1_1MorseStreamRTOS.html", null ]
+          ] ]
+        ] ]
+      ] ],
       [ "tinymodem::BasicModemStream< OFDMEncoder, OFDMDecoder, OFDMConfig >", "classtinymodem_1_1BasicModemStream.html", [
         [ "tinymodem::OFDMStream", "classtinymodem_1_1OFDMStream.html", [
           [ "tinymodem::BasicModemStreamRTOS< OFDMStream >", "classtinymodem_1_1BasicModemStreamRTOS.html", [
@@ -153,6 +165,7 @@ var hierarchy =
     ] ],
     [ "tinymodem::RSCodec::Tables", "structtinymodem_1_1RSCodec_1_1Tables.html", null ],
     [ "tinymodem::FX25::Tag", "structtinymodem_1_1FX25_1_1Tag.html", null ],
+    [ "tinymodem::MorseCode::Timing", "structtinymodem_1_1MorseCode_1_1Timing.html", null ],
     [ "tinymodem::GGWaveEncoder::Tone", "structtinymodem_1_1GGWaveEncoder_1_1Tone.html", null ],
     [ "tinymodem::ToneOutput", "classtinymodem_1_1ToneOutput.html", null ],
     [ "tinymodem::Varicode", "classtinymodem_1_1Varicode.html", null ],

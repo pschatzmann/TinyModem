@@ -10,5 +10,6 @@ var ModemStreamRTOS_8h =
     [ "tinymodem::GGWaveStreamRTOS", "classtinymodem_1_1GGWaveStreamRTOS.html", null ],
     [ "tinymodem::OliviaStreamRTOS", "classtinymodem_1_1OliviaStreamRTOS.html", null ],
     [ "tinymodem::CSSStreamRTOS", "classtinymodem_1_1CSSStreamRTOS.html", null ],
+    [ "tinymodem::MorseStreamRTOS", "classtinymodem_1_1MorseStreamRTOS.html", null ],
     [ "tinymodem::DTMFStreamRTOS", "classtinymodem_1_1DTMFStreamRTOS.html", null ]
 ];

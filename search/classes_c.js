@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rscodec_0',['RSCodec',['../classtinymodem_1_1RSCodec.html',1,'tinymodem']]]
+  ['qpskcode_0',['QPSKCode',['../classtinymodem_1_1QPSKCode.html',1,'tinymodem']]]
 ];

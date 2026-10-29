@@ -9,5 +9,6 @@ var ModemStream_8h =
     [ "tinymodem::GGWaveStream", "classtinymodem_1_1GGWaveStream.html", "classtinymodem_1_1GGWaveStream" ],
     [ "tinymodem::OliviaStream", "classtinymodem_1_1OliviaStream.html", "classtinymodem_1_1OliviaStream" ],
     [ "tinymodem::CSSStream", "classtinymodem_1_1CSSStream.html", "classtinymodem_1_1CSSStream" ],
+    [ "tinymodem::MorseStream", "classtinymodem_1_1MorseStream.html", "classtinymodem_1_1MorseStream" ],
     [ "tinymodem::DTMFStream", "classtinymodem_1_1DTMFStream.html", "classtinymodem_1_1DTMFStream" ]
 ];

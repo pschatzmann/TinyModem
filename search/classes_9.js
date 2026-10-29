@@ -1,15 +1,21 @@
 var searchData=
 [
-  ['ofdmconfig_0',['OFDMConfig',['../structtinymodem_1_1OFDMConfig.html',1,'tinymodem']]],
-  ['ofdmdecoder_1',['OFDMDecoder',['../classtinymodem_1_1OFDMDecoder.html',1,'tinymodem']]],
-  ['ofdmencoder_2',['OFDMEncoder',['../classtinymodem_1_1OFDMEncoder.html',1,'tinymodem']]],
-  ['ofdmstream_3',['OFDMStream',['../classtinymodem_1_1OFDMStream.html',1,'tinymodem']]],
-  ['ofdmstreamrtos_4',['OFDMStreamRTOS',['../classtinymodem_1_1OFDMStreamRTOS.html',1,'tinymodem']]],
-  ['ofdmtable_5',['OFDMTable',['../classtinymodem_1_1OFDMTable.html',1,'tinymodem']]],
-  ['oliviacodec_6',['OliviaCodec',['../classtinymodem_1_1OliviaCodec.html',1,'tinymodem']]],
-  ['oliviaconfig_7',['OliviaConfig',['../structtinymodem_1_1OliviaConfig.html',1,'tinymodem']]],
-  ['oliviadecoder_8',['OliviaDecoder',['../classtinymodem_1_1OliviaDecoder.html',1,'tinymodem']]],
-  ['oliviaencoder_9',['OliviaEncoder',['../classtinymodem_1_1OliviaEncoder.html',1,'tinymodem']]],
-  ['oliviastream_10',['OliviaStream',['../classtinymodem_1_1OliviaStream.html',1,'tinymodem']]],
-  ['oliviastreamrtos_11',['OliviaStreamRTOS',['../classtinymodem_1_1OliviaStreamRTOS.html',1,'tinymodem']]]
+  ['message_0',['Message',['../structtinymodem_1_1UICCodec_1_1Message.html',1,'tinymodem::UICCodec']]],
+  ['mfskconfig_1',['MFSKConfig',['../structtinymodem_1_1MFSKConfig.html',1,'tinymodem']]],
+  ['mfskdecoder_2',['MFSKDecoder',['../classtinymodem_1_1MFSKDecoder.html',1,'tinymodem']]],
+  ['mfskencoder_3',['MFSKEncoder',['../classtinymodem_1_1MFSKEncoder.html',1,'tinymodem']]],
+  ['mfskstream_4',['MFSKStream',['../classtinymodem_1_1MFSKStream.html',1,'tinymodem']]],
+  ['mfskstreamrtos_5',['MFSKStreamRTOS',['../classtinymodem_1_1MFSKStreamRTOS.html',1,'tinymodem']]],
+  ['mfskvaricode_6',['MFSKVaricode',['../classtinymodem_1_1MFSKVaricode.html',1,'tinymodem']]],
+  ['modemconfig_7',['ModemConfig',['../structtinymodem_1_1ModemConfig.html',1,'tinymodem']]],
+  ['modemdecoder_8',['ModemDecoder',['../classtinymodem_1_1ModemDecoder.html',1,'tinymodem']]],
+  ['modemencoder_9',['ModemEncoder',['../classtinymodem_1_1ModemEncoder.html',1,'tinymodem']]],
+  ['modemstream_10',['ModemStream',['../classtinymodem_1_1ModemStream.html',1,'tinymodem']]],
+  ['modemstreamrtos_11',['ModemStreamRTOS',['../classtinymodem_1_1ModemStreamRTOS.html',1,'tinymodem']]],
+  ['morsecode_12',['MorseCode',['../classtinymodem_1_1MorseCode.html',1,'tinymodem']]],
+  ['morseconfig_13',['MorseConfig',['../structtinymodem_1_1MorseConfig.html',1,'tinymodem']]],
+  ['morsedecoder_14',['MorseDecoder',['../classtinymodem_1_1MorseDecoder.html',1,'tinymodem']]],
+  ['morseencoder_15',['MorseEncoder',['../classtinymodem_1_1MorseEncoder.html',1,'tinymodem']]],
+  ['morsestream_16',['MorseStream',['../classtinymodem_1_1MorseStream.html',1,'tinymodem']]],
+  ['morsestreamrtos_17',['MorseStreamRTOS',['../classtinymodem_1_1MorseStreamRTOS.html',1,'tinymodem']]]
 ];

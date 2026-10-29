@@ -16,5 +16,8 @@ var searchData=
   ['modecarriers_13',['modeCarriers',['../structtinymodem_1_1OFDMConfig.html#aebb5ba4eece0291767b5f084213b0e84',1,'tinymodem::OFDMConfig']]],
   ['modemconfig_14',['ModemConfig',['../structtinymodem_1_1ModemConfig.html#a9cdbf7ea51c61ba0b2b7229c28e61abb',1,'tinymodem::ModemConfig']]],
   ['moderate_15',['modeRate',['../structtinymodem_1_1PSKConfig.html#aa2fe75020982edda9e0b0d24afb96413',1,'tinymodem::PSKConfig']]],
-  ['mul_16',['mul',['../classtinymodem_1_1RSCodec.html#ab16086645deeb4ecc1ad3f5213f001ff',1,'tinymodem::RSCodec']]]
+  ['morseconfig_16',['MorseConfig',['../structtinymodem_1_1MorseConfig.html#a6cfd7c30b1255061b0fb37d983425700',1,'tinymodem::MorseConfig']]],
+  ['morsedecoder_17',['MorseDecoder',['../classtinymodem_1_1MorseDecoder.html#a3426310997f85e986ff93af10ea597f4',1,'tinymodem::MorseDecoder::MorseDecoder()=default'],['../classtinymodem_1_1MorseDecoder.html#a6439450bc10b1286f75dc7c37a4d56b8',1,'tinymodem::MorseDecoder::MorseDecoder(Print &amp;out)']]],
+  ['morseencoder_18',['MorseEncoder',['../classtinymodem_1_1MorseEncoder.html#ae027f11d1ffd125c5bf4853303469e01',1,'tinymodem::MorseEncoder::MorseEncoder()=default'],['../classtinymodem_1_1MorseEncoder.html#a468eb821364532f27afcb832a41ff673',1,'tinymodem::MorseEncoder::MorseEncoder(Print &amp;out)']]],
+  ['mul_19',['mul',['../classtinymodem_1_1RSCodec.html#ab16086645deeb4ecc1ad3f5213f001ff',1,'tinymodem::RSCodec']]]
 ];

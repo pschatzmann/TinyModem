@@ -1,5 +1,11 @@
 var NAVTREEINDEX5 =
 {
+"classtinymodem_1_1GGWaveDecoder.html#abcbf0b0ec131bead5eb1fc685967aea1":[7,0,0,28,62],
+"classtinymodem_1_1GGWaveDecoder.html#abdbd0be920ff6f27566f08b230dc91d7":[6,0,0,28,42],
+"classtinymodem_1_1GGWaveDecoder.html#abdbd0be920ff6f27566f08b230dc91d7":[7,0,0,28,42],
+"classtinymodem_1_1GGWaveDecoder.html#abe6b25b031773023fc59c81c6d93550f":[6,0,0,28,51],
+"classtinymodem_1_1GGWaveDecoder.html#abe6b25b031773023fc59c81c6d93550f":[7,0,0,28,51],
+"classtinymodem_1_1GGWaveDecoder.html#abf2a2e0efec6f4d9a4425718d90b60ce":[6,0,0,28,54],
 "classtinymodem_1_1GGWaveDecoder.html#abf2a2e0efec6f4d9a4425718d90b60ce":[7,0,0,28,54],
 "classtinymodem_1_1GGWaveDecoder.html#abffea4d1e35d934b35f6369da6834e08":[6,0,0,28,14],
 "classtinymodem_1_1GGWaveDecoder.html#abffea4d1e35d934b35f6369da6834e08":[7,0,0,28,14],
@@ -97,8 +103,8 @@ var NAVTREEINDEX5 =
 "classtinymodem_1_1GGWaveStream.html#ac50a9484127b06a2311a82c8f1ccace1":[7,0,0,47,2],
 "classtinymodem_1_1GGWaveStream.html#ac8fd9e948b362935ebcd13bd28d8e50d":[6,0,0,47,3],
 "classtinymodem_1_1GGWaveStream.html#ac8fd9e948b362935ebcd13bd28d8e50d":[7,0,0,47,3],
-"classtinymodem_1_1GGWaveStreamRTOS.html":[6,0,0,57],
-"classtinymodem_1_1GGWaveStreamRTOS.html":[7,0,0,57],
+"classtinymodem_1_1GGWaveStreamRTOS.html":[6,0,0,58],
+"classtinymodem_1_1GGWaveStreamRTOS.html":[7,0,0,58],
 "classtinymodem_1_1IL2P.html":[6,0,0,5],
 "classtinymodem_1_1IL2P.html":[7,0,0,5],
 "classtinymodem_1_1MFSKDecoder.html":[6,0,0,31],
@@ -243,11 +249,5 @@ var NAVTREEINDEX5 =
 "classtinymodem_1_1MFSKDecoder.html#ae982c8fb09227aed0bf317d96f527293":[7,0,0,31,4],
 "classtinymodem_1_1MFSKDecoder.html#af246691e6baaaf6abe004c54f6cb1eea":[6,0,0,31,5],
 "classtinymodem_1_1MFSKDecoder.html#af246691e6baaaf6abe004c54f6cb1eea":[7,0,0,31,5],
-"classtinymodem_1_1MFSKDecoder.html#af342e1ed3ab4e296dbfd69416c1b38de":[6,0,0,31,34],
-"classtinymodem_1_1MFSKDecoder.html#af342e1ed3ab4e296dbfd69416c1b38de":[7,0,0,31,34],
-"classtinymodem_1_1MFSKDecoder.html#af3dd94ad711cee25de481ea8c6772438":[6,0,0,31,11],
-"classtinymodem_1_1MFSKDecoder.html#af3dd94ad711cee25de481ea8c6772438":[7,0,0,31,11],
-"classtinymodem_1_1MFSKDecoder.html#af41346cabbd8a8907d0b88e9ea0870e6":[6,0,0,31,54],
-"classtinymodem_1_1MFSKDecoder.html#af41346cabbd8a8907d0b88e9ea0870e6":[7,0,0,31,54],
-"classtinymodem_1_1MFSKDecoder.html#af4f847bb50016413b60e038d2dad9d20":[6,0,0,31,53]
+"classtinymodem_1_1MFSKDecoder.html#af342e1ed3ab4e296dbfd69416c1b38de":[6,0,0,31,34]
 };

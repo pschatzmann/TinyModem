@@ -50,6 +50,7 @@ var namespacetinymodem =
     [ "GGWaveStream", "classtinymodem_1_1GGWaveStream.html", "classtinymodem_1_1GGWaveStream" ],
     [ "OliviaStream", "classtinymodem_1_1OliviaStream.html", "classtinymodem_1_1OliviaStream" ],
     [ "CSSStream", "classtinymodem_1_1CSSStream.html", "classtinymodem_1_1CSSStream" ],
+    [ "MorseStream", "classtinymodem_1_1MorseStream.html", "classtinymodem_1_1MorseStream" ],
     [ "DTMFStream", "classtinymodem_1_1DTMFStream.html", "classtinymodem_1_1DTMFStream" ],
     [ "BasicModemStreamRTOS", "classtinymodem_1_1BasicModemStreamRTOS.html", "classtinymodem_1_1BasicModemStreamRTOS" ],
     [ "ModemStreamRTOS", "classtinymodem_1_1ModemStreamRTOS.html", null ],
@@ -60,7 +61,12 @@ var namespacetinymodem =
     [ "GGWaveStreamRTOS", "classtinymodem_1_1GGWaveStreamRTOS.html", null ],
     [ "OliviaStreamRTOS", "classtinymodem_1_1OliviaStreamRTOS.html", null ],
     [ "CSSStreamRTOS", "classtinymodem_1_1CSSStreamRTOS.html", null ],
+    [ "MorseStreamRTOS", "classtinymodem_1_1MorseStreamRTOS.html", null ],
     [ "DTMFStreamRTOS", "classtinymodem_1_1DTMFStreamRTOS.html", null ],
+    [ "MorseConfig", "structtinymodem_1_1MorseConfig.html", "structtinymodem_1_1MorseConfig" ],
+    [ "MorseCode", "classtinymodem_1_1MorseCode.html", "classtinymodem_1_1MorseCode" ],
+    [ "MorseDecoder", "classtinymodem_1_1MorseDecoder.html", "classtinymodem_1_1MorseDecoder" ],
+    [ "MorseEncoder", "classtinymodem_1_1MorseEncoder.html", "classtinymodem_1_1MorseEncoder" ],
     [ "OFDMConfig", "structtinymodem_1_1OFDMConfig.html", "structtinymodem_1_1OFDMConfig" ],
     [ "OFDMTable", "classtinymodem_1_1OFDMTable.html", "classtinymodem_1_1OFDMTable" ],
     [ "OFDMDecoder", "classtinymodem_1_1OFDMDecoder.html", "classtinymodem_1_1OFDMDecoder" ],
@@ -109,6 +115,10 @@ var namespacetinymodem =
       [ "GGWAVE_DT_NORMAL", "namespacetinymodem.html#a0274672aba98792b0a7567ab7566230ea6cfdfe1c2c6bfc1be06de83debc8635a", null ],
       [ "GGWAVE_DT_FAST", "namespacetinymodem.html#a0274672aba98792b0a7567ab7566230ea43f9bb1c2537b3dbed110039a93894b5", null ],
       [ "GGWAVE_DT_FASTEST", "namespacetinymodem.html#a0274672aba98792b0a7567ab7566230ea4d2d46b7c7c12ac9ad832c7b1c6dbdb7", null ]
+    ] ],
+    [ "MorseAlphabet", "namespacetinymodem.html#a52f4681ec7ada128845f3ed331562312", [
+      [ "INTERNATIONAL", "namespacetinymodem.html#a52f4681ec7ada128845f3ed331562312abb0555aaf33daee2bcb10127e463348e", null ],
+      [ "AMERICAN", "namespacetinymodem.html#a52f4681ec7ada128845f3ed331562312a67de9fbb65b0446d62751eecbb8ee139", null ]
     ] ],
     [ "PSKModulation", "namespacetinymodem.html#ae712d2937d240471becbe78269cfb1bb", [
       [ "BPSK", "namespacetinymodem.html#ae712d2937d240471becbe78269cfb1bbacfd8f331d281b0da79e7c6ed6988243c", null ],
