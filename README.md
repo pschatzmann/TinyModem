@@ -67,7 +67,7 @@ void loop() {
 }
 ```
 
-See the [examples](examples) and the [Arduino documentation](https://github.com/pschatzmann/TinyModem/wiki/Arduino). The library runs on ESP32-S3, ESP32-P4 and RP2040 (see the [performance](https://github.com/pschatzmann/TinyModem/wiki/Performance); the RP2040 is too slow for Olivia).
+See the [examples](examples) and the [Arduino documentation](https://github.com/pschatzmann/TinyModem/wiki/Arduino). The library runs on ESP32-S3, ESP32-P4, RP2040 and RP2350 (see the [performance](https://github.com/pschatzmann/TinyModem/wiki/Performance); the RP2040 is too slow for Olivia).
 
 ## Command line
 
