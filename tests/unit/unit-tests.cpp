@@ -1999,6 +1999,16 @@ static void test_ggwave_stream() {
   while (audio.available() > 0 || modem.available() > 0)
     while (modem.available() > 0) result += (char)modem.read();
   CHECK_EQ(result, std::string("Hello ggwave"));
+
+  // receive in a separate task
+  SyncLoopbackStream audio2;
+  GGWaveStreamRTOS rtos(audio2, RXTX_MODE);
+  CHECK(rtos.begin(cfg));
+  rtos.print("Hello task");
+  rtos.flush();
+  rtos.getEncoder().writeSilence(cfg.sample_rate / 4);
+  CHECK_EQ(readFor(rtos, 10), std::string("Hello task"));
+  rtos.end();
 }
 
 /// With rx_one the decoding stops after the first transmission and stays

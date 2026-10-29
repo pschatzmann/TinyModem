@@ -208,4 +208,14 @@ class OFDMStreamRTOS : public BasicModemStreamRTOS<OFDMStream> {
   using BasicModemStreamRTOS::BasicModemStreamRTOS;
 };
 
+/**
+ * @brief GGWaveStream which receives in a separate task. See
+ * BasicModemStreamRTOS.
+ * @copyright GPLv3
+ */
+class GGWaveStreamRTOS : public BasicModemStreamRTOS<GGWaveStream> {
+ public:
+  using BasicModemStreamRTOS::BasicModemStreamRTOS;
+};
+
 }  // namespace tinymodem

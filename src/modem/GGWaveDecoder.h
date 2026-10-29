@@ -32,7 +32,8 @@ namespace tinymodem {
  * Reed-Solomon code and the end marker at the expected position wins.
  *
  * Unlike ggwave, which records the audio of a whole message, the memory
- * needed is small: about 16 kBytes for the audible protocols.
+ * needed is small: about 27 KB for the audible protocols at 48000 Hz (23 KB
+ * at 24000 Hz).
  * @copyright GPLv3
  */
 class GGWaveDecoder : public ModemDecoder {
